@@ -1,0 +1,85 @@
+bridge_id = "pymfem-ser"
+source_root = "../.."
+output_dir = "nsb_artifacts"
+registration_module = "mfem._ser._nsb_registration"
+director_helper_module = "mfem._ser.nsb_director_bindings"
+state_backend = "mfem"
+state_module = "mfem._nsb_state_bindings"
+
+[[interfaces]]
+interface = "mfem/_ser/vector.i"
+python_module = "mfem._ser.vector"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/densemat.i"
+python_module = "mfem._ser.densemat"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/array.i"
+python_module = "mfem._ser.array"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/doftrans.i"
+python_module = "mfem._ser.doftrans"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/fespace.i"
+python_module = "mfem._ser.fespace"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/fe_base.i"
+python_module = "mfem._ser.fe_base"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/eltrans.i"
+python_module = "mfem._ser.eltrans"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/intrules.i"
+python_module = "mfem._ser.intrules"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/coefficient.i"
+python_module = "mfem._ser.coefficient"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/lininteg.i"
+python_module = "mfem._ser.lininteg"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/nonlinearform.i"
+python_module = "mfem._ser.nonlinearform"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/hyperbolic.i"
+python_module = "mfem._ser.hyperbolic"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/operators.i"
+python_module = "mfem._ser.operators"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]

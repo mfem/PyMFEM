@@ -18,7 +18,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -37,7 +36,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -56,7 +54,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -75,7 +72,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -94,7 +90,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -113,7 +108,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -132,7 +126,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -151,7 +144,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -170,7 +162,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -189,7 +180,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -208,7 +198,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -227,7 +216,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],
@@ -246,7 +234,6 @@
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
-        "/home/shiraiwa/venvs/py313/lib/python3.13/site-packages/nsb_rt/include",
         "external/mfem/cmbuild_ser",
         "external/mfem"
       ],

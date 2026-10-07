@@ -7,6 +7,7 @@ Serial version setup file
 
 import sys
 import os
+from pathlib import Path
 
 # this remove *.py in this directory to be imported from setuptools
 # Github workflow (next import) fails without this, because it loads
@@ -142,23 +143,31 @@ def get_extensions():
     proxy_names = {name: '_'+name for name in modules}
 
     if enable_numba_swig_bridge == '1' and 'clean' not in sys.argv:
-        from pathlib import Path
-        from numba_swig_bridge.build_info import get_build_info
+        from nsb_rt.build_info import get_build_info
 
         bridge_info = get_build_info()
-        director_root = Path(ddd) / '.nsb-generated' / 'director'
+        artifacts = Path(ddd) / 'nsb_artifacts'
+        director_root = artifacts / 'director' / 'cpp'
         helper = 'nsb_director_bindings'
         helper_sources = [
-            Path(ddd) / (helper + '_wrap.cxx'),
-            director_root / 'cpp' / 'nsb_director.cpp',
-            *[Path(path) for path in bridge_info['sources']],
+            str(Path(ddd) / (helper + '_wrap.cxx')),
+            str(director_root / 'nsb_director.cpp'),
         ]
-        missing = [str(path) for path in helper_sources if not path.is_file()]
-        if missing:
-            raise RuntimeError('missing generated Numba director helper source: ' + missing[0])
         modules.append(helper)
-        sources[helper] = [str(path) for path in helper_sources]
+        sources[helper] = helper_sources
         proxy_names[helper] = '_' + helper
+
+        state_name = 'mfem._nsb_state_bindings_ext'
+        modules.append(state_name)
+        sources[state_name] = [str(Path(ddd) / '_nsb_state_bindings_wrap.cxx'),
+                               *bridge_info['sources']]
+        proxy_names[state_name] = state_name
+        missing = [path for name in (helper, state_name)
+                   for path in sources[name] if not Path(path).is_file()]
+        if missing:
+            raise RuntimeError(
+                'missing prepared PyMFEM NSB wrapper; run '
+                'generate_nsb_pymfem_wrapper first: ' + missing[0])
 
     tpl_include = []
     for x in mfemstpl.split(' '):
@@ -169,7 +178,7 @@ def get_extensions():
     include_dirs.extend(tpl_include)
 
     if enable_numba_swig_bridge == '1' and 'clean' not in sys.argv:
-        include_dirs.extend([str(director_root / 'cpp'), bridge_info['include_dir'],
+        include_dirs.extend([str(director_root), bridge_info['include_dir'],
                              bridge_info['cpp_dir']])
 
     extra_compile_args = [cxxstdflag, '-DSWIG_TYPE_TABLE=PyMFEM']
@@ -215,13 +224,14 @@ def main():
 
     version = get_version()
     modules, ext_modules = get_extensions()
+    python_modules = [name for name in modules if '.' not in name]
 
     setup(name='mfem_serial',
           version=version,
           author="S.Shiraiwa",
           description="""MFEM wrapper""",
           ext_modules=ext_modules,
-          py_modules=modules,
+          py_modules=python_modules,
           cmdclass={'build_ext': GeneratedWrapperBuildExt},
           )
 

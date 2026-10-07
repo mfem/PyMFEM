@@ -25,7 +25,7 @@ dependencies = [
 
 [project.optional-dependencies]
 MPI = ["mpi4py"]
-bridge = ["numba-swig-bridge>=0.14.0"]
+bridge = ["numba-swig-bridge-rt>=0.14.0"]
 
 [project.urls]
 "Homepage" = "http://mfem.org"

@@ -21,7 +21,7 @@ def get_requires_for_build_wheel(config_settings=None):
     if _enabled(config_settings, "with-parallel"):
         ret = ret + ['mpi4py']
     if _enabled(config_settings, "with-numba-swig-bridge"):
-        ret = ret + ['numba-swig-bridge>=0.13.0']
+        ret = ret + ['numba-swig-bridge-rt>=0.14.0']
     return ret
 
 
