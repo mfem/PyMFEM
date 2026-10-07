@@ -1,4 +1,4 @@
-"""Run MFEM example 18 with its hot ``TimeDependentOperator.Mult`` in Numba.
+"""Run MFEM example 18 with a Numba-compiled volume callback.
 
 This serial demonstration retains the ordinary PyMFEM setup and ODE solver.
 Only the per-element volume contribution in ``Mult`` is a native Numba
@@ -40,6 +40,12 @@ import ex18 as reference_ex18
         "dimension": types.intc,
         "element_count": types.intc,
         "element_dofs": types.intc,
+        "x_data": types.float64[:, ::1],
+        "z_data": types.float64[:, ::1],
+        "y_data": types.float64[:, ::1],
+        "flux_data": types.float64[:, ::1],
+        "current_flux_data": types.float64[:, ::1],
+        "state_data": types.float64[::1],
     },
     # Automatic director selection also exposes non-pure MFEM virtuals. This
     # example implements only Mult; the rest intentionally use MFEM defaults.
@@ -48,9 +54,10 @@ import ex18 as reference_ex18
 class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
     """Example-18 operator with NumPy work arrays inside a Numba director.
 
-    Element matrices stay in C++-owned tensors. Per-call work arrays are
-    ordinary Numba arrays; frame-owned MFEM views expose the state and flux
-    buffers only for the ``ComputeFlux`` C++ call.
+    Element matrices stay in C++-owned tensors. NumPy work buffers live in
+    StateBlock and are reused across calls; frame-owned MFEM views expose the
+    state and flux buffers for ``ComputeFlux``. This serial operator assumes
+    calls on each operator are neither concurrent nor reentrant.
     """
 
     def __init__(self, vfes, form_integrator, preassembleWeakDivergence=True):
@@ -69,6 +76,18 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
         self.dimension = vfes.GetMesh().SpaceDimension()
         self.element_count = element_count
         self.element_dofs = element_dofs
+        # Fixed-size reusable buffers for this uniform-order serial operator.
+        shape = (self.num_equations, element_dofs)
+        self.x_data = np.empty(shape, dtype=np.float64)
+        self.z_data = np.empty(shape, dtype=np.float64)
+        self.y_data = np.empty(shape, dtype=np.float64)
+        self.flux_data = np.empty(
+            (self.num_equations, self.dimension * element_dofs), dtype=np.float64
+        )
+        self.state_data = np.empty(self.num_equations, dtype=np.float64)
+        self.current_flux_data = np.empty(
+            (self.dimension, self.num_equations), dtype=np.float64
+        )
         self.z = mfem.Vector(vfes.GetTrueVSize())
         self.vdofs = mfem.intArray()
         self.invmass = mfem.DenseTensor(element_dofs, element_dofs, element_count)
@@ -123,7 +142,7 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
     def GetMaxCharSpeed(self):
         return self.form_integrator.GetMaxCharSpeed()
 
-    @nsb.override
+    @nsb.override(stateaccess="*")
     def Mult(self, x, y):
         self.form_integrator.ResetMaxCharSpeed()
         self.nonlinear_form.Mult(x, self.z)
@@ -134,31 +153,17 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
         auxiliary_data = self.z.GetDataArray()
         output_data = y.GetDataArray()
         local_size = self.element_dofs * self.num_equations
-        # MFEM's dof-by-equation DenseMatrix layout is column-major. Its
-        # transposed representation is C-contiguous and lets Numba use whole
-        # matrix products below.
-        x_data = np.empty(
-            (self.num_equations, self.element_dofs), dtype=np.float64
-        )
-        z_data = np.empty(
-            (self.num_equations, self.element_dofs), dtype=np.float64
-        )
-        y_data = np.empty(
-            (self.num_equations, self.element_dofs), dtype=np.float64
-        )
+
+        # We make local variables. It looks like this matters for speed (order of 5-7%)
+        x_data = self.x_data
+        z_data = self.z_data
+        y_data = self.y_data
+        flux_data = self.flux_data
+        state_data = self.state_data
+        current_flux_data = self.current_flux_data
         x_data_flat = x_data.reshape(local_size)
         z_data_flat = z_data.reshape(local_size)
         y_data_flat = y_data.reshape(local_size)
-        flux_data = np.empty(
-            (self.num_equations, self.dimension * self.element_dofs),
-            dtype=np.float64,
-        )
-        state_data = np.empty(self.num_equations, dtype=np.float64)
-        # This C-order shape has the same physical layout as MFEM's
-        # column-major (num_equations, dimension) DenseMatrix.
-        current_flux_data = np.empty(
-            (self.dimension, self.num_equations), dtype=np.float64
-        )
         current_state = mfem.Vector(
             nsb.as_cpointer(state_data), self.num_equations
         )
@@ -181,16 +186,23 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
             # mutable Array<int>& receives the element vector dofs.
             self.vfes.GetElementVDofs(element, self.vdofs)
             vdof_data = self.vdofs.GetDataArray()
-            x_data_flat[:] = input_data[vdof_data]
-            z_data_flat[:] = auxiliary_data[vdof_data]
+            # Direct gather avoids fancy-index temporaries and slice broadcasting.
+            for local in range(local_size):
+                x_data_flat[local] = input_data[vdof_data[local]]
+                z_data_flat[local] = auxiliary_data[vdof_data[local]]
 
             for node in range(self.element_dofs):
-                state_data[:] = x_data[:, node]
+                for equation in range(self.num_equations):
+                    state_data[equation] = x_data[equation, node]
                 flux_function.ComputeFlux(
                     current_state, transformation, current_flux
                 )
                 start = self.dimension * node
-                flux_data[:, start:start + self.dimension] = current_flux_data.T
+                for equation in range(self.num_equations):
+                    for direction in range(self.dimension):
+                        flux_data[equation, start + direction] = (
+                            current_flux_data[direction, equation]
+                        )
 
             # This is the transposed NumPy form of the original MFEM calls:
             # AddMult_a_ABt(1.0, weakdiv, flux, current_zmat) and
@@ -206,7 +218,8 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
             inverse_mass_element = np.asfortranarray(inverse_mass[element])
             z_data += flux_data @ weak_divergence_element.T
             y_data[:] = z_data @ inverse_mass_element.T
-            output_data[vdof_data] = y_data_flat
+            for local in range(local_size):
+                output_data[vdof_data[local]] = y_data_flat[local]
 
 
 

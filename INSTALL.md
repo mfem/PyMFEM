@@ -47,17 +47,7 @@ and `--with-gslib` flags as follows.
 pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 ```
 
-Enable the experimental Numba bridge during a source build with:
 
-```shell
-pip install . -C"with-numba-swig-bridge=Yes"
-```
-
-`pip install "mfem[bridge]"` installs the bridge runtime for a bridge-enabled
-wheel. Extras are resolved after build requirements, so the build setting is
-still required when generating wrappers from source.
-
-(Warning) The migration to `pip install . ` is on-going effort and Some of the example commands are not tested yet, which are indicated by using old conversion of "python setup.py install XXXX"
 
 ## Environmental variable
 `PYMFEM_BUILD_NCPU` :  set number of parallel jobs used when calling SWIG and build-extension.
@@ -191,6 +181,16 @@ the same. When you are happy, build the wrapper with skip-swig and skip-ext.
 pip install . -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbose
 pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbose
 ```
+
+### Experimental Numba bridge (prebuilt binaries are not available)
+
+```shell
+pip install ".[bridge]" -C"with-numba-swig-bridge=Yes"
+```
+
+The `[bridge]` extra installs the bridge runtime in the target environment;
+`-C"with-numba-swig-bridge=Yes"` enables bridge support in the source build.
+Both are needed for a complete source installation.
 
 ### Other options
 `--unverifiedSSL` :

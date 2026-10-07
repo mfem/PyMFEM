@@ -19,7 +19,7 @@ ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
 build_system_dir = os.path.join(root, '_build_system')
 sys.path.insert(0, build_system_dir)
-from compiler_warnings import GeneratedWrapperBuildExt
+from build_generatedwrapperext import Build_StateO3
 sys.path.pop(0)
 
 
@@ -215,6 +215,17 @@ def get_extensions():
                                   define_macros=macros)
                         for name in modules[1:]])
 
+    if enable_numba_swig_bridge == '1' and 'clean' not in sys.argv:
+        state_extension = next(extension for extension in ext_modules
+                               if extension.name == state_name)
+        # Compile only the runtime implementation at -O3 on GCC/Clang.
+        # The generated state wrapper retains the ordinary wrapper settings.
+        state_extension.nsb_state_sources = tuple(bridge_info['sources'])
+        state_extension.depends.extend([
+            bridge_info['header'],
+            str(Path(build_system_dir) / 'build_generatedwrapperext.py'),
+        ])
+
     return modules, ext_modules
 
 
@@ -232,7 +243,7 @@ def main():
           description="""MFEM wrapper""",
           ext_modules=ext_modules,
           py_modules=python_modules,
-          cmdclass={'build_ext': GeneratedWrapperBuildExt},
+          cmdclass={'build_ext': Build_StateO3},
           )
 
 
