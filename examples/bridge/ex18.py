@@ -186,7 +186,9 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
             # mutable Array<int>& receives the element vector dofs.
             self.vfes.GetElementVDofs(element, self.vdofs)
             vdof_data = self.vdofs.GetDataArray()
-            # Direct gather avoids fancy-index temporaries and slice broadcasting.
+
+            # Direct gather avoids fancy-index temporaries and slice broadcasting,
+            # which Numba is known to be slow.
             for local in range(local_size):
                 x_data_flat[local] = input_data[vdof_data[local]]
                 z_data_flat[local] = auxiliary_data[vdof_data[local]]
