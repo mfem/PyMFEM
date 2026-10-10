@@ -6,7 +6,8 @@ import os
 import re
 import subprocess
 
-__all__ = ["write_setup_local", "generate_wrapper",
+__all__ = ["write_setup_local", "generate_wrapper", "generate_nsb_artifacts",
+           "generate_nsb_pymfem_wrapper",
            "clean_wrapper", "make_mfem_wrapper"]
 
 from build_utils import *
@@ -72,6 +73,8 @@ def write_setup_local():
               'cxxstdflag': bglb.cxxstd_flag,
               'build_mfem': '1' if bglb.build_mfem else '0',
               'build_miniapps': '1' if bglb.mfem_miniapps else '0',
+              'enable_numba_swig_bridge': ('1' if bglb.enable_numba_swig_bridge
+                                           else '0'),
               'bdist_wheel_dir': bglb.bdist_wheel_dir,
               }
 
@@ -183,6 +186,44 @@ def generate_wrapper(do_parallel):
     update_header_exists(bglb.mfem_source)
 
     swigflag = '-Wall -c++ -python -std=c++17 -fastproxy -olddefs -keyword'.split(' ')
+    bridgeflag = []
+    bridge_include_dir = None
+    if bglb.enable_numba_swig_bridge:
+        # The backend installs this build requirement only when the matching
+        # PEP 517 setting is enabled. Its include directory provides the
+        # annotation macros used by mfem/common/bridges/*.i.
+        from nsb_rt.build_info import get_build_info
+        bridge_build_info = get_build_info()
+        bridge_include_dir = bridge_build_info['include_dir']
+        bridgeflag = ['-DNUMBA_SWIG_BRIDGE', '-I' + bridge_include_dir]
+
+        def committed_serial_bridge_flags():
+            """Use the reviewed serial NSB artifacts committed in the source tree."""
+            from pathlib import Path
+            import json
+
+            artifacts = Path(rootdir) / "mfem" / "_ser" / "nsb_artifacts"
+            manifest_path = artifacts / "manifest.json"
+            if not manifest_path.is_file():
+                raise RuntimeError("missing committed serial NSB artifact manifest: " + str(manifest_path))
+            manifest = json.loads(manifest_path.read_text())
+            if manifest.get("schema_version") != 2 or manifest.get("artifact_schema_version") != 1:
+                raise RuntimeError("unsupported committed serial NSB artifact schema")
+            if manifest.get("state_backend") != "mfem":
+                raise RuntimeError("serial PyMFEM NSB artifacts must use the 'mfem' backend")
+            return ["-I" + str(artifacts), "-DNUMBA_SWIG_BRIDGE_GENERATED",
+                    "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+        serial_bridge_flags = committed_serial_bridge_flags()
+        serial_bridge_modules = (
+            "vector", "densemat", "array", "doftrans", "fespace", "fe_base",
+            "eltrans", "intrules", "coefficient", "lininteg", "nonlinearform",
+            "hyperbolic", "operators",
+        )
+        serial_bridge_interfaces = {module_name + ".i"
+                                    for module_name in serial_bridge_modules}
+    else:
+        serial_bridge_flags = []
+        serial_bridge_interfaces = set()
 
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
 
@@ -194,7 +235,10 @@ def generate_wrapper(do_parallel):
                                            'include', 'suitesparse'))
 
     for filename in ['lininteg.i', 'bilininteg.i']:
-        command = [swig_command] + swigflag + serflag + [filename]
+        interface_bridge = (serial_bridge_flags
+                            if filename in serial_bridge_interfaces else [])
+        command = ([swig_command] + swigflag + bridgeflag + interface_bridge
+                   + serflag + [filename])
         make_call(command)
     update_integrator_exts()
 
@@ -202,7 +246,9 @@ def generate_wrapper(do_parallel):
     for filename in ifiles():
         if not check_new(filename):
             continue
-        command = [swig_command] + swigflag + serflag + [filename]
+        interface_bridge = (serial_bridge_flags
+                            if filename in serial_bridge_interfaces else [])
+        command = [swig_command] + swigflag + bridgeflag + interface_bridge + serflag + [filename]
         commands.append(command)
 
     mp_pool = Pool(max((cpu_count() - 1, 1)))
@@ -229,14 +275,13 @@ def generate_wrapper(do_parallel):
     if bglb.enable_suitesparse:
         parflag.append('-I' + os.path.join(bglb.suitesparse_prefix,
                                            'include', 'suitesparse'))
-
     commands = []
     for filename in ifiles():
         if filename == 'strumpack.i' and not bglb.enable_strumpack:
             continue
         if not check_new(filename):
             continue
-        command = [swig_command] + swigflag + parflag + [filename]
+        command = [swig_command] + swigflag + bridgeflag + parflag + [filename]
         commands.append(command)
 
     mp_pool = Pool(max((cpu_count() - 1, 1)))
@@ -244,6 +289,146 @@ def generate_wrapper(do_parallel):
         mp_pool.map(subprocess.run, commands)
 
     os.chdir(pwd)
+
+
+def generate_nsb_pymfem_wrapper():
+    """Prepare serial PyMFEM NSB wrappers from committed artifacts."""
+    if not bglb.enable_numba_swig_bridge:
+        return
+
+    import json
+    import shutil
+    from pathlib import Path
+    from nsb_rt.build_info import get_build_info
+
+    root = Path(rootdir)
+    package_dir = root / 'mfem' / '_ser'
+    artifacts = package_dir / 'nsb_artifacts'
+    manifest_path = artifacts / 'manifest.json'
+    if not manifest_path.is_file():
+        raise RuntimeError('missing committed serial NSB artifact manifest: ' + str(manifest_path))
+    manifest = json.loads(manifest_path.read_text())
+    if manifest.get('schema_version') != 2 or manifest.get('artifact_schema_version') != 1:
+        raise RuntimeError('unsupported committed serial NSB artifact schema')
+    if manifest.get('state_backend') != 'mfem':
+        raise RuntimeError("serial PyMFEM NSB artifacts must use the 'mfem' backend")
+
+    bridge_info = get_build_info()
+    required_runtime = manifest.get('required_runtime_version')
+    runtime_version = bridge_info.get('version')
+    try:
+        required_parts = tuple(int(part) for part in required_runtime.split('.'))
+        runtime_parts = tuple(int(part) for part in runtime_version.split('.'))
+    except (AttributeError, TypeError, ValueError) as error:
+        raise RuntimeError('invalid PyMFEM NSB runtime version metadata') from error
+    if runtime_parts < required_parts:
+        raise RuntimeError(
+            'serial PyMFEM NSB artifacts require runtime >= '
+            f'{required_runtime}, but build uses {runtime_version}'
+        )
+    if manifest.get('state_abi') != bridge_info['abi_version']:
+        raise RuntimeError('serial PyMFEM NSB artifacts require a different state ABI')
+
+    # Check the complete committed set before generating anything.  This keeps
+    # a partial or stale artifact commit from producing a seemingly valid build.
+    generated_files = manifest.get('generated_files')
+    if not isinstance(generated_files, list) or 'manifest.json' not in generated_files:
+        raise RuntimeError('committed serial NSB manifest has no generated file inventory')
+    missing_generated = [artifacts / relative for relative in generated_files
+                         if not (artifacts / relative).is_file()]
+    if missing_generated:
+        raise RuntimeError('missing committed serial NSB artifact: ' + str(missing_generated[0]))
+
+    inventory_path = artifacts / manifest.get('inventory', '')
+    if not inventory_path.is_file():
+        raise RuntimeError('missing committed serial NSB inventory: ' + str(inventory_path))
+    inventory = json.loads(inventory_path.read_text())
+    sources = inventory.get('sources', [])
+    expected_sources = {
+        (entry.get('module'), entry.get('swig_module'), entry.get('interface'))
+        for entry in sources
+    }
+    if len(expected_sources) != len(sources) or not sources:
+        raise RuntimeError('invalid committed serial NSB source inventory')
+    manifest_extensions = manifest.get('extensions', {})
+    inventory_modules = {entry[0] for entry in expected_sources}
+    if set(manifest_extensions) != inventory_modules:
+        raise RuntimeError('serial NSB manifest and inventory source sets differ')
+    for module, swig_module, interface in expected_sources:
+        interface_path = root / interface
+        extension = manifest_extensions[module]
+        helper_path = artifacts / extension.get('helper_fragment', '')
+        if not interface_path.is_file() or not helper_path.is_file():
+            raise RuntimeError('serial NSB source or helper fragment is missing for ' + module)
+        if extension.get('interface') != interface:
+            raise RuntimeError('serial NSB manifest interface mismatch for ' + module)
+        if extension.get('helper_fragment') not in generated_files:
+            raise RuntimeError('serial NSB helper fragment is not in generated file inventory for ' + module)
+
+    for descriptor_key in ('ordinary_descriptor', 'director_descriptor'):
+        descriptor_path = artifacts / manifest.get(descriptor_key, '')
+        if not descriptor_path.is_file():
+            raise RuntimeError('missing committed serial NSB descriptor: ' + str(descriptor_path))
+        descriptor = json.loads(descriptor_path.read_text())
+        if descriptor.get('bridge_id') != manifest.get('bridge_id'):
+            raise RuntimeError('serial NSB descriptor bridge ID mismatch: ' + str(descriptor_path))
+        descriptor_sources = descriptor.get('source_inventory', {}).get('sources')
+        if descriptor_sources != sources:
+            raise RuntimeError('serial NSB descriptor source inventory mismatch: ' + str(descriptor_path))
+
+    for relative in manifest.get('python_files', []):
+        source = artifacts / relative
+        destination = root / Path(relative).relative_to('python')
+        if not source.is_file():
+            raise RuntimeError('missing committed serial NSB artifact: ' + str(source))
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+
+    director = manifest['director']
+    director_root = artifacts / Path(director['sources'][0]).parent
+    director_wrapper = package_dir / 'nsb_director_bindings_wrap.cxx'
+    director_includes = [
+        str(director_root), str(package_dir), bridge_info['include_dir'],
+        bridge_info['cpp_dir'], os.path.join(bglb.mfems_prefix, 'include'),
+        os.path.join(bglb.mfems_prefix, 'include', 'mfem'),
+        os.path.abspath(bglb.mfem_source),
+    ]
+    make_call([
+        swig_command, '-c++', '-python',
+        *['-I' + path for path in director_includes],
+        '-outdir', str(package_dir), '-o', str(director_wrapper),
+        str(artifacts / director['swig_interface']),
+    ])
+
+    state_wrapper = package_dir / '_nsb_state_bindings_wrap.cxx'
+    state_proxy_dir = root / 'mfem'
+    state_includes = [bridge_info['include_dir'], bridge_info['cpp_dir']]
+    make_call([
+        swig_command, '-c++', '-python', '-module', '_nsb_state_bindings',
+        '-interface', '_nsb_state_bindings_ext',
+        *['-I' + path for path in state_includes],
+        '-outdir', str(state_proxy_dir), '-o', str(state_wrapper),
+        bridge_info['state_interface'],
+    ])
+
+
+def generate_nsb_artifacts(check=False):
+    """Regenerate or check PyMFEM's committed NSB artifact directory.
+
+    This is an explicit developer operation.  Ordinary builds call
+    ``generate_nsb_pymfem_wrapper`` and consume the committed artifacts; they
+    do not import the private generator package.
+    """
+    from pathlib import Path
+
+    config = Path(rootdir) / 'mfem' / '_ser' / 'bridge.toml'
+    if not config.is_file():
+        raise RuntimeError('missing PyMFEM NSB generator configuration: ' + str(config))
+    command = [sys.executable, '-m', 'numba_swig_bridge.generator',
+               '--config', str(config)]
+    if check:
+        command.append('--check')
+    make_call(command, force_verbose=True)
 
 
 def clean_wrapper():
@@ -263,6 +448,8 @@ def clean_wrapper():
     wfiles.remove("__init__.py")
     wfiles.remove("setup.py")
     wfiles.remove("tmop_modules.py")
+    if "bridge_registration.py" in wfiles:
+        wfiles.remove("bridge_registration.py")
     remove_files(wfiles)
 
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
@@ -281,6 +468,8 @@ def clean_wrapper():
     wfiles.remove("__init__.py")
     wfiles.remove("setup.py")
     wfiles.remove("tmop_modules.py")
+    if "bridge_registration.py" in wfiles:
+        wfiles.remove("bridge_registration.py")
     remove_files(wfiles)
 
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
@@ -306,6 +495,7 @@ def make_mfem_wrapper(serial=True):
     write_setup_local()
 
     if serial:
+        generate_nsb_pymfem_wrapper()
         pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     else:
         pwd = chdir(os.path.join(rootdir, 'mfem', '_par'))
@@ -316,6 +506,18 @@ def make_mfem_wrapper(serial=True):
     command = [python, 'setup.py', 'build_ext', '--inplace',
                '--parallel',  str(cpu_count())]
 
-    make_call(command, force_verbose=True)
+    state_package_link = None
+    if serial and bglb.enable_numba_swig_bridge:
+        # The serial setup script runs in mfem/_ser, but the qualified state
+        # extension belongs in the parent mfem package.  A temporary package
+        # link lets setuptools resolve that qualified extension correctly.
+        state_package_link = os.path.join(os.getcwd(), 'mfem')
+        if not os.path.lexists(state_package_link):
+            os.symlink('..', state_package_link)
+    try:
+        make_call(command, force_verbose=True)
+    finally:
+        if state_package_link and os.path.islink(state_package_link):
+            os.unlink(state_package_link)
 
     os.chdir(pwd)

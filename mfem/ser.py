@@ -123,3 +123,13 @@ try:
     import mfem._ser.dpg as dpg
 except:
     pass
+
+
+def get_bridge_registration():
+    """Install and return the optional serial numba-swig-bridge registration.
+
+    Raises ImportError when this PyMFEM installation was built without the
+    ``with-numba-swig-bridge=Yes`` build setting.
+    """
+    from mfem._ser import bridge_registration
+    return bridge_registration._nsb_registration

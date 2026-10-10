@@ -37,7 +37,15 @@ INSTANTIATE_ARRAY(IntegrationPoint)
 IGNORE_ARRAY_METHODS(mfem::IntegrationRule *)
 INSTANTIATE_ARRAY0(IntegrationRule *, IntegrationRule, 1)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/intrules_nsb_1.i"
+#endif
+
 %include "fem/intrules.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/intrules_nsb_2.i"
+#endif
 
 %feature("director") mfem::PyIntegrationRule;
 %include "../common/pyintrules.hpp"

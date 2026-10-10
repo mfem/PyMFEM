@@ -1,0 +1,1171 @@
+{
+  "schema_version": 2,
+  "kind": "numba_swig_director_descriptor",
+  "bridge_id": "pymfem-ser",
+  "source_inventory": {
+    "sources": [
+      {
+        "module": "mfem._ser.array",
+        "swig_module": "array",
+        "interface": "mfem/_ser/array.i"
+      },
+      {
+        "module": "mfem._ser.coefficient",
+        "swig_module": "coefficient",
+        "interface": "mfem/_ser/coefficient.i"
+      },
+      {
+        "module": "mfem._ser.densemat",
+        "swig_module": "densemat",
+        "interface": "mfem/_ser/densemat.i"
+      },
+      {
+        "module": "mfem._ser.doftrans",
+        "swig_module": "doftrans",
+        "interface": "mfem/_ser/doftrans.i"
+      },
+      {
+        "module": "mfem._ser.eltrans",
+        "swig_module": "eltrans",
+        "interface": "mfem/_ser/eltrans.i"
+      },
+      {
+        "module": "mfem._ser.fe_base",
+        "swig_module": "fe_base",
+        "interface": "mfem/_ser/fe_base.i"
+      },
+      {
+        "module": "mfem._ser.fespace",
+        "swig_module": "fespace",
+        "interface": "mfem/_ser/fespace.i"
+      },
+      {
+        "module": "mfem._ser.hyperbolic",
+        "swig_module": "hyperbolic",
+        "interface": "mfem/_ser/hyperbolic.i"
+      },
+      {
+        "module": "mfem._ser.intrules",
+        "swig_module": "intrules",
+        "interface": "mfem/_ser/intrules.i"
+      },
+      {
+        "module": "mfem._ser.lininteg",
+        "swig_module": "lininteg",
+        "interface": "mfem/_ser/lininteg.i"
+      },
+      {
+        "module": "mfem._ser.nonlinearform",
+        "swig_module": "nonlinearform",
+        "interface": "mfem/_ser/nonlinearform.i"
+      },
+      {
+        "module": "mfem._ser.operators",
+        "swig_module": "operators",
+        "interface": "mfem/_ser/operators.i"
+      },
+      {
+        "module": "mfem._ser.vector",
+        "swig_module": "vector",
+        "interface": "mfem/_ser/vector.i"
+      }
+    ]
+  },
+  "directors": [
+    {
+      "cxx_type": "mfem::Coefficient",
+      "owner_module": "mfem._ser.coefficient",
+      "source_interface": "mfem/_ser/coefficient.i",
+      "python_facade": "pymfem_Coefficient",
+      "python_proxy": "Coefficient",
+      "selection": "explicit",
+      "methods": [
+        {
+          "identity": "mfem::Coefficient::Eval(mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "symbol": "mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint",
+          "cxx_name": "Eval",
+          "signature": "mfem::real_t mfem::Coefficient::Eval(mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "abstract": true,
+          "const": false,
+          "return": {
+            "kind": "double",
+            "cxx_type": "double",
+            "c_abi_type": "double",
+            "numba_type": "types.float64",
+            "llvm_type": "double",
+            "declared_cxx_type": "mfem::real_t"
+          },
+          "parameters": [
+            {
+              "name": "T",
+              "cxx_type": "mfem::ElementTransformation",
+              "declared_cxx_type": "mfem::ElementTransformation&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "ip",
+              "cxx_type": "mfem::IntegrationPoint",
+              "declared_cxx_type": "const mfem::IntegrationPoint&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        }
+      ],
+      "skipped_virtuals": [],
+      "constructors": [
+        {
+          "parameters": []
+        }
+      ],
+      "skipped_constructors": []
+    },
+    {
+      "cxx_type": "mfem::LinearFormIntegrator",
+      "owner_module": "mfem._ser.lininteg",
+      "source_interface": "mfem/_ser/lininteg.i",
+      "python_facade": "pymfem_LinearFormIntegrator",
+      "python_proxy": "LinearFormIntegrator",
+      "selection": "explicit",
+      "methods": [
+        {
+          "identity": "mfem::LinearFormIntegrator::AssembleRHSElementVect(const mfem::FiniteElement&, mfem::ElementTransformation&, mfem::Vector&)",
+          "symbol": "mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector",
+          "cxx_name": "AssembleRHSElementVect",
+          "signature": "void mfem::LinearFormIntegrator::AssembleRHSElementVect(const mfem::FiniteElement&, mfem::ElementTransformation&, mfem::Vector&)",
+          "abstract": true,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "el",
+              "cxx_type": "mfem::FiniteElement",
+              "declared_cxx_type": "const mfem::FiniteElement&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "Tr",
+              "cxx_type": "mfem::ElementTransformation",
+              "declared_cxx_type": "mfem::ElementTransformation&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "elvect",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        }
+      ],
+      "skipped_virtuals": [],
+      "constructors": [
+        {
+          "parameters": []
+        }
+      ],
+      "skipped_constructors": [
+        {
+          "signature": "mfem::LinearFormIntegrator::LinearFormIntegrator(const mfem::IntegrationRule*)",
+          "reason": "constructor mfem::LinearFormIntegrator uses unsupported type 'const mfem::IntegrationRule*' ('p.q(const).mfem::IntegrationRule'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        }
+      ]
+    },
+    {
+      "cxx_type": "mfem::MatrixCoefficient",
+      "owner_module": "mfem._ser.coefficient",
+      "source_interface": "mfem/_ser/coefficient.i",
+      "python_facade": "pymfem_MatrixCoefficient",
+      "python_proxy": "MatrixCoefficient",
+      "selection": "explicit",
+      "methods": [
+        {
+          "identity": "mfem::MatrixCoefficient::Eval(mfem::DenseMatrix&, mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "symbol": "mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint",
+          "cxx_name": "Eval",
+          "signature": "void mfem::MatrixCoefficient::Eval(mfem::DenseMatrix&, mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "abstract": true,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "K",
+              "cxx_type": "mfem::DenseMatrix",
+              "declared_cxx_type": "mfem::DenseMatrix&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "T",
+              "cxx_type": "mfem::ElementTransformation",
+              "declared_cxx_type": "mfem::ElementTransformation&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "ip",
+              "cxx_type": "mfem::IntegrationPoint",
+              "declared_cxx_type": "const mfem::IntegrationPoint&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        }
+      ],
+      "skipped_virtuals": [],
+      "constructors": [
+        {
+          "parameters": [
+            {
+              "name": "dim",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "symm",
+              "cxx_type": "bool",
+              "declared_cxx_type": "bool",
+              "kind": "bool",
+              "c_abi_type": "bool",
+              "numba_type": "types.boolean",
+              "llvm_type": "bool"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "dim",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "h",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "w",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "symm",
+              "cxx_type": "bool",
+              "declared_cxx_type": "bool",
+              "kind": "bool",
+              "c_abi_type": "bool",
+              "numba_type": "types.boolean",
+              "llvm_type": "bool"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "h",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "w",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        }
+      ],
+      "skipped_constructors": []
+    },
+    {
+      "cxx_type": "mfem::TimeDependentOperator",
+      "owner_module": "mfem._ser.operators",
+      "source_interface": "mfem/_ser/operators.i",
+      "python_facade": "pymfem_TimeDependentOperator",
+      "python_proxy": "TimeDependentOperator",
+      "selection": "automatic",
+      "methods": [
+        {
+          "identity": "mfem::TimeDependentOperator::ExplicitMult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "ExplicitMult",
+          "signature": "void mfem::TimeDependentOperator::ExplicitMult(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "u",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "v",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetImplicitVariableType() const",
+          "symbol": "mfem__TimeDependentOperator__GetImplicitVariableType___const",
+          "cxx_name": "GetImplicitVariableType",
+          "signature": "mfem::TimeDependentOperator::ImplicitVariableType mfem::TimeDependentOperator::GetImplicitVariableType() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "enum",
+            "cxx_type": "mfem::TimeDependentOperator::ImplicitVariableType",
+            "enum_cxx_type": "mfem::TimeDependentOperator::ImplicitVariableType",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "mfem::TimeDependentOperator::ImplicitVariableType"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetTime() const",
+          "symbol": "mfem__TimeDependentOperator__GetTime___const",
+          "cxx_name": "GetTime",
+          "signature": "mfem::real_t mfem::TimeDependentOperator::GetTime() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "double",
+            "cxx_type": "double",
+            "c_abi_type": "double",
+            "numba_type": "types.float64",
+            "llvm_type": "double",
+            "declared_cxx_type": "mfem::real_t"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ImplicitMult(const mfem::Vector&, const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "ImplicitMult",
+          "signature": "void mfem::TimeDependentOperator::ImplicitMult(const mfem::Vector&, const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "u",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "k",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "v",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ImplicitSolve(const mfem::real_t, const mfem::Vector&, mfem::Vector&)",
+          "symbol": "mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector",
+          "cxx_name": "ImplicitSolve",
+          "signature": "void mfem::TimeDependentOperator::ImplicitSolve(const mfem::real_t, const mfem::Vector&, mfem::Vector&)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "gamma",
+              "cxx_type": "double",
+              "declared_cxx_type": "const mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            },
+            {
+              "name": "u",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "k",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ImplicitVarTypeIsSlope() const",
+          "symbol": "mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const",
+          "cxx_name": "ImplicitVarTypeIsSlope",
+          "signature": "bool mfem::TimeDependentOperator::ImplicitVarTypeIsSlope() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "bool",
+            "cxx_type": "bool",
+            "c_abi_type": "bool",
+            "numba_type": "types.boolean",
+            "llvm_type": "bool",
+            "result_c_abi_type": "int",
+            "result_llvm_type": "int32",
+            "declared_cxx_type": "bool"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ImplicitVarTypeIsState() const",
+          "symbol": "mfem__TimeDependentOperator__ImplicitVarTypeIsState___const",
+          "cxx_name": "ImplicitVarTypeIsState",
+          "signature": "bool mfem::TimeDependentOperator::ImplicitVarTypeIsState() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "bool",
+            "cxx_type": "bool",
+            "c_abi_type": "bool",
+            "numba_type": "types.boolean",
+            "llvm_type": "bool",
+            "result_c_abi_type": "int",
+            "result_llvm_type": "int32",
+            "declared_cxx_type": "bool"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::Mult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "Mult",
+          "signature": "void mfem::TimeDependentOperator::Mult(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "u",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "k",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNImplicitSetup(const mfem::Vector&, const mfem::Vector&, int, int*, mfem::real_t)",
+          "symbol": "mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t",
+          "cxx_name": "SUNImplicitSetup",
+          "signature": "int mfem::TimeDependentOperator::SUNImplicitSetup(const mfem::Vector&, const mfem::Vector&, int, int*, mfem::real_t)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "int",
+            "cxx_type": "int",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "int"
+          },
+          "parameters": [
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "v",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "jok",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "jcur",
+              "cxx_type": "int*",
+              "declared_cxx_type": "int*",
+              "kind": "pointer",
+              "c_abi_type": "int*",
+              "numba_type": "types.CPointer(int32)",
+              "llvm_type": "voidptr",
+              "numpy_dtype": "int32"
+            },
+            {
+              "name": "gamma",
+              "cxx_type": "double",
+              "declared_cxx_type": "mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNImplicitSolve(const mfem::Vector&, mfem::Vector&, mfem::real_t)",
+          "symbol": "mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t",
+          "cxx_name": "SUNImplicitSolve",
+          "signature": "int mfem::TimeDependentOperator::SUNImplicitSolve(const mfem::Vector&, mfem::Vector&, mfem::real_t)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "int",
+            "cxx_type": "int",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "int"
+          },
+          "parameters": [
+            {
+              "name": "r",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "dk",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "tol",
+              "cxx_type": "double",
+              "declared_cxx_type": "mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNMassMult(const mfem::Vector&, mfem::Vector&)",
+          "symbol": "mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector",
+          "cxx_name": "SUNMassMult",
+          "signature": "int mfem::TimeDependentOperator::SUNMassMult(const mfem::Vector&, mfem::Vector&)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "int",
+            "cxx_type": "int",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "int"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "v",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNMassSetup()",
+          "symbol": "mfem__TimeDependentOperator__SUNMassSetup",
+          "cxx_name": "SUNMassSetup",
+          "signature": "int mfem::TimeDependentOperator::SUNMassSetup()",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "int",
+            "cxx_type": "int",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "int"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNMassSolve(const mfem::Vector&, mfem::Vector&, mfem::real_t)",
+          "symbol": "mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t",
+          "cxx_name": "SUNMassSolve",
+          "signature": "int mfem::TimeDependentOperator::SUNMassSolve(const mfem::Vector&, mfem::Vector&, mfem::real_t)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "int",
+            "cxx_type": "int",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "int"
+          },
+          "parameters": [
+            {
+              "name": "b",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "tol",
+              "cxx_type": "double",
+              "declared_cxx_type": "mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SetEvalMode(const mfem::TimeDependentOperator::EvalMode)",
+          "symbol": "mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode",
+          "cxx_name": "SetEvalMode",
+          "signature": "void mfem::TimeDependentOperator::SetEvalMode(const mfem::TimeDependentOperator::EvalMode)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "new_eval_mode",
+              "cxx_type": "const mfem::TimeDependentOperator::EvalMode",
+              "declared_cxx_type": "const mfem::TimeDependentOperator::EvalMode",
+              "kind": "enum",
+              "enum_cxx_type": "mfem::TimeDependentOperator::EvalMode",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SetTime(const mfem::real_t)",
+          "symbol": "mfem__TimeDependentOperator__SetTime_const_mfem__real_t",
+          "cxx_name": "SetTime",
+          "signature": "void mfem::TimeDependentOperator::SetTime(const mfem::real_t)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "t_",
+              "cxx_type": "double",
+              "declared_cxx_type": "const mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        }
+      ],
+      "skipped_virtuals": [
+        {
+          "identity": "mfem::TimeDependentOperator::GetExplicitGradient(const mfem::Vector&) const",
+          "reason": "director method mfem::TimeDependentOperator::GetExplicitGradient(const mfem::Vector&) const uses unsupported type 'mfem::Operator&' ('r.mfem::Operator'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetImplicitGradient(const mfem::Vector&, const mfem::Vector&, mfem::real_t) const",
+          "reason": "director method mfem::TimeDependentOperator::GetImplicitGradient(const mfem::Vector&, const mfem::Vector&, mfem::real_t) const uses unsupported type 'mfem::Operator&' ('r.mfem::Operator'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        }
+      ],
+      "constructors": [
+        {
+          "parameters": [
+            {
+              "name": "n",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "t_",
+              "cxx_type": "double",
+              "declared_cxx_type": "mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            },
+            {
+              "name": "type_",
+              "cxx_type": "mfem::TimeDependentOperator::Type",
+              "declared_cxx_type": "mfem::TimeDependentOperator::Type",
+              "kind": "enum",
+              "enum_cxx_type": "mfem::TimeDependentOperator::Type",
+              "factory_cxx_type": "int"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "n",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "t_",
+              "cxx_type": "double",
+              "declared_cxx_type": "mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "n",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        },
+        {
+          "parameters": []
+        },
+        {
+          "parameters": [
+            {
+              "name": "h",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "w",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "t_",
+              "cxx_type": "double",
+              "declared_cxx_type": "double",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            },
+            {
+              "name": "type_",
+              "cxx_type": "mfem::TimeDependentOperator::Type",
+              "declared_cxx_type": "mfem::TimeDependentOperator::Type",
+              "kind": "enum",
+              "enum_cxx_type": "mfem::TimeDependentOperator::Type",
+              "factory_cxx_type": "int"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "h",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "w",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "t_",
+              "cxx_type": "double",
+              "declared_cxx_type": "double",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "h",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "w",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        }
+      ],
+      "skipped_constructors": []
+    },
+    {
+      "cxx_type": "mfem::VectorCoefficient",
+      "owner_module": "mfem._ser.coefficient",
+      "source_interface": "mfem/_ser/coefficient.i",
+      "python_facade": "pymfem_VectorCoefficient",
+      "python_proxy": "VectorCoefficient",
+      "selection": "explicit",
+      "methods": [
+        {
+          "identity": "mfem::VectorCoefficient::Eval(mfem::Vector&, mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "symbol": "mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint",
+          "cxx_name": "Eval",
+          "signature": "void mfem::VectorCoefficient::Eval(mfem::Vector&, mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "abstract": true,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "V",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "T",
+              "cxx_type": "mfem::ElementTransformation",
+              "declared_cxx_type": "mfem::ElementTransformation&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "ip",
+              "cxx_type": "mfem::IntegrationPoint",
+              "declared_cxx_type": "const mfem::IntegrationPoint&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        }
+      ],
+      "skipped_virtuals": [],
+      "constructors": [
+        {
+          "parameters": [
+            {
+              "name": "vd",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        }
+      ],
+      "skipped_constructors": []
+    }
+  ],
+  "state_backend": "mfem"
+}

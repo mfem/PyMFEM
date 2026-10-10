@@ -185,7 +185,15 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 
 %ignore mfem::Vector::GetArrayView;
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/vector_nsb_1.i"
+#endif
+
 %include "linalg/vector.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/vector_nsb_2.i"
+#endif
 
 %extend mfem::Vector {
   /* define Assign as a replacement of = operator */
@@ -288,6 +296,11 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 	}
     }
   }
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+  NUMBA_SWIG_BRIDGE_ARRAY_VIEW_1D(
+      GetDataArray,
+      "dtype=float64;data=GetData;size=Size;mutable=true")
+#endif
   PyObject* GetDataArray(void) const{
      double * A = self->GetData();
      int L = self->Size();
@@ -337,5 +350,4 @@ linalg/vector.hpp:   void Print_HYPRE(std::ostream &out) const;
 OSTREAM_ADD_DEFAULT_FILE(Vector, Print)
 OSTREAM_ADD_DEFAULT_STDOUT_FILE(Vector, Print_HYPRE)
 #endif
-
 

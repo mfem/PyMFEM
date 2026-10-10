@@ -12,6 +12,9 @@ build
 dist
 test/*
 !test/*.py
+!test/bridge/
+!test/bridge/*.py
+!test/bridge/README.md
 !test/cpp
 !test/cpp/
 !test/issues/*.py

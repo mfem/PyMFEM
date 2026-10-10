@@ -25,6 +25,7 @@ dependencies = [
 
 [project.optional-dependencies]
 MPI = ["mpi4py"]
+bridge = ["numba-swig-bridge-rt>=0.14.0"]
 
 [project.urls]
 "Homepage" = "http://mfem.org"
@@ -48,5 +49,5 @@ version = { attr = "mfem.__version__" }
 include = ["mfem", "mfem.*"]
 
 [tool.setuptools.package-data]
-"mfem._par" = ["*.so"]
-"mfem._ser" = ["*.so"]
+"mfem._par" = ["*.so", "*.json"]
+"mfem._ser" = ["*.so", "*.json"]

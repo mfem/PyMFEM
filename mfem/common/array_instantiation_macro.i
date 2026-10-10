@@ -115,7 +115,12 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
         }
     }
   }
-  PyObject* GetDataArray(void) const{
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+  NUMBA_SWIG_BRIDGE_ARRAY_VIEW_1D(
+      GetDataArray,
+      "dtype=int32;data=GetData;size=Size;mutable=true")
+#endif
+  PyObject* GetDataArray(void) {
      const int * A = self->GetData();
      int L = self->Size();
      npy_intp dims[] = {L};
@@ -355,4 +360,3 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
 %ignore mfem::Array2D<XXX>::PrintGZ;
 %ignore mfem::Array2D<XXX>::SaveGZ;
 %enddef
-

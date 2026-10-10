@@ -17,6 +17,10 @@ from setuptools import setup
 
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
+build_system_dir = os.path.join(root, '_build_system')
+sys.path.insert(0, build_system_dir)
+from build_generatedwrapperext import Build_NoDeprecationWarning
+sys.path.pop(0)
 
 
 def get_version():
@@ -230,6 +234,7 @@ def main():
           description="""MFEM wrapper""",
           ext_modules=ext_modules,
           py_modules=modules,
+          cmdclass={'build_ext': Build_NoDeprecationWarning},
           )
 
 

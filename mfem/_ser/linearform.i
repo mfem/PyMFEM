@@ -39,25 +39,25 @@ import_array1(-1);
 
  //%include "fem/coefficient.hpp"
 namespace mfem {
-%pythonprepend LinearForm::AddDomainIntegrator %{
+%pythonappend LinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     lfi = args[0]
     self._integrators.append(lfi)
     lfi.thisown=0
    %}
-%pythonprepend LinearForm::AddBoundaryIntegrator %{
+%pythonappend LinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     lfi = args[0]
     self._integrators.append(lfi)
     lfi.thisown=0
    %}
-%pythonprepend LinearForm::AddBdrFaceIntegrator %{
+%pythonappend LinearForm::AddBdrFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     lfi = args[0]
     self._integrators.append(lfi)
     lfi.thisown=0
    %}
-%pythonprepend LinearForm::AddInteriorFaceIntegrator %{
+%pythonappend LinearForm::AddInteriorFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(lfi)
     lfi.thisown=0
@@ -68,5 +68,4 @@ namespace mfem {
 DEPRECATED_METHOD(mfem::LinearForm::GetFES())
 
 %include "fem/linearform.hpp"
-
 
