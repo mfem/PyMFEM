@@ -14,6 +14,19 @@ Each bridge test should verify numerical results and that its call path compiles
 in `numba.njit`. Keep performance measurements in `examples/bridge/`, where
 their timing output is useful without making a test flaky.
 
+`test_ex9.py` compares five-step serial trajectories with ordinary ex9 in
+separate installed-package processes. It covers all four 2D problems, the 1D
+problems, and all supported explicit solvers, checks compiled callback
+signatures, and verifies rejection of partial assembly and device execution.
+
+`test_solvers.py` checks ordinary solver registration, absence of factories
+for abstract solver bases, inherited configuration calls on six concrete
+solvers, and construction of FGMRESSolver inside compiled code.
+
+`test_ex19.py` compares ordinary and bridged Newton solves on quadrilateral,
+triangular, and hexahedral beam meshes, checking convergence, iteration counts,
+solution fields, and compiled callback signatures.
+
 `test_coefficient_bridges.py` exercises direct `Coefficient`,
 `VectorCoefficient`, and `MatrixCoefficient` NSB directors through MFEM
 projection and diffusion assembly. Example-4 comparisons and timing commands

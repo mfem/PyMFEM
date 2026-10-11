@@ -30,14 +30,61 @@ struct CallbackProfile {
 CallbackProfile callback_profile_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint;
 CallbackProfile callback_profile_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector;
 CallbackProfile callback_profile_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint;
+CallbackProfile callback_profile_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const;
+CallbackProfile callback_profile_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const;
+CallbackProfile callback_profile_mfem__Operator__AssembleDiagonal_mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Operator__GetGradient_const_mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Operator__GetMemoryClass___const;
+CallbackProfile callback_profile_mfem__Operator__GetOutputProlongation___const;
+CallbackProfile callback_profile_mfem__Operator__GetOutputRestriction___const;
+CallbackProfile callback_profile_mfem__Operator__GetOutputRestrictionTranspose___const;
+CallbackProfile callback_profile_mfem__Operator__GetProlongation___const;
+CallbackProfile callback_profile_mfem__Operator__GetRestriction___const;
+CallbackProfile callback_profile_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector;
+CallbackProfile callback_profile_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const;
+CallbackProfile callback_profile_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const;
+CallbackProfile callback_profile_mfem__Solver__AssembleDiagonal_mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Solver__GetGradient_const_mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Solver__GetMemoryClass___const;
+CallbackProfile callback_profile_mfem__Solver__GetOutputProlongation___const;
+CallbackProfile callback_profile_mfem__Solver__GetOutputRestriction___const;
+CallbackProfile callback_profile_mfem__Solver__GetOutputRestrictionTranspose___const;
+CallbackProfile callback_profile_mfem__Solver__GetProlongation___const;
+CallbackProfile callback_profile_mfem__Solver__GetRestriction___const;
+CallbackProfile callback_profile_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector;
+CallbackProfile callback_profile_mfem__Solver__SetOperator_const_mfem__Operator;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__GetImplicitVariableType___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetMemoryClass___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetOutputProlongation___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetOutputRestriction___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetProlongation___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__GetRestriction___const;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__GetTime___const;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const;
+CallbackProfile callback_profile_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t;
 CallbackProfile callback_profile_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector;
@@ -262,7 +309,7 @@ NumbaDirector_mfem_Coefficient::~NumbaDirector_mfem_Coefficient() {
     destroyed_director_count.fetch_add(1, std::memory_order_relaxed);
 }
 
-double NumbaDirector_mfem_Coefficient::Eval(mfem::ElementTransformation& T, const mfem::IntegrationPoint& ip) {
+double NumbaDirector_mfem_Coefficient::Eval(mfem::ElementTransformation& arg0, const mfem::IntegrationPoint& arg1) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return 0.0;
     }
@@ -270,19 +317,19 @@ double NumbaDirector_mfem_Coefficient::Eval(mfem::ElementTransformation& T, cons
         if (callback_profile_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
             double callback_result{};
-            const int callback_status = callbacks_.callback_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&T), static_cast<const void*>(&ip), &callback_result);
+            const int callback_status = callbacks_.callback_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&arg0), static_cast<const void*>(&arg1), &callback_result);
             callback_profile_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Coefficient::Eval");
             }
-            
+
             return callback_result;
         }
         double callback_result{};
-        if (callbacks_.callback_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&T), static_cast<const void*>(&ip), &callback_result) == 0) {
+        if (callbacks_.callback_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&arg0), static_cast<const void*>(&arg1), &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Coefficient::Eval");
         }
-        
+
         return callback_result;
     }
     return 0.0;
@@ -340,20 +387,20 @@ NumbaDirector_mfem_LinearFormIntegrator::~NumbaDirector_mfem_LinearFormIntegrato
     destroyed_director_count.fetch_add(1, std::memory_order_relaxed);
 }
 
-void NumbaDirector_mfem_LinearFormIntegrator::AssembleRHSElementVect(const mfem::FiniteElement& el, mfem::ElementTransformation& Tr, mfem::Vector& elvect) {
+void NumbaDirector_mfem_LinearFormIntegrator::AssembleRHSElementVect(const mfem::FiniteElement& arg0, mfem::ElementTransformation& arg1, mfem::Vector& arg2) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector != nullptr) {
         if (callback_profile_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&el), static_cast<void*>(&Tr), static_cast<void*>(&elvect));
+            const int callback_status = callbacks_.callback_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), static_cast<void*>(&arg2));
             callback_profile_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::LinearFormIntegrator::AssembleRHSElementVect");
             }
         } else {
-            if (callbacks_.callback_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&el), static_cast<void*>(&Tr), static_cast<void*>(&elvect)) == 0) {
+            if (callbacks_.callback_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), static_cast<void*>(&arg2)) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::LinearFormIntegrator::AssembleRHSElementVect");
             }
         }
@@ -444,20 +491,20 @@ NumbaDirector_mfem_MatrixCoefficient::~NumbaDirector_mfem_MatrixCoefficient() {
     destroyed_director_count.fetch_add(1, std::memory_order_relaxed);
 }
 
-void NumbaDirector_mfem_MatrixCoefficient::Eval(mfem::DenseMatrix& K, mfem::ElementTransformation& T, const mfem::IntegrationPoint& ip) {
+void NumbaDirector_mfem_MatrixCoefficient::Eval(mfem::DenseMatrix& arg0, mfem::ElementTransformation& arg1, const mfem::IntegrationPoint& arg2) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint != nullptr) {
         if (callback_profile_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&K), static_cast<void*>(&T), static_cast<const void*>(&ip));
+            const int callback_status = callbacks_.callback_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&arg0), static_cast<void*>(&arg1), static_cast<const void*>(&arg2));
             callback_profile_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::MatrixCoefficient::Eval");
             }
         } else {
-            if (callbacks_.callback_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&K), static_cast<void*>(&T), static_cast<const void*>(&ip)) == 0) {
+            if (callbacks_.callback_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&arg0), static_cast<void*>(&arg1), static_cast<const void*>(&arg2)) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::MatrixCoefficient::Eval");
             }
         }
@@ -609,6 +656,1329 @@ DirectorHandle* create_nsb_director_mfem_MatrixCoefficient(
         return nullptr;
     }
 }
+NumbaDirector_mfem_Operator::NumbaDirector_mfem_Operator(
+    int base_arg_0, Callbacks callbacks,
+    std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
+    : mfem::Operator(base_arg_0), callbacks_(callbacks),
+      lifetime_(std::move(lifetime)), runtime_(std::move(runtime)) {
+    if (lifetime_ == nullptr || runtime_ == nullptr || !runtime_->IsStateAlive() || callbacks.callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const == nullptr) {
+        throw std::invalid_argument("Numba director requires live state and callbacks for selected pure virtual methods");
+    }
+}
+
+NumbaDirector_mfem_Operator::NumbaDirector_mfem_Operator(
+    Callbacks callbacks,
+    std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
+    : mfem::Operator(), callbacks_(callbacks),
+      lifetime_(std::move(lifetime)), runtime_(std::move(runtime)) {
+    if (lifetime_ == nullptr || runtime_ == nullptr || !runtime_->IsStateAlive() || callbacks.callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const == nullptr) {
+        throw std::invalid_argument("Numba director requires live state and callbacks for selected pure virtual methods");
+    }
+}
+
+NumbaDirector_mfem_Operator::NumbaDirector_mfem_Operator(
+    int base_arg_0, int base_arg_1, Callbacks callbacks,
+    std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
+    : mfem::Operator(base_arg_0, base_arg_1), callbacks_(callbacks),
+      lifetime_(std::move(lifetime)), runtime_(std::move(runtime)) {
+    if (lifetime_ == nullptr || runtime_ == nullptr || !runtime_->IsStateAlive() || callbacks.callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const == nullptr) {
+        throw std::invalid_argument("Numba director requires live state and callbacks for selected pure virtual methods");
+    }
+}
+
+NumbaDirector_mfem_Operator::~NumbaDirector_mfem_Operator() {
+    if (lifetime_ != nullptr) {
+        lifetime_->MarkDead();
+    }
+    destroyed_director_count.fetch_add(1, std::memory_order_relaxed);
+}
+
+void NumbaDirector_mfem_Operator::AbsMult(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AbsMult");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AbsMult");
+            }
+        }
+        return;
+    }
+    mfem::Operator::AbsMult(arg0, arg1);
+}
+void NumbaDirector_mfem_Operator::AbsMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AbsMultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AbsMultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::Operator::AbsMultTranspose(arg0, arg1);
+}
+void NumbaDirector_mfem_Operator::AddMult(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const != nullptr) {
+        if (callback_profile_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2);
+            callback_profile_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AddMult");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AddMult");
+            }
+        }
+        return;
+    }
+    mfem::Operator::AddMult(arg0, arg1, arg2);
+}
+void NumbaDirector_mfem_Operator::AddMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const != nullptr) {
+        if (callback_profile_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2);
+            callback_profile_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AddMultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AddMultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::Operator::AddMultTranspose(arg0, arg1, arg2);
+}
+void NumbaDirector_mfem_Operator::AssembleDiagonal(mfem::Vector& arg0) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Operator__AssembleDiagonal_mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const(runtime_->StateAddress(), static_cast<void*>(&arg0));
+            callback_profile_mfem__Operator__AssembleDiagonal_mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AssembleDiagonal");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const(runtime_->StateAddress(), static_cast<void*>(&arg0)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::AssembleDiagonal");
+            }
+        }
+        return;
+    }
+    mfem::Operator::AssembleDiagonal(arg0);
+}
+mfem::Operator& NumbaDirector_mfem_Operator::GetGradient(const mfem::Vector& arg0) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        throw std::runtime_error("numba-swig-bridge director has no live state for object reference return");
+    }
+    if (callbacks_.callback_mfem__Operator__GetGradient_const_mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Operator__GetGradient_const_mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Operator__GetGradient_const_mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), &callback_result);
+            callback_profile_mfem__Operator__GetGradient_const_mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetGradient");
+            }
+            if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::Operator::GetGradient"); }
+            return *static_cast<mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Operator__GetGradient_const_mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetGradient");
+        }
+        if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::Operator::GetGradient"); }
+        return *static_cast<mfem::Operator*>(callback_result);
+    }
+    return mfem::Operator::GetGradient(arg0);
+}
+mfem::MemoryClass NumbaDirector_mfem_Operator::GetMemoryClass() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return static_cast<mfem::MemoryClass>(0);
+    }
+    if (callbacks_.callback_mfem__Operator__GetMemoryClass___const != nullptr) {
+        if (callback_profile_mfem__Operator__GetMemoryClass___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            int callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Operator__GetMemoryClass___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Operator__GetMemoryClass___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetMemoryClass");
+            }
+
+            return static_cast<mfem::MemoryClass>(callback_result);
+        }
+        int callback_result{};
+        if (callbacks_.callback_mfem__Operator__GetMemoryClass___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetMemoryClass");
+        }
+
+        return static_cast<mfem::MemoryClass>(callback_result);
+    }
+    return mfem::Operator::GetMemoryClass();
+}
+const mfem::Operator* NumbaDirector_mfem_Operator::GetOutputProlongation() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Operator__GetOutputProlongation___const != nullptr) {
+        if (callback_profile_mfem__Operator__GetOutputProlongation___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Operator__GetOutputProlongation___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Operator__GetOutputProlongation___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetOutputProlongation");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Operator__GetOutputProlongation___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetOutputProlongation");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Operator::GetOutputProlongation();
+}
+const mfem::Operator* NumbaDirector_mfem_Operator::GetOutputRestriction() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Operator__GetOutputRestriction___const != nullptr) {
+        if (callback_profile_mfem__Operator__GetOutputRestriction___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Operator__GetOutputRestriction___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Operator__GetOutputRestriction___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetOutputRestriction");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Operator__GetOutputRestriction___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetOutputRestriction");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Operator::GetOutputRestriction();
+}
+const mfem::Operator* NumbaDirector_mfem_Operator::GetOutputRestrictionTranspose() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Operator__GetOutputRestrictionTranspose___const != nullptr) {
+        if (callback_profile_mfem__Operator__GetOutputRestrictionTranspose___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Operator__GetOutputRestrictionTranspose___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Operator__GetOutputRestrictionTranspose___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetOutputRestrictionTranspose");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Operator__GetOutputRestrictionTranspose___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetOutputRestrictionTranspose");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Operator::GetOutputRestrictionTranspose();
+}
+const mfem::Operator* NumbaDirector_mfem_Operator::GetProlongation() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Operator__GetProlongation___const != nullptr) {
+        if (callback_profile_mfem__Operator__GetProlongation___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Operator__GetProlongation___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Operator__GetProlongation___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetProlongation");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Operator__GetProlongation___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetProlongation");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Operator::GetProlongation();
+}
+const mfem::Operator* NumbaDirector_mfem_Operator::GetRestriction() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Operator__GetRestriction___const != nullptr) {
+        if (callback_profile_mfem__Operator__GetRestriction___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Operator__GetRestriction___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Operator__GetRestriction___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetRestriction");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Operator__GetRestriction___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::GetRestriction");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Operator::GetRestriction();
+}
+void NumbaDirector_mfem_Operator::Mult(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::Mult");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::Mult");
+            }
+        }
+        return;
+    }
+    return;
+}
+void NumbaDirector_mfem_Operator::MultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::MultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::MultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::Operator::MultTranspose(arg0, arg1);
+}
+void NumbaDirector_mfem_Operator::RecoverFEMSolution(const mfem::Vector& arg0, const mfem::Vector& arg1, mfem::Vector& arg2) {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector != nullptr) {
+        if (callback_profile_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), static_cast<void*>(&arg2));
+            callback_profile_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::RecoverFEMSolution");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), static_cast<void*>(&arg2)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Operator::RecoverFEMSolution");
+            }
+        }
+        return;
+    }
+    mfem::Operator::RecoverFEMSolution(arg0, arg1, arg2);
+}
+
+DirectorHandle* create_nsb_director_mfem_Operator(
+    int base_arg_0, unsigned long long callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Operator__GetProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetRestriction___const_address,
+    unsigned long long callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept {
+    try {
+        auto state = std::make_unique<NativeStateLease>(
+            state_lease, state_lease_address, state_lease_is_alive,
+            state_lease_close, state_lease_release, state_object_address_at);
+        if (!state->IsAlive()) {
+            return nullptr;
+        }
+        NumbaDirector_mfem_Operator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetGradient_const_mfem__Vector___const>(callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetMemoryClass___const>(callback_mfem__Operator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputProlongation___const>(callback_mfem__Operator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputRestriction___const>(callback_mfem__Operator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputRestrictionTranspose___const>(callback_mfem__Operator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetProlongation___const>(callback_mfem__Operator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetRestriction___const>(callback_mfem__Operator__GetRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address)
+        };
+        auto lifetime = std::make_shared<DirectorLifetime>();
+        auto runtime = std::make_shared<DirectorRuntime>(std::move(state));
+        auto concrete = std::make_unique<NumbaDirector_mfem_Operator>(base_arg_0, callbacks, lifetime, runtime);
+        void* base_address = static_cast<mfem::Operator*>(concrete.get());
+        lifetime->SetAddress(base_address);
+        auto deleter = +[](void* address) noexcept {
+            delete static_cast<NumbaDirector_mfem_Operator*>(address);
+        };
+        auto control = std::make_shared<DirectorControl>(
+            concrete.get(), deleter, lifetime, runtime,
+            std::has_virtual_destructor<mfem::Operator>::value);
+        concrete.release();
+        return new DirectorHandle(std::move(control));
+    } catch (...) {
+        return nullptr;
+    }
+}
+
+DirectorHandle* create_nsb_director_mfem_Operator(
+    unsigned long long callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Operator__GetProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetRestriction___const_address,
+    unsigned long long callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept {
+    try {
+        auto state = std::make_unique<NativeStateLease>(
+            state_lease, state_lease_address, state_lease_is_alive,
+            state_lease_close, state_lease_release, state_object_address_at);
+        if (!state->IsAlive()) {
+            return nullptr;
+        }
+        NumbaDirector_mfem_Operator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetGradient_const_mfem__Vector___const>(callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetMemoryClass___const>(callback_mfem__Operator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputProlongation___const>(callback_mfem__Operator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputRestriction___const>(callback_mfem__Operator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputRestrictionTranspose___const>(callback_mfem__Operator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetProlongation___const>(callback_mfem__Operator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetRestriction___const>(callback_mfem__Operator__GetRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address)
+        };
+        auto lifetime = std::make_shared<DirectorLifetime>();
+        auto runtime = std::make_shared<DirectorRuntime>(std::move(state));
+        auto concrete = std::make_unique<NumbaDirector_mfem_Operator>(callbacks, lifetime, runtime);
+        void* base_address = static_cast<mfem::Operator*>(concrete.get());
+        lifetime->SetAddress(base_address);
+        auto deleter = +[](void* address) noexcept {
+            delete static_cast<NumbaDirector_mfem_Operator*>(address);
+        };
+        auto control = std::make_shared<DirectorControl>(
+            concrete.get(), deleter, lifetime, runtime,
+            std::has_virtual_destructor<mfem::Operator>::value);
+        concrete.release();
+        return new DirectorHandle(std::move(control));
+    } catch (...) {
+        return nullptr;
+    }
+}
+
+DirectorHandle* create_nsb_director_mfem_Operator(
+    int base_arg_0, int base_arg_1, unsigned long long callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Operator__GetProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetRestriction___const_address,
+    unsigned long long callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept {
+    try {
+        auto state = std::make_unique<NativeStateLease>(
+            state_lease, state_lease_address, state_lease_is_alive,
+            state_lease_close, state_lease_release, state_object_address_at);
+        if (!state->IsAlive()) {
+            return nullptr;
+        }
+        NumbaDirector_mfem_Operator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetGradient_const_mfem__Vector___const>(callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetMemoryClass___const>(callback_mfem__Operator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputProlongation___const>(callback_mfem__Operator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputRestriction___const>(callback_mfem__Operator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetOutputRestrictionTranspose___const>(callback_mfem__Operator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetProlongation___const>(callback_mfem__Operator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__GetRestriction___const>(callback_mfem__Operator__GetRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Operator::Callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address)
+        };
+        auto lifetime = std::make_shared<DirectorLifetime>();
+        auto runtime = std::make_shared<DirectorRuntime>(std::move(state));
+        auto concrete = std::make_unique<NumbaDirector_mfem_Operator>(base_arg_0, base_arg_1, callbacks, lifetime, runtime);
+        void* base_address = static_cast<mfem::Operator*>(concrete.get());
+        lifetime->SetAddress(base_address);
+        auto deleter = +[](void* address) noexcept {
+            delete static_cast<NumbaDirector_mfem_Operator*>(address);
+        };
+        auto control = std::make_shared<DirectorControl>(
+            concrete.get(), deleter, lifetime, runtime,
+            std::has_virtual_destructor<mfem::Operator>::value);
+        concrete.release();
+        return new DirectorHandle(std::move(control));
+    } catch (...) {
+        return nullptr;
+    }
+}
+NumbaDirector_mfem_Solver::NumbaDirector_mfem_Solver(
+    int base_arg_0, bool base_arg_1, Callbacks callbacks,
+    std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
+    : mfem::Solver(base_arg_0, base_arg_1), callbacks_(callbacks),
+      lifetime_(std::move(lifetime)), runtime_(std::move(runtime)) {
+    if (lifetime_ == nullptr || runtime_ == nullptr || !runtime_->IsStateAlive() || callbacks.callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const == nullptr || callbacks.callback_mfem__Solver__SetOperator_const_mfem__Operator == nullptr) {
+        throw std::invalid_argument("Numba director requires live state and callbacks for selected pure virtual methods");
+    }
+}
+
+NumbaDirector_mfem_Solver::NumbaDirector_mfem_Solver(
+    int base_arg_0, Callbacks callbacks,
+    std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
+    : mfem::Solver(base_arg_0), callbacks_(callbacks),
+      lifetime_(std::move(lifetime)), runtime_(std::move(runtime)) {
+    if (lifetime_ == nullptr || runtime_ == nullptr || !runtime_->IsStateAlive() || callbacks.callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const == nullptr || callbacks.callback_mfem__Solver__SetOperator_const_mfem__Operator == nullptr) {
+        throw std::invalid_argument("Numba director requires live state and callbacks for selected pure virtual methods");
+    }
+}
+
+NumbaDirector_mfem_Solver::NumbaDirector_mfem_Solver(
+    Callbacks callbacks,
+    std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
+    : mfem::Solver(), callbacks_(callbacks),
+      lifetime_(std::move(lifetime)), runtime_(std::move(runtime)) {
+    if (lifetime_ == nullptr || runtime_ == nullptr || !runtime_->IsStateAlive() || callbacks.callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const == nullptr || callbacks.callback_mfem__Solver__SetOperator_const_mfem__Operator == nullptr) {
+        throw std::invalid_argument("Numba director requires live state and callbacks for selected pure virtual methods");
+    }
+}
+
+NumbaDirector_mfem_Solver::NumbaDirector_mfem_Solver(
+    int base_arg_0, int base_arg_1, bool base_arg_2, Callbacks callbacks,
+    std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
+    : mfem::Solver(base_arg_0, base_arg_1, base_arg_2), callbacks_(callbacks),
+      lifetime_(std::move(lifetime)), runtime_(std::move(runtime)) {
+    if (lifetime_ == nullptr || runtime_ == nullptr || !runtime_->IsStateAlive() || callbacks.callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const == nullptr || callbacks.callback_mfem__Solver__SetOperator_const_mfem__Operator == nullptr) {
+        throw std::invalid_argument("Numba director requires live state and callbacks for selected pure virtual methods");
+    }
+}
+
+NumbaDirector_mfem_Solver::NumbaDirector_mfem_Solver(
+    int base_arg_0, int base_arg_1, Callbacks callbacks,
+    std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
+    : mfem::Solver(base_arg_0, base_arg_1), callbacks_(callbacks),
+      lifetime_(std::move(lifetime)), runtime_(std::move(runtime)) {
+    if (lifetime_ == nullptr || runtime_ == nullptr || !runtime_->IsStateAlive() || callbacks.callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const == nullptr || callbacks.callback_mfem__Solver__SetOperator_const_mfem__Operator == nullptr) {
+        throw std::invalid_argument("Numba director requires live state and callbacks for selected pure virtual methods");
+    }
+}
+
+NumbaDirector_mfem_Solver::~NumbaDirector_mfem_Solver() {
+    if (lifetime_ != nullptr) {
+        lifetime_->MarkDead();
+    }
+    destroyed_director_count.fetch_add(1, std::memory_order_relaxed);
+}
+
+void NumbaDirector_mfem_Solver::AbsMult(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AbsMult");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AbsMult");
+            }
+        }
+        return;
+    }
+    mfem::Solver::AbsMult(arg0, arg1);
+}
+void NumbaDirector_mfem_Solver::AbsMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AbsMultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AbsMultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::Solver::AbsMultTranspose(arg0, arg1);
+}
+void NumbaDirector_mfem_Solver::AddMult(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const != nullptr) {
+        if (callback_profile_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2);
+            callback_profile_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AddMult");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AddMult");
+            }
+        }
+        return;
+    }
+    mfem::Solver::AddMult(arg0, arg1, arg2);
+}
+void NumbaDirector_mfem_Solver::AddMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const != nullptr) {
+        if (callback_profile_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2);
+            callback_profile_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AddMultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AddMultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::Solver::AddMultTranspose(arg0, arg1, arg2);
+}
+void NumbaDirector_mfem_Solver::AssembleDiagonal(mfem::Vector& arg0) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Solver__AssembleDiagonal_mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const(runtime_->StateAddress(), static_cast<void*>(&arg0));
+            callback_profile_mfem__Solver__AssembleDiagonal_mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AssembleDiagonal");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const(runtime_->StateAddress(), static_cast<void*>(&arg0)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::AssembleDiagonal");
+            }
+        }
+        return;
+    }
+    mfem::Solver::AssembleDiagonal(arg0);
+}
+mfem::Operator& NumbaDirector_mfem_Solver::GetGradient(const mfem::Vector& arg0) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        throw std::runtime_error("numba-swig-bridge director has no live state for object reference return");
+    }
+    if (callbacks_.callback_mfem__Solver__GetGradient_const_mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Solver__GetGradient_const_mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Solver__GetGradient_const_mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), &callback_result);
+            callback_profile_mfem__Solver__GetGradient_const_mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetGradient");
+            }
+            if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::Solver::GetGradient"); }
+            return *static_cast<mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Solver__GetGradient_const_mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetGradient");
+        }
+        if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::Solver::GetGradient"); }
+        return *static_cast<mfem::Operator*>(callback_result);
+    }
+    return mfem::Solver::GetGradient(arg0);
+}
+mfem::MemoryClass NumbaDirector_mfem_Solver::GetMemoryClass() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return static_cast<mfem::MemoryClass>(0);
+    }
+    if (callbacks_.callback_mfem__Solver__GetMemoryClass___const != nullptr) {
+        if (callback_profile_mfem__Solver__GetMemoryClass___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            int callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Solver__GetMemoryClass___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Solver__GetMemoryClass___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetMemoryClass");
+            }
+
+            return static_cast<mfem::MemoryClass>(callback_result);
+        }
+        int callback_result{};
+        if (callbacks_.callback_mfem__Solver__GetMemoryClass___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetMemoryClass");
+        }
+
+        return static_cast<mfem::MemoryClass>(callback_result);
+    }
+    return mfem::Solver::GetMemoryClass();
+}
+const mfem::Operator* NumbaDirector_mfem_Solver::GetOutputProlongation() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Solver__GetOutputProlongation___const != nullptr) {
+        if (callback_profile_mfem__Solver__GetOutputProlongation___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Solver__GetOutputProlongation___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Solver__GetOutputProlongation___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetOutputProlongation");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Solver__GetOutputProlongation___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetOutputProlongation");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Solver::GetOutputProlongation();
+}
+const mfem::Operator* NumbaDirector_mfem_Solver::GetOutputRestriction() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Solver__GetOutputRestriction___const != nullptr) {
+        if (callback_profile_mfem__Solver__GetOutputRestriction___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Solver__GetOutputRestriction___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Solver__GetOutputRestriction___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetOutputRestriction");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Solver__GetOutputRestriction___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetOutputRestriction");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Solver::GetOutputRestriction();
+}
+const mfem::Operator* NumbaDirector_mfem_Solver::GetOutputRestrictionTranspose() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Solver__GetOutputRestrictionTranspose___const != nullptr) {
+        if (callback_profile_mfem__Solver__GetOutputRestrictionTranspose___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Solver__GetOutputRestrictionTranspose___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Solver__GetOutputRestrictionTranspose___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetOutputRestrictionTranspose");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Solver__GetOutputRestrictionTranspose___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetOutputRestrictionTranspose");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Solver::GetOutputRestrictionTranspose();
+}
+const mfem::Operator* NumbaDirector_mfem_Solver::GetProlongation() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Solver__GetProlongation___const != nullptr) {
+        if (callback_profile_mfem__Solver__GetProlongation___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Solver__GetProlongation___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Solver__GetProlongation___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetProlongation");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Solver__GetProlongation___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetProlongation");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Solver::GetProlongation();
+}
+const mfem::Operator* NumbaDirector_mfem_Solver::GetRestriction() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__Solver__GetRestriction___const != nullptr) {
+        if (callback_profile_mfem__Solver__GetRestriction___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__Solver__GetRestriction___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__Solver__GetRestriction___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetRestriction");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__Solver__GetRestriction___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::GetRestriction");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::Solver::GetRestriction();
+}
+void NumbaDirector_mfem_Solver::Mult(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::Mult");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::Mult");
+            }
+        }
+        return;
+    }
+    return;
+}
+void NumbaDirector_mfem_Solver::MultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::MultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::MultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::Solver::MultTranspose(arg0, arg1);
+}
+void NumbaDirector_mfem_Solver::RecoverFEMSolution(const mfem::Vector& arg0, const mfem::Vector& arg1, mfem::Vector& arg2) {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector != nullptr) {
+        if (callback_profile_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), static_cast<void*>(&arg2));
+            callback_profile_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::RecoverFEMSolution");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), static_cast<void*>(&arg2)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::RecoverFEMSolution");
+            }
+        }
+        return;
+    }
+    mfem::Solver::RecoverFEMSolution(arg0, arg1, arg2);
+}
+void NumbaDirector_mfem_Solver::SetOperator(const mfem::Operator& arg0) {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__Solver__SetOperator_const_mfem__Operator != nullptr) {
+        if (callback_profile_mfem__Solver__SetOperator_const_mfem__Operator.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__Solver__SetOperator_const_mfem__Operator(runtime_->StateAddress(), static_cast<const void*>(&arg0));
+            callback_profile_mfem__Solver__SetOperator_const_mfem__Operator.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::SetOperator");
+            }
+        } else {
+            if (callbacks_.callback_mfem__Solver__SetOperator_const_mfem__Operator(runtime_->StateAddress(), static_cast<const void*>(&arg0)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::Solver::SetOperator");
+            }
+        }
+        return;
+    }
+    return;
+}
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    int base_arg_0, bool base_arg_1, unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept {
+    try {
+        auto state = std::make_unique<NativeStateLease>(
+            state_lease, state_lease_address, state_lease_is_alive,
+            state_lease_close, state_lease_release, state_object_address_at);
+        if (!state->IsAlive()) {
+            return nullptr;
+        }
+        NumbaDirector_mfem_Solver::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const>(callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetGradient_const_mfem__Vector___const>(callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetMemoryClass___const>(callback_mfem__Solver__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputProlongation___const>(callback_mfem__Solver__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestriction___const>(callback_mfem__Solver__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestrictionTranspose___const>(callback_mfem__Solver__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetProlongation___const>(callback_mfem__Solver__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetRestriction___const>(callback_mfem__Solver__GetRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__SetOperator_const_mfem__Operator>(callback_mfem__Solver__SetOperator_const_mfem__Operator_address)
+        };
+        auto lifetime = std::make_shared<DirectorLifetime>();
+        auto runtime = std::make_shared<DirectorRuntime>(std::move(state));
+        auto concrete = std::make_unique<NumbaDirector_mfem_Solver>(base_arg_0, base_arg_1, callbacks, lifetime, runtime);
+        void* base_address = static_cast<mfem::Solver*>(concrete.get());
+        lifetime->SetAddress(base_address);
+        auto deleter = +[](void* address) noexcept {
+            delete static_cast<NumbaDirector_mfem_Solver*>(address);
+        };
+        auto control = std::make_shared<DirectorControl>(
+            concrete.get(), deleter, lifetime, runtime,
+            std::has_virtual_destructor<mfem::Solver>::value);
+        concrete.release();
+        return new DirectorHandle(std::move(control));
+    } catch (...) {
+        return nullptr;
+    }
+}
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    int base_arg_0, unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept {
+    try {
+        auto state = std::make_unique<NativeStateLease>(
+            state_lease, state_lease_address, state_lease_is_alive,
+            state_lease_close, state_lease_release, state_object_address_at);
+        if (!state->IsAlive()) {
+            return nullptr;
+        }
+        NumbaDirector_mfem_Solver::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const>(callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetGradient_const_mfem__Vector___const>(callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetMemoryClass___const>(callback_mfem__Solver__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputProlongation___const>(callback_mfem__Solver__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestriction___const>(callback_mfem__Solver__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestrictionTranspose___const>(callback_mfem__Solver__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetProlongation___const>(callback_mfem__Solver__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetRestriction___const>(callback_mfem__Solver__GetRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__SetOperator_const_mfem__Operator>(callback_mfem__Solver__SetOperator_const_mfem__Operator_address)
+        };
+        auto lifetime = std::make_shared<DirectorLifetime>();
+        auto runtime = std::make_shared<DirectorRuntime>(std::move(state));
+        auto concrete = std::make_unique<NumbaDirector_mfem_Solver>(base_arg_0, callbacks, lifetime, runtime);
+        void* base_address = static_cast<mfem::Solver*>(concrete.get());
+        lifetime->SetAddress(base_address);
+        auto deleter = +[](void* address) noexcept {
+            delete static_cast<NumbaDirector_mfem_Solver*>(address);
+        };
+        auto control = std::make_shared<DirectorControl>(
+            concrete.get(), deleter, lifetime, runtime,
+            std::has_virtual_destructor<mfem::Solver>::value);
+        concrete.release();
+        return new DirectorHandle(std::move(control));
+    } catch (...) {
+        return nullptr;
+    }
+}
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept {
+    try {
+        auto state = std::make_unique<NativeStateLease>(
+            state_lease, state_lease_address, state_lease_is_alive,
+            state_lease_close, state_lease_release, state_object_address_at);
+        if (!state->IsAlive()) {
+            return nullptr;
+        }
+        NumbaDirector_mfem_Solver::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const>(callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetGradient_const_mfem__Vector___const>(callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetMemoryClass___const>(callback_mfem__Solver__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputProlongation___const>(callback_mfem__Solver__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestriction___const>(callback_mfem__Solver__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestrictionTranspose___const>(callback_mfem__Solver__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetProlongation___const>(callback_mfem__Solver__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetRestriction___const>(callback_mfem__Solver__GetRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__SetOperator_const_mfem__Operator>(callback_mfem__Solver__SetOperator_const_mfem__Operator_address)
+        };
+        auto lifetime = std::make_shared<DirectorLifetime>();
+        auto runtime = std::make_shared<DirectorRuntime>(std::move(state));
+        auto concrete = std::make_unique<NumbaDirector_mfem_Solver>(callbacks, lifetime, runtime);
+        void* base_address = static_cast<mfem::Solver*>(concrete.get());
+        lifetime->SetAddress(base_address);
+        auto deleter = +[](void* address) noexcept {
+            delete static_cast<NumbaDirector_mfem_Solver*>(address);
+        };
+        auto control = std::make_shared<DirectorControl>(
+            concrete.get(), deleter, lifetime, runtime,
+            std::has_virtual_destructor<mfem::Solver>::value);
+        concrete.release();
+        return new DirectorHandle(std::move(control));
+    } catch (...) {
+        return nullptr;
+    }
+}
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    int base_arg_0, int base_arg_1, bool base_arg_2, unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept {
+    try {
+        auto state = std::make_unique<NativeStateLease>(
+            state_lease, state_lease_address, state_lease_is_alive,
+            state_lease_close, state_lease_release, state_object_address_at);
+        if (!state->IsAlive()) {
+            return nullptr;
+        }
+        NumbaDirector_mfem_Solver::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const>(callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetGradient_const_mfem__Vector___const>(callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetMemoryClass___const>(callback_mfem__Solver__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputProlongation___const>(callback_mfem__Solver__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestriction___const>(callback_mfem__Solver__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestrictionTranspose___const>(callback_mfem__Solver__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetProlongation___const>(callback_mfem__Solver__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetRestriction___const>(callback_mfem__Solver__GetRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__SetOperator_const_mfem__Operator>(callback_mfem__Solver__SetOperator_const_mfem__Operator_address)
+        };
+        auto lifetime = std::make_shared<DirectorLifetime>();
+        auto runtime = std::make_shared<DirectorRuntime>(std::move(state));
+        auto concrete = std::make_unique<NumbaDirector_mfem_Solver>(base_arg_0, base_arg_1, base_arg_2, callbacks, lifetime, runtime);
+        void* base_address = static_cast<mfem::Solver*>(concrete.get());
+        lifetime->SetAddress(base_address);
+        auto deleter = +[](void* address) noexcept {
+            delete static_cast<NumbaDirector_mfem_Solver*>(address);
+        };
+        auto control = std::make_shared<DirectorControl>(
+            concrete.get(), deleter, lifetime, runtime,
+            std::has_virtual_destructor<mfem::Solver>::value);
+        concrete.release();
+        return new DirectorHandle(std::move(control));
+    } catch (...) {
+        return nullptr;
+    }
+}
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    int base_arg_0, int base_arg_1, unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept {
+    try {
+        auto state = std::make_unique<NativeStateLease>(
+            state_lease, state_lease_address, state_lease_is_alive,
+            state_lease_close, state_lease_release, state_object_address_at);
+        if (!state->IsAlive()) {
+            return nullptr;
+        }
+        NumbaDirector_mfem_Solver::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const>(callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetGradient_const_mfem__Vector___const>(callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetMemoryClass___const>(callback_mfem__Solver__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputProlongation___const>(callback_mfem__Solver__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestriction___const>(callback_mfem__Solver__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetOutputRestrictionTranspose___const>(callback_mfem__Solver__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetProlongation___const>(callback_mfem__Solver__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__GetRestriction___const>(callback_mfem__Solver__GetRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
+        reinterpret_cast<NumbaDirector_mfem_Solver::Callback_mfem__Solver__SetOperator_const_mfem__Operator>(callback_mfem__Solver__SetOperator_const_mfem__Operator_address)
+        };
+        auto lifetime = std::make_shared<DirectorLifetime>();
+        auto runtime = std::make_shared<DirectorRuntime>(std::move(state));
+        auto concrete = std::make_unique<NumbaDirector_mfem_Solver>(base_arg_0, base_arg_1, callbacks, lifetime, runtime);
+        void* base_address = static_cast<mfem::Solver*>(concrete.get());
+        lifetime->SetAddress(base_address);
+        auto deleter = +[](void* address) noexcept {
+            delete static_cast<NumbaDirector_mfem_Solver*>(address);
+        };
+        auto control = std::make_shared<DirectorControl>(
+            concrete.get(), deleter, lifetime, runtime,
+            std::has_virtual_destructor<mfem::Solver>::value);
+        concrete.release();
+        return new DirectorHandle(std::move(control));
+    } catch (...) {
+        return nullptr;
+    }
+}
 NumbaDirector_mfem_TimeDependentOperator::NumbaDirector_mfem_TimeDependentOperator(
     int base_arg_0, double base_arg_1, mfem::TimeDependentOperator::Type base_arg_2, Callbacks callbacks,
     std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime)
@@ -686,26 +2056,206 @@ NumbaDirector_mfem_TimeDependentOperator::~NumbaDirector_mfem_TimeDependentOpera
     destroyed_director_count.fetch_add(1, std::memory_order_relaxed);
 }
 
-void NumbaDirector_mfem_TimeDependentOperator::ExplicitMult(const mfem::Vector& u, mfem::Vector& v) const {
+void NumbaDirector_mfem_TimeDependentOperator::AbsMult(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AbsMult");
+            }
+        } else {
+            if (callbacks_.callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AbsMult");
+            }
+        }
+        return;
+    }
+    mfem::TimeDependentOperator::AbsMult(arg0, arg1);
+}
+void NumbaDirector_mfem_TimeDependentOperator::AbsMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AbsMultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AbsMultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::TimeDependentOperator::AbsMultTranspose(arg0, arg1);
+}
+void NumbaDirector_mfem_TimeDependentOperator::AddMult(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2);
+            callback_profile_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AddMult");
+            }
+        } else {
+            if (callbacks_.callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AddMult");
+            }
+        }
+        return;
+    }
+    mfem::TimeDependentOperator::AddMult(arg0, arg1, arg2);
+}
+void NumbaDirector_mfem_TimeDependentOperator::AddMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2);
+            callback_profile_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AddMultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AddMultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::TimeDependentOperator::AddMultTranspose(arg0, arg1, arg2);
+}
+void NumbaDirector_mfem_TimeDependentOperator::AssembleDiagonal(mfem::Vector& arg0) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const(runtime_->StateAddress(), static_cast<void*>(&arg0));
+            callback_profile_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AssembleDiagonal");
+            }
+        } else {
+            if (callbacks_.callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const(runtime_->StateAddress(), static_cast<void*>(&arg0)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::AssembleDiagonal");
+            }
+        }
+        return;
+    }
+    mfem::TimeDependentOperator::AssembleDiagonal(arg0);
+}
+void NumbaDirector_mfem_TimeDependentOperator::ExplicitMult(const mfem::Vector& arg0, mfem::Vector& arg1) const {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const != nullptr) {
         if (callback_profile_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&u), static_cast<void*>(&v));
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
             callback_profile_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ExplicitMult");
             }
         } else {
-            if (callbacks_.callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&u), static_cast<void*>(&v)) == 0) {
+            if (callbacks_.callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ExplicitMult");
             }
         }
         return;
     }
-    mfem::TimeDependentOperator::ExplicitMult(u, v);
+    mfem::TimeDependentOperator::ExplicitMult(arg0, arg1);
+}
+mfem::Operator& NumbaDirector_mfem_TimeDependentOperator::GetExplicitGradient(const mfem::Vector& arg0) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        throw std::runtime_error("numba-swig-bridge director has no live state for object reference return");
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetExplicitGradient");
+            }
+            if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::TimeDependentOperator::GetExplicitGradient"); }
+            return *static_cast<mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetExplicitGradient");
+        }
+        if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::TimeDependentOperator::GetExplicitGradient"); }
+        return *static_cast<mfem::Operator*>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetExplicitGradient(arg0);
+}
+mfem::Operator& NumbaDirector_mfem_TimeDependentOperator::GetGradient(const mfem::Vector& arg0) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        throw std::runtime_error("numba-swig-bridge director has no live state for object reference return");
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetGradient");
+            }
+            if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::TimeDependentOperator::GetGradient"); }
+            return *static_cast<mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetGradient");
+        }
+        if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::TimeDependentOperator::GetGradient"); }
+        return *static_cast<mfem::Operator*>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetGradient(arg0);
+}
+mfem::Operator& NumbaDirector_mfem_TimeDependentOperator::GetImplicitGradient(const mfem::Vector& arg0, const mfem::Vector& arg1, double arg2) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        throw std::runtime_error("numba-swig-bridge director has no live state for object reference return");
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), arg2, &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetImplicitGradient");
+            }
+            if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::TimeDependentOperator::GetImplicitGradient"); }
+            return *static_cast<mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), arg2, &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetImplicitGradient");
+        }
+        if (callback_result == nullptr) { throw std::runtime_error("numba-swig-bridge director callback returned null reference: mfem::TimeDependentOperator::GetImplicitGradient"); }
+        return *static_cast<mfem::Operator*>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetImplicitGradient(arg0, arg1, arg2);
 }
 mfem::TimeDependentOperator::ImplicitVariableType NumbaDirector_mfem_TimeDependentOperator::GetImplicitVariableType() const {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
@@ -720,17 +2270,167 @@ mfem::TimeDependentOperator::ImplicitVariableType NumbaDirector_mfem_TimeDepende
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetImplicitVariableType");
             }
-            
+
             return static_cast<mfem::TimeDependentOperator::ImplicitVariableType>(callback_result);
         }
         int callback_result{};
         if (callbacks_.callback_mfem__TimeDependentOperator__GetImplicitVariableType___const(runtime_->StateAddress(), &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetImplicitVariableType");
         }
-        
+
         return static_cast<mfem::TimeDependentOperator::ImplicitVariableType>(callback_result);
     }
     return mfem::TimeDependentOperator::GetImplicitVariableType();
+}
+mfem::MemoryClass NumbaDirector_mfem_TimeDependentOperator::GetMemoryClass() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return static_cast<mfem::MemoryClass>(0);
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetMemoryClass___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetMemoryClass___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            int callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetMemoryClass___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetMemoryClass___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetMemoryClass");
+            }
+
+            return static_cast<mfem::MemoryClass>(callback_result);
+        }
+        int callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetMemoryClass___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetMemoryClass");
+        }
+
+        return static_cast<mfem::MemoryClass>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetMemoryClass();
+}
+const mfem::Operator* NumbaDirector_mfem_TimeDependentOperator::GetOutputProlongation() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetOutputProlongation___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetOutputProlongation___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetOutputProlongation___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetOutputProlongation___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetOutputProlongation");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetOutputProlongation___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetOutputProlongation");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetOutputProlongation();
+}
+const mfem::Operator* NumbaDirector_mfem_TimeDependentOperator::GetOutputRestriction() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetOutputRestriction___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetOutputRestriction___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetOutputRestriction___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetOutputRestriction___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetOutputRestriction");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetOutputRestriction___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetOutputRestriction");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetOutputRestriction();
+}
+const mfem::Operator* NumbaDirector_mfem_TimeDependentOperator::GetOutputRestrictionTranspose() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetOutputRestrictionTranspose");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetOutputRestrictionTranspose");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetOutputRestrictionTranspose();
+}
+const mfem::Operator* NumbaDirector_mfem_TimeDependentOperator::GetProlongation() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetProlongation___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetProlongation___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetProlongation___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetProlongation___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetProlongation");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetProlongation___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetProlongation");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetProlongation();
+}
+const mfem::Operator* NumbaDirector_mfem_TimeDependentOperator::GetRestriction() const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return nullptr;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__GetRestriction___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__GetRestriction___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            void* callback_result{};
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__GetRestriction___const(runtime_->StateAddress(), &callback_result);
+            callback_profile_mfem__TimeDependentOperator__GetRestriction___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetRestriction");
+            }
+
+            return static_cast<const mfem::Operator*>(callback_result);
+        }
+        void* callback_result{};
+        if (callbacks_.callback_mfem__TimeDependentOperator__GetRestriction___const(runtime_->StateAddress(), &callback_result) == 0) {
+            throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetRestriction");
+        }
+
+        return static_cast<const mfem::Operator*>(callback_result);
+    }
+    return mfem::TimeDependentOperator::GetRestriction();
 }
 double NumbaDirector_mfem_TimeDependentOperator::GetTime() const {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
@@ -745,59 +2445,59 @@ double NumbaDirector_mfem_TimeDependentOperator::GetTime() const {
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetTime");
             }
-            
+
             return callback_result;
         }
         double callback_result{};
         if (callbacks_.callback_mfem__TimeDependentOperator__GetTime___const(runtime_->StateAddress(), &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::GetTime");
         }
-        
+
         return callback_result;
     }
     return mfem::TimeDependentOperator::GetTime();
 }
-void NumbaDirector_mfem_TimeDependentOperator::ImplicitMult(const mfem::Vector& u, const mfem::Vector& k, mfem::Vector& v) const {
+void NumbaDirector_mfem_TimeDependentOperator::ImplicitMult(const mfem::Vector& arg0, const mfem::Vector& arg1, mfem::Vector& arg2) const {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const != nullptr) {
         if (callback_profile_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&u), static_cast<const void*>(&k), static_cast<void*>(&v));
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), static_cast<void*>(&arg2));
             callback_profile_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ImplicitMult");
             }
         } else {
-            if (callbacks_.callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&u), static_cast<const void*>(&k), static_cast<void*>(&v)) == 0) {
+            if (callbacks_.callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), static_cast<void*>(&arg2)) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ImplicitMult");
             }
         }
         return;
     }
-    mfem::TimeDependentOperator::ImplicitMult(u, k, v);
+    mfem::TimeDependentOperator::ImplicitMult(arg0, arg1, arg2);
 }
-void NumbaDirector_mfem_TimeDependentOperator::ImplicitSolve(double gamma, const mfem::Vector& u, mfem::Vector& k) {
+void NumbaDirector_mfem_TimeDependentOperator::ImplicitSolve(double arg0, const mfem::Vector& arg1, mfem::Vector& arg2) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector != nullptr) {
         if (callback_profile_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), gamma, static_cast<const void*>(&u), static_cast<void*>(&k));
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), arg0, static_cast<const void*>(&arg1), static_cast<void*>(&arg2));
             callback_profile_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ImplicitSolve");
             }
         } else {
-            if (callbacks_.callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), gamma, static_cast<const void*>(&u), static_cast<void*>(&k)) == 0) {
+            if (callbacks_.callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), arg0, static_cast<const void*>(&arg1), static_cast<void*>(&arg2)) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ImplicitSolve");
             }
         }
         return;
     }
-    mfem::TimeDependentOperator::ImplicitSolve(gamma, u, k);
+    mfem::TimeDependentOperator::ImplicitSolve(arg0, arg1, arg2);
 }
 bool NumbaDirector_mfem_TimeDependentOperator::ImplicitVarTypeIsSlope() const {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
@@ -812,14 +2512,14 @@ bool NumbaDirector_mfem_TimeDependentOperator::ImplicitVarTypeIsSlope() const {
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ImplicitVarTypeIsSlope");
             }
-            
+
             return callback_result != 0;
         }
         int callback_result{};
         if (callbacks_.callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const(runtime_->StateAddress(), &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ImplicitVarTypeIsSlope");
         }
-        
+
         return callback_result != 0;
     }
     return mfem::TimeDependentOperator::ImplicitVarTypeIsSlope();
@@ -837,40 +2537,82 @@ bool NumbaDirector_mfem_TimeDependentOperator::ImplicitVarTypeIsState() const {
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ImplicitVarTypeIsState");
             }
-            
+
             return callback_result != 0;
         }
         int callback_result{};
         if (callbacks_.callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const(runtime_->StateAddress(), &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::ImplicitVarTypeIsState");
         }
-        
+
         return callback_result != 0;
     }
     return mfem::TimeDependentOperator::ImplicitVarTypeIsState();
 }
-void NumbaDirector_mfem_TimeDependentOperator::Mult(const mfem::Vector& u, mfem::Vector& k) const {
+void NumbaDirector_mfem_TimeDependentOperator::Mult(const mfem::Vector& arg0, mfem::Vector& arg1) const {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const != nullptr) {
         if (callback_profile_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&u), static_cast<void*>(&k));
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
             callback_profile_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::Mult");
             }
         } else {
-            if (callbacks_.callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&u), static_cast<void*>(&k)) == 0) {
+            if (callbacks_.callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::Mult");
             }
         }
         return;
     }
-    mfem::TimeDependentOperator::Mult(u, k);
+    mfem::TimeDependentOperator::Mult(arg0, arg1);
 }
-int NumbaDirector_mfem_TimeDependentOperator::SUNImplicitSetup(const mfem::Vector& y, const mfem::Vector& v, int jok, int* jcur, double gamma) {
+void NumbaDirector_mfem_TimeDependentOperator::MultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1));
+            callback_profile_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::MultTranspose");
+            }
+        } else {
+            if (callbacks_.callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::MultTranspose");
+            }
+        }
+        return;
+    }
+    mfem::TimeDependentOperator::MultTranspose(arg0, arg1);
+}
+void NumbaDirector_mfem_TimeDependentOperator::RecoverFEMSolution(const mfem::Vector& arg0, const mfem::Vector& arg1, mfem::Vector& arg2) {
+    if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
+        return;
+    }
+    if (callbacks_.callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector != nullptr) {
+        if (callback_profile_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.enabled.load(std::memory_order_relaxed)) {
+            const auto started = std::chrono::steady_clock::now();
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), static_cast<void*>(&arg2));
+            callback_profile_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.Record(started);
+            if (callback_status == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::RecoverFEMSolution");
+            }
+        } else {
+            if (callbacks_.callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), static_cast<void*>(&arg2)) == 0) {
+                throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::RecoverFEMSolution");
+            }
+        }
+        return;
+    }
+    mfem::TimeDependentOperator::RecoverFEMSolution(arg0, arg1, arg2);
+}
+int NumbaDirector_mfem_TimeDependentOperator::SUNImplicitSetup(const mfem::Vector& arg0, const mfem::Vector& arg1, int arg2, int* arg3, double arg4) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return 0;
     }
@@ -878,24 +2620,24 @@ int NumbaDirector_mfem_TimeDependentOperator::SUNImplicitSetup(const mfem::Vecto
         if (callback_profile_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
             int callback_result{};
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&y), static_cast<const void*>(&v), jok, jcur, gamma, &callback_result);
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), arg2, arg3, arg4, &callback_result);
             callback_profile_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNImplicitSetup");
             }
-            
+
             return callback_result;
         }
         int callback_result{};
-        if (callbacks_.callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&y), static_cast<const void*>(&v), jok, jcur, gamma, &callback_result) == 0) {
+        if (callbacks_.callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<const void*>(&arg1), arg2, arg3, arg4, &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNImplicitSetup");
         }
-        
+
         return callback_result;
     }
-    return mfem::TimeDependentOperator::SUNImplicitSetup(y, v, jok, jcur, gamma);
+    return mfem::TimeDependentOperator::SUNImplicitSetup(arg0, arg1, arg2, arg3, arg4);
 }
-int NumbaDirector_mfem_TimeDependentOperator::SUNImplicitSolve(const mfem::Vector& r, mfem::Vector& dk, double tol) {
+int NumbaDirector_mfem_TimeDependentOperator::SUNImplicitSolve(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return 0;
     }
@@ -903,24 +2645,24 @@ int NumbaDirector_mfem_TimeDependentOperator::SUNImplicitSolve(const mfem::Vecto
         if (callback_profile_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
             int callback_result{};
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&r), static_cast<void*>(&dk), tol, &callback_result);
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2, &callback_result);
             callback_profile_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNImplicitSolve");
             }
-            
+
             return callback_result;
         }
         int callback_result{};
-        if (callbacks_.callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&r), static_cast<void*>(&dk), tol, &callback_result) == 0) {
+        if (callbacks_.callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2, &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNImplicitSolve");
         }
-        
+
         return callback_result;
     }
-    return mfem::TimeDependentOperator::SUNImplicitSolve(r, dk, tol);
+    return mfem::TimeDependentOperator::SUNImplicitSolve(arg0, arg1, arg2);
 }
-int NumbaDirector_mfem_TimeDependentOperator::SUNMassMult(const mfem::Vector& x, mfem::Vector& v) {
+int NumbaDirector_mfem_TimeDependentOperator::SUNMassMult(const mfem::Vector& arg0, mfem::Vector& arg1) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return 0;
     }
@@ -928,22 +2670,22 @@ int NumbaDirector_mfem_TimeDependentOperator::SUNMassMult(const mfem::Vector& x,
         if (callback_profile_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
             int callback_result{};
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&x), static_cast<void*>(&v), &callback_result);
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), &callback_result);
             callback_profile_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNMassMult");
             }
-            
+
             return callback_result;
         }
         int callback_result{};
-        if (callbacks_.callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&x), static_cast<void*>(&v), &callback_result) == 0) {
+        if (callbacks_.callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNMassMult");
         }
-        
+
         return callback_result;
     }
-    return mfem::TimeDependentOperator::SUNMassMult(x, v);
+    return mfem::TimeDependentOperator::SUNMassMult(arg0, arg1);
 }
 int NumbaDirector_mfem_TimeDependentOperator::SUNMassSetup() {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
@@ -958,19 +2700,19 @@ int NumbaDirector_mfem_TimeDependentOperator::SUNMassSetup() {
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNMassSetup");
             }
-            
+
             return callback_result;
         }
         int callback_result{};
         if (callbacks_.callback_mfem__TimeDependentOperator__SUNMassSetup(runtime_->StateAddress(), &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNMassSetup");
         }
-        
+
         return callback_result;
     }
     return mfem::TimeDependentOperator::SUNMassSetup();
 }
-int NumbaDirector_mfem_TimeDependentOperator::SUNMassSolve(const mfem::Vector& b, mfem::Vector& x, double tol) {
+int NumbaDirector_mfem_TimeDependentOperator::SUNMassSolve(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return 0;
     }
@@ -978,75 +2720,91 @@ int NumbaDirector_mfem_TimeDependentOperator::SUNMassSolve(const mfem::Vector& b
         if (callback_profile_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
             int callback_result{};
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&b), static_cast<void*>(&x), tol, &callback_result);
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2, &callback_result);
             callback_profile_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNMassSolve");
             }
-            
+
             return callback_result;
         }
         int callback_result{};
-        if (callbacks_.callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&b), static_cast<void*>(&x), tol, &callback_result) == 0) {
+        if (callbacks_.callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t(runtime_->StateAddress(), static_cast<const void*>(&arg0), static_cast<void*>(&arg1), arg2, &callback_result) == 0) {
             throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SUNMassSolve");
         }
-        
+
         return callback_result;
     }
-    return mfem::TimeDependentOperator::SUNMassSolve(b, x, tol);
+    return mfem::TimeDependentOperator::SUNMassSolve(arg0, arg1, arg2);
 }
-void NumbaDirector_mfem_TimeDependentOperator::SetEvalMode(const mfem::TimeDependentOperator::EvalMode new_eval_mode) {
+void NumbaDirector_mfem_TimeDependentOperator::SetEvalMode(const mfem::TimeDependentOperator::EvalMode arg0) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode != nullptr) {
         if (callback_profile_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode(runtime_->StateAddress(), new_eval_mode);
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode(runtime_->StateAddress(), arg0);
             callback_profile_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SetEvalMode");
             }
         } else {
-            if (callbacks_.callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode(runtime_->StateAddress(), new_eval_mode) == 0) {
+            if (callbacks_.callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode(runtime_->StateAddress(), arg0) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SetEvalMode");
             }
         }
         return;
     }
-    mfem::TimeDependentOperator::SetEvalMode(new_eval_mode);
+    mfem::TimeDependentOperator::SetEvalMode(arg0);
 }
-void NumbaDirector_mfem_TimeDependentOperator::SetTime(double t_) {
+void NumbaDirector_mfem_TimeDependentOperator::SetTime(double arg0) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t != nullptr) {
         if (callback_profile_mfem__TimeDependentOperator__SetTime_const_mfem__real_t.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t(runtime_->StateAddress(), t_);
+            const int callback_status = callbacks_.callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t(runtime_->StateAddress(), arg0);
             callback_profile_mfem__TimeDependentOperator__SetTime_const_mfem__real_t.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SetTime");
             }
         } else {
-            if (callbacks_.callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t(runtime_->StateAddress(), t_) == 0) {
+            if (callbacks_.callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t(runtime_->StateAddress(), arg0) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::TimeDependentOperator::SetTime");
             }
         }
         return;
     }
-    mfem::TimeDependentOperator::SetTime(t_);
+    mfem::TimeDependentOperator::SetTime(arg0);
 }
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, double base_arg_1, int base_arg_2, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    int base_arg_0, double base_arg_1, int base_arg_2, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -1068,14 +2826,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
             return nullptr;
         }
         NumbaDirector_mfem_TimeDependentOperator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const>(callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const>(callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetMemoryClass___const>(callback_mfem__TimeDependentOperator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputProlongation___const>(callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestriction___const>(callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const>(callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetProlongation___const>(callback_mfem__TimeDependentOperator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetRestriction___const>(callback_mfem__TimeDependentOperator__GetRestriction___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetTime___const>(callback_mfem__TimeDependentOperator__GetTime___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address),
@@ -1103,14 +2877,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
 }
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, double base_arg_1, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    int base_arg_0, double base_arg_1, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -1132,14 +2922,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
             return nullptr;
         }
         NumbaDirector_mfem_TimeDependentOperator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const>(callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const>(callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetMemoryClass___const>(callback_mfem__TimeDependentOperator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputProlongation___const>(callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestriction___const>(callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const>(callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetProlongation___const>(callback_mfem__TimeDependentOperator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetRestriction___const>(callback_mfem__TimeDependentOperator__GetRestriction___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetTime___const>(callback_mfem__TimeDependentOperator__GetTime___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address),
@@ -1167,14 +2973,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
 }
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    int base_arg_0, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -1196,14 +3018,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
             return nullptr;
         }
         NumbaDirector_mfem_TimeDependentOperator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const>(callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const>(callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetMemoryClass___const>(callback_mfem__TimeDependentOperator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputProlongation___const>(callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestriction___const>(callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const>(callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetProlongation___const>(callback_mfem__TimeDependentOperator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetRestriction___const>(callback_mfem__TimeDependentOperator__GetRestriction___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetTime___const>(callback_mfem__TimeDependentOperator__GetTime___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address),
@@ -1231,14 +3069,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
 }
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -1260,14 +3114,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
             return nullptr;
         }
         NumbaDirector_mfem_TimeDependentOperator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const>(callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const>(callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetMemoryClass___const>(callback_mfem__TimeDependentOperator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputProlongation___const>(callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestriction___const>(callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const>(callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetProlongation___const>(callback_mfem__TimeDependentOperator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetRestriction___const>(callback_mfem__TimeDependentOperator__GetRestriction___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetTime___const>(callback_mfem__TimeDependentOperator__GetTime___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address),
@@ -1295,14 +3165,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
 }
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, int base_arg_1, double base_arg_2, int base_arg_3, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    int base_arg_0, int base_arg_1, double base_arg_2, int base_arg_3, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -1324,14 +3210,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
             return nullptr;
         }
         NumbaDirector_mfem_TimeDependentOperator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const>(callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const>(callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetMemoryClass___const>(callback_mfem__TimeDependentOperator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputProlongation___const>(callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestriction___const>(callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const>(callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetProlongation___const>(callback_mfem__TimeDependentOperator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetRestriction___const>(callback_mfem__TimeDependentOperator__GetRestriction___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetTime___const>(callback_mfem__TimeDependentOperator__GetTime___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address),
@@ -1359,14 +3261,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
 }
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, int base_arg_1, double base_arg_2, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    int base_arg_0, int base_arg_1, double base_arg_2, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -1388,14 +3306,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
             return nullptr;
         }
         NumbaDirector_mfem_TimeDependentOperator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const>(callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const>(callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetMemoryClass___const>(callback_mfem__TimeDependentOperator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputProlongation___const>(callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestriction___const>(callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const>(callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetProlongation___const>(callback_mfem__TimeDependentOperator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetRestriction___const>(callback_mfem__TimeDependentOperator__GetRestriction___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetTime___const>(callback_mfem__TimeDependentOperator__GetTime___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address),
@@ -1423,14 +3357,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
 }
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, int base_arg_1, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    int base_arg_0, int base_arg_1, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -1452,14 +3402,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
             return nullptr;
         }
         NumbaDirector_mfem_TimeDependentOperator::Callbacks callbacks{
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const>(callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const>(callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const>(callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const>(callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const>(callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetMemoryClass___const>(callback_mfem__TimeDependentOperator__GetMemoryClass___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputProlongation___const>(callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestriction___const>(callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const>(callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetProlongation___const>(callback_mfem__TimeDependentOperator__GetProlongation___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetRestriction___const>(callback_mfem__TimeDependentOperator__GetRestriction___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__GetTime___const>(callback_mfem__TimeDependentOperator__GetTime___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const>(callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const>(callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address),
+        reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t>(callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address),
         reinterpret_cast<NumbaDirector_mfem_TimeDependentOperator::Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector>(callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address),
@@ -1502,20 +3468,20 @@ NumbaDirector_mfem_VectorCoefficient::~NumbaDirector_mfem_VectorCoefficient() {
     destroyed_director_count.fetch_add(1, std::memory_order_relaxed);
 }
 
-void NumbaDirector_mfem_VectorCoefficient::Eval(mfem::Vector& V, mfem::ElementTransformation& T, const mfem::IntegrationPoint& ip) {
+void NumbaDirector_mfem_VectorCoefficient::Eval(mfem::Vector& arg0, mfem::ElementTransformation& arg1, const mfem::IntegrationPoint& arg2) {
     if (runtime_ == nullptr || !runtime_->IsActive() || !runtime_->IsStateAlive()) {
         return;
     }
     if (callbacks_.callback_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint != nullptr) {
         if (callback_profile_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint.enabled.load(std::memory_order_relaxed)) {
             const auto started = std::chrono::steady_clock::now();
-            const int callback_status = callbacks_.callback_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&V), static_cast<void*>(&T), static_cast<const void*>(&ip));
+            const int callback_status = callbacks_.callback_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&arg0), static_cast<void*>(&arg1), static_cast<const void*>(&arg2));
             callback_profile_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint.Record(started);
             if (callback_status == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::VectorCoefficient::Eval");
             }
         } else {
-            if (callbacks_.callback_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&V), static_cast<void*>(&T), static_cast<const void*>(&ip)) == 0) {
+            if (callbacks_.callback_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint(runtime_->StateAddress(), static_cast<void*>(&arg0), static_cast<void*>(&arg1), static_cast<const void*>(&arg2)) == 0) {
                 throw std::runtime_error("numba-swig-bridge director callback failed: mfem::VectorCoefficient::Eval");
             }
         }
@@ -1581,7 +3547,7 @@ bool retain_nsb_director_dependency(
 }
 
 int nsb_director_state_abi_version() noexcept {
-    return 6;
+    return 7;
 }
 
 unsigned long long nsb_director_destruction_count() noexcept {
@@ -1622,15 +3588,240 @@ void nsb_director_profile_enable_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix
 unsigned long long nsb_director_profile_calls_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint() noexcept { return callback_profile_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint.calls.load(std::memory_order_relaxed); }
 unsigned long long nsb_director_profile_nanoseconds_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint() noexcept { return callback_profile_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint.nanoseconds.load(std::memory_order_relaxed); }
 
+void nsb_director_profile_reset_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { callback_profile_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept { callback_profile_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { callback_profile_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept { callback_profile_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__AssembleDiagonal_mfem__Vector___const() noexcept { callback_profile_mfem__Operator__AssembleDiagonal_mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__AssembleDiagonal_mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Operator__AssembleDiagonal_mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__AssembleDiagonal_mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__AssembleDiagonal_mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AssembleDiagonal_mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__AssembleDiagonal_mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__GetGradient_const_mfem__Vector___const() noexcept { callback_profile_mfem__Operator__GetGradient_const_mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__GetGradient_const_mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Operator__GetGradient_const_mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetGradient_const_mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__GetGradient_const_mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetGradient_const_mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__GetGradient_const_mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__GetMemoryClass___const() noexcept { callback_profile_mfem__Operator__GetMemoryClass___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__GetMemoryClass___const(bool enabled) noexcept { callback_profile_mfem__Operator__GetMemoryClass___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetMemoryClass___const() noexcept { return callback_profile_mfem__Operator__GetMemoryClass___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetMemoryClass___const() noexcept { return callback_profile_mfem__Operator__GetMemoryClass___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__GetOutputProlongation___const() noexcept { callback_profile_mfem__Operator__GetOutputProlongation___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__GetOutputProlongation___const(bool enabled) noexcept { callback_profile_mfem__Operator__GetOutputProlongation___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetOutputProlongation___const() noexcept { return callback_profile_mfem__Operator__GetOutputProlongation___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetOutputProlongation___const() noexcept { return callback_profile_mfem__Operator__GetOutputProlongation___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__GetOutputRestriction___const() noexcept { callback_profile_mfem__Operator__GetOutputRestriction___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__GetOutputRestriction___const(bool enabled) noexcept { callback_profile_mfem__Operator__GetOutputRestriction___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetOutputRestriction___const() noexcept { return callback_profile_mfem__Operator__GetOutputRestriction___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetOutputRestriction___const() noexcept { return callback_profile_mfem__Operator__GetOutputRestriction___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__GetOutputRestrictionTranspose___const() noexcept { callback_profile_mfem__Operator__GetOutputRestrictionTranspose___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__GetOutputRestrictionTranspose___const(bool enabled) noexcept { callback_profile_mfem__Operator__GetOutputRestrictionTranspose___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetOutputRestrictionTranspose___const() noexcept { return callback_profile_mfem__Operator__GetOutputRestrictionTranspose___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetOutputRestrictionTranspose___const() noexcept { return callback_profile_mfem__Operator__GetOutputRestrictionTranspose___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__GetProlongation___const() noexcept { callback_profile_mfem__Operator__GetProlongation___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__GetProlongation___const(bool enabled) noexcept { callback_profile_mfem__Operator__GetProlongation___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetProlongation___const() noexcept { return callback_profile_mfem__Operator__GetProlongation___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetProlongation___const() noexcept { return callback_profile_mfem__Operator__GetProlongation___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__GetRestriction___const() noexcept { callback_profile_mfem__Operator__GetRestriction___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__GetRestriction___const(bool enabled) noexcept { callback_profile_mfem__Operator__GetRestriction___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetRestriction___const() noexcept { return callback_profile_mfem__Operator__GetRestriction___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetRestriction___const() noexcept { return callback_profile_mfem__Operator__GetRestriction___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { callback_profile_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.Reset(); }
+void nsb_director_profile_enable_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(bool enabled) noexcept { callback_profile_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { return callback_profile_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { return callback_profile_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { callback_profile_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept { callback_profile_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { callback_profile_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept { callback_profile_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__AssembleDiagonal_mfem__Vector___const() noexcept { callback_profile_mfem__Solver__AssembleDiagonal_mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__AssembleDiagonal_mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Solver__AssembleDiagonal_mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__AssembleDiagonal_mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__AssembleDiagonal_mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AssembleDiagonal_mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__AssembleDiagonal_mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__GetGradient_const_mfem__Vector___const() noexcept { callback_profile_mfem__Solver__GetGradient_const_mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__GetGradient_const_mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Solver__GetGradient_const_mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetGradient_const_mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__GetGradient_const_mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetGradient_const_mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__GetGradient_const_mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__GetMemoryClass___const() noexcept { callback_profile_mfem__Solver__GetMemoryClass___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__GetMemoryClass___const(bool enabled) noexcept { callback_profile_mfem__Solver__GetMemoryClass___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetMemoryClass___const() noexcept { return callback_profile_mfem__Solver__GetMemoryClass___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetMemoryClass___const() noexcept { return callback_profile_mfem__Solver__GetMemoryClass___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__GetOutputProlongation___const() noexcept { callback_profile_mfem__Solver__GetOutputProlongation___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__GetOutputProlongation___const(bool enabled) noexcept { callback_profile_mfem__Solver__GetOutputProlongation___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetOutputProlongation___const() noexcept { return callback_profile_mfem__Solver__GetOutputProlongation___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetOutputProlongation___const() noexcept { return callback_profile_mfem__Solver__GetOutputProlongation___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__GetOutputRestriction___const() noexcept { callback_profile_mfem__Solver__GetOutputRestriction___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__GetOutputRestriction___const(bool enabled) noexcept { callback_profile_mfem__Solver__GetOutputRestriction___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetOutputRestriction___const() noexcept { return callback_profile_mfem__Solver__GetOutputRestriction___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetOutputRestriction___const() noexcept { return callback_profile_mfem__Solver__GetOutputRestriction___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__GetOutputRestrictionTranspose___const() noexcept { callback_profile_mfem__Solver__GetOutputRestrictionTranspose___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__GetOutputRestrictionTranspose___const(bool enabled) noexcept { callback_profile_mfem__Solver__GetOutputRestrictionTranspose___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetOutputRestrictionTranspose___const() noexcept { return callback_profile_mfem__Solver__GetOutputRestrictionTranspose___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetOutputRestrictionTranspose___const() noexcept { return callback_profile_mfem__Solver__GetOutputRestrictionTranspose___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__GetProlongation___const() noexcept { callback_profile_mfem__Solver__GetProlongation___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__GetProlongation___const(bool enabled) noexcept { callback_profile_mfem__Solver__GetProlongation___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetProlongation___const() noexcept { return callback_profile_mfem__Solver__GetProlongation___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetProlongation___const() noexcept { return callback_profile_mfem__Solver__GetProlongation___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__GetRestriction___const() noexcept { callback_profile_mfem__Solver__GetRestriction___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__GetRestriction___const(bool enabled) noexcept { callback_profile_mfem__Solver__GetRestriction___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetRestriction___const() noexcept { return callback_profile_mfem__Solver__GetRestriction___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetRestriction___const() noexcept { return callback_profile_mfem__Solver__GetRestriction___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { callback_profile_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(bool enabled) noexcept { callback_profile_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { return callback_profile_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { return callback_profile_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__Solver__SetOperator_const_mfem__Operator() noexcept { callback_profile_mfem__Solver__SetOperator_const_mfem__Operator.Reset(); }
+void nsb_director_profile_enable_mfem__Solver__SetOperator_const_mfem__Operator(bool enabled) noexcept { callback_profile_mfem__Solver__SetOperator_const_mfem__Operator.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__Solver__SetOperator_const_mfem__Operator() noexcept { return callback_profile_mfem__Solver__SetOperator_const_mfem__Operator.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__SetOperator_const_mfem__Operator() noexcept { return callback_profile_mfem__Solver__SetOperator_const_mfem__Operator.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { callback_profile_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { callback_profile_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept { return callback_profile_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const() noexcept { callback_profile_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
 void nsb_director_profile_reset_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const.Reset(); }
 void nsb_director_profile_enable_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
 unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
 unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
 
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const() noexcept { callback_profile_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const.nanoseconds.load(std::memory_order_relaxed); }
+
 void nsb_director_profile_reset_mfem__TimeDependentOperator__GetImplicitVariableType___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetImplicitVariableType___const.Reset(); }
 void nsb_director_profile_enable_mfem__TimeDependentOperator__GetImplicitVariableType___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetImplicitVariableType___const.enabled.store(enabled, std::memory_order_relaxed); }
 unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetImplicitVariableType___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetImplicitVariableType___const.calls.load(std::memory_order_relaxed); }
 unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetImplicitVariableType___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetImplicitVariableType___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetMemoryClass___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetMemoryClass___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetMemoryClass___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetMemoryClass___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetMemoryClass___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetMemoryClass___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetMemoryClass___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetMemoryClass___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetOutputProlongation___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetOutputProlongation___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetOutputProlongation___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetOutputProlongation___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetOutputProlongation___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetOutputProlongation___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetOutputProlongation___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetOutputProlongation___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetOutputRestriction___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetOutputRestriction___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetOutputRestriction___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetOutputRestriction___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetOutputRestriction___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetOutputRestriction___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetOutputRestriction___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetOutputRestriction___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetProlongation___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetProlongation___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetProlongation___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetProlongation___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetProlongation___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetProlongation___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetProlongation___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetProlongation___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetRestriction___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetRestriction___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetRestriction___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetRestriction___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetRestriction___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetRestriction___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetRestriction___const() noexcept { return callback_profile_mfem__TimeDependentOperator__GetRestriction___const.nanoseconds.load(std::memory_order_relaxed); }
 
 void nsb_director_profile_reset_mfem__TimeDependentOperator__GetTime___const() noexcept { callback_profile_mfem__TimeDependentOperator__GetTime___const.Reset(); }
 void nsb_director_profile_enable_mfem__TimeDependentOperator__GetTime___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__GetTime___const.enabled.store(enabled, std::memory_order_relaxed); }
@@ -1661,6 +3852,16 @@ void nsb_director_profile_reset_mfem__TimeDependentOperator__Mult_const_mfem__Ve
 void nsb_director_profile_enable_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
 unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
 unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { callback_profile_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept { return callback_profile_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const.nanoseconds.load(std::memory_order_relaxed); }
+
+void nsb_director_profile_reset_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { callback_profile_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.Reset(); }
+void nsb_director_profile_enable_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.enabled.store(enabled, std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { return callback_profile_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.calls.load(std::memory_order_relaxed); }
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept { return callback_profile_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector.nanoseconds.load(std::memory_order_relaxed); }
 
 void nsb_director_profile_reset_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t() noexcept { callback_profile_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t.Reset(); }
 void nsb_director_profile_enable_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t(bool enabled) noexcept { callback_profile_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t.enabled.store(enabled, std::memory_order_relaxed); }

@@ -145,7 +145,7 @@ private:
 
 class NumbaDirector_mfem_Coefficient final : public mfem::Coefficient {
 public:
-    using Callback_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint = int (*)(void* state, void* T, const void* ip, double* result);
+    using Callback_mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint = int (*)(void* state, void* arg0, const void* arg1, double* result);
 
     using mfem::Coefficient::Eval;
 
@@ -155,7 +155,7 @@ public:
 
     NumbaDirector_mfem_Coefficient(Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
     ~NumbaDirector_mfem_Coefficient();
-    [[nodiscard]] double Eval(mfem::ElementTransformation& T, const mfem::IntegrationPoint& ip) override;
+    [[nodiscard]] double Eval(mfem::ElementTransformation& arg0, const mfem::IntegrationPoint& arg1) override;
 
 private:
     Callbacks callbacks_;
@@ -174,7 +174,7 @@ DirectorHandle* create_nsb_director_mfem_Coefficient(
 
 class NumbaDirector_mfem_LinearFormIntegrator final : public mfem::LinearFormIntegrator {
 public:
-    using Callback_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector = int (*)(void* state, const void* el, void* Tr, void* elvect);
+    using Callback_mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector = int (*)(void* state, const void* arg0, void* arg1, void* arg2);
 
     using mfem::LinearFormIntegrator::AssembleRHSElementVect;
 
@@ -184,7 +184,7 @@ public:
 
     NumbaDirector_mfem_LinearFormIntegrator(Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
     ~NumbaDirector_mfem_LinearFormIntegrator();
-    void AssembleRHSElementVect(const mfem::FiniteElement& el, mfem::ElementTransformation& Tr, mfem::Vector& elvect) override;
+    void AssembleRHSElementVect(const mfem::FiniteElement& arg0, mfem::ElementTransformation& arg1, mfem::Vector& arg2) override;
 
 private:
     Callbacks callbacks_;
@@ -203,7 +203,7 @@ DirectorHandle* create_nsb_director_mfem_LinearFormIntegrator(
 
 class NumbaDirector_mfem_MatrixCoefficient final : public mfem::MatrixCoefficient {
 public:
-    using Callback_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint = int (*)(void* state, void* K, void* T, const void* ip);
+    using Callback_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint = int (*)(void* state, void* arg0, void* arg1, const void* arg2);
 
     using mfem::MatrixCoefficient::Eval;
 
@@ -216,7 +216,7 @@ public:
     NumbaDirector_mfem_MatrixCoefficient(int base_arg_0, int base_arg_1, bool base_arg_2, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
     NumbaDirector_mfem_MatrixCoefficient(int base_arg_0, int base_arg_1, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
     ~NumbaDirector_mfem_MatrixCoefficient();
-    void Eval(mfem::DenseMatrix& K, mfem::ElementTransformation& T, const mfem::IntegrationPoint& ip) override;
+    void Eval(mfem::DenseMatrix& arg0, mfem::ElementTransformation& arg1, const mfem::IntegrationPoint& arg2) override;
 
 private:
     Callbacks callbacks_;
@@ -260,32 +260,415 @@ DirectorHandle* create_nsb_director_mfem_MatrixCoefficient(
     unsigned long long state_lease_release,
     unsigned long long state_object_address_at) noexcept;
 
+class NumbaDirector_mfem_Operator final : public mfem::Operator {
+public:
+    using Callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = int (*)(void* state, const void* arg0, void* arg1, double arg2);
+    using Callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = int (*)(void* state, const void* arg0, void* arg1, double arg2);
+    using Callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const = int (*)(void* state, void* arg0);
+    using Callback_mfem__Operator__GetGradient_const_mfem__Vector___const = int (*)(void* state, const void* arg0, void** result);
+    using Callback_mfem__Operator__GetMemoryClass___const = int (*)(void* state, int* result);
+    using Callback_mfem__Operator__GetOutputProlongation___const = int (*)(void* state, void** result);
+    using Callback_mfem__Operator__GetOutputRestriction___const = int (*)(void* state, void** result);
+    using Callback_mfem__Operator__GetOutputRestrictionTranspose___const = int (*)(void* state, void** result);
+    using Callback_mfem__Operator__GetProlongation___const = int (*)(void* state, void** result);
+    using Callback_mfem__Operator__GetRestriction___const = int (*)(void* state, void** result);
+    using Callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector = int (*)(void* state, const void* arg0, const void* arg1, void* arg2);
+
+    using mfem::Operator::AbsMult;
+    using mfem::Operator::AbsMultTranspose;
+    using mfem::Operator::AddMult;
+    using mfem::Operator::AddMultTranspose;
+    using mfem::Operator::AssembleDiagonal;
+    using mfem::Operator::GetGradient;
+    using mfem::Operator::GetMemoryClass;
+    using mfem::Operator::GetOutputProlongation;
+    using mfem::Operator::GetOutputRestriction;
+    using mfem::Operator::GetOutputRestrictionTranspose;
+    using mfem::Operator::GetProlongation;
+    using mfem::Operator::GetRestriction;
+    using mfem::Operator::Mult;
+    using mfem::Operator::MultTranspose;
+    using mfem::Operator::RecoverFEMSolution;
+
+    struct Callbacks {
+        Callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = nullptr;
+        Callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = nullptr;
+        Callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const = nullptr;
+        Callback_mfem__Operator__GetGradient_const_mfem__Vector___const callback_mfem__Operator__GetGradient_const_mfem__Vector___const = nullptr;
+        Callback_mfem__Operator__GetMemoryClass___const callback_mfem__Operator__GetMemoryClass___const = nullptr;
+        Callback_mfem__Operator__GetOutputProlongation___const callback_mfem__Operator__GetOutputProlongation___const = nullptr;
+        Callback_mfem__Operator__GetOutputRestriction___const callback_mfem__Operator__GetOutputRestriction___const = nullptr;
+        Callback_mfem__Operator__GetOutputRestrictionTranspose___const callback_mfem__Operator__GetOutputRestrictionTranspose___const = nullptr;
+        Callback_mfem__Operator__GetProlongation___const callback_mfem__Operator__GetProlongation___const = nullptr;
+        Callback_mfem__Operator__GetRestriction___const callback_mfem__Operator__GetRestriction___const = nullptr;
+        Callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector = nullptr;
+    };
+
+    NumbaDirector_mfem_Operator(int base_arg_0, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
+    NumbaDirector_mfem_Operator(Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
+    NumbaDirector_mfem_Operator(int base_arg_0, int base_arg_1, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
+    ~NumbaDirector_mfem_Operator();
+    void AbsMult(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void AbsMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void AddMult(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const override;
+    void AddMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const override;
+    void AssembleDiagonal(mfem::Vector& arg0) const override;
+    [[nodiscard]] mfem::Operator& GetGradient(const mfem::Vector& arg0) const override;
+    [[nodiscard]] mfem::MemoryClass GetMemoryClass() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputProlongation() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputRestriction() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputRestrictionTranspose() const override;
+    [[nodiscard]] const mfem::Operator* GetProlongation() const override;
+    [[nodiscard]] const mfem::Operator* GetRestriction() const override;
+    void Mult(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void MultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void RecoverFEMSolution(const mfem::Vector& arg0, const mfem::Vector& arg1, mfem::Vector& arg2) override;
+
+private:
+    Callbacks callbacks_;
+    std::shared_ptr<DirectorLifetime> lifetime_;
+    std::shared_ptr<DirectorRuntime> runtime_;
+};
+
+DirectorHandle* create_nsb_director_mfem_Operator(
+    int base_arg_0, unsigned long long callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Operator__GetProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetRestriction___const_address,
+    unsigned long long callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_Operator(
+    unsigned long long callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Operator__GetProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetRestriction___const_address,
+    unsigned long long callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_Operator(
+    int base_arg_0, int base_arg_1, unsigned long long callback_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Operator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Operator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Operator__GetProlongation___const_address,
+    unsigned long long callback_mfem__Operator__GetRestriction___const_address,
+    unsigned long long callback_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+class NumbaDirector_mfem_Solver final : public mfem::Solver {
+public:
+    using Callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = int (*)(void* state, const void* arg0, void* arg1, double arg2);
+    using Callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = int (*)(void* state, const void* arg0, void* arg1, double arg2);
+    using Callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const = int (*)(void* state, void* arg0);
+    using Callback_mfem__Solver__GetGradient_const_mfem__Vector___const = int (*)(void* state, const void* arg0, void** result);
+    using Callback_mfem__Solver__GetMemoryClass___const = int (*)(void* state, int* result);
+    using Callback_mfem__Solver__GetOutputProlongation___const = int (*)(void* state, void** result);
+    using Callback_mfem__Solver__GetOutputRestriction___const = int (*)(void* state, void** result);
+    using Callback_mfem__Solver__GetOutputRestrictionTranspose___const = int (*)(void* state, void** result);
+    using Callback_mfem__Solver__GetProlongation___const = int (*)(void* state, void** result);
+    using Callback_mfem__Solver__GetRestriction___const = int (*)(void* state, void** result);
+    using Callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector = int (*)(void* state, const void* arg0, const void* arg1, void* arg2);
+    using Callback_mfem__Solver__SetOperator_const_mfem__Operator = int (*)(void* state, const void* arg0);
+
+    using mfem::Solver::AbsMult;
+    using mfem::Solver::AbsMultTranspose;
+    using mfem::Solver::AddMult;
+    using mfem::Solver::AddMultTranspose;
+    using mfem::Solver::AssembleDiagonal;
+    using mfem::Solver::GetGradient;
+    using mfem::Solver::GetMemoryClass;
+    using mfem::Solver::GetOutputProlongation;
+    using mfem::Solver::GetOutputRestriction;
+    using mfem::Solver::GetOutputRestrictionTranspose;
+    using mfem::Solver::GetProlongation;
+    using mfem::Solver::GetRestriction;
+    using mfem::Solver::Mult;
+    using mfem::Solver::MultTranspose;
+    using mfem::Solver::RecoverFEMSolution;
+    using mfem::Solver::SetOperator;
+
+    struct Callbacks {
+        Callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = nullptr;
+        Callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = nullptr;
+        Callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const = nullptr;
+        Callback_mfem__Solver__GetGradient_const_mfem__Vector___const callback_mfem__Solver__GetGradient_const_mfem__Vector___const = nullptr;
+        Callback_mfem__Solver__GetMemoryClass___const callback_mfem__Solver__GetMemoryClass___const = nullptr;
+        Callback_mfem__Solver__GetOutputProlongation___const callback_mfem__Solver__GetOutputProlongation___const = nullptr;
+        Callback_mfem__Solver__GetOutputRestriction___const callback_mfem__Solver__GetOutputRestriction___const = nullptr;
+        Callback_mfem__Solver__GetOutputRestrictionTranspose___const callback_mfem__Solver__GetOutputRestrictionTranspose___const = nullptr;
+        Callback_mfem__Solver__GetProlongation___const callback_mfem__Solver__GetProlongation___const = nullptr;
+        Callback_mfem__Solver__GetRestriction___const callback_mfem__Solver__GetRestriction___const = nullptr;
+        Callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector = nullptr;
+        Callback_mfem__Solver__SetOperator_const_mfem__Operator callback_mfem__Solver__SetOperator_const_mfem__Operator = nullptr;
+    };
+
+    NumbaDirector_mfem_Solver(int base_arg_0, bool base_arg_1, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
+    NumbaDirector_mfem_Solver(int base_arg_0, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
+    NumbaDirector_mfem_Solver(Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
+    NumbaDirector_mfem_Solver(int base_arg_0, int base_arg_1, bool base_arg_2, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
+    NumbaDirector_mfem_Solver(int base_arg_0, int base_arg_1, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
+    ~NumbaDirector_mfem_Solver();
+    void AbsMult(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void AbsMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void AddMult(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const override;
+    void AddMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const override;
+    void AssembleDiagonal(mfem::Vector& arg0) const override;
+    [[nodiscard]] mfem::Operator& GetGradient(const mfem::Vector& arg0) const override;
+    [[nodiscard]] mfem::MemoryClass GetMemoryClass() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputProlongation() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputRestriction() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputRestrictionTranspose() const override;
+    [[nodiscard]] const mfem::Operator* GetProlongation() const override;
+    [[nodiscard]] const mfem::Operator* GetRestriction() const override;
+    void Mult(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void MultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void RecoverFEMSolution(const mfem::Vector& arg0, const mfem::Vector& arg1, mfem::Vector& arg2) override;
+    void SetOperator(const mfem::Operator& arg0) override;
+
+private:
+    Callbacks callbacks_;
+    std::shared_ptr<DirectorLifetime> lifetime_;
+    std::shared_ptr<DirectorRuntime> runtime_;
+};
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    int base_arg_0, bool base_arg_1, unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    int base_arg_0, unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    int base_arg_0, int base_arg_1, bool base_arg_2, unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_Solver(
+    int base_arg_0, int base_arg_1, unsigned long long callback_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__Solver__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__Solver__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__Solver__GetProlongation___const_address,
+    unsigned long long callback_mfem__Solver__GetRestriction___const_address,
+    unsigned long long callback_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__Solver__SetOperator_const_mfem__Operator_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
 class NumbaDirector_mfem_TimeDependentOperator final : public mfem::TimeDependentOperator {
 public:
-    using Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* u, void* v);
+    using Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = int (*)(void* state, const void* arg0, void* arg1, double arg2);
+    using Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = int (*)(void* state, const void* arg0, void* arg1, double arg2);
+    using Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const = int (*)(void* state, void* arg0);
+    using Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const = int (*)(void* state, const void* arg0, void** result);
+    using Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const = int (*)(void* state, const void* arg0, void** result);
+    using Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const = int (*)(void* state, const void* arg0, const void* arg1, double arg2, void** result);
     using Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const = int (*)(void* state, int* result);
+    using Callback_mfem__TimeDependentOperator__GetMemoryClass___const = int (*)(void* state, int* result);
+    using Callback_mfem__TimeDependentOperator__GetOutputProlongation___const = int (*)(void* state, void** result);
+    using Callback_mfem__TimeDependentOperator__GetOutputRestriction___const = int (*)(void* state, void** result);
+    using Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const = int (*)(void* state, void** result);
+    using Callback_mfem__TimeDependentOperator__GetProlongation___const = int (*)(void* state, void** result);
+    using Callback_mfem__TimeDependentOperator__GetRestriction___const = int (*)(void* state, void** result);
     using Callback_mfem__TimeDependentOperator__GetTime___const = int (*)(void* state, double* result);
-    using Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* u, const void* k, void* v);
-    using Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector = int (*)(void* state, double gamma, const void* u, void* k);
+    using Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, const void* arg1, void* arg2);
+    using Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector = int (*)(void* state, double arg0, const void* arg1, void* arg2);
     using Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const = int (*)(void* state, int* result);
     using Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const = int (*)(void* state, int* result);
-    using Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* u, void* k);
-    using Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t = int (*)(void* state, const void* y, const void* v, int jok, int* jcur, double gamma, int* result);
-    using Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t = int (*)(void* state, const void* r, void* dk, double tol, int* result);
-    using Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector = int (*)(void* state, const void* x, void* v, int* result);
+    using Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const = int (*)(void* state, const void* arg0, void* arg1);
+    using Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector = int (*)(void* state, const void* arg0, const void* arg1, void* arg2);
+    using Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t = int (*)(void* state, const void* arg0, const void* arg1, int arg2, int* arg3, double arg4, int* result);
+    using Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t = int (*)(void* state, const void* arg0, void* arg1, double arg2, int* result);
+    using Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector = int (*)(void* state, const void* arg0, void* arg1, int* result);
     using Callback_mfem__TimeDependentOperator__SUNMassSetup = int (*)(void* state, int* result);
-    using Callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t = int (*)(void* state, const void* b, void* x, double tol, int* result);
-    using Callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode = int (*)(void* state, int new_eval_mode);
-    using Callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t = int (*)(void* state, double t_);
+    using Callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t = int (*)(void* state, const void* arg0, void* arg1, double arg2, int* result);
+    using Callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode = int (*)(void* state, int arg0);
+    using Callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t = int (*)(void* state, double arg0);
 
+    using mfem::TimeDependentOperator::AbsMult;
+    using mfem::TimeDependentOperator::AbsMultTranspose;
+    using mfem::TimeDependentOperator::AddMult;
+    using mfem::TimeDependentOperator::AddMultTranspose;
+    using mfem::TimeDependentOperator::AssembleDiagonal;
     using mfem::TimeDependentOperator::ExplicitMult;
+    using mfem::TimeDependentOperator::GetExplicitGradient;
+    using mfem::TimeDependentOperator::GetGradient;
+    using mfem::TimeDependentOperator::GetImplicitGradient;
     using mfem::TimeDependentOperator::GetImplicitVariableType;
+    using mfem::TimeDependentOperator::GetMemoryClass;
+    using mfem::TimeDependentOperator::GetOutputProlongation;
+    using mfem::TimeDependentOperator::GetOutputRestriction;
+    using mfem::TimeDependentOperator::GetOutputRestrictionTranspose;
+    using mfem::TimeDependentOperator::GetProlongation;
+    using mfem::TimeDependentOperator::GetRestriction;
     using mfem::TimeDependentOperator::GetTime;
     using mfem::TimeDependentOperator::ImplicitMult;
     using mfem::TimeDependentOperator::ImplicitSolve;
     using mfem::TimeDependentOperator::ImplicitVarTypeIsSlope;
     using mfem::TimeDependentOperator::ImplicitVarTypeIsState;
     using mfem::TimeDependentOperator::Mult;
+    using mfem::TimeDependentOperator::MultTranspose;
+    using mfem::TimeDependentOperator::RecoverFEMSolution;
     using mfem::TimeDependentOperator::SUNImplicitSetup;
     using mfem::TimeDependentOperator::SUNImplicitSolve;
     using mfem::TimeDependentOperator::SUNMassMult;
@@ -295,14 +678,30 @@ public:
     using mfem::TimeDependentOperator::SetTime;
 
     struct Callbacks {
+        Callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = nullptr;
+        Callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const = nullptr;
+        Callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const = nullptr;
         Callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const = nullptr;
         Callback_mfem__TimeDependentOperator__GetImplicitVariableType___const callback_mfem__TimeDependentOperator__GetImplicitVariableType___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetMemoryClass___const callback_mfem__TimeDependentOperator__GetMemoryClass___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetOutputProlongation___const callback_mfem__TimeDependentOperator__GetOutputProlongation___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetOutputRestriction___const callback_mfem__TimeDependentOperator__GetOutputRestriction___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetProlongation___const callback_mfem__TimeDependentOperator__GetProlongation___const = nullptr;
+        Callback_mfem__TimeDependentOperator__GetRestriction___const callback_mfem__TimeDependentOperator__GetRestriction___const = nullptr;
         Callback_mfem__TimeDependentOperator__GetTime___const callback_mfem__TimeDependentOperator__GetTime___const = nullptr;
         Callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const = nullptr;
         Callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector = nullptr;
         Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const = nullptr;
         Callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const = nullptr;
         Callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const = nullptr;
+        Callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector = nullptr;
         Callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t = nullptr;
         Callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t = nullptr;
         Callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector = nullptr;
@@ -320,21 +719,37 @@ public:
     NumbaDirector_mfem_TimeDependentOperator(int base_arg_0, int base_arg_1, double base_arg_2, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
     NumbaDirector_mfem_TimeDependentOperator(int base_arg_0, int base_arg_1, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
     ~NumbaDirector_mfem_TimeDependentOperator();
-    void ExplicitMult(const mfem::Vector& u, mfem::Vector& v) const override;
+    void AbsMult(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void AbsMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void AddMult(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const override;
+    void AddMultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) const override;
+    void AssembleDiagonal(mfem::Vector& arg0) const override;
+    void ExplicitMult(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    [[nodiscard]] mfem::Operator& GetExplicitGradient(const mfem::Vector& arg0) const override;
+    [[nodiscard]] mfem::Operator& GetGradient(const mfem::Vector& arg0) const override;
+    [[nodiscard]] mfem::Operator& GetImplicitGradient(const mfem::Vector& arg0, const mfem::Vector& arg1, double arg2) const override;
     [[nodiscard]] mfem::TimeDependentOperator::ImplicitVariableType GetImplicitVariableType() const override;
+    [[nodiscard]] mfem::MemoryClass GetMemoryClass() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputProlongation() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputRestriction() const override;
+    [[nodiscard]] const mfem::Operator* GetOutputRestrictionTranspose() const override;
+    [[nodiscard]] const mfem::Operator* GetProlongation() const override;
+    [[nodiscard]] const mfem::Operator* GetRestriction() const override;
     [[nodiscard]] double GetTime() const override;
-    void ImplicitMult(const mfem::Vector& u, const mfem::Vector& k, mfem::Vector& v) const override;
-    void ImplicitSolve(double gamma, const mfem::Vector& u, mfem::Vector& k) override;
+    void ImplicitMult(const mfem::Vector& arg0, const mfem::Vector& arg1, mfem::Vector& arg2) const override;
+    void ImplicitSolve(double arg0, const mfem::Vector& arg1, mfem::Vector& arg2) override;
     [[nodiscard]] bool ImplicitVarTypeIsSlope() const override;
     [[nodiscard]] bool ImplicitVarTypeIsState() const override;
-    void Mult(const mfem::Vector& u, mfem::Vector& k) const override;
-    [[nodiscard]] int SUNImplicitSetup(const mfem::Vector& y, const mfem::Vector& v, int jok, int* jcur, double gamma) override;
-    [[nodiscard]] int SUNImplicitSolve(const mfem::Vector& r, mfem::Vector& dk, double tol) override;
-    [[nodiscard]] int SUNMassMult(const mfem::Vector& x, mfem::Vector& v) override;
+    void Mult(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void MultTranspose(const mfem::Vector& arg0, mfem::Vector& arg1) const override;
+    void RecoverFEMSolution(const mfem::Vector& arg0, const mfem::Vector& arg1, mfem::Vector& arg2) override;
+    [[nodiscard]] int SUNImplicitSetup(const mfem::Vector& arg0, const mfem::Vector& arg1, int arg2, int* arg3, double arg4) override;
+    [[nodiscard]] int SUNImplicitSolve(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) override;
+    [[nodiscard]] int SUNMassMult(const mfem::Vector& arg0, mfem::Vector& arg1) override;
     [[nodiscard]] int SUNMassSetup() override;
-    [[nodiscard]] int SUNMassSolve(const mfem::Vector& b, mfem::Vector& x, double tol) override;
-    void SetEvalMode(const mfem::TimeDependentOperator::EvalMode new_eval_mode) override;
-    void SetTime(double t_) override;
+    [[nodiscard]] int SUNMassSolve(const mfem::Vector& arg0, mfem::Vector& arg1, double arg2) override;
+    void SetEvalMode(const mfem::TimeDependentOperator::EvalMode arg0) override;
+    void SetTime(double arg0) override;
 
 private:
     Callbacks callbacks_;
@@ -343,83 +758,30 @@ private:
 };
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, double base_arg_1, int base_arg_2, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSetup_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t_address,
-    unsigned long long state_lease,
-    unsigned long long state_lease_address,
-    unsigned long long state_lease_is_alive,
-    unsigned long long state_lease_close,
-    unsigned long long state_lease_release,
-    unsigned long long state_object_address_at) noexcept;
-
-DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, double base_arg_1, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSetup_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t_address,
-    unsigned long long state_lease,
-    unsigned long long state_lease_address,
-    unsigned long long state_lease_is_alive,
-    unsigned long long state_lease_close,
-    unsigned long long state_lease_release,
-    unsigned long long state_object_address_at) noexcept;
-
-DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSetup_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode_address,
-    unsigned long long callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t_address,
-    unsigned long long state_lease,
-    unsigned long long state_lease_address,
-    unsigned long long state_lease_is_alive,
-    unsigned long long state_lease_close,
-    unsigned long long state_lease_release,
-    unsigned long long state_object_address_at) noexcept;
-
-DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
+    int base_arg_0, double base_arg_1, int base_arg_2, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -435,14 +797,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
     unsigned long long state_object_address_at) noexcept;
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, int base_arg_1, double base_arg_2, int base_arg_3, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    int base_arg_0, double base_arg_1, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -458,14 +836,30 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
     unsigned long long state_object_address_at) noexcept;
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, int base_arg_1, double base_arg_2, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    int base_arg_0, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -481,14 +875,147 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
     unsigned long long state_object_address_at) noexcept;
 
 DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
-    int base_arg_0, int base_arg_1, unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
     unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSetup_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
+    int base_arg_0, int base_arg_1, double base_arg_2, int base_arg_3, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSetup_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
+    int base_arg_0, int base_arg_1, double base_arg_2, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSetup_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode_address,
+    unsigned long long callback_mfem__TimeDependentOperator__SetTime_const_mfem__real_t_address,
+    unsigned long long state_lease,
+    unsigned long long state_lease_address,
+    unsigned long long state_lease_is_alive,
+    unsigned long long state_lease_close,
+    unsigned long long state_lease_release,
+    unsigned long long state_object_address_at) noexcept;
+
+DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
+    int base_arg_0, int base_arg_1, unsigned long long callback_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetImplicitVariableType___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetMemoryClass___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetProlongation___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetRestriction___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__GetTime___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__ImplicitVarTypeIsState___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const_address,
+    unsigned long long callback_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t_address,
     unsigned long long callback_mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector_address,
@@ -505,7 +1032,7 @@ DirectorHandle* create_nsb_director_mfem_TimeDependentOperator(
 
 class NumbaDirector_mfem_VectorCoefficient final : public mfem::VectorCoefficient {
 public:
-    using Callback_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint = int (*)(void* state, void* V, void* T, const void* ip);
+    using Callback_mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint = int (*)(void* state, void* arg0, void* arg1, const void* arg2);
 
     using mfem::VectorCoefficient::Eval;
 
@@ -515,7 +1042,7 @@ public:
 
     NumbaDirector_mfem_VectorCoefficient(int base_arg_0, Callbacks callbacks, std::shared_ptr<DirectorLifetime> lifetime, std::shared_ptr<DirectorRuntime> runtime);
     ~NumbaDirector_mfem_VectorCoefficient();
-    void Eval(mfem::Vector& V, mfem::ElementTransformation& T, const mfem::IntegrationPoint& ip) override;
+    void Eval(mfem::Vector& arg0, mfem::ElementTransformation& arg1, const mfem::IntegrationPoint& arg2) override;
 
 private:
     Callbacks callbacks_;
@@ -551,14 +1078,194 @@ void nsb_director_profile_reset_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix_
 void nsb_director_profile_enable_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint(bool enabled) noexcept;
 unsigned long long nsb_director_profile_calls_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint() noexcept;
 unsigned long long nsb_director_profile_nanoseconds_mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint() noexcept;
+void nsb_director_profile_reset_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__AssembleDiagonal_mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__AssembleDiagonal_mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__AssembleDiagonal_mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__AssembleDiagonal_mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__GetGradient_const_mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__GetGradient_const_mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetGradient_const_mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetGradient_const_mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__GetMemoryClass___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__GetMemoryClass___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetMemoryClass___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetMemoryClass___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__GetOutputProlongation___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__GetOutputProlongation___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetOutputProlongation___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetOutputProlongation___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__GetOutputRestriction___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__GetOutputRestriction___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetOutputRestriction___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetOutputRestriction___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__GetOutputRestrictionTranspose___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__GetOutputRestrictionTranspose___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetOutputRestrictionTranspose___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetOutputRestrictionTranspose___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__GetProlongation___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__GetProlongation___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetProlongation___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetProlongation___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__GetRestriction___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__GetRestriction___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__GetRestriction___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__GetRestriction___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
+void nsb_director_profile_enable_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
+void nsb_director_profile_reset_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__AssembleDiagonal_mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__AssembleDiagonal_mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__AssembleDiagonal_mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__AssembleDiagonal_mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__GetGradient_const_mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__GetGradient_const_mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetGradient_const_mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetGradient_const_mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__GetMemoryClass___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__GetMemoryClass___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetMemoryClass___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetMemoryClass___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__GetOutputProlongation___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__GetOutputProlongation___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetOutputProlongation___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetOutputProlongation___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__GetOutputRestriction___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__GetOutputRestriction___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetOutputRestriction___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetOutputRestriction___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__GetOutputRestrictionTranspose___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__GetOutputRestrictionTranspose___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetOutputRestrictionTranspose___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetOutputRestrictionTranspose___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__GetProlongation___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__GetProlongation___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetProlongation___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetProlongation___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__GetRestriction___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__GetRestriction___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__GetRestriction___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__GetRestriction___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
+void nsb_director_profile_enable_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
+void nsb_director_profile_reset_mfem__Solver__SetOperator_const_mfem__Operator() noexcept;
+void nsb_director_profile_enable_mfem__Solver__SetOperator_const_mfem__Operator(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__Solver__SetOperator_const_mfem__Operator() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__Solver__SetOperator_const_mfem__Operator() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const() noexcept;
 void nsb_director_profile_reset_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const() noexcept;
 void nsb_director_profile_enable_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
 unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const() noexcept;
 unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const() noexcept;
 void nsb_director_profile_reset_mfem__TimeDependentOperator__GetImplicitVariableType___const() noexcept;
 void nsb_director_profile_enable_mfem__TimeDependentOperator__GetImplicitVariableType___const(bool enabled) noexcept;
 unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetImplicitVariableType___const() noexcept;
 unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetImplicitVariableType___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetMemoryClass___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetMemoryClass___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetMemoryClass___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetMemoryClass___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetOutputProlongation___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetOutputProlongation___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetOutputProlongation___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetOutputProlongation___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetOutputRestriction___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetOutputRestriction___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetOutputRestriction___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetOutputRestriction___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetProlongation___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetProlongation___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetProlongation___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetProlongation___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__GetRestriction___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__GetRestriction___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetRestriction___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__GetRestriction___const() noexcept;
 void nsb_director_profile_reset_mfem__TimeDependentOperator__GetTime___const() noexcept;
 void nsb_director_profile_enable_mfem__TimeDependentOperator__GetTime___const(bool enabled) noexcept;
 unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__GetTime___const() noexcept;
@@ -583,6 +1290,14 @@ void nsb_director_profile_reset_mfem__TimeDependentOperator__Mult_const_mfem__Ve
 void nsb_director_profile_enable_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
 unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept;
 unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const() noexcept;
+void nsb_director_profile_reset_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
+void nsb_director_profile_enable_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector(bool enabled) noexcept;
+unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
+unsigned long long nsb_director_profile_nanoseconds_mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector() noexcept;
 void nsb_director_profile_reset_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t() noexcept;
 void nsb_director_profile_enable_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t(bool enabled) noexcept;
 unsigned long long nsb_director_profile_calls_mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t() noexcept;

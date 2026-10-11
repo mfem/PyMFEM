@@ -6,6 +6,26 @@
 #include <type_traits>
 #include <utility>
 
+template<class D, class B, class = void> struct nsb_cast_traits_mfem__ser_densemat_nonvirtual : std::false_type {};
+template<class D, class B> struct nsb_cast_traits_mfem__ser_densemat_nonvirtual<D, B, std::void_t<decltype(static_cast<D*>(std::declval<B*>()))>> : std::true_type {};
+template<class D, class B> struct nsb_cast_traits_mfem__ser_densemat {
+    static constexpr bool valid = std::is_convertible_v<D*, B*>;
+    static constexpr unsigned flags = valid ? (1u | (nsb_cast_traits_mfem__ser_densemat_nonvirtual<D, B>::value ? 2u : 0u) | (std::is_polymorphic_v<B> ? 4u : 0u)) : 0u;
+    static void* up(void* p) noexcept {
+        if constexpr (valid) return static_cast<B*>(static_cast<D*>(p));
+        else return nullptr;
+    }
+    static void* down(void* p) noexcept {
+        if constexpr (valid && std::is_polymorphic_v<B>) return dynamic_cast<D*>(static_cast<B*>(p));
+        else return nullptr;
+    }
+};
+static unsigned nsb_cast_mfem_DenseMatrix_12_flags() noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::flags; }
+static void* nsb_cast_mfem_DenseMatrix_12_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::up(p); }
+static void* nsb_cast_mfem_DenseMatrix_12_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::down(p); }
+static unsigned nsb_cast_mfem_DenseMatrix_13_flags() noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_DenseMatrix_13_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_DenseMatrix_13_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::down(p); }
 static mfem::DenseMatrix *nsb_borrowed_mfem_DenseMatrix(unsigned long long address) {
     return reinterpret_cast<mfem::DenseMatrix *>(address);
 }
@@ -2261,10 +2281,16 @@ static unsigned long long nsb_function_address_mfem__ser_densemat(const char* na
     if (std::strcmp(name, "nsb_mfem_DenseTensor_construct_3") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseTensor_construct_3);
     if (std::strcmp(name, "nsb_mfem_DenseTensor_construct_4") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseTensor_construct_4);
     if (std::strcmp(name, "nsb_mfem_DenseTensor_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseTensor_destroy);
+    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_12_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_12_up);
+    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_12_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_12_down);
+    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_13_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_13_up);
+    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_13_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_13_down);
     return 0;
 }
 %}
 
+extern unsigned nsb_cast_mfem_DenseMatrix_12_flags() noexcept;
+extern unsigned nsb_cast_mfem_DenseMatrix_13_flags() noexcept;
 extern mfem::DenseMatrix *nsb_borrowed_mfem_DenseMatrix(unsigned long long address);
 %newobject nsb_owned_mfem_DenseMatrix;
 extern mfem::DenseMatrix *nsb_owned_mfem_DenseMatrix(unsigned long long address);

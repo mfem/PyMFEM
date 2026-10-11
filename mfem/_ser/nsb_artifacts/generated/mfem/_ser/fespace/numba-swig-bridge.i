@@ -37,6 +37,30 @@ static int nsb_mfem_FiniteElementSpace_5_Nonconforming(const void* self, int* re
     return 0;
 }
 
+static int nsb_mfem_FiniteElementSpace_6_SetProlongation(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::FiniteElementSpace*>(self)->SetProlongation(*static_cast<const mfem::SparseMatrix*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_7_SetRestriction(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::FiniteElementSpace*>(self)->SetRestriction(*static_cast<const mfem::SparseMatrix*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_FiniteElementSpace_8_SetElementOrder(void* self, int arg0, int arg1) noexcept {
     if (self == nullptr) {
         return 1;
@@ -79,6 +103,110 @@ static int nsb_mfem_FiniteElementSpace_11_IsVariableOrder(const void* self, int*
     }
     try {
         *result = static_cast<const mfem::FiniteElementSpace*>(self)->IsVariableOrder() ? 1 : 0;
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_12_GetConformingProlongation(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::FiniteElementSpace*>(self)->GetConformingProlongation();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_13_GetConformingRestriction(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::FiniteElementSpace*>(self)->GetConformingRestriction();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_14_GetHpConformingRestriction(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::FiniteElementSpace*>(self)->GetHpConformingRestriction();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_15_GetProlongationMatrix(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::FiniteElementSpace*>(self)->GetProlongationMatrix();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_16_GetRestrictionTransposeOperator(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::FiniteElementSpace*>(self)->GetRestrictionTransposeOperator();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_17_GetRestrictionOperator(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::FiniteElementSpace*>(self)->GetRestrictionOperator();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_18_GetRestrictionMatrix(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::FiniteElementSpace*>(self)->GetRestrictionMatrix();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_19_GetHpRestrictionMatrix(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::FiniteElementSpace*>(self)->GetHpRestrictionMatrix();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
     } catch (...) {
         return 2;
     }
@@ -1216,6 +1344,45 @@ static int nsb_mfem_FiniteElementSpace_136_ConvertFromConformingVDofs(void* self
     return 0;
 }
 
+static int nsb_mfem_FiniteElementSpace_137_D2C_GlobalRestrictionMatrix(void* self, void* arg0, void** result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<mfem::FiniteElementSpace*>(self)->D2C_GlobalRestrictionMatrix(static_cast<mfem::FiniteElementSpace*>(arg0));
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_138_D2Const_GlobalRestrictionMatrix(void* self, void* arg0, void** result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<mfem::FiniteElementSpace*>(self)->D2Const_GlobalRestrictionMatrix(static_cast<mfem::FiniteElementSpace*>(arg0));
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_139_H2L_GlobalRestrictionMatrix(void* self, void* arg0, void** result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<mfem::FiniteElementSpace*>(self)->H2L_GlobalRestrictionMatrix(static_cast<mfem::FiniteElementSpace*>(arg0));
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_FiniteElementSpace_142_Update(void* self, bool arg0) noexcept {
     if (self == nullptr) {
         return 1;
@@ -1246,6 +1413,19 @@ static int nsb_mfem_FiniteElementSpace_146_PRefinementSupported(void* self, int*
     }
     try {
         *result = static_cast<mfem::FiniteElementSpace*>(self)->PRefinementSupported() ? 1 : 0;
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_FiniteElementSpace_147_GetUpdateOperator(void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<mfem::FiniteElementSpace*>(self)->GetUpdateOperator();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
     } catch (...) {
         return 2;
     }
@@ -1391,6 +1571,12 @@ static unsigned long long nsb_function_address_mfem__ser_fespace(const char* nam
     if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_5_Nonconforming") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_5_Nonconforming);
     }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_6_SetProlongation") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_6_SetProlongation);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_7_SetRestriction") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_7_SetRestriction);
+    }
     if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_8_SetElementOrder") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_8_SetElementOrder);
     }
@@ -1402,6 +1588,30 @@ static unsigned long long nsb_function_address_mfem__ser_fespace(const char* nam
     }
     if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_11_IsVariableOrder") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_11_IsVariableOrder);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_12_GetConformingProlongation") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_12_GetConformingProlongation);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_13_GetConformingRestriction") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_13_GetConformingRestriction);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_14_GetHpConformingRestriction") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_14_GetHpConformingRestriction);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_15_GetProlongationMatrix") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_15_GetProlongationMatrix);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_16_GetRestrictionTransposeOperator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_16_GetRestrictionTransposeOperator);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_17_GetRestrictionOperator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_17_GetRestrictionOperator);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_18_GetRestrictionMatrix") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_18_GetRestrictionMatrix);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_19_GetHpRestrictionMatrix") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_19_GetHpRestrictionMatrix);
     }
     if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_27_GetOrder") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_27_GetOrder);
@@ -1682,6 +1892,15 @@ static unsigned long long nsb_function_address_mfem__ser_fespace(const char* nam
     if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_136_ConvertFromConformingVDofs") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_136_ConvertFromConformingVDofs);
     }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_137_D2C_GlobalRestrictionMatrix") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_137_D2C_GlobalRestrictionMatrix);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_138_D2Const_GlobalRestrictionMatrix") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_138_D2Const_GlobalRestrictionMatrix);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_139_H2L_GlobalRestrictionMatrix") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_139_H2L_GlobalRestrictionMatrix);
+    }
     if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_142_Update") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_142_Update);
     }
@@ -1690,6 +1909,9 @@ static unsigned long long nsb_function_address_mfem__ser_fespace(const char* nam
     }
     if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_146_PRefinementSupported") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_146_PRefinementSupported);
+    }
+    if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_147_GetUpdateOperator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_147_GetUpdateOperator);
     }
     if (std::strcmp(name, "nsb_mfem_FiniteElementSpace_150_SetUpdateOperatorOwner") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_FiniteElementSpace_150_SetUpdateOperatorOwner);

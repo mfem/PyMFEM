@@ -6,6 +6,135 @@
 #include <type_traits>
 #include <utility>
 
+template<class D, class B, class = void> struct nsb_cast_traits_mfem__ser_nonlinearform_nonvirtual : std::false_type {};
+template<class D, class B> struct nsb_cast_traits_mfem__ser_nonlinearform_nonvirtual<D, B, std::void_t<decltype(static_cast<D*>(std::declval<B*>()))>> : std::true_type {};
+template<class D, class B> struct nsb_cast_traits_mfem__ser_nonlinearform {
+    static constexpr bool valid = std::is_convertible_v<D*, B*>;
+    static constexpr unsigned flags = valid ? (1u | (nsb_cast_traits_mfem__ser_nonlinearform_nonvirtual<D, B>::value ? 2u : 0u) | (std::is_polymorphic_v<B> ? 4u : 0u)) : 0u;
+    static void* up(void* p) noexcept {
+        if constexpr (valid) return static_cast<B*>(static_cast<D*>(p));
+        else return nullptr;
+    }
+    static void* down(void* p) noexcept {
+        if constexpr (valid && std::is_polymorphic_v<B>) return dynamic_cast<D*>(static_cast<B*>(p));
+        else return nullptr;
+    }
+};
+static unsigned nsb_cast_mfem_BlockNonlinearForm_7_flags() noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_BlockNonlinearForm_7_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_BlockNonlinearForm_7_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_NonlinearForm_35_flags() noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_NonlinearForm_35_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_NonlinearForm_35_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::down(p); }
+static mfem::BlockNonlinearForm *nsb_borrowed_mfem_BlockNonlinearForm(unsigned long long address) {
+    return reinterpret_cast<mfem::BlockNonlinearForm *>(address);
+}
+static mfem::BlockNonlinearForm *nsb_owned_mfem_BlockNonlinearForm(unsigned long long address) {
+    return reinterpret_cast<mfem::BlockNonlinearForm *>(address);
+}
+
+static int nsb_mfem_BlockNonlinearForm_0_FESpace(void* self, int arg0, void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<mfem::BlockNonlinearForm*>(self)->FESpace(arg0);
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_BlockNonlinearForm_1_FESpace(const void* self, int arg0, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::BlockNonlinearForm*>(self)->FESpace(arg0);
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_BlockNonlinearForm_3_GetBlockOffsets(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = &(static_cast<const mfem::BlockNonlinearForm*>(self)->GetBlockOffsets());
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_BlockNonlinearForm_4_GetBlockTrueOffsets(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = &(static_cast<const mfem::BlockNonlinearForm*>(self)->GetBlockTrueOffsets());
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_BlockNonlinearForm_14_GetEnergy(const void* self, const void* arg0, double* result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        *result = static_cast<const mfem::BlockNonlinearForm*>(self)->GetEnergy(*static_cast<const mfem::Vector*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_BlockNonlinearForm_15_Mult(const void* self, const void* arg0, void* arg1) noexcept {
+    if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<const mfem::BlockNonlinearForm*>(self)->Mult(*static_cast<const mfem::Vector*>(arg0), *static_cast<mfem::Vector*>(arg1));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_BlockNonlinearForm_16_GetGradient(const void* self, const void* arg0, void** result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = &(static_cast<const mfem::BlockNonlinearForm*>(self)->GetGradient(*static_cast<const mfem::Vector*>(arg0)));
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_BlockNonlinearForm_construct_0(void** result) noexcept {
+    if (result == nullptr) return 1;
+    try {
+        *result = new mfem::BlockNonlinearForm();
+    } catch (...) { return 2; }
+    return 0;
+}
+
+static void nsb_mfem_BlockNonlinearForm_destroy(void* storage, std::size_t, void*) noexcept {
+    if (storage == nullptr) return;
+    delete *reinterpret_cast<mfem::BlockNonlinearForm**>(storage);
+}
+
 static mfem::NonlinearForm *nsb_borrowed_mfem_NonlinearForm(unsigned long long address) {
     return reinterpret_cast<mfem::NonlinearForm *>(address);
 }
@@ -136,6 +265,32 @@ static int nsb_mfem_NonlinearForm_23_Mult(const void* self, const void* arg0, vo
     return 0;
 }
 
+static int nsb_mfem_NonlinearForm_24_GetGradient(const void* self, const void* arg0, void** result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = &(static_cast<const mfem::NonlinearForm*>(self)->GetGradient(*static_cast<const mfem::Vector*>(arg0)));
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_NonlinearForm_25_GetGradient(const void* self, const void* arg0, bool arg1, void** result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = &(static_cast<const mfem::NonlinearForm*>(self)->GetGradient(*static_cast<const mfem::Vector*>(arg0), arg1));
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_NonlinearForm_26_Update(void* self) noexcept {
     if (self == nullptr) {
         return 1;
@@ -154,6 +309,32 @@ static int nsb_mfem_NonlinearForm_27_Setup(void* self) noexcept {
     }
     try {
         static_cast<mfem::NonlinearForm*>(self)->Setup();
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_NonlinearForm_28_GetProlongation(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::NonlinearForm*>(self)->GetProlongation();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_NonlinearForm_29_GetRestriction(const void* self, const void** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::NonlinearForm*>(self)->GetRestriction();
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
     } catch (...) {
         return 2;
     }
@@ -189,6 +370,29 @@ static unsigned long long nsb_function_address_mfem__ser_nonlinearform(const cha
     if (name == nullptr) {
         return 0;
     }
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_0_FESpace") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_0_FESpace);
+    }
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_1_FESpace") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_1_FESpace);
+    }
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_3_GetBlockOffsets") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_3_GetBlockOffsets);
+    }
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_4_GetBlockTrueOffsets") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_4_GetBlockTrueOffsets);
+    }
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_14_GetEnergy") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_14_GetEnergy);
+    }
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_15_Mult") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_15_Mult);
+    }
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_16_GetGradient") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_16_GetGradient);
+    }
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_construct_0);
+    if (std::strcmp(name, "nsb_mfem_BlockNonlinearForm_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockNonlinearForm_destroy);
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_1_FESpace") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_1_FESpace);
     }
@@ -219,21 +423,42 @@ static unsigned long long nsb_function_address_mfem__ser_nonlinearform(const cha
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_23_Mult") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_23_Mult);
     }
+    if (std::strcmp(name, "nsb_mfem_NonlinearForm_24_GetGradient") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_24_GetGradient);
+    }
+    if (std::strcmp(name, "nsb_mfem_NonlinearForm_25_GetGradient") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_25_GetGradient);
+    }
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_26_Update") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_26_Update);
     }
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_27_Setup") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_27_Setup);
     }
+    if (std::strcmp(name, "nsb_mfem_NonlinearForm_28_GetProlongation") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_28_GetProlongation);
+    }
+    if (std::strcmp(name, "nsb_mfem_NonlinearForm_29_GetRestriction") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_29_GetRestriction);
+    }
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_30_UseExternalIntegrators") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_30_UseExternalIntegrators);
     }
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_construct_0);
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_destroy);
+    if (std::strcmp(name, "nsb_cast_mfem_BlockNonlinearForm_7_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockNonlinearForm_7_up);
+    if (std::strcmp(name, "nsb_cast_mfem_BlockNonlinearForm_7_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockNonlinearForm_7_down);
+    if (std::strcmp(name, "nsb_cast_mfem_NonlinearForm_35_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NonlinearForm_35_up);
+    if (std::strcmp(name, "nsb_cast_mfem_NonlinearForm_35_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NonlinearForm_35_down);
     return 0;
 }
 %}
 
+extern unsigned nsb_cast_mfem_BlockNonlinearForm_7_flags() noexcept;
+extern unsigned nsb_cast_mfem_NonlinearForm_35_flags() noexcept;
+extern mfem::BlockNonlinearForm *nsb_borrowed_mfem_BlockNonlinearForm(unsigned long long address);
+%newobject nsb_owned_mfem_BlockNonlinearForm;
+extern mfem::BlockNonlinearForm *nsb_owned_mfem_BlockNonlinearForm(unsigned long long address);
 extern mfem::NonlinearForm *nsb_borrowed_mfem_NonlinearForm(unsigned long long address);
 %newobject nsb_owned_mfem_NonlinearForm;
 extern mfem::NonlinearForm *nsb_owned_mfem_NonlinearForm(unsigned long long address);

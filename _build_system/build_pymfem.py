@@ -217,7 +217,7 @@ def generate_wrapper(do_parallel):
         serial_bridge_modules = (
             "vector", "densemat", "array", "doftrans", "fespace", "fe_base",
             "eltrans", "intrules", "coefficient", "lininteg", "nonlinearform",
-            "hyperbolic", "operators",
+            "hyperbolic", "operators", "matrix", "sparsemat", "solvers", "blockoperator",
         )
         serial_bridge_interfaces = {module_name + ".i"
                                     for module_name in serial_bridge_modules}

@@ -7,6 +7,30 @@ state_backend = "mfem"
 state_module = "mfem._nsb_state_bindings"
 
 [[interfaces]]
+interface = "mfem/_ser/blockoperator.i"
+python_module = "mfem._ser.blockoperator"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/matrix.i"
+python_module = "mfem._ser.matrix"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/sparsemat.i"
+python_module = "mfem._ser.sparsemat"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/solvers.i"
+python_module = "mfem._ser.solvers"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
 interface = "mfem/_ser/vector.i"
 python_module = "mfem._ser.vector"
 include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]

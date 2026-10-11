@@ -2,12 +2,12 @@
   "schema_version": 2,
   "artifact_schema_version": 1,
   "bridge_id": "pymfem-ser",
-  "generator_version": "0.14.0",
-  "required_runtime_version": "0.14.0",
+  "generator_version": "0.15.0",
+  "required_runtime_version": "0.15.0",
   "state_backend": "mfem",
   "state_module": "mfem._nsb_state_bindings",
-  "state_abi": 6,
-  "swig_version": "SWIG Version 4.5.0",
+  "state_abi": 7,
+  "swig_version": "SWIG Version 4.5.1",
   "inventory": "metadata/inventory.json",
   "ordinary_descriptor": "metadata/ordinary_descriptor.json",
   "director_descriptor": "metadata/director_descriptor.json",
@@ -15,6 +15,24 @@
     "mfem._ser.array": {
       "interface": "mfem/_ser/array.i",
       "helper_fragment": "generated/mfem/_ser/array/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_ser",
+        "mfem/common",
+        "external/mfem/cmbuild_ser",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_SER"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._ser.blockoperator": {
+      "interface": "mfem/_ser/blockoperator.i",
+      "helper_fragment": "generated/mfem/_ser/blockoperator/numba-swig-bridge.i",
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
@@ -192,6 +210,24 @@
         "NUMBA_SWIG_BRIDGE_GENERATED"
       ]
     },
+    "mfem._ser.matrix": {
+      "interface": "mfem/_ser/matrix.i",
+      "helper_fragment": "generated/mfem/_ser/matrix/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_ser",
+        "mfem/common",
+        "external/mfem/cmbuild_ser",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_SER"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
     "mfem._ser.nonlinearform": {
       "interface": "mfem/_ser/nonlinearform.i",
       "helper_fragment": "generated/mfem/_ser/nonlinearform/numba-swig-bridge.i",
@@ -213,6 +249,42 @@
     "mfem._ser.operators": {
       "interface": "mfem/_ser/operators.i",
       "helper_fragment": "generated/mfem/_ser/operators/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_ser",
+        "mfem/common",
+        "external/mfem/cmbuild_ser",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_SER"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._ser.solvers": {
+      "interface": "mfem/_ser/solvers.i",
+      "helper_fragment": "generated/mfem/_ser/solvers/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_ser",
+        "mfem/common",
+        "external/mfem/cmbuild_ser",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_SER"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._ser.sparsemat": {
+      "interface": "mfem/_ser/sparsemat.i",
+      "helper_fragment": "generated/mfem/_ser/sparsemat/numba-swig-bridge.i",
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
@@ -271,6 +343,7 @@
     "director/metadata/generated_director.json",
     "director/swig/nsb-director-bridge.i",
     "generated/mfem/_ser/array/numba-swig-bridge.i",
+    "generated/mfem/_ser/blockoperator/numba-swig-bridge.i",
     "generated/mfem/_ser/coefficient/numba-swig-bridge.i",
     "generated/mfem/_ser/densemat/numba-swig-bridge.i",
     "generated/mfem/_ser/doftrans/numba-swig-bridge.i",
@@ -280,8 +353,11 @@
     "generated/mfem/_ser/hyperbolic/numba-swig-bridge.i",
     "generated/mfem/_ser/intrules/numba-swig-bridge.i",
     "generated/mfem/_ser/lininteg/numba-swig-bridge.i",
+    "generated/mfem/_ser/matrix/numba-swig-bridge.i",
     "generated/mfem/_ser/nonlinearform/numba-swig-bridge.i",
     "generated/mfem/_ser/operators/numba-swig-bridge.i",
+    "generated/mfem/_ser/solvers/numba-swig-bridge.i",
+    "generated/mfem/_ser/sparsemat/numba-swig-bridge.i",
     "generated/mfem/_ser/vector/numba-swig-bridge.i",
     "manifest.json",
     "metadata/director_descriptor.json",

@@ -10,6 +10,11 @@
         "interface": "mfem/_ser/array.i"
       },
       {
+        "module": "mfem._ser.blockoperator",
+        "swig_module": "blockoperator",
+        "interface": "mfem/_ser/blockoperator.i"
+      },
+      {
         "module": "mfem._ser.coefficient",
         "swig_module": "coefficient",
         "interface": "mfem/_ser/coefficient.i"
@@ -55,6 +60,11 @@
         "interface": "mfem/_ser/lininteg.i"
       },
       {
+        "module": "mfem._ser.matrix",
+        "swig_module": "matrix",
+        "interface": "mfem/_ser/matrix.i"
+      },
+      {
         "module": "mfem._ser.nonlinearform",
         "swig_module": "nonlinearform",
         "interface": "mfem/_ser/nonlinearform.i"
@@ -63,6 +73,16 @@
         "module": "mfem._ser.operators",
         "swig_module": "operators",
         "interface": "mfem/_ser/operators.i"
+      },
+      {
+        "module": "mfem._ser.solvers",
+        "swig_module": "solvers",
+        "interface": "mfem/_ser/solvers.i"
+      },
+      {
+        "module": "mfem._ser.sparsemat",
+        "swig_module": "sparsemat",
+        "interface": "mfem/_ser/sparsemat.i"
       },
       {
         "module": "mfem._ser.vector",
@@ -359,6 +379,1257 @@
       "skipped_constructors": []
     },
     {
+      "cxx_type": "mfem::Operator",
+      "owner_module": "mfem._ser.operators",
+      "source_interface": "mfem/_ser/operators.i",
+      "python_facade": "pymfem_Operator",
+      "python_proxy": "Operator",
+      "selection": "automatic",
+      "methods": [
+        {
+          "identity": "mfem::Operator::AbsMult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__Operator__AbsMult_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "AbsMult",
+          "signature": "void mfem::Operator::AbsMult(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::AbsMultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__Operator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "AbsMultTranspose",
+          "signature": "void mfem::Operator::AbsMultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::AddMult(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "symbol": "mfem__Operator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const",
+          "cxx_name": "AddMult",
+          "signature": "void mfem::Operator::AddMult(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "a",
+              "cxx_type": "double",
+              "declared_cxx_type": "const mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::AddMultTranspose(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "symbol": "mfem__Operator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const",
+          "cxx_name": "AddMultTranspose",
+          "signature": "void mfem::Operator::AddMultTranspose(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "a",
+              "cxx_type": "double",
+              "declared_cxx_type": "const mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::AssembleDiagonal(mfem::Vector&) const",
+          "symbol": "mfem__Operator__AssembleDiagonal_mfem__Vector___const",
+          "cxx_name": "AssembleDiagonal",
+          "signature": "void mfem::Operator::AssembleDiagonal(mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "diag",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::GetGradient(const mfem::Vector&) const",
+          "symbol": "mfem__Operator__GetGradient_const_mfem__Vector___const",
+          "cxx_name": "GetGradient",
+          "signature": "mfem::Operator& mfem::Operator::GetGradient(const mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "reference",
+            "const": false,
+            "c_abi_type": "void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "mfem::Operator&",
+            "nullable": false
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::GetMemoryClass() const",
+          "symbol": "mfem__Operator__GetMemoryClass___const",
+          "cxx_name": "GetMemoryClass",
+          "signature": "mfem::MemoryClass mfem::Operator::GetMemoryClass() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "enum",
+            "cxx_type": "mfem::MemoryClass",
+            "enum_cxx_type": "mfem::MemoryClass",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "mfem::MemoryClass"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::GetOutputProlongation() const",
+          "symbol": "mfem__Operator__GetOutputProlongation___const",
+          "cxx_name": "GetOutputProlongation",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputProlongation() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::GetOutputRestriction() const",
+          "symbol": "mfem__Operator__GetOutputRestriction___const",
+          "cxx_name": "GetOutputRestriction",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputRestriction() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::GetOutputRestrictionTranspose() const",
+          "symbol": "mfem__Operator__GetOutputRestrictionTranspose___const",
+          "cxx_name": "GetOutputRestrictionTranspose",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputRestrictionTranspose() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::GetProlongation() const",
+          "symbol": "mfem__Operator__GetProlongation___const",
+          "cxx_name": "GetProlongation",
+          "signature": "const mfem::Operator* mfem::Operator::GetProlongation() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::GetRestriction() const",
+          "symbol": "mfem__Operator__GetRestriction___const",
+          "cxx_name": "GetRestriction",
+          "signature": "const mfem::Operator* mfem::Operator::GetRestriction() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::Mult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__Operator__Mult_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "Mult",
+          "signature": "void mfem::Operator::Mult(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": true,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::MultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__Operator__MultTranspose_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "MultTranspose",
+          "signature": "void mfem::Operator::MultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Operator::RecoverFEMSolution(const mfem::Vector&, const mfem::Vector&, mfem::Vector&)",
+          "symbol": "mfem__Operator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector",
+          "cxx_name": "RecoverFEMSolution",
+          "signature": "void mfem::Operator::RecoverFEMSolution(const mfem::Vector&, const mfem::Vector&, mfem::Vector&)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "X",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "b",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        }
+      ],
+      "skipped_virtuals": [
+        {
+          "identity": "mfem::Operator::ArrayAddMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const",
+          "reason": "director method mfem::Operator::ArrayAddMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Operator::ArrayAddMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const",
+          "reason": "director method mfem::Operator::ArrayAddMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Operator::ArrayMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const",
+          "reason": "director method mfem::Operator::ArrayMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Operator::ArrayMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const",
+          "reason": "director method mfem::Operator::ArrayMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Operator::GetGradientMV(const mfem::MultiVector&) const",
+          "reason": "director method mfem::Operator::GetGradientMV(const mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Operator::MultMV(const mfem::MultiVector&, mfem::MultiVector&) const",
+          "reason": "director method mfem::Operator::MultMV(const mfem::MultiVector&, mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Operator::MultTransposeMV(const mfem::MultiVector&, mfem::MultiVector&) const",
+          "reason": "director method mfem::Operator::MultTransposeMV(const mfem::MultiVector&, mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        }
+      ],
+      "constructors": [
+        {
+          "parameters": [
+            {
+              "name": "s",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        },
+        {
+          "parameters": []
+        },
+        {
+          "parameters": [
+            {
+              "name": "h",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "w",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        }
+      ],
+      "skipped_constructors": []
+    },
+    {
+      "cxx_type": "mfem::Solver",
+      "owner_module": "mfem._ser.operators",
+      "source_interface": "mfem/_ser/operators.i",
+      "python_facade": "pymfem_Solver",
+      "python_proxy": "Solver",
+      "selection": "automatic",
+      "methods": [
+        {
+          "identity": "mfem::Solver::AbsMult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__Solver__AbsMult_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "AbsMult",
+          "signature": "void mfem::Operator::AbsMult(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::AbsMultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__Solver__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "AbsMultTranspose",
+          "signature": "void mfem::Operator::AbsMultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::AddMult(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "symbol": "mfem__Solver__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const",
+          "cxx_name": "AddMult",
+          "signature": "void mfem::Operator::AddMult(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "a",
+              "cxx_type": "double",
+              "declared_cxx_type": "const mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::AddMultTranspose(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "symbol": "mfem__Solver__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const",
+          "cxx_name": "AddMultTranspose",
+          "signature": "void mfem::Operator::AddMultTranspose(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "a",
+              "cxx_type": "double",
+              "declared_cxx_type": "const mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::AssembleDiagonal(mfem::Vector&) const",
+          "symbol": "mfem__Solver__AssembleDiagonal_mfem__Vector___const",
+          "cxx_name": "AssembleDiagonal",
+          "signature": "void mfem::Operator::AssembleDiagonal(mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "diag",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::GetGradient(const mfem::Vector&) const",
+          "symbol": "mfem__Solver__GetGradient_const_mfem__Vector___const",
+          "cxx_name": "GetGradient",
+          "signature": "mfem::Operator& mfem::Operator::GetGradient(const mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "reference",
+            "const": false,
+            "c_abi_type": "void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "mfem::Operator&",
+            "nullable": false
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::GetMemoryClass() const",
+          "symbol": "mfem__Solver__GetMemoryClass___const",
+          "cxx_name": "GetMemoryClass",
+          "signature": "mfem::MemoryClass mfem::Operator::GetMemoryClass() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "enum",
+            "cxx_type": "mfem::MemoryClass",
+            "enum_cxx_type": "mfem::MemoryClass",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "mfem::MemoryClass"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::GetOutputProlongation() const",
+          "symbol": "mfem__Solver__GetOutputProlongation___const",
+          "cxx_name": "GetOutputProlongation",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputProlongation() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::GetOutputRestriction() const",
+          "symbol": "mfem__Solver__GetOutputRestriction___const",
+          "cxx_name": "GetOutputRestriction",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputRestriction() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::GetOutputRestrictionTranspose() const",
+          "symbol": "mfem__Solver__GetOutputRestrictionTranspose___const",
+          "cxx_name": "GetOutputRestrictionTranspose",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputRestrictionTranspose() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::GetProlongation() const",
+          "symbol": "mfem__Solver__GetProlongation___const",
+          "cxx_name": "GetProlongation",
+          "signature": "const mfem::Operator* mfem::Operator::GetProlongation() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::GetRestriction() const",
+          "symbol": "mfem__Solver__GetRestriction___const",
+          "cxx_name": "GetRestriction",
+          "signature": "const mfem::Operator* mfem::Operator::GetRestriction() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::Mult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__Solver__Mult_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "Mult",
+          "signature": "void mfem::Operator::Mult(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": true,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::MultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__Solver__MultTranspose_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "MultTranspose",
+          "signature": "void mfem::Operator::MultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::RecoverFEMSolution(const mfem::Vector&, const mfem::Vector&, mfem::Vector&)",
+          "symbol": "mfem__Solver__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector",
+          "cxx_name": "RecoverFEMSolution",
+          "signature": "void mfem::Operator::RecoverFEMSolution(const mfem::Vector&, const mfem::Vector&, mfem::Vector&)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "X",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "b",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::Solver::SetOperator(const mfem::Operator&)",
+          "symbol": "mfem__Solver__SetOperator_const_mfem__Operator",
+          "cxx_name": "SetOperator",
+          "signature": "void mfem::Solver::SetOperator(const mfem::Operator&)",
+          "abstract": true,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "op",
+              "cxx_type": "mfem::Operator",
+              "declared_cxx_type": "const mfem::Operator&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        }
+      ],
+      "skipped_virtuals": [
+        {
+          "identity": "mfem::Solver::ArrayAddMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const",
+          "reason": "director method mfem::Solver::ArrayAddMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Solver::ArrayAddMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const",
+          "reason": "director method mfem::Solver::ArrayAddMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Solver::ArrayMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const",
+          "reason": "director method mfem::Solver::ArrayMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Solver::ArrayMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const",
+          "reason": "director method mfem::Solver::ArrayMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Solver::GetGradientMV(const mfem::MultiVector&) const",
+          "reason": "director method mfem::Solver::GetGradientMV(const mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Solver::MultMV(const mfem::MultiVector&, mfem::MultiVector&) const",
+          "reason": "director method mfem::Solver::MultMV(const mfem::MultiVector&, mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::Solver::MultTransposeMV(const mfem::MultiVector&, mfem::MultiVector&) const",
+          "reason": "director method mfem::Solver::MultTransposeMV(const mfem::MultiVector&, mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        }
+      ],
+      "constructors": [
+        {
+          "parameters": [
+            {
+              "name": "s",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "iter_mode",
+              "cxx_type": "bool",
+              "declared_cxx_type": "bool",
+              "kind": "bool",
+              "c_abi_type": "bool",
+              "numba_type": "types.boolean",
+              "llvm_type": "bool"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "s",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        },
+        {
+          "parameters": []
+        },
+        {
+          "parameters": [
+            {
+              "name": "h",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "w",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "iter_mode",
+              "cxx_type": "bool",
+              "declared_cxx_type": "bool",
+              "kind": "bool",
+              "c_abi_type": "bool",
+              "numba_type": "types.boolean",
+              "llvm_type": "bool"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "name": "h",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            },
+            {
+              "name": "w",
+              "cxx_type": "int",
+              "declared_cxx_type": "int",
+              "kind": "int",
+              "c_abi_type": "int",
+              "numba_type": "types.intc",
+              "llvm_type": "int32"
+            }
+          ]
+        }
+      ],
+      "skipped_constructors": []
+    },
+    {
       "cxx_type": "mfem::TimeDependentOperator",
       "owner_module": "mfem._ser.operators",
       "source_interface": "mfem/_ser/operators.i",
@@ -366,6 +1637,218 @@
       "python_proxy": "TimeDependentOperator",
       "selection": "automatic",
       "methods": [
+        {
+          "identity": "mfem::TimeDependentOperator::AbsMult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__AbsMult_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "AbsMult",
+          "signature": "void mfem::Operator::AbsMult(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::AbsMultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__AbsMultTranspose_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "AbsMultTranspose",
+          "signature": "void mfem::Operator::AbsMultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::AddMult(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "symbol": "mfem__TimeDependentOperator__AddMult_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const",
+          "cxx_name": "AddMult",
+          "signature": "void mfem::Operator::AddMult(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "a",
+              "cxx_type": "double",
+              "declared_cxx_type": "const mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::AddMultTranspose(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "symbol": "mfem__TimeDependentOperator__AddMultTranspose_const_mfem__Vector___mfem__Vector___const_mfem__real_t__const",
+          "cxx_name": "AddMultTranspose",
+          "signature": "void mfem::Operator::AddMultTranspose(const mfem::Vector&, mfem::Vector&, const mfem::real_t) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "a",
+              "cxx_type": "double",
+              "declared_cxx_type": "const mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::AssembleDiagonal(mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__AssembleDiagonal_mfem__Vector___const",
+          "cxx_name": "AssembleDiagonal",
+          "signature": "void mfem::Operator::AssembleDiagonal(mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "diag",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
         {
           "identity": "mfem::TimeDependentOperator::ExplicitMult(const mfem::Vector&, mfem::Vector&) const",
           "symbol": "mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const",
@@ -408,6 +1891,125 @@
           "lowering": null
         },
         {
+          "identity": "mfem::TimeDependentOperator::GetExplicitGradient(const mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__GetExplicitGradient_const_mfem__Vector___const",
+          "cxx_name": "GetExplicitGradient",
+          "signature": "mfem::Operator& mfem::TimeDependentOperator::GetExplicitGradient(const mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "reference",
+            "const": false,
+            "c_abi_type": "void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "mfem::Operator&",
+            "nullable": false
+          },
+          "parameters": [
+            {
+              "name": "u",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetGradient(const mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__GetGradient_const_mfem__Vector___const",
+          "cxx_name": "GetGradient",
+          "signature": "mfem::Operator& mfem::Operator::GetGradient(const mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "reference",
+            "const": false,
+            "c_abi_type": "void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "mfem::Operator&",
+            "nullable": false
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetImplicitGradient(const mfem::Vector&, const mfem::Vector&, mfem::real_t) const",
+          "symbol": "mfem__TimeDependentOperator__GetImplicitGradient_const_mfem__Vector___const_mfem__Vector___mfem__real_t__const",
+          "cxx_name": "GetImplicitGradient",
+          "signature": "mfem::Operator& mfem::TimeDependentOperator::GetImplicitGradient(const mfem::Vector&, const mfem::Vector&, mfem::real_t) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "reference",
+            "const": false,
+            "c_abi_type": "void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "mfem::Operator&",
+            "nullable": false
+          },
+          "parameters": [
+            {
+              "name": "u",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "k",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "shift",
+              "cxx_type": "double",
+              "declared_cxx_type": "mfem::real_t",
+              "kind": "double",
+              "c_abi_type": "double",
+              "numba_type": "types.float64",
+              "llvm_type": "double"
+            }
+          ],
+          "lowering": null
+        },
+        {
           "identity": "mfem::TimeDependentOperator::GetImplicitVariableType() const",
           "symbol": "mfem__TimeDependentOperator__GetImplicitVariableType___const",
           "cxx_name": "GetImplicitVariableType",
@@ -422,6 +2024,130 @@
             "numba_type": "types.intc",
             "llvm_type": "int32",
             "declared_cxx_type": "mfem::TimeDependentOperator::ImplicitVariableType"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetMemoryClass() const",
+          "symbol": "mfem__TimeDependentOperator__GetMemoryClass___const",
+          "cxx_name": "GetMemoryClass",
+          "signature": "mfem::MemoryClass mfem::Operator::GetMemoryClass() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "enum",
+            "cxx_type": "mfem::MemoryClass",
+            "enum_cxx_type": "mfem::MemoryClass",
+            "c_abi_type": "int",
+            "numba_type": "types.intc",
+            "llvm_type": "int32",
+            "declared_cxx_type": "mfem::MemoryClass"
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetOutputProlongation() const",
+          "symbol": "mfem__TimeDependentOperator__GetOutputProlongation___const",
+          "cxx_name": "GetOutputProlongation",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputProlongation() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetOutputRestriction() const",
+          "symbol": "mfem__TimeDependentOperator__GetOutputRestriction___const",
+          "cxx_name": "GetOutputRestriction",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputRestriction() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetOutputRestrictionTranspose() const",
+          "symbol": "mfem__TimeDependentOperator__GetOutputRestrictionTranspose___const",
+          "cxx_name": "GetOutputRestrictionTranspose",
+          "signature": "const mfem::Operator* mfem::Operator::GetOutputRestrictionTranspose() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetProlongation() const",
+          "symbol": "mfem__TimeDependentOperator__GetProlongation___const",
+          "cxx_name": "GetProlongation",
+          "signature": "const mfem::Operator* mfem::Operator::GetProlongation() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
+          },
+          "parameters": [],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetRestriction() const",
+          "symbol": "mfem__TimeDependentOperator__GetRestriction___const",
+          "cxx_name": "GetRestriction",
+          "signature": "const mfem::Operator* mfem::Operator::GetRestriction() const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "object",
+            "cxx_type": "mfem::Operator",
+            "passing": "pointer",
+            "const": true,
+            "c_abi_type": "const void*",
+            "numba_type": "bridge_object",
+            "llvm_type": "voidptr",
+            "declared_cxx_type": "const mfem::Operator*",
+            "nullable": true
           },
           "parameters": [],
           "lowering": null
@@ -615,6 +2341,99 @@
             },
             {
               "name": "k",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::MultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__MultTranspose_const_mfem__Vector___mfem__Vector___const",
+          "cxx_name": "MultTranspose",
+          "signature": "void mfem::Operator::MultTranspose(const mfem::Vector&, mfem::Vector&) const",
+          "abstract": false,
+          "const": true,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "x",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "y",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": false,
+              "c_abi_type": "void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            }
+          ],
+          "lowering": null
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::RecoverFEMSolution(const mfem::Vector&, const mfem::Vector&, mfem::Vector&)",
+          "symbol": "mfem__TimeDependentOperator__RecoverFEMSolution_const_mfem__Vector___const_mfem__Vector___mfem__Vector",
+          "cxx_name": "RecoverFEMSolution",
+          "signature": "void mfem::Operator::RecoverFEMSolution(const mfem::Vector&, const mfem::Vector&, mfem::Vector&)",
+          "abstract": false,
+          "const": false,
+          "return": {
+            "kind": "void",
+            "cxx_type": "void",
+            "c_abi_type": "void",
+            "numba_type": "types.none",
+            "llvm_type": "void",
+            "declared_cxx_type": "void"
+          },
+          "parameters": [
+            {
+              "name": "X",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "b",
+              "cxx_type": "mfem::Vector",
+              "declared_cxx_type": "const mfem::Vector&",
+              "kind": "object",
+              "passing": "reference",
+              "const": true,
+              "c_abi_type": "const void*",
+              "numba_type": "bridge_object",
+              "llvm_type": "voidptr"
+            },
+            {
+              "name": "x",
               "cxx_type": "mfem::Vector",
               "declared_cxx_type": "mfem::Vector&",
               "kind": "object",
@@ -915,12 +2734,32 @@
       ],
       "skipped_virtuals": [
         {
-          "identity": "mfem::TimeDependentOperator::GetExplicitGradient(const mfem::Vector&) const",
-          "reason": "director method mfem::TimeDependentOperator::GetExplicitGradient(const mfem::Vector&) const uses unsupported type 'mfem::Operator&' ('r.mfem::Operator'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+          "identity": "mfem::TimeDependentOperator::ArrayAddMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const",
+          "reason": "director method mfem::TimeDependentOperator::ArrayAddMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
         },
         {
-          "identity": "mfem::TimeDependentOperator::GetImplicitGradient(const mfem::Vector&, const mfem::Vector&, mfem::real_t) const",
-          "reason": "director method mfem::TimeDependentOperator::GetImplicitGradient(const mfem::Vector&, const mfem::Vector&, mfem::real_t) const uses unsupported type 'mfem::Operator&' ('r.mfem::Operator'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+          "identity": "mfem::TimeDependentOperator::ArrayAddMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const",
+          "reason": "director method mfem::TimeDependentOperator::ArrayAddMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&, const mfem::real_t) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ArrayMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const",
+          "reason": "director method mfem::TimeDependentOperator::ArrayMult(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ArrayMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const",
+          "reason": "director method mfem::TimeDependentOperator::ArrayMultTranspose(const mfem::Array<p.q(const).mfem::Vector>&, mfem::Array<p.mfem::Vector>&) const uses unsupported type 'const mfem::Array<p.q(const).mfem::Vector>&' ('r.q(const).mfem::Array<(p.q(const).mfem::Vector)>'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetGradientMV(const mfem::MultiVector&) const",
+          "reason": "director method mfem::TimeDependentOperator::GetGradientMV(const mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::MultMV(const mfem::MultiVector&, mfem::MultiVector&) const",
+          "reason": "director method mfem::TimeDependentOperator::MultMV(const mfem::MultiVector&, mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::MultTransposeMV(const mfem::MultiVector&, mfem::MultiVector&) const",
+          "reason": "director method mfem::TimeDependentOperator::MultTransposeMV(const mfem::MultiVector&, mfem::MultiVector&) const uses unsupported type 'const mfem::MultiVector&' ('r.q(const).mfem::MultiVector'): it is outside the supported scalar, selected-object, and annotated-array ABI"
         }
       ],
       "constructors": [
