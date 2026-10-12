@@ -1,6 +1,6 @@
 """Verify native C++ dispatch to a void-return Numba director override."""
 from numba import njit, types
-import numba_swig_bridge as nsb
+import nsb_rt as nsb
 import mfem.ser as mfem
 
 registration = mfem.get_bridge_registration()

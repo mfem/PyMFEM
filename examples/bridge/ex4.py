@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 from numpy import sin, cos
 from numba import types
-import numba_swig_bridge as nsb
+import nsb_rt as nsb
 import mfem.ser as mfem
 from mfem.ser import intArray
 

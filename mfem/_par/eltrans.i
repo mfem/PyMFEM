@@ -44,7 +44,15 @@ def Transform(self, *args):
 %ignore mfem::IsoparametricTransformation::TransformBack;
 
 %include "../common/kernel_dispatch.i"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/eltrans_nsb_1.i"
+#endif
+
 %include "fem/eltrans.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/eltrans_nsb_2.i"
+#endif
 
 //
 //  special handling for TransformBack (this is because tol_0 is protected)

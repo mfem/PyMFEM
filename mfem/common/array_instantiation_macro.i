@@ -115,7 +115,7 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
         }
     }
   }
-#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+#if defined(MFEM_NUMBA_SWIG_BRIDGE_SER) || defined(MFEM_NUMBA_SWIG_BRIDGE_PAR)
   NUMBA_SWIG_BRIDGE_ARRAY_VIEW_1D(
       GetDataArray,
       "dtype=int32;data=GetData;size=Size;mutable=true")

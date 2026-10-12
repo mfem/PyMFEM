@@ -2,7 +2,7 @@
   "schema_version": 2,
   "artifact_schema_version": 1,
   "bridge_id": "pymfem-ser",
-  "generator_version": "0.15.0",
+  "generator_version": "0.15.1",
   "required_runtime_version": "0.15.0",
   "state_backend": "mfem",
   "state_module": "mfem._nsb_state_bindings",

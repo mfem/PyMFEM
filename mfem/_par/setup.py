@@ -7,6 +7,7 @@ setup.py file for SWIG example
 
 import sys
 import os
+from pathlib import Path
 
 # this remove *.py in this directory to be imported from setuptools
 # Github workflow (next import) fails without this, because it loads
@@ -19,7 +20,7 @@ ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
 build_system_dir = os.path.join(root, '_build_system')
 sys.path.insert(0, build_system_dir)
-from build_generatedwrapperext import Build_NoDeprecationWarning
+from build_generatedwrapperext import Build_StateO3
 sys.path.pop(0)
 
 
@@ -46,7 +47,8 @@ def get_extensions():
                                  cc_par, cxx_par, cc_ser, cxx_ser,
                                  cxxstdflag, mfem_outside, build_miniapps,
                                  add_pumi, add_cuda, add_libceed, add_strumpack,
-                                 add_suitesparse, add_gslibp, bdist_wheel_dir)
+                                 add_suitesparse, add_gslibp, bdist_wheel_dir,
+                                 enable_numba_swig_bridge)
 
         include_dirs = [mfembuilddir, mfemincdir, mfemsrcdir,
                         numpyinc,
@@ -73,6 +75,7 @@ def get_extensions():
         mfem_outside = '0'
         build_miniapps = '0'
         mpiinc = ''
+        enable_numba_swig_bridge = '0'
 
     libraries = ['mfem',]
     #if build_miniapps !=  '0':
@@ -177,6 +180,41 @@ def get_extensions():
     sources = {name: [name + "_wrap.cxx"] for name in modules}
     proxy_names = {name: '_'+name for name in modules}
 
+    if enable_numba_swig_bridge == '1' and 'clean' not in sys.argv:
+        from nsb_rt.build_info import get_build_info
+
+        bridge_info = get_build_info()
+        artifacts = Path(ddd) / 'nsb_artifacts'
+        director_root = artifacts / 'director' / 'cpp'
+        helper = 'nsb_director_bindings'
+        helper_sources = [
+            str(Path(ddd) / (helper + '_wrap.cxx')),
+            str(director_root / 'nsb_director.cpp'),
+        ]
+        modules.append(helper)
+        sources[helper] = helper_sources
+        proxy_names[helper] = '_' + helper
+
+        state_name = 'nsb_state_bindings_ext'
+        modules.append(state_name)
+        sources[state_name] = [str(Path(ddd) / '_nsb_state_bindings_wrap.cxx'),
+                               *bridge_info['sources']]
+        proxy_names[state_name] = state_name
+        missing = [path for name in (helper, state_name)
+                   for path in sources[name] if not Path(path).is_file()]
+        if missing:
+            raise RuntimeError(
+                'missing prepared PyMFEM NSB wrapper; run '
+                'generate_nsb_pymfem_wrapper first: ' + missing[0])
+
+    if enable_numba_swig_bridge == '1' and 'clean' not in sys.argv:
+        mpi_name = '_nsb_mpi'
+        modules.append(mpi_name)
+        sources[mpi_name] = [str(artifacts / 'mpi' / 'cpp' / 'nsb_mpi.cpp')]
+        proxy_names[mpi_name] = mpi_name
+        include_dirs.extend([str(director_root), bridge_info['include_dir'],
+                             bridge_info['cpp_dir']])
+
     tpl_include = []
     for x in mfemptpl.split(' '):
         if x.startswith("-I"):
@@ -218,6 +256,17 @@ def get_extensions():
                                   define_macros=macros)
                         for name in modules[1:]])
 
+    if enable_numba_swig_bridge == '1' and 'clean' not in sys.argv:
+        state_extension = next(extension for extension in ext_modules
+                               if extension.name == state_name)
+        # Compile only the runtime implementation at -O3 on GCC/Clang.
+        # The generated state wrapper retains the ordinary wrapper settings.
+        state_extension.nsb_state_sources = tuple(bridge_info['sources'])
+        state_extension.depends.extend([
+            bridge_info['header'],
+            str(Path(build_system_dir) / 'build_generatedwrapperext.py'),
+        ])
+
     return modules, ext_modules
 
 
@@ -234,7 +283,7 @@ def main():
           description="""MFEM wrapper""",
           ext_modules=ext_modules,
           py_modules=modules,
-          cmdclass={'build_ext': Build_NoDeprecationWarning},
+          cmdclass={'build_ext': Build_StateO3},
           )
 
 

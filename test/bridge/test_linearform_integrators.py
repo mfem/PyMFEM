@@ -4,7 +4,7 @@ import gc
 
 import numpy as np
 from numba import types
-import numba_swig_bridge as nsb
+import nsb_rt as nsb
 import mfem.ser as mfem
 
 

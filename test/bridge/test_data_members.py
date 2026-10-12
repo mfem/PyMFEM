@@ -2,7 +2,7 @@
 import numpy as np
 from numba import njit, types
 from numba.core.errors import TypingError
-import numba_swig_bridge as nsb
+import nsb_rt as nsb
 import mfem.ser as mfem
 
 registration = mfem.get_bridge_registration()

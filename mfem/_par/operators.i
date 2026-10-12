@@ -86,7 +86,15 @@ INSTANTIATE_ARRAY0(Operator *, Operator, 1)
 IGNORE_ARRAY_METHODS(mfem::Solver *)
 INSTANTIATE_ARRAY0(Solver *, Solver, 1)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/operators_nsb_1.i"
+#endif
+
 %include "linalg/operator.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/operators_nsb_2.i"
+#endif
 %include "../common/pyoperator.hpp"
 
 %pythoncode %{

@@ -14,7 +14,7 @@ from pathlib import Path
 
 import numpy as np
 
-import numba_swig_bridge as nsb
+import nsb_rt as nsb
 from numba import njit, types
 import mfem.ser as mfem
 

@@ -1,0 +1,444 @@
+{
+  "schema_version": 2,
+  "artifact_schema_version": 1,
+  "bridge_id": "pymfem-par",
+  "generator_version": "0.15.1",
+  "required_runtime_version": "0.15.1",
+  "state_backend": "mfem_par",
+  "state_module": "mfem._par.nsb_state_bindings",
+  "state_abi": 7,
+  "swig_version": "SWIG Version 4.5.1",
+  "inventory": "metadata/inventory.json",
+  "ordinary_descriptor": "metadata/ordinary_descriptor.json",
+  "director_descriptor": "metadata/director_descriptor.json",
+  "extensions": {
+    "mfem._par.array": {
+      "interface": "mfem/_par/array.i",
+      "helper_fragment": "generated/mfem/_par/array/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.blockoperator": {
+      "interface": "mfem/_par/blockoperator.i",
+      "helper_fragment": "generated/mfem/_par/blockoperator/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.coefficient": {
+      "interface": "mfem/_par/coefficient.i",
+      "helper_fragment": "generated/mfem/_par/coefficient/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.densemat": {
+      "interface": "mfem/_par/densemat.i",
+      "helper_fragment": "generated/mfem/_par/densemat/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.doftrans": {
+      "interface": "mfem/_par/doftrans.i",
+      "helper_fragment": "generated/mfem/_par/doftrans/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.eltrans": {
+      "interface": "mfem/_par/eltrans.i",
+      "helper_fragment": "generated/mfem/_par/eltrans/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.fe_base": {
+      "interface": "mfem/_par/fe_base.i",
+      "helper_fragment": "generated/mfem/_par/fe_base/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.fespace": {
+      "interface": "mfem/_par/fespace.i",
+      "helper_fragment": "generated/mfem/_par/fespace/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.hyperbolic": {
+      "interface": "mfem/_par/hyperbolic.i",
+      "helper_fragment": "generated/mfem/_par/hyperbolic/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.hypre": {
+      "interface": "mfem/_par/hypre.i",
+      "helper_fragment": "generated/mfem/_par/hypre/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.intrules": {
+      "interface": "mfem/_par/intrules.i",
+      "helper_fragment": "generated/mfem/_par/intrules/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.lininteg": {
+      "interface": "mfem/_par/lininteg.i",
+      "helper_fragment": "generated/mfem/_par/lininteg/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.matrix": {
+      "interface": "mfem/_par/matrix.i",
+      "helper_fragment": "generated/mfem/_par/matrix/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.nonlinearform": {
+      "interface": "mfem/_par/nonlinearform.i",
+      "helper_fragment": "generated/mfem/_par/nonlinearform/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.operators": {
+      "interface": "mfem/_par/operators.i",
+      "helper_fragment": "generated/mfem/_par/operators/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.pfespace": {
+      "interface": "mfem/_par/pfespace.i",
+      "helper_fragment": "generated/mfem/_par/pfespace/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.pnonlinearform": {
+      "interface": "mfem/_par/pnonlinearform.i",
+      "helper_fragment": "generated/mfem/_par/pnonlinearform/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.solvers": {
+      "interface": "mfem/_par/solvers.i",
+      "helper_fragment": "generated/mfem/_par/solvers/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.sparsemat": {
+      "interface": "mfem/_par/sparsemat.i",
+      "helper_fragment": "generated/mfem/_par/sparsemat/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.vector": {
+      "interface": "mfem/_par/vector.i",
+      "helper_fragment": "generated/mfem/_par/vector/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    }
+  },
+  "registration_module": "mfem._par._nsb_registration",
+  "registration": "python/mfem/_par/_nsb_registration.py",
+  "python_files": [
+    "python/mfem/_par/_nsb_registration.py",
+    "python/mfem/_par/ordinary_descriptor.json",
+    "python/mfem/_par/director_descriptor.json"
+  ],
+  "director": {
+    "python_module": "mfem._par.nsb_director_bindings",
+    "sources": [
+      "director/cpp/nsb_director.cpp"
+    ],
+    "headers": [
+      "director/cpp/nsb_director.hpp"
+    ],
+    "swig_interface": "director/swig/nsb-director-bridge.i",
+    "metadata": "director/metadata/generated_director.json"
+  },
+  "mpi": {
+    "python_module": "mfem._par._nsb_mpi",
+    "capability": "mpi_comm_v1",
+    "sources": [
+      "mpi/cpp/nsb_mpi.cpp"
+    ],
+    "headers": [
+      "mpi/cpp/nsb_mpi.hpp"
+    ],
+    "build_dependencies": [
+      "mpi4py",
+      "MPI C++ headers and libraries"
+    ],
+    "required_runtime_version": "0.15.1"
+  },
+  "generated_files": [
+    "director/cpp/nsb_director.cpp",
+    "director/cpp/nsb_director.hpp",
+    "director/metadata/generated_director.json",
+    "director/swig/nsb-director-bridge.i",
+    "generated/mfem/_par/array/numba-swig-bridge.i",
+    "generated/mfem/_par/blockoperator/numba-swig-bridge.i",
+    "generated/mfem/_par/coefficient/numba-swig-bridge.i",
+    "generated/mfem/_par/densemat/numba-swig-bridge.i",
+    "generated/mfem/_par/doftrans/numba-swig-bridge.i",
+    "generated/mfem/_par/eltrans/numba-swig-bridge.i",
+    "generated/mfem/_par/fe_base/numba-swig-bridge.i",
+    "generated/mfem/_par/fespace/numba-swig-bridge.i",
+    "generated/mfem/_par/hyperbolic/numba-swig-bridge.i",
+    "generated/mfem/_par/hypre/numba-swig-bridge.i",
+    "generated/mfem/_par/intrules/numba-swig-bridge.i",
+    "generated/mfem/_par/lininteg/numba-swig-bridge.i",
+    "generated/mfem/_par/matrix/numba-swig-bridge.i",
+    "generated/mfem/_par/nonlinearform/numba-swig-bridge.i",
+    "generated/mfem/_par/operators/numba-swig-bridge.i",
+    "generated/mfem/_par/pfespace/numba-swig-bridge.i",
+    "generated/mfem/_par/pnonlinearform/numba-swig-bridge.i",
+    "generated/mfem/_par/solvers/numba-swig-bridge.i",
+    "generated/mfem/_par/sparsemat/numba-swig-bridge.i",
+    "generated/mfem/_par/vector/numba-swig-bridge.i",
+    "manifest.json",
+    "metadata/director_descriptor.json",
+    "metadata/inventory.json",
+    "metadata/ordinary_descriptor.json",
+    "mpi/cpp/nsb_mpi.cpp",
+    "mpi/cpp/nsb_mpi.hpp",
+    "python/mfem/_par/_nsb_registration.py",
+    "python/mfem/_par/director_descriptor.json",
+    "python/mfem/_par/ordinary_descriptor.json"
+  ]
+}
