@@ -42070,14 +42070,39 @@
       "target_cxx_type": "int"
     },
     {
+      "cxx_name": "HYPRE_Matrix",
+      "target_swig_type": "p.hypre_Matrix_struct",
+      "target_cxx_type": "hypre_Matrix_struct*"
+    },
+    {
       "cxx_name": "HYPRE_MemoryLocation",
       "target_swig_type": "enum _HYPRE_MemoryLocation",
       "target_cxx_type": "enum _HYPRE_MemoryLocation"
     },
     {
+      "cxx_name": "HYPRE_PtrToDestroyFcn",
+      "target_swig_type": "p.f(HYPRE_Solver).HYPRE_Int",
+      "target_cxx_type": "f(HYPRE_Solver).HYPRE_Int*"
+    },
+    {
+      "cxx_name": "HYPRE_PtrToSolverFcn",
+      "target_swig_type": "p.f(HYPRE_Solver,HYPRE_Matrix,HYPRE_Vector,HYPRE_Vector).HYPRE_Int",
+      "target_cxx_type": "f(HYPRE_Solver,HYPRE_Matrix,HYPRE_Vector,HYPRE_Vector).HYPRE_Int*"
+    },
+    {
       "cxx_name": "HYPRE_Real",
       "target_swig_type": "double",
       "target_cxx_type": "double"
+    },
+    {
+      "cxx_name": "HYPRE_Solver",
+      "target_swig_type": "p.hypre_Solver_struct",
+      "target_cxx_type": "hypre_Solver_struct*"
+    },
+    {
+      "cxx_name": "HYPRE_Vector",
+      "target_swig_type": "p.hypre_Vector_struct",
+      "target_cxx_type": "hypre_Vector_struct*"
     },
     {
       "cxx_name": "int16_t",

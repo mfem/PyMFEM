@@ -1,0 +1,81 @@
+name: Build and test NSB (callable)
+
+on:
+  workflow_call:
+    inputs:
+      backend:
+        description: 'serial, openmpi or mpich'
+        type: string
+        required: true
+      python-version:
+        type: string
+        default: '3.13'
+      runtime-version:
+        type: string
+        default: '0.15.3'
+
+permissions:
+  contents: read
+
+jobs:
+  wheel-consumer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYMFEM_BUILD_NCPU: '2'
+      NSB_BACKEND: ${{ inputs.backend }}
+      NSB_RUNTIME_VERSION: ${{ inputs.runtime-version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python-version }}
+      - name: Validate backend input
+        run: |
+          case "$NSB_BACKEND" in
+            serial|openmpi|mpich) ;;
+            *) echo "Unsupported backend: $NSB_BACKEND" >&2; exit 2 ;;
+          esac
+      - name: Set up MPI (including Ubuntu MPICH hotfix)
+        if: inputs.backend != 'serial'
+        uses: mpi4py/setup-mpi@v1
+        with:
+          mpi: ${{ inputs.backend }}
+      - name: Install native build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential zlib1g-dev openssh-client
+      - name: Prepare separate build environment
+        run: |
+          python -m venv "$RUNNER_TEMP/nsb-build"
+          "$RUNNER_TEMP/nsb-build/bin/python" -m pip install --upgrade \
+            'pip>=25.1' 'setuptools>=80.0.1' wheel 'cmake>=4.0.0' \
+            'swig==4.5.1' 'numpy>=2.4.1' 'numba==0.68.0' scipy \
+            "numba-swig-bridge-rt==$NSB_RUNTIME_VERSION"
+          mkdir -p "$RUNNER_TEMP/nsb-wheels"
+          if [ "$NSB_BACKEND" != serial ]; then
+            MPI4PY_BUILD_MPICC="mpicc.$NSB_BACKEND" \
+              "$RUNNER_TEMP/nsb-build/bin/python" -m pip wheel \
+              'mpi4py==4.1.2' --no-deps --no-binary=mpi4py --no-cache-dir \
+              --wheel-dir "$RUNNER_TEMP/nsb-wheels"
+            "$RUNNER_TEMP/nsb-build/bin/python" -m pip install "$RUNNER_TEMP"/nsb-wheels/mpi4py-*.whl
+          fi
+      - name: Build PyMFEM wheel from committed artifacts
+        run: |
+          flags=(-Cwith-numba-swig-bridge=Yes)
+          if [ "$NSB_BACKEND" != serial ]; then
+            flags+=(-Cwith-parallel=Yes "-CMPICC=mpicc.$NSB_BACKEND" "-CMPICXX=mpicxx.$NSB_BACKEND")
+          fi
+          "$RUNNER_TEMP/nsb-build/bin/python" -I -c \
+            "import importlib.util; assert importlib.util.find_spec('numba_swig_bridge') is None"
+          "$RUNNER_TEMP/nsb-build/bin/python" -m pip wheel . \
+            --no-deps --no-build-isolation --verbose \
+            --wheel-dir "$RUNNER_TEMP/nsb-wheels" "${flags[@]}"
+      - name: Test fresh installed wheel consumers
+        run: |
+          "$RUNNER_TEMP/nsb-build/bin/python" .github/scripts/validate_nsb_consumer.py \
+            --backend "$NSB_BACKEND" --runtime-version "$NSB_RUNTIME_VERSION" \
+            --wheel-dir "$RUNNER_TEMP/nsb-wheels" \
+            --work-dir "$RUNNER_TEMP/nsb-consumer"

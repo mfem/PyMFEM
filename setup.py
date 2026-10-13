@@ -165,6 +165,13 @@ class BuildPy(_build_py):
     def run(self):
         bglb.build_py_done = True
 
+        if bglb.nsb_only:
+            generate_nsb_artifacts(serial=True)
+            if bglb.nsb_parallel:
+                generate_nsb_artifacts(serial=False)
+            _build_py.run(self)
+            return
+
         if not bglb.swig_only:
             if bglb.build_metis:
                 if bglb.use_metis_gklib:

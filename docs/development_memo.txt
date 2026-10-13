@@ -23,7 +23,7 @@ cd PyMFEM
 1)  build external libraries
 pip install . -C"ext-only=Yes" --verbose
 pip install . -C"with-parallel=Yes" -C"ext-only=Yes" --verbose
- 
+
 2) generate wrapper codes
 pip install . -C"skip-ext=Yes"  -C"swig=Yes" --verbose
 pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"swig=Yes" --verbose
@@ -107,7 +107,7 @@ $ yum groupinstall "Development Tools"
 $ wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
 $ bash Anaconda3-2021.11-Linux-x86_64.sh
 $ source .bashrc
-$ pip install cmake 
+$ pip install cmake
 $ conda install -c conda-forge/label/gcc9 gcc_linux-64
 $ conda install -c conda-forge/label/gcc9 gxx_linux-64
 $ conda install -c conda-forge/label/gcc9 mpi4py
@@ -156,7 +156,7 @@ python setup.py install --with-parallel --mfem-branch='master'
 git checkout tmop_support
 python setup.py clean --swig
 python setup.py install --ext-only --with-gslib --with-parallel --mfem-branch='master'
-python setup.py install --swig --with-gslib --with-parallel 
+python setup.py install --swig --with-gslib --with-parallel
 python setup.py install --skip-ext --with-gslib --with-parallel
 
 
@@ -203,7 +203,7 @@ sudo docker pull nvidia/cuda:12.3.1-devel-ubuntu22.04
 
 This image need container-toolkit
 * instruction is here https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
-* After registering repo and installing it using apt-get install, we need to do 
+* After registering repo and installing it using apt-get install, we need to do
   sudo nvidia-ctk runtime configure --runtime=docker
   sudo systemctl restart docker
 
@@ -248,3 +248,29 @@ python3 setup.py install  --mfem-source=../mfem --mfem-prefix=/usr/local --with-
 export PYTHONPATH=/usr/lib/python3.10/site-packages/:$PYTHONPATH
 cd examples
 python3.10 ./ex1p.py -pa -d cuda
+
+## Experimental NSB integration
+Procedure to create NSB artifacts is as follows. NSB generator is currently
+under experiment internally.
+
+```sh
+# 1. Prepare MFEM, Hypre and other external dependencies.
+pip install . -C"with-parallel=Yes" -C"ext-only=Yes" --verbose
+
+# 2. Generate both serial and parallel NSB artifacts.
+pip install . --no-build-isolation -C"with-parallel=Yes" -C"skip-ext=Yes" -C"nsb=Yes" --verbose
+
+# 3. Generate SWIG wrappers with the NSB bridge enabled.
+pip install . -C"with-parallel=Yes" -C"skip-ext=Yes" -C"swig=Yes" -C"with-numba-swig-bridge=Yes" --verbose
+
+# 4. Compile and install the wrappers.
+pip install . -C"with-parallel=Yes" -C"skip-ext=Yes" -C"skip-swig=Yes" -C"with-numba-swig-bridge=Yes" --verbose
+```
+
+The `nsb=Yes` step requires the private NSB generator and Python build
+dependencies installed in the active environment. `--no-build-isolation`
+makes those packages available to the build; temporary dependency builds
+are retained. This mode does not rebuild external libraries, clean wrappers,
+generate SWIG wrappers or compile native extensions. Without
+`with-parallel=Yes`, it generates only serial artifacts. Ordinary consumers
+build from committed artifacts and do not need this step or the generator.

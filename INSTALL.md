@@ -183,7 +183,6 @@ pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbos
 ```
 
 ### Experimental Numba bridge (prebuilt binaries are not available)
-
 ```shell
 pip install ".[bridge]" -C"with-numba-swig-bridge=Yes"
 ```

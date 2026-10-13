@@ -1,103 +1,96 @@
 # PyMFEM bridge tests
 
-Build and install PyMFEM with the serial Numba bridge enabled, then run:
+## Test All cases
+Run `python ../test_bridge.py`
 
-```bash
-python test/test_bridge.py
-```
+## Test cases
+### test_coefficient_bridges.py
 
-`test_bridge.py` discovers and runs each `test_*.py` file in this directory.
-These tests are deliberately excluded from `test/run_tests.py`: an ordinary
-PyMFEM build does not include the generated bridge registration module.
+Checks coefficient directors through MFEM projection and diffusion assembly.
 
-Each bridge test should verify numerical results and that its call path compiles
-in `numba.njit`. Keep performance measurements in `examples/bridge/`, where
-their timing output is useful without making a test flaky.
+### test_data_members.py
 
-`test_ex9.py` compares five-step serial trajectories with ordinary ex9 in
-separate installed-package processes. It covers all four 2D problems, the 1D
-problems, and all supported explicit solvers, checks compiled callback
-signatures, and verifies rejection of partial assembly and device execution.
+Checks public C++ data members and rejects writes through const callback
+arguments.
 
-`test_solvers.py` checks ordinary solver registration, absence of factories
-for abstract solver bases, inherited configuration calls on six concrete
-solvers, and construction of FGMRESSolver inside compiled code.
+### test_densemat.py
 
-`test_ex19.py` compares ordinary and bridged Newton solves on quadrilateral,
-triangular, and hexahedral beam meshes, checking convergence, iteration counts,
-solution fields, and compiled callback signatures.
+Checks DenseMatrix methods called from Numba-compiled code.
 
-`test_coefficient_bridges.py` exercises direct `Coefficient`,
-`VectorCoefficient`, and `MatrixCoefficient` NSB directors through MFEM
-projection and diffusion assembly. Example-4 comparisons and timing commands
-are recorded in the shared integration report
-[NSBR_05](../../../dev_guide/nsb_pymfem_integration/NSBR_05_PyMFEM_ex4_ex38_application.md).
+### test_densetensor.py
 
-`test_data_members.py` verifies automatically bridged IntegrationPoint fields,
-ElementTransformation element numbers, and const integration-point reads through
-MFEM coefficient projection. It also rejects writes to the const callback input.
+Checks DenseTensor methods and zero-copy data views.
 
-`test_linearform_integrators.py` exercises direct `LinearFormIntegrator` NSB
-directors through `LinearForm.Assemble()`, including native ownership transfer,
-facade closure before assembly, surface and subdomain shape paths, and comparison
-with Python callbacks and MFEM's native `DomainLFIntegrator`. Its callbacks and
-the direct coefficient tests also exercise explicit callback-local
-`stateaccess` declarations through real MFEM projection and assembly calls.
+### test_ex18.py
 
+Compares the serial ex18 compiled RHS with the Python reference.
 
-## Parallel foundation (NSBP_13 Stage 4)
+### test_ex18p.py
 
-Build with both `-C"with-parallel=Yes"` and
-`-C"with-numba-swig-bridge=Yes"`. Parallel artifacts require NSB runtime
-0.15.1 or later. Serial and parallel imports must use separate processes.
-MPI communicators and native objects stay local to each rank; applications
-keep borrowed MPI resources valid until native use and teardown have ended.
+Compares the parallel ex18 RHS and characteristic speed with the Python
+reference. Run on two MPI ranks.
 
-Run each check with a timeout and at least two ranks:
+### test_ex19.py
 
-```sh
-mpiexec -n 2 python test/bridge/test_parallel_foundation.py
-mpiexec -n 2 python test/bridge/test_ex18p.py
-mpiexec -n 2 python examples/bridge/ex4p.py --refine 0 --compare
-mpiexec -n 2 python examples/bridge/ex18p.py -rs 0 -rp 0 -o 1 -tf 0.02
-```
+Compares serial Newton solves, solution fields, convergence and callback
+compilation on three beam meshes.
 
-`test_parallel_foundation.py` checks ordinary ownership handoff, Hypre class
-coverage, nested directors, rank-local callback errors and recovery, teardown,
-and native `GetComm()` passed to a compiled CGSolver constructor. The ex18p
-fixture compares the rank-local RHS and characteristic speed with the Python
-reference. The ex4p comparison checks local RHS, projection, solution and global
-L2 error. These are CPU checks; MPI collectives remain in the Python driver or
-native MFEM methods. No ex38p translation is included.
+### test_ex19p.py
 
-Developer regeneration uses `generate_nsb_artifacts(serial=False)` from
-`_build_system/build_pymfem.py`, with `build_globals.hypre_prefix` set to the
-configured Hypre installation. It reads MPI-enabled MFEM headers from
-`external/mfem/cmbuild_par`. The helper supplies mpi4py and Hypre SWIG includes
-without storing workstation paths in `bridge.toml` or the manifest. Pass
-`check=True` for the parallel artifact freshness check. Consumer builds use
-committed artifacts and need only the runtime, MPI/mpi4py and native build tools.
+Compares parallel Newton solves with the Python reference on three beam meshes.
+Launches its own two-rank workers.
 
-## Parallel advection and nonlinear elasticity (Stage 5)
+### test_ex9.py
 
-The acceptance drivers launch their own two-rank MPI workers. Run them once
-from the installed consumer environment (do not wrap these drivers in mpiexec):
+Compares short serial advection runs across problems and explicit solvers;
+checks compiled callbacks and unsupported modes.
 
-```sh
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -I test/bridge/test_ex9p.py
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -I test/bridge/test_ex19p.py
-```
+### test_ex9p.py
 
-ex9p compares four advection problems and explicit Euler/RK2/RK4/RK6 on a
-periodic square mesh. ex19p compares Newton solves on beam quad, tri and hex
-meshes, including repeated Jacobian/preconditioner updates and rank-local
-solutions. Both verify compiled callback signatures against ordinary Python
-references in separate processes. The examples can also be run directly:
+Compares parallel advection problems and explicit solvers with the Python
+reference. Launches its own two-rank workers.
 
-```sh
-mpiexec -n 2 python examples/bridge/ex9p.py -rs 0 -rp 0 -o 2 -tf 0.05
-mpiexec -n 2 python examples/bridge/ex19p.py -m beam-quad.mesh
-```
+### test_fespace.py
 
-ex9p supports CPU full assembly; partial assembly and GPU modes are rejected.
-ex19p retains its pressure mass OperatorHandle as the single matrix owner.
+Checks finite-element-space methods and callback-scoped borrowed returns.
+
+### test_hyperbolic.py
+
+Checks FluxFunction and HyperbolicFormIntegrator methods called from compiled
+code.
+
+### test_intarray.py
+
+Checks the ordinary bridge for Array<int>.
+
+### test_linearform_integrators.py
+
+Checks integrator directors through linear-form assembly, including native
+ownership and comparisons with Python and native integrators.
+
+### test_nonlinearform.py
+
+Checks NonlinearForm methods called from compiled code.
+
+### test_nsb_state_build.py
+
+Checks compiler optimization flags for native state sources, including
+concurrent builds. This is a source-level build test.
+
+### test_parallel_foundation.py
+
+Checks Hypre bridges, nested directors, communicator handling, ownership and
+callback error recovery. Run on two MPI ranks.
+
+### test_solvers.py
+
+Checks concrete and abstract solver registration, inherited methods and
+construction in compiled code.
+
+### test_time_dependent_operator.py
+
+Checks native C++ dispatch to a compiled void-return director override.
+
+### test_vector.py
+
+Checks Vector methods and zero-copy writes from compiled code.

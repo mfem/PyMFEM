@@ -25177,7 +25177,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreADS::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreADS::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreADS::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreADS::SetupFcn() const",
@@ -25880,7 +25880,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreAMS::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreAMS::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreAMS::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreAMS::SetupFcn() const",
@@ -26958,7 +26958,7 @@
         },
         {
           "signature": "HYPRE_Solver mfem::HypreBoomerAMG::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreBoomerAMG::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreBoomerAMG::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreBoomerAMG::SetupFcn() const",
@@ -27109,7 +27109,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreDiagScale::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreDiagScale::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreDiagScale::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreDiagScale::SetupFcn() const",
@@ -27425,7 +27425,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreEuclid::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreEuclid::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreEuclid::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreEuclid::SetupFcn() const",
@@ -27971,7 +27971,7 @@
         },
         {
           "signature": "HYPRE_Solver mfem::HypreFGMRES::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreFGMRES::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreFGMRES::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreFGMRES::SetupFcn() const",
@@ -28576,7 +28576,7 @@
         },
         {
           "signature": "HYPRE_Solver mfem::HypreGMRES::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreGMRES::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreGMRES::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreGMRES::SetupFcn() const",
@@ -28905,7 +28905,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreILU::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreILU::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreILU::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreILU::SetupFcn() const",
@@ -28949,7 +28949,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreIdentity::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreIdentity::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreIdentity::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreIdentity::SetupFcn() const",
@@ -30205,7 +30205,7 @@
         },
         {
           "signature": "HYPRE_Solver mfem::HyprePCG::operator HYPRE_Solver() const",
-          "reason": "method mfem::HyprePCG::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HyprePCG::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HyprePCG::SetupFcn() const",
@@ -35263,7 +35263,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreParaSails::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreParaSails::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreParaSails::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreParaSails::SetupFcn() const",
@@ -36891,7 +36891,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreSolver::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreSolver::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreSolver::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreSolver::SetupFcn() const",
@@ -37006,7 +37006,7 @@
       "skipped_methods": [
         {
           "signature": "HYPRE_Solver mfem::HypreTriSolve::operator HYPRE_Solver() const",
-          "reason": "method mfem::HypreTriSolve::operator HYPRE_Solver() const has an unsupported Python method name 'operator HYPRE_Solver'"
+          "reason": "method mfem::HypreTriSolve::operator HYPRE_Solver() const: typedef HYPRE_Solver with declarator 'p.hypre_Solver_struct' is not supported"
         },
         {
           "signature": "HYPRE_PtrToParSolverFcn mfem::HypreTriSolve::SetupFcn() const",

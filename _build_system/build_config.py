@@ -81,6 +81,7 @@ def initialize_cmd_options(command_obj):
     command_obj.prefix = ''
 
     command_obj.swig = False
+    command_obj.nsb = False
     command_obj.skip_swig = False
     command_obj.ext_only = False
 
@@ -163,6 +164,7 @@ cmd_options = [
     ('git-sshclone', None, 'Use SSH for git clone' +
      'try if default git clone using https fails (need Github account and setting for SSH)'),
     ('swig', None, 'Run Swig and exit'),
+    ('nsb', None, 'Generate NSB artifacts using prepared dependencies only'),
     ('skip-swig', None,
      'Skip running swig (used when wrapper is generated for the MFEM C++ library to be used'),
     ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
@@ -291,6 +293,8 @@ def configure_install(self):
     bglb.skip_swig = bool(self.skip_swig)
 
     bglb.swig_only = bool(self.swig)
+    bglb.nsb_only = bool(self.nsb)
+    bglb.nsb_parallel = bool(self.with_parallel)
     bglb.ext_only = bool(self.ext_only)
 
     bglb.metis_64 = bool(self.with_metis64)
@@ -483,6 +487,20 @@ def configure_install(self):
         bglb.build_libceed = False
         bglb.build_gslib = True
         bglb.keep_temp = True
+
+    if bglb.nsb_only:
+        bglb.skip_ext = True
+        bglb.keep_temp = True
+        bglb.build_metis = False
+        bglb.build_hypre = False
+        bglb.build_mfem = False
+        bglb.build_mfemp = False
+        bglb.build_libceed = False
+        bglb.build_gslib = False
+        bglb.clean_swig = False
+        bglb.run_swig = False
+        bglb.build_serial = False
+        bglb.build_parallel = False
 
     bglb.is_configured = True
 

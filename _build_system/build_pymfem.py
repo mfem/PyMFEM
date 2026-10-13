@@ -122,6 +122,32 @@ def write_setup_local():
 
     os.chdir(pwd)
 
+def generate_existing_mfem_header_record(mfem_source):
+    if not os.path.isdir(mfem_source):
+        raise RuntimeError(
+            'MFEM source directory does not exist: ' + os.path.abspath(mfem_source)
+            + '. Build the external dependencies first or specify mfem-source.'
+        )
+    print("updating the list of existing headers")
+    list_of_headers = []
+    L = len(mfem_source.split(os.sep))
+    for (dirpath, dirnames, filenames) in os.walk(mfem_source):
+        for filename in filenames:
+            if filename.endswith('.hpp'):
+                dirs = dirpath.split(os.sep)[L:]
+                dirs.append(filename[:-4])
+                tmp = '_'.join(dirs)
+                xx = re.split('_|-', tmp)
+                new_name = 'FILE_EXISTS_'+'_'.join([x.upper() for x in xx])
+                if new_name not in list_of_headers:
+                    list_of_headers.append(new_name)
+
+    pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
+    fid = open('existing_mfem_headers.i', 'w')
+    for x in list_of_headers:
+        fid.write("#define " + x + "\n")
+    fid.close()
+    os.chdir(pwd)
 
 def generate_wrapper(do_parallel):
     '''
@@ -156,34 +182,12 @@ def generate_wrapper(do_parallel):
         command2 = [sys.executable, "generate_bilininteg_ext.py"]
         make_call(command1)
         make_call(command2)
-        os.chdir(pwd)
-
-    def update_header_exists(mfem_source):
-        print("updating the list of existing headers")
-        list_of_headers = []
-        L = len(mfem_source.split(os.sep))
-        for (dirpath, dirnames, filenames) in os.walk(mfem_source):
-            for filename in filenames:
-                if filename.endswith('.hpp'):
-                    dirs = dirpath.split(os.sep)[L:]
-                    dirs.append(filename[:-4])
-                    tmp = '_'.join(dirs)
-                    xx = re.split('_|-', tmp)
-                    new_name = 'FILE_EXISTS_'+'_'.join([x.upper() for x in xx])
-                    if new_name not in list_of_headers:
-                        list_of_headers.append(new_name)
-
-        pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
-        fid = open('existing_mfem_headers.i', 'w')
-        for x in list_of_headers:
-            fid.write("#define " + x + "\n")
-        fid.close()
-        os.chdir(pwd)
+        os.chdir(pwd)     
 
     mfemser = bglb.mfems_prefix
     mfempar = bglb.mfemp_prefix
 
-    update_header_exists(bglb.mfem_source)
+    generate_existing_mfem_header_record(bglb.mfem_source)
 
     swigflag = '-Wall -c++ -python -std=c++17 -fastproxy -olddefs -keyword'.split(' ')
     bridgeflag = []
@@ -443,6 +447,16 @@ def generate_nsb_artifacts(check=False, serial=True):
     do not import the private generator package.
     """
     from pathlib import Path
+    import importlib.util
+
+    if importlib.util.find_spec('numba_swig_bridge') is None:
+        raise RuntimeError(
+            'NSB artifact generation requires the private NSB generator in '
+            'the current Python environment. Install it and use '
+            'pip install . --no-build-isolation -C"nsb=Yes".'
+        )
+    
+    generate_existing_mfem_header_record(bglb.mfem_source)
 
     config = Path(rootdir) / 'mfem' / ('_ser' if serial else '_par') / 'bridge.toml'
     if not config.is_file():
