@@ -165,6 +165,13 @@ class BuildPy(_build_py):
     def run(self):
         bglb.build_py_done = True
 
+        if bglb.nsb_only:
+            generate_nsb_artifacts(serial=True)
+            if bglb.nsb_parallel:
+                generate_nsb_artifacts(serial=False)
+            _build_py.run(self)
+            return
+
         if not bglb.swig_only:
             if bglb.build_metis:
                 if bglb.use_metis_gklib:
@@ -214,6 +221,17 @@ class BuildPy(_build_py):
             make_mfem_wrapper(serial=False)
 
         _build_py.run(self)
+        if bglb.build_serial and bglb.enable_numba_swig_bridge:
+            # The serial setup builds the qualified state extension while
+            # running from mfem/_ser.  Include the resulting parent-package
+            # binary in the wheel's build tree explicitly.
+            import glob
+            state_outputs = glob.glob(os.path.join(rootdir, 'mfem',
+                                                   '_nsb_state_bindings*.so'))
+            wheel_mfem = os.path.join(self.build_lib, 'mfem')
+            os.makedirs(wheel_mfem, exist_ok=True)
+            for state_output in state_outputs:
+                shutil.copy2(state_output, wheel_mfem)
 
 class InstallLib(_install_lib):
     def finalize_options(self):

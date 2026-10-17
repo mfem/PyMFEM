@@ -178,7 +178,15 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 
 %ignore mfem::Vector::GetArrayView;
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/vector_nsb_1.i"
+#endif
+
 %include "linalg/vector.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/vector_nsb_2.i"
+#endif
 
 %extend mfem::Vector {
   /* define Assine as a replacement of = operator */
@@ -280,6 +288,11 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 	}
     }
   }
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+  NUMBA_SWIG_BRIDGE_ARRAY_VIEW_1D(
+      GetDataArray,
+      "dtype=float64;data=GetData;size=Size;mutable=true")
+#endif
   PyObject* GetDataArray(void) const{
      double * A = self->GetData();
      int L = self->Size();

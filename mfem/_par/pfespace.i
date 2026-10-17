@@ -91,7 +91,18 @@ ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::ParFiniteElementSpace *, 1)
 IGNORE_ARRAY_METHODS(mfem::ParFiniteElementSpace *)
 INSTANTIATE_ARRAY0(ParFiniteElementSpace *, ParFiniteElementSpace, 1)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "numba-swig-bridge-common.i"
+#endif
+
 %include "fem/pfespace.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+NUMBA_SWIG_BRIDGE_CLASS(mfem::ParFiniteElementSpace)
+#ifdef NUMBA_SWIG_BRIDGE_GENERATED
+%include "generated/mfem/_par/pfespace/numba-swig-bridge.i"
+#endif
+#endif
+
 
 %extend mfem::ParFiniteElementSpace{
   virtual DofTransformation *GetElementDofTransformation(int elem) const{

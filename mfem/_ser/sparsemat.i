@@ -167,7 +167,13 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
 }
 
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/sparsemat_nsb_1.i"
+#endif
 %include "linalg/sparsemat.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/sparsemat_nsb_2.i"
+#endif
 
 %extend mfem::SparseMatrix {
 PyObject* GetIArray(void) const{

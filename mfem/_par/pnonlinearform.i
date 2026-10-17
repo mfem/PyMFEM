@@ -37,4 +37,15 @@ LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Array<int> *> &bdr_attr_is_ess,
  		        mfem::Array<int> *)
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::Vector *> &rhs, mfem::Vector *)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "numba-swig-bridge-common.i"
+#endif
+
 %include "fem/pnonlinearform.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+NUMBA_SWIG_BRIDGE_CLASS(mfem::ParNonlinearForm)
+NUMBA_SWIG_BRIDGE_CLASS(mfem::ParBlockNonlinearForm)
+#ifdef NUMBA_SWIG_BRIDGE_GENERATED
+%include "generated/mfem/_par/pnonlinearform/numba-swig-bridge.i"
+#endif
+#endif

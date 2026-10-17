@@ -19,6 +19,10 @@ import_array1(-1);
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/fe_base_nsb_1.i"
+#endif
+
 //forward declearation
 %inline %{
 namespace mfem{
@@ -32,3 +36,7 @@ namespace mfem{
 }
 
 %include "fem/fe/fe_base.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/fe_base_nsb_2.i"
+#endif

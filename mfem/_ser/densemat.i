@@ -141,7 +141,15 @@ def __getitem__(self, *args):
      $result = $1;
 }
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/densemat_nsb_1.i"
+#endif
+
 %include "linalg/densemat.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/densemat_nsb_2.i"
+#endif
 
 %extend mfem::DenseMatrix {
   DenseMatrix(PyObject* numpymat){
@@ -212,6 +220,11 @@ def __getitem__(self, *args):
   void __setitem__(int i, int j,  const double v) {
     (* self)(i, j) = v;
   }
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+  NUMBA_SWIG_BRIDGE_ARRAY_VIEW_2D(
+      GetDataArray,
+      "dtype=float64;data=Data;rows=Height;cols=Width;layout=F;mutable=true")
+#endif
   PyObject* GetDataArray(void) const{
      double * A = self->Data();
      npy_intp dims[] = {self->Width(), self->Height()};
@@ -274,6 +287,11 @@ def __getitem__(self, *args):
   void __setitem__(int i, int j, int k, const double v) {
     (* self)(i, j, k) = v;
   }
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+  NUMBA_SWIG_BRIDGE_ARRAY_VIEW_3D(
+      GetDataArray,
+      "dtype=float64;data=Data;depth=SizeK;rows=SizeI;cols=SizeJ;layout=Kij;mutable=true")
+#endif
   PyObject* GetDataArray(void){
      // DoDo this method can not be const since DenseTensor::Data is not const
      double * A = self->Data();

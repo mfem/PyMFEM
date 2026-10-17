@@ -185,3 +185,9 @@ except:
 #
 Hypre.Init()
 
+
+
+def get_bridge_registration():
+    """Install and return this build's optional parallel NSB registration."""
+    from mfem._par import bridge_registration
+    return bridge_registration._nsb_registration

@@ -244,7 +244,15 @@ XXXPTR_SIZE_IN(mfem::FiniteElementSpace **data_, int asize, mfem::FiniteElementS
 IGNORE_ARRAY_METHODS(mfem::FiniteElementSpace *)
 INSTANTIATE_ARRAY0(FiniteElementSpace *, FiniteElementSpace, 1)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/fespace_nsb_1.i"
+#endif
+
 %include "fem/fespace.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/fespace_nsb_2.i"
+#endif
 
 /*
 fem/fespace.hpp:   void Save(std::ostream &out) const;
