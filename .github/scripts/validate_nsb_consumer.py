@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import shlex
 import signal
 import subprocess
 import sys
@@ -89,7 +90,17 @@ def main():
         launcher = shutil.which(f'mpiexec.{args.backend}', path=original_path)
         if not launcher:
             parser.error('selected MPI launcher is unavailable')
-        (tools / 'mpiexec').symlink_to(launcher)
+        if args.backend == 'openmpi':
+            # An absolute Open MPI launcher path can implicitly enable prefix
+            # propagation, exposing /usr/bin (and SWIG) inside the workers.
+            # Use the same wrapper for direct and acceptance-driver launches.
+            wrapper = tools / 'mpiexec'
+            wrapper.write_text(
+                '#!/bin/sh\nexec ' + shlex.quote(launcher) + ' --noprefix "$@"\n'
+            )
+            wrapper.chmod(0o755)
+        else:
+            (tools / 'mpiexec').symlink_to(launcher)
         for name in ('ssh', 'rsh', 'orted', 'prted', 'hydra_pmi_proxy'):
             tool = shutil.which(name, path=original_path)
             if tool:
