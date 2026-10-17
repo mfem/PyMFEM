@@ -64,6 +64,9 @@ jobs:
           fi
       - name: Build PyMFEM wheel from committed artifacts
         run: |
+          export PATH="$RUNNER_TEMP/nsb-build/bin:$PATH"
+          export SWIG="$RUNNER_TEMP/nsb-build/bin/swig"
+          "$SWIG" -version
           flags=(-Cwith-numba-swig-bridge=Yes)
           if [ "$NSB_BACKEND" != serial ]; then
             flags+=(-Cwith-parallel=Yes "-CMPICC=mpicc.$NSB_BACKEND" "-CMPICXX=mpicxx.$NSB_BACKEND")
