@@ -4,7 +4,7 @@ from pathlib import Path
 
 from nsb_rt.runtime.ordinary import install_bridge
 
-_MODULES = {name: import_module(name) for name in ['mfem._ser.array', 'mfem._ser.blockoperator', 'mfem._ser.coefficient', 'mfem._ser.densemat', 'mfem._ser.doftrans', 'mfem._ser.eltrans', 'mfem._ser.fe_base', 'mfem._ser.fespace', 'mfem._ser.hyperbolic', 'mfem._ser.intrules', 'mfem._ser.lininteg', 'mfem._ser.matrix', 'mfem._ser.nonlinearform', 'mfem._ser.operators', 'mfem._ser.solvers', 'mfem._ser.sparsemat', 'mfem._ser.vector']}
+_MODULES = {name: import_module(name) for name in ['mfem._ser.array', 'mfem._ser.blockmatrix', 'mfem._ser.blockoperator', 'mfem._ser.coefficient', 'mfem._ser.common_functions', 'mfem._ser.densemat', 'mfem._ser.doftrans', 'mfem._ser.eltrans', 'mfem._ser.fe_base', 'mfem._ser.fespace', 'mfem._ser.gridfunc', 'mfem._ser.hyperbolic', 'mfem._ser.intrules', 'mfem._ser.lininteg', 'mfem._ser.matrix', 'mfem._ser.nonlinearform', 'mfem._ser.operators', 'mfem._ser.solvers', 'mfem._ser.sparsemat', 'mfem._ser.vector']}
 install_bridge(_MODULES, Path(__file__).with_name("ordinary_descriptor.json"))
 
 from nsb_rt import register_state_backend

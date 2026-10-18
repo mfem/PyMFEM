@@ -42,129 +42,129 @@ static void* nsb_cast_mfem_BlockILU_7_down(void* p) noexcept { return nsb_cast_t
 static unsigned nsb_cast_mfem_BlockILU_8_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::BlockILU, mfem::Operator>::flags; }
 static void* nsb_cast_mfem_BlockILU_8_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::BlockILU, mfem::Operator>::up(p); }
 static void* nsb_cast_mfem_BlockILU_8_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::BlockILU, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_CGSolver_11_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_CGSolver_11_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_CGSolver_11_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_CGSolver_12_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_CGSolver_12_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_CGSolver_12_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_CGSolver_13_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_CGSolver_13_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_CGSolver_13_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_DirectSubBlockSolver_16_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_DirectSubBlockSolver_16_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_DirectSubBlockSolver_16_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_DirectSubBlockSolver_17_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_DirectSubBlockSolver_17_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_DirectSubBlockSolver_17_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_FGMRESSolver_18_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_FGMRESSolver_18_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_FGMRESSolver_18_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_FGMRESSolver_19_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_FGMRESSolver_19_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_FGMRESSolver_19_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_FGMRESSolver_20_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_FGMRESSolver_20_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_FGMRESSolver_20_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_GMRESSolver_21_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_GMRESSolver_21_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_GMRESSolver_21_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_GMRESSolver_22_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_GMRESSolver_22_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_GMRESSolver_22_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_GMRESSolver_23_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_GMRESSolver_23_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_GMRESSolver_23_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_IterativeSolver_66_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_IterativeSolver_66_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_IterativeSolver_66_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_IterativeSolver_67_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_IterativeSolver_67_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_IterativeSolver_67_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_LBFGSSolver_68_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::NewtonSolver>::flags; }
-static void* nsb_cast_mfem_LBFGSSolver_68_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::NewtonSolver>::up(p); }
-static void* nsb_cast_mfem_LBFGSSolver_68_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::NewtonSolver>::down(p); }
-static unsigned nsb_cast_mfem_LBFGSSolver_69_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_LBFGSSolver_69_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_LBFGSSolver_69_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_LBFGSSolver_70_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_LBFGSSolver_70_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_LBFGSSolver_70_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_LBFGSSolver_71_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_LBFGSSolver_71_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_LBFGSSolver_71_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_MINRESSolver_72_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_MINRESSolver_72_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_MINRESSolver_72_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_MINRESSolver_73_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_MINRESSolver_73_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_MINRESSolver_73_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_MINRESSolver_74_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_MINRESSolver_74_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_MINRESSolver_74_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_NewtonSolver_76_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_NewtonSolver_76_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_NewtonSolver_76_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_NewtonSolver_77_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_NewtonSolver_77_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_NewtonSolver_77_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_NewtonSolver_78_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_NewtonSolver_78_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_NewtonSolver_78_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_OperatorChebyshevSmoother_80_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_OperatorChebyshevSmoother_80_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_OperatorChebyshevSmoother_80_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_OperatorChebyshevSmoother_81_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_OperatorChebyshevSmoother_81_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_OperatorChebyshevSmoother_81_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_OperatorJacobiSmoother_82_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_OperatorJacobiSmoother_82_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_OperatorJacobiSmoother_82_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_OperatorJacobiSmoother_83_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_OperatorJacobiSmoother_83_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_OperatorJacobiSmoother_83_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_OptimizationSolver_84_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_OptimizationSolver_84_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_OptimizationSolver_84_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_OptimizationSolver_85_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_OptimizationSolver_85_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_OptimizationSolver_85_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_OptimizationSolver_86_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_OptimizationSolver_86_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_OptimizationSolver_86_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_OrthoSolver_87_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_OrthoSolver_87_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_OrthoSolver_87_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_OrthoSolver_88_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_OrthoSolver_88_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_OrthoSolver_88_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_ProductSolver_94_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_ProductSolver_94_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_ProductSolver_94_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_ProductSolver_95_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_ProductSolver_95_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_ProductSolver_95_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_SLBQPOptimizer_96_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::OptimizationSolver>::flags; }
-static void* nsb_cast_mfem_SLBQPOptimizer_96_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::OptimizationSolver>::up(p); }
-static void* nsb_cast_mfem_SLBQPOptimizer_96_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::OptimizationSolver>::down(p); }
-static unsigned nsb_cast_mfem_SLBQPOptimizer_97_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_SLBQPOptimizer_97_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_SLBQPOptimizer_97_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_SLBQPOptimizer_98_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_SLBQPOptimizer_98_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_SLBQPOptimizer_98_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_SLBQPOptimizer_99_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_SLBQPOptimizer_99_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_SLBQPOptimizer_99_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_SLISolver_100_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::IterativeSolver>::flags; }
-static void* nsb_cast_mfem_SLISolver_100_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::IterativeSolver>::up(p); }
-static void* nsb_cast_mfem_SLISolver_100_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::IterativeSolver>::down(p); }
-static unsigned nsb_cast_mfem_SLISolver_101_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_SLISolver_101_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_SLISolver_101_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_SLISolver_102_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_SLISolver_102_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_SLISolver_102_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_CGSolver_14_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_CGSolver_14_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_CGSolver_14_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_CGSolver_15_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_CGSolver_15_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_CGSolver_15_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_CGSolver_16_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_CGSolver_16_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_CGSolver_16_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::CGSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_DirectSubBlockSolver_19_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_DirectSubBlockSolver_19_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_DirectSubBlockSolver_19_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_DirectSubBlockSolver_20_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_DirectSubBlockSolver_20_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_DirectSubBlockSolver_20_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::DirectSubBlockSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_FGMRESSolver_21_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_FGMRESSolver_21_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_FGMRESSolver_21_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_FGMRESSolver_22_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_FGMRESSolver_22_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_FGMRESSolver_22_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_FGMRESSolver_23_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_FGMRESSolver_23_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_FGMRESSolver_23_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::FGMRESSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_GMRESSolver_24_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_GMRESSolver_24_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_GMRESSolver_24_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_GMRESSolver_25_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_GMRESSolver_25_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_GMRESSolver_25_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_GMRESSolver_26_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_GMRESSolver_26_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_GMRESSolver_26_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::GMRESSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_IterativeSolver_70_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_IterativeSolver_70_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_IterativeSolver_70_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_IterativeSolver_71_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_IterativeSolver_71_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_IterativeSolver_71_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::IterativeSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_LBFGSSolver_72_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::NewtonSolver>::flags; }
+static void* nsb_cast_mfem_LBFGSSolver_72_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::NewtonSolver>::up(p); }
+static void* nsb_cast_mfem_LBFGSSolver_72_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::NewtonSolver>::down(p); }
+static unsigned nsb_cast_mfem_LBFGSSolver_73_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_LBFGSSolver_73_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_LBFGSSolver_73_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_LBFGSSolver_74_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_LBFGSSolver_74_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_LBFGSSolver_74_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_LBFGSSolver_75_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_LBFGSSolver_75_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_LBFGSSolver_75_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::LBFGSSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_MINRESSolver_76_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_MINRESSolver_76_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_MINRESSolver_76_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_MINRESSolver_77_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_MINRESSolver_77_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_MINRESSolver_77_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_MINRESSolver_78_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_MINRESSolver_78_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_MINRESSolver_78_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::MINRESSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_NewtonSolver_80_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_NewtonSolver_80_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_NewtonSolver_80_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_NewtonSolver_81_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_NewtonSolver_81_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_NewtonSolver_81_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_NewtonSolver_82_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_NewtonSolver_82_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_NewtonSolver_82_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::NewtonSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_OperatorChebyshevSmoother_84_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_OperatorChebyshevSmoother_84_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_OperatorChebyshevSmoother_84_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_OperatorChebyshevSmoother_85_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_OperatorChebyshevSmoother_85_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_OperatorChebyshevSmoother_85_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorChebyshevSmoother, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_OperatorJacobiSmoother_86_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_OperatorJacobiSmoother_86_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_OperatorJacobiSmoother_86_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_OperatorJacobiSmoother_87_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_OperatorJacobiSmoother_87_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_OperatorJacobiSmoother_87_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OperatorJacobiSmoother, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_OptimizationSolver_88_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_OptimizationSolver_88_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_OptimizationSolver_88_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_OptimizationSolver_89_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_OptimizationSolver_89_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_OptimizationSolver_89_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_OptimizationSolver_90_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_OptimizationSolver_90_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_OptimizationSolver_90_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OptimizationSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_OrthoSolver_91_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_OrthoSolver_91_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_OrthoSolver_91_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_OrthoSolver_92_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_OrthoSolver_92_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_OrthoSolver_92_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::OrthoSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_ProductSolver_100_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_ProductSolver_100_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_ProductSolver_100_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_ProductSolver_101_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_ProductSolver_101_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_ProductSolver_101_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::ProductSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_SLBQPOptimizer_102_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::OptimizationSolver>::flags; }
+static void* nsb_cast_mfem_SLBQPOptimizer_102_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::OptimizationSolver>::up(p); }
+static void* nsb_cast_mfem_SLBQPOptimizer_102_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::OptimizationSolver>::down(p); }
+static unsigned nsb_cast_mfem_SLBQPOptimizer_103_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_SLBQPOptimizer_103_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_SLBQPOptimizer_103_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_SLBQPOptimizer_104_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_SLBQPOptimizer_104_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_SLBQPOptimizer_104_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_SLBQPOptimizer_105_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_SLBQPOptimizer_105_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_SLBQPOptimizer_105_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLBQPOptimizer, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_SLISolver_106_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::IterativeSolver>::flags; }
+static void* nsb_cast_mfem_SLISolver_106_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::IterativeSolver>::up(p); }
+static void* nsb_cast_mfem_SLISolver_106_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::IterativeSolver>::down(p); }
+static unsigned nsb_cast_mfem_SLISolver_107_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_SLISolver_107_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_SLISolver_107_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_SLISolver_108_flags() noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_SLISolver_108_up(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_SLISolver_108_down(void* p) noexcept { return nsb_cast_traits_mfem__par_solvers<mfem::SLISolver, mfem::Operator>::down(p); }
 static mfem::AuxSpaceSmoother *nsb_borrowed_mfem_AuxSpaceSmoother(unsigned long long address) {
     return reinterpret_cast<mfem::AuxSpaceSmoother *>(address);
 }
@@ -247,7 +247,8 @@ static int nsb_mfem_AuxSpaceSmoother_construct_2(const void* arg0, void* arg1, v
 
 static void nsb_mfem_AuxSpaceSmoother_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::AuxSpaceSmoother**>(storage);
+    auto object = *reinterpret_cast<mfem::AuxSpaceSmoother**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::BiCGSTABSolver *nsb_borrowed_mfem_BiCGSTABSolver(unsigned long long address) {
@@ -299,7 +300,8 @@ static int nsb_mfem_BiCGSTABSolver_construct_1(void* arg0, void** result) noexce
 
 static void nsb_mfem_BiCGSTABSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::BiCGSTABSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::BiCGSTABSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::BlockILU *nsb_borrowed_mfem_BlockILU(unsigned long long address) {
@@ -395,7 +397,8 @@ static int nsb_mfem_BlockILU_construct_6(const void* arg0, void** result) noexce
 
 static void nsb_mfem_BlockILU_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::BlockILU**>(storage);
+    auto object = *reinterpret_cast<mfem::BlockILU**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::CGSolver *nsb_borrowed_mfem_CGSolver(unsigned long long address) {
@@ -447,7 +450,8 @@ static int nsb_mfem_CGSolver_construct_1(void* arg0, void** result) noexcept {
 
 static void nsb_mfem_CGSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::CGSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::CGSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::DirectSubBlockSolver *nsb_borrowed_mfem_DirectSubBlockSolver(unsigned long long address) {
@@ -491,7 +495,8 @@ static int nsb_mfem_DirectSubBlockSolver_construct_0(const void* arg0, const voi
 
 static void nsb_mfem_DirectSubBlockSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::DirectSubBlockSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::DirectSubBlockSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::FGMRESSolver *nsb_borrowed_mfem_FGMRESSolver(unsigned long long address) {
@@ -543,7 +548,8 @@ static int nsb_mfem_FGMRESSolver_construct_1(void* arg0, void** result) noexcept
 
 static void nsb_mfem_FGMRESSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::FGMRESSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::FGMRESSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::GMRESSolver *nsb_borrowed_mfem_GMRESSolver(unsigned long long address) {
@@ -595,7 +601,8 @@ static int nsb_mfem_GMRESSolver_construct_1(void* arg0, void** result) noexcept 
 
 static void nsb_mfem_GMRESSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::GMRESSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::GMRESSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::IterativeSolver *nsb_borrowed_mfem_IterativeSolver(unsigned long long address) {
@@ -751,7 +758,8 @@ static int nsb_mfem_IterativeSolver_15_GetComm(const void* self, void** result) 
 
 static void nsb_mfem_IterativeSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::IterativeSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::IterativeSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::LBFGSSolver *nsb_borrowed_mfem_LBFGSSolver(unsigned long long address) {
@@ -839,7 +847,8 @@ static int nsb_mfem_LBFGSSolver_construct_1(void* arg0, void** result) noexcept 
 
 static void nsb_mfem_LBFGSSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::LBFGSSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::LBFGSSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::MINRESSolver *nsb_borrowed_mfem_MINRESSolver(unsigned long long address) {
@@ -903,7 +912,8 @@ static int nsb_mfem_MINRESSolver_construct_1(void* arg0, void** result) noexcept
 
 static void nsb_mfem_MINRESSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::MINRESSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::MINRESSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::NewtonSolver *nsb_borrowed_mfem_NewtonSolver(unsigned long long address) {
@@ -1063,7 +1073,8 @@ static int nsb_mfem_NewtonSolver_construct_1(void* arg0, void** result) noexcept
 
 static void nsb_mfem_NewtonSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::NewtonSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::NewtonSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::OperatorChebyshevSmoother *nsb_borrowed_mfem_OperatorChebyshevSmoother(unsigned long long address) {
@@ -1211,7 +1222,8 @@ static int nsb_mfem_OperatorChebyshevSmoother_construct_10(const void* arg0, con
 
 static void nsb_mfem_OperatorChebyshevSmoother_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::OperatorChebyshevSmoother**>(storage);
+    auto object = *reinterpret_cast<mfem::OperatorChebyshevSmoother**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::OperatorJacobiSmoother *nsb_borrowed_mfem_OperatorJacobiSmoother(unsigned long long address) {
@@ -1327,7 +1339,8 @@ static int nsb_mfem_OperatorJacobiSmoother_construct_5(const void* arg0, const v
 
 static void nsb_mfem_OperatorJacobiSmoother_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::OperatorJacobiSmoother**>(storage);
+    auto object = *reinterpret_cast<mfem::OperatorJacobiSmoother**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::OptimizationSolver *nsb_borrowed_mfem_OptimizationSolver(unsigned long long address) {
@@ -1375,7 +1388,8 @@ static int nsb_mfem_OptimizationSolver_3_SetOperator(void* self, const void* arg
 
 static void nsb_mfem_OptimizationSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::OptimizationSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::OptimizationSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::OrthoSolver *nsb_borrowed_mfem_OrthoSolver(unsigned long long address) {
@@ -1439,7 +1453,8 @@ static int nsb_mfem_OrthoSolver_construct_1(void* arg0, void** result) noexcept 
 
 static void nsb_mfem_OrthoSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::OrthoSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::OrthoSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::ProductSolver *nsb_borrowed_mfem_ProductSolver(unsigned long long address) {
@@ -1495,7 +1510,8 @@ static int nsb_mfem_ProductSolver_construct_0(void* arg0, void* arg1, void* arg2
 
 static void nsb_mfem_ProductSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::ProductSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::ProductSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::SLBQPOptimizer *nsb_borrowed_mfem_SLBQPOptimizer(unsigned long long address) {
@@ -1559,7 +1575,8 @@ static int nsb_mfem_SLBQPOptimizer_construct_1(void* arg0, void** result) noexce
 
 static void nsb_mfem_SLBQPOptimizer_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::SLBQPOptimizer**>(storage);
+    auto object = *reinterpret_cast<mfem::SLBQPOptimizer**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::SLISolver *nsb_borrowed_mfem_SLISolver(unsigned long long address) {
@@ -1611,7 +1628,8 @@ static int nsb_mfem_SLISolver_construct_1(void* arg0, void** result) noexcept {
 
 static void nsb_mfem_SLISolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::SLISolver**>(storage);
+    auto object = *reinterpret_cast<mfem::SLISolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_solvers(const char* name) noexcept {
@@ -1915,88 +1933,88 @@ static unsigned long long nsb_function_address_mfem__par_solvers(const char* nam
     if (std::strcmp(name, "nsb_cast_mfem_BlockILU_7_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockILU_7_down);
     if (std::strcmp(name, "nsb_cast_mfem_BlockILU_8_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockILU_8_up);
     if (std::strcmp(name, "nsb_cast_mfem_BlockILU_8_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockILU_8_down);
-    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_11_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_11_up);
-    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_11_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_11_down);
-    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_12_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_12_up);
-    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_12_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_12_down);
-    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_13_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_13_up);
-    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_13_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_13_down);
-    if (std::strcmp(name, "nsb_cast_mfem_DirectSubBlockSolver_16_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DirectSubBlockSolver_16_up);
-    if (std::strcmp(name, "nsb_cast_mfem_DirectSubBlockSolver_16_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DirectSubBlockSolver_16_down);
-    if (std::strcmp(name, "nsb_cast_mfem_DirectSubBlockSolver_17_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DirectSubBlockSolver_17_up);
-    if (std::strcmp(name, "nsb_cast_mfem_DirectSubBlockSolver_17_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DirectSubBlockSolver_17_down);
-    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_18_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_18_up);
-    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_18_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_18_down);
-    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_19_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_19_up);
-    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_19_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_19_down);
-    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_20_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_20_up);
-    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_20_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_20_down);
-    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_21_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_21_up);
-    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_21_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_21_down);
-    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_22_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_22_up);
-    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_22_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_22_down);
-    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_23_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_23_up);
-    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_23_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_23_down);
-    if (std::strcmp(name, "nsb_cast_mfem_IterativeSolver_66_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_IterativeSolver_66_up);
-    if (std::strcmp(name, "nsb_cast_mfem_IterativeSolver_66_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_IterativeSolver_66_down);
-    if (std::strcmp(name, "nsb_cast_mfem_IterativeSolver_67_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_IterativeSolver_67_up);
-    if (std::strcmp(name, "nsb_cast_mfem_IterativeSolver_67_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_IterativeSolver_67_down);
-    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_68_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_68_up);
-    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_68_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_68_down);
-    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_69_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_69_up);
-    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_69_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_69_down);
-    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_70_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_70_up);
-    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_70_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_70_down);
-    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_71_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_71_up);
-    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_71_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_71_down);
-    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_72_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_72_up);
-    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_72_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_72_down);
-    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_73_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_73_up);
-    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_73_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_73_down);
-    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_74_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_74_up);
-    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_74_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_74_down);
-    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_76_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_76_up);
-    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_76_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_76_down);
-    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_77_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_77_up);
-    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_77_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_77_down);
-    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_78_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_78_up);
-    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_78_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_78_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OperatorChebyshevSmoother_80_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorChebyshevSmoother_80_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OperatorChebyshevSmoother_80_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorChebyshevSmoother_80_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OperatorChebyshevSmoother_81_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorChebyshevSmoother_81_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OperatorChebyshevSmoother_81_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorChebyshevSmoother_81_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OperatorJacobiSmoother_82_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorJacobiSmoother_82_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OperatorJacobiSmoother_82_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorJacobiSmoother_82_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OperatorJacobiSmoother_83_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorJacobiSmoother_83_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OperatorJacobiSmoother_83_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorJacobiSmoother_83_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_84_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_84_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_84_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_84_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_85_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_85_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_85_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_85_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_86_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_86_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_86_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_86_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OrthoSolver_87_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OrthoSolver_87_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OrthoSolver_87_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OrthoSolver_87_down);
-    if (std::strcmp(name, "nsb_cast_mfem_OrthoSolver_88_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OrthoSolver_88_up);
-    if (std::strcmp(name, "nsb_cast_mfem_OrthoSolver_88_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OrthoSolver_88_down);
-    if (std::strcmp(name, "nsb_cast_mfem_ProductSolver_94_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ProductSolver_94_up);
-    if (std::strcmp(name, "nsb_cast_mfem_ProductSolver_94_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ProductSolver_94_down);
-    if (std::strcmp(name, "nsb_cast_mfem_ProductSolver_95_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ProductSolver_95_up);
-    if (std::strcmp(name, "nsb_cast_mfem_ProductSolver_95_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ProductSolver_95_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_96_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_96_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_96_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_96_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_97_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_97_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_97_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_97_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_98_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_98_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_98_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_98_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_99_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_99_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_99_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_99_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_100_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_100_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_100_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_100_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_101_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_101_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_101_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_101_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_102_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_102_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_102_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_102_down);
+    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_14_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_14_up);
+    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_14_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_14_down);
+    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_15_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_15_up);
+    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_15_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_15_down);
+    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_16_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_16_up);
+    if (std::strcmp(name, "nsb_cast_mfem_CGSolver_16_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_CGSolver_16_down);
+    if (std::strcmp(name, "nsb_cast_mfem_DirectSubBlockSolver_19_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DirectSubBlockSolver_19_up);
+    if (std::strcmp(name, "nsb_cast_mfem_DirectSubBlockSolver_19_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DirectSubBlockSolver_19_down);
+    if (std::strcmp(name, "nsb_cast_mfem_DirectSubBlockSolver_20_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DirectSubBlockSolver_20_up);
+    if (std::strcmp(name, "nsb_cast_mfem_DirectSubBlockSolver_20_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DirectSubBlockSolver_20_down);
+    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_21_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_21_up);
+    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_21_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_21_down);
+    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_22_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_22_up);
+    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_22_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_22_down);
+    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_23_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_23_up);
+    if (std::strcmp(name, "nsb_cast_mfem_FGMRESSolver_23_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_FGMRESSolver_23_down);
+    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_24_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_24_up);
+    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_24_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_24_down);
+    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_25_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_25_up);
+    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_25_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_25_down);
+    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_26_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_26_up);
+    if (std::strcmp(name, "nsb_cast_mfem_GMRESSolver_26_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_GMRESSolver_26_down);
+    if (std::strcmp(name, "nsb_cast_mfem_IterativeSolver_70_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_IterativeSolver_70_up);
+    if (std::strcmp(name, "nsb_cast_mfem_IterativeSolver_70_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_IterativeSolver_70_down);
+    if (std::strcmp(name, "nsb_cast_mfem_IterativeSolver_71_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_IterativeSolver_71_up);
+    if (std::strcmp(name, "nsb_cast_mfem_IterativeSolver_71_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_IterativeSolver_71_down);
+    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_72_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_72_up);
+    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_72_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_72_down);
+    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_73_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_73_up);
+    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_73_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_73_down);
+    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_74_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_74_up);
+    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_74_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_74_down);
+    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_75_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_75_up);
+    if (std::strcmp(name, "nsb_cast_mfem_LBFGSSolver_75_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_LBFGSSolver_75_down);
+    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_76_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_76_up);
+    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_76_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_76_down);
+    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_77_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_77_up);
+    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_77_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_77_down);
+    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_78_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_78_up);
+    if (std::strcmp(name, "nsb_cast_mfem_MINRESSolver_78_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_MINRESSolver_78_down);
+    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_80_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_80_up);
+    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_80_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_80_down);
+    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_81_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_81_up);
+    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_81_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_81_down);
+    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_82_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_82_up);
+    if (std::strcmp(name, "nsb_cast_mfem_NewtonSolver_82_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NewtonSolver_82_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OperatorChebyshevSmoother_84_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorChebyshevSmoother_84_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OperatorChebyshevSmoother_84_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorChebyshevSmoother_84_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OperatorChebyshevSmoother_85_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorChebyshevSmoother_85_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OperatorChebyshevSmoother_85_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorChebyshevSmoother_85_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OperatorJacobiSmoother_86_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorJacobiSmoother_86_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OperatorJacobiSmoother_86_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorJacobiSmoother_86_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OperatorJacobiSmoother_87_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorJacobiSmoother_87_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OperatorJacobiSmoother_87_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OperatorJacobiSmoother_87_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_88_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_88_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_88_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_88_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_89_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_89_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_89_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_89_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_90_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_90_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OptimizationSolver_90_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OptimizationSolver_90_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OrthoSolver_91_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OrthoSolver_91_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OrthoSolver_91_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OrthoSolver_91_down);
+    if (std::strcmp(name, "nsb_cast_mfem_OrthoSolver_92_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OrthoSolver_92_up);
+    if (std::strcmp(name, "nsb_cast_mfem_OrthoSolver_92_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_OrthoSolver_92_down);
+    if (std::strcmp(name, "nsb_cast_mfem_ProductSolver_100_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ProductSolver_100_up);
+    if (std::strcmp(name, "nsb_cast_mfem_ProductSolver_100_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ProductSolver_100_down);
+    if (std::strcmp(name, "nsb_cast_mfem_ProductSolver_101_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ProductSolver_101_up);
+    if (std::strcmp(name, "nsb_cast_mfem_ProductSolver_101_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ProductSolver_101_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_102_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_102_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_102_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_102_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_103_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_103_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_103_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_103_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_104_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_104_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_104_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_104_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_105_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_105_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SLBQPOptimizer_105_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLBQPOptimizer_105_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_106_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_106_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_106_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_106_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_107_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_107_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_107_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_107_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_108_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_108_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SLISolver_108_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SLISolver_108_down);
     return 0;
 }
 %}
@@ -2008,47 +2026,47 @@ extern unsigned nsb_cast_mfem_BiCGSTABSolver_5_flags() noexcept;
 extern unsigned nsb_cast_mfem_BiCGSTABSolver_6_flags() noexcept;
 extern unsigned nsb_cast_mfem_BlockILU_7_flags() noexcept;
 extern unsigned nsb_cast_mfem_BlockILU_8_flags() noexcept;
-extern unsigned nsb_cast_mfem_CGSolver_11_flags() noexcept;
-extern unsigned nsb_cast_mfem_CGSolver_12_flags() noexcept;
-extern unsigned nsb_cast_mfem_CGSolver_13_flags() noexcept;
-extern unsigned nsb_cast_mfem_DirectSubBlockSolver_16_flags() noexcept;
-extern unsigned nsb_cast_mfem_DirectSubBlockSolver_17_flags() noexcept;
-extern unsigned nsb_cast_mfem_FGMRESSolver_18_flags() noexcept;
-extern unsigned nsb_cast_mfem_FGMRESSolver_19_flags() noexcept;
-extern unsigned nsb_cast_mfem_FGMRESSolver_20_flags() noexcept;
-extern unsigned nsb_cast_mfem_GMRESSolver_21_flags() noexcept;
-extern unsigned nsb_cast_mfem_GMRESSolver_22_flags() noexcept;
-extern unsigned nsb_cast_mfem_GMRESSolver_23_flags() noexcept;
-extern unsigned nsb_cast_mfem_IterativeSolver_66_flags() noexcept;
-extern unsigned nsb_cast_mfem_IterativeSolver_67_flags() noexcept;
-extern unsigned nsb_cast_mfem_LBFGSSolver_68_flags() noexcept;
-extern unsigned nsb_cast_mfem_LBFGSSolver_69_flags() noexcept;
-extern unsigned nsb_cast_mfem_LBFGSSolver_70_flags() noexcept;
-extern unsigned nsb_cast_mfem_LBFGSSolver_71_flags() noexcept;
-extern unsigned nsb_cast_mfem_MINRESSolver_72_flags() noexcept;
-extern unsigned nsb_cast_mfem_MINRESSolver_73_flags() noexcept;
-extern unsigned nsb_cast_mfem_MINRESSolver_74_flags() noexcept;
-extern unsigned nsb_cast_mfem_NewtonSolver_76_flags() noexcept;
-extern unsigned nsb_cast_mfem_NewtonSolver_77_flags() noexcept;
-extern unsigned nsb_cast_mfem_NewtonSolver_78_flags() noexcept;
-extern unsigned nsb_cast_mfem_OperatorChebyshevSmoother_80_flags() noexcept;
-extern unsigned nsb_cast_mfem_OperatorChebyshevSmoother_81_flags() noexcept;
-extern unsigned nsb_cast_mfem_OperatorJacobiSmoother_82_flags() noexcept;
-extern unsigned nsb_cast_mfem_OperatorJacobiSmoother_83_flags() noexcept;
-extern unsigned nsb_cast_mfem_OptimizationSolver_84_flags() noexcept;
-extern unsigned nsb_cast_mfem_OptimizationSolver_85_flags() noexcept;
-extern unsigned nsb_cast_mfem_OptimizationSolver_86_flags() noexcept;
-extern unsigned nsb_cast_mfem_OrthoSolver_87_flags() noexcept;
-extern unsigned nsb_cast_mfem_OrthoSolver_88_flags() noexcept;
-extern unsigned nsb_cast_mfem_ProductSolver_94_flags() noexcept;
-extern unsigned nsb_cast_mfem_ProductSolver_95_flags() noexcept;
-extern unsigned nsb_cast_mfem_SLBQPOptimizer_96_flags() noexcept;
-extern unsigned nsb_cast_mfem_SLBQPOptimizer_97_flags() noexcept;
-extern unsigned nsb_cast_mfem_SLBQPOptimizer_98_flags() noexcept;
-extern unsigned nsb_cast_mfem_SLBQPOptimizer_99_flags() noexcept;
-extern unsigned nsb_cast_mfem_SLISolver_100_flags() noexcept;
-extern unsigned nsb_cast_mfem_SLISolver_101_flags() noexcept;
-extern unsigned nsb_cast_mfem_SLISolver_102_flags() noexcept;
+extern unsigned nsb_cast_mfem_CGSolver_14_flags() noexcept;
+extern unsigned nsb_cast_mfem_CGSolver_15_flags() noexcept;
+extern unsigned nsb_cast_mfem_CGSolver_16_flags() noexcept;
+extern unsigned nsb_cast_mfem_DirectSubBlockSolver_19_flags() noexcept;
+extern unsigned nsb_cast_mfem_DirectSubBlockSolver_20_flags() noexcept;
+extern unsigned nsb_cast_mfem_FGMRESSolver_21_flags() noexcept;
+extern unsigned nsb_cast_mfem_FGMRESSolver_22_flags() noexcept;
+extern unsigned nsb_cast_mfem_FGMRESSolver_23_flags() noexcept;
+extern unsigned nsb_cast_mfem_GMRESSolver_24_flags() noexcept;
+extern unsigned nsb_cast_mfem_GMRESSolver_25_flags() noexcept;
+extern unsigned nsb_cast_mfem_GMRESSolver_26_flags() noexcept;
+extern unsigned nsb_cast_mfem_IterativeSolver_70_flags() noexcept;
+extern unsigned nsb_cast_mfem_IterativeSolver_71_flags() noexcept;
+extern unsigned nsb_cast_mfem_LBFGSSolver_72_flags() noexcept;
+extern unsigned nsb_cast_mfem_LBFGSSolver_73_flags() noexcept;
+extern unsigned nsb_cast_mfem_LBFGSSolver_74_flags() noexcept;
+extern unsigned nsb_cast_mfem_LBFGSSolver_75_flags() noexcept;
+extern unsigned nsb_cast_mfem_MINRESSolver_76_flags() noexcept;
+extern unsigned nsb_cast_mfem_MINRESSolver_77_flags() noexcept;
+extern unsigned nsb_cast_mfem_MINRESSolver_78_flags() noexcept;
+extern unsigned nsb_cast_mfem_NewtonSolver_80_flags() noexcept;
+extern unsigned nsb_cast_mfem_NewtonSolver_81_flags() noexcept;
+extern unsigned nsb_cast_mfem_NewtonSolver_82_flags() noexcept;
+extern unsigned nsb_cast_mfem_OperatorChebyshevSmoother_84_flags() noexcept;
+extern unsigned nsb_cast_mfem_OperatorChebyshevSmoother_85_flags() noexcept;
+extern unsigned nsb_cast_mfem_OperatorJacobiSmoother_86_flags() noexcept;
+extern unsigned nsb_cast_mfem_OperatorJacobiSmoother_87_flags() noexcept;
+extern unsigned nsb_cast_mfem_OptimizationSolver_88_flags() noexcept;
+extern unsigned nsb_cast_mfem_OptimizationSolver_89_flags() noexcept;
+extern unsigned nsb_cast_mfem_OptimizationSolver_90_flags() noexcept;
+extern unsigned nsb_cast_mfem_OrthoSolver_91_flags() noexcept;
+extern unsigned nsb_cast_mfem_OrthoSolver_92_flags() noexcept;
+extern unsigned nsb_cast_mfem_ProductSolver_100_flags() noexcept;
+extern unsigned nsb_cast_mfem_ProductSolver_101_flags() noexcept;
+extern unsigned nsb_cast_mfem_SLBQPOptimizer_102_flags() noexcept;
+extern unsigned nsb_cast_mfem_SLBQPOptimizer_103_flags() noexcept;
+extern unsigned nsb_cast_mfem_SLBQPOptimizer_104_flags() noexcept;
+extern unsigned nsb_cast_mfem_SLBQPOptimizer_105_flags() noexcept;
+extern unsigned nsb_cast_mfem_SLISolver_106_flags() noexcept;
+extern unsigned nsb_cast_mfem_SLISolver_107_flags() noexcept;
+extern unsigned nsb_cast_mfem_SLISolver_108_flags() noexcept;
 extern mfem::AuxSpaceSmoother *nsb_borrowed_mfem_AuxSpaceSmoother(unsigned long long address);
 %newobject nsb_owned_mfem_AuxSpaceSmoother;
 extern mfem::AuxSpaceSmoother *nsb_owned_mfem_AuxSpaceSmoother(unsigned long long address);

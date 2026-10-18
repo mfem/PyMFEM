@@ -24,7 +24,7 @@ import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
-from mfem.par import intArray, add_vector
+from mfem.par import intArray, Add
 import mfem.par as mfem
 from mpi4py import MPI
 

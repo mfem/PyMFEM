@@ -75,7 +75,8 @@ static int nsb_mfem_Coefficient_4_Eval(void* self, void* arg0, const void* arg1,
 
 static void nsb_mfem_Coefficient_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::Coefficient**>(storage);
+    auto object = *reinterpret_cast<mfem::Coefficient**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::MatrixCoefficient *nsb_borrowed_mfem_MatrixCoefficient(unsigned long long address) {
@@ -183,7 +184,8 @@ static int nsb_mfem_MatrixCoefficient_9_EvalSymmetric(void* self, void* arg0, vo
 
 static void nsb_mfem_MatrixCoefficient_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::MatrixCoefficient**>(storage);
+    auto object = *reinterpret_cast<mfem::MatrixCoefficient**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::VectorCoefficient *nsb_borrowed_mfem_VectorCoefficient(unsigned long long address) {
@@ -255,7 +257,8 @@ static int nsb_mfem_VectorCoefficient_4_Eval(void* self, void* arg0, void* arg1,
 
 static void nsb_mfem_VectorCoefficient_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::VectorCoefficient**>(storage);
+    auto object = *reinterpret_cast<mfem::VectorCoefficient**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_coefficient(const char* name) noexcept {

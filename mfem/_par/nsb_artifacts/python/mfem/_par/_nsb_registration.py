@@ -4,7 +4,7 @@ from pathlib import Path
 
 from nsb_rt.runtime.ordinary import install_bridge
 
-_MODULES = {name: import_module(name) for name in ['mfem._par.array', 'mfem._par.blockoperator', 'mfem._par.coefficient', 'mfem._par.densemat', 'mfem._par.doftrans', 'mfem._par.eltrans', 'mfem._par.fe_base', 'mfem._par.fespace', 'mfem._par.hyperbolic', 'mfem._par.hypre', 'mfem._par.intrules', 'mfem._par.lininteg', 'mfem._par.matrix', 'mfem._par.nonlinearform', 'mfem._par.operators', 'mfem._par.pfespace', 'mfem._par.pnonlinearform', 'mfem._par.solvers', 'mfem._par.sparsemat', 'mfem._par.vector']}
+_MODULES = {name: import_module(name) for name in ['mfem._par.array', 'mfem._par.blockmatrix', 'mfem._par.blockoperator', 'mfem._par.coefficient', 'mfem._par.common_functions', 'mfem._par.densemat', 'mfem._par.doftrans', 'mfem._par.eltrans', 'mfem._par.fe_base', 'mfem._par.fespace', 'mfem._par.gridfunc', 'mfem._par.hyperbolic', 'mfem._par.hypre', 'mfem._par.intrules', 'mfem._par.lininteg', 'mfem._par.matrix', 'mfem._par.nonlinearform', 'mfem._par.operators', 'mfem._par.pfespace', 'mfem._par.pgridfunc', 'mfem._par.pnonlinearform', 'mfem._par.solvers', 'mfem._par.sparsemat', 'mfem._par.vector']}
 install_bridge(_MODULES, Path(__file__).with_name("ordinary_descriptor.json"))
 
 from nsb_rt import register_state_backend

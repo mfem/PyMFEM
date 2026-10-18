@@ -128,3 +128,27 @@ interface = "mfem/_par/pnonlinearform.i"
 python_module = "mfem._par.pnonlinearform"
 include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
 swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/common_functions.i"
+python_module = "mfem._par.common_functions"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/blockmatrix.i"
+python_module = "mfem._par.blockmatrix"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/gridfunc.i"
+python_module = "mfem._par.gridfunc"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/pgridfunc.i"
+python_module = "mfem._par.pgridfunc"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]

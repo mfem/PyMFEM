@@ -128,7 +128,8 @@ def main():
     )
     run([python, '-I', check, 'ser'], cwd=work, env=env)
     completed = []
-    excluded = {'test_ex18p.py', 'test_ex9p.py', 'test_ex19p.py', 'test_parallel_foundation.py'}
+    excluded = {'test_ex18p.py', 'test_ex9p.py', 'test_ex19p.py', 'test_parallel_foundation.py',
+                'test_gridfunctionp.py', 'test_native_operatorsp.py'}
     for test in sorted(tests.glob('test_*.py')):
         if test.name not in excluded:
             run([python, '-I', test], cwd=work, env=env, timeout=1200)
@@ -144,7 +145,8 @@ def main():
         )
         run([*mpi_command, python, '-I', mpi_check], cwd=work, env=env)
         run([*mpi_command, python, '-I', check, 'par'], cwd=work, env=env)
-        for name in ('test_parallel_foundation.py', 'test_ex18p.py'):
+        for name in ('test_parallel_foundation.py', 'test_ex18p.py',
+                     'test_gridfunctionp.py', 'test_native_operatorsp.py'):
             run([*mpi_command, python, '-I', tests / name], cwd=work, env=env)
             completed.append(name)
         # These acceptance drivers launch their own two-rank workers.

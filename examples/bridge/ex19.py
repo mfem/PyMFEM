@@ -307,7 +307,7 @@ def ex19_main(args):
         refconfig.close()
 
     #  12. Compute the final deformation
-    mfem.subtract_vector(x_gf, x_ref, x_def)
+    mfem.Subtract(x_gf, x_ref, x_def)
 
     #  13. Visualize the results if requested
     if (visualization):

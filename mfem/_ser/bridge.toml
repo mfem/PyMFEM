@@ -107,3 +107,21 @@ interface = "mfem/_ser/operators.i"
 python_module = "mfem._ser.operators"
 include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
 swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/common_functions.i"
+python_module = "mfem._ser.common_functions"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/blockmatrix.i"
+python_module = "mfem._ser.blockmatrix"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
+[[interfaces]]
+interface = "mfem/_ser/gridfunc.i"
+python_module = "mfem._ser.gridfunc"
+include_dirs = ["mfem/_ser", "mfem/common", "external/mfem/cmbuild_ser", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]

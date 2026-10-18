@@ -309,7 +309,8 @@ static int nsb_mfem_ElementTransformation_member_set_ElementType(void* self, int
 
 static void nsb_mfem_ElementTransformation_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::ElementTransformation**>(storage);
+    auto object = *reinterpret_cast<mfem::ElementTransformation**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__ser_eltrans(const char* name) noexcept {

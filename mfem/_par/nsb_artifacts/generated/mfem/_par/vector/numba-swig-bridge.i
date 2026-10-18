@@ -325,7 +325,151 @@ static int nsb_mfem_Vector_35_StealData(void* self, double** result) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_50_Add(void* self, double arg0, const void* arg1, void** result) noexcept {
+static int nsb_mfem_Vector_40_operator(void* self, int arg0, double* result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        *result = static_cast<mfem::Vector*>(self)->operator[](arg0);
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_40_operator_set(void* self, int arg0, double arg1) noexcept {
+    if (self == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator[](arg0) = arg1;
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_41_operator(const void* self, int arg0, double* result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        *result = static_cast<const mfem::Vector*>(self)->operator[](arg0);
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_43_operator(const void* self, const void* arg0, double* result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        *result = static_cast<const mfem::Vector*>(self)->operator*(*static_cast<const mfem::Vector*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_44_operator(void* self, double arg0) noexcept {
+    if (self == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator*=(arg0);
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_45_operator(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator*=(*static_cast<const mfem::Vector*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_46_operator(void* self, double arg0) noexcept {
+    if (self == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator/=(arg0);
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_47_operator(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator/=(*static_cast<const mfem::Vector*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_48_operator(void* self, double arg0) noexcept {
+    if (self == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator-=(arg0);
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_49_operator(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator-=(*static_cast<const mfem::Vector*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_50_operator(void* self, double arg0) noexcept {
+    if (self == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator+=(arg0);
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_51_operator(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::Vector*>(self)->operator+=(*static_cast<const mfem::Vector*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_Vector_52_Add(void* self, double arg0, const void* arg1, void** result) noexcept {
     if (self == nullptr || arg1 == nullptr || result == nullptr) {
         return 1;
     }
@@ -338,7 +482,7 @@ static int nsb_mfem_Vector_50_Add(void* self, double arg0, const void* arg1, voi
     return 0;
 }
 
-static int nsb_mfem_Vector_51_Set(void* self, double arg0, const void* arg1, void** result) noexcept {
+static int nsb_mfem_Vector_53_Set(void* self, double arg0, const void* arg1, void** result) noexcept {
     if (self == nullptr || arg1 == nullptr || result == nullptr) {
         return 1;
     }
@@ -351,7 +495,7 @@ static int nsb_mfem_Vector_51_Set(void* self, double arg0, const void* arg1, voi
     return 0;
 }
 
-static int nsb_mfem_Vector_52_SetVector(void* self, const void* arg0, int arg1) noexcept {
+static int nsb_mfem_Vector_54_SetVector(void* self, const void* arg0, int arg1) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -363,7 +507,7 @@ static int nsb_mfem_Vector_52_SetVector(void* self, const void* arg0, int arg1) 
     return 0;
 }
 
-static int nsb_mfem_Vector_53_AddSubVector(void* self, const void* arg0, int arg1) noexcept {
+static int nsb_mfem_Vector_55_AddSubVector(void* self, const void* arg0, int arg1) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -375,7 +519,7 @@ static int nsb_mfem_Vector_53_AddSubVector(void* self, const void* arg0, int arg
     return 0;
 }
 
-static int nsb_mfem_Vector_54_Neg(void* self) noexcept {
+static int nsb_mfem_Vector_56_Neg(void* self) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -387,7 +531,7 @@ static int nsb_mfem_Vector_54_Neg(void* self) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_55_Reciprocal(void* self) noexcept {
+static int nsb_mfem_Vector_57_Reciprocal(void* self) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -399,7 +543,7 @@ static int nsb_mfem_Vector_55_Reciprocal(void* self) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_56_Abs(void* self) noexcept {
+static int nsb_mfem_Vector_58_Abs(void* self) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -411,7 +555,7 @@ static int nsb_mfem_Vector_56_Abs(void* self) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_57_Pow(void* self, double arg0) noexcept {
+static int nsb_mfem_Vector_59_Pow(void* self, double arg0) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -423,7 +567,7 @@ static int nsb_mfem_Vector_57_Pow(void* self, double arg0) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_58_Swap(void* self, void* arg0) noexcept {
+static int nsb_mfem_Vector_60_Swap(void* self, void* arg0) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -435,7 +579,7 @@ static int nsb_mfem_Vector_58_Swap(void* self, void* arg0) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_59_cross3D(const void* self, const void* arg0, void* arg1) noexcept {
+static int nsb_mfem_Vector_61_cross3D(const void* self, const void* arg0, void* arg1) noexcept {
     if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
         return 1;
     }
@@ -447,7 +591,7 @@ static int nsb_mfem_Vector_59_cross3D(const void* self, const void* arg0, void* 
     return 0;
 }
 
-static int nsb_mfem_Vector_60_median(void* self, const void* arg0, const void* arg1) noexcept {
+static int nsb_mfem_Vector_62_median(void* self, const void* arg0, const void* arg1) noexcept {
     if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
         return 1;
     }
@@ -459,7 +603,7 @@ static int nsb_mfem_Vector_60_median(void* self, const void* arg0, const void* a
     return 0;
 }
 
-static int nsb_mfem_Vector_61_GetSubVector(const void* self, const void* arg0, void* arg1) noexcept {
+static int nsb_mfem_Vector_63_GetSubVector(const void* self, const void* arg0, void* arg1) noexcept {
     if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
         return 1;
     }
@@ -471,7 +615,7 @@ static int nsb_mfem_Vector_61_GetSubVector(const void* self, const void* arg0, v
     return 0;
 }
 
-static int nsb_mfem_Vector_62_GetSubVector(const void* self, const void* arg0, double* arg1) noexcept {
+static int nsb_mfem_Vector_64_GetSubVector(const void* self, const void* arg0, double* arg1) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -483,7 +627,7 @@ static int nsb_mfem_Vector_62_GetSubVector(const void* self, const void* arg0, d
     return 0;
 }
 
-static int nsb_mfem_Vector_63_SetSubVector(void* self, const void* arg0, double arg1) noexcept {
+static int nsb_mfem_Vector_65_SetSubVector(void* self, const void* arg0, double arg1) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -495,7 +639,7 @@ static int nsb_mfem_Vector_63_SetSubVector(void* self, const void* arg0, double 
     return 0;
 }
 
-static int nsb_mfem_Vector_64_SetSubVectorHost(void* self, const void* arg0, double arg1) noexcept {
+static int nsb_mfem_Vector_66_SetSubVectorHost(void* self, const void* arg0, double arg1) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -507,7 +651,7 @@ static int nsb_mfem_Vector_64_SetSubVectorHost(void* self, const void* arg0, dou
     return 0;
 }
 
-static int nsb_mfem_Vector_65_SetSubVector(void* self, const void* arg0, const void* arg1) noexcept {
+static int nsb_mfem_Vector_67_SetSubVector(void* self, const void* arg0, const void* arg1) noexcept {
     if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
         return 1;
     }
@@ -519,7 +663,7 @@ static int nsb_mfem_Vector_65_SetSubVector(void* self, const void* arg0, const v
     return 0;
 }
 
-static int nsb_mfem_Vector_66_SetSubVector(void* self, const void* arg0, double* arg1) noexcept {
+static int nsb_mfem_Vector_68_SetSubVector(void* self, const void* arg0, double* arg1) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -531,7 +675,7 @@ static int nsb_mfem_Vector_66_SetSubVector(void* self, const void* arg0, double*
     return 0;
 }
 
-static int nsb_mfem_Vector_67_AddElementVector(void* self, const void* arg0, const void* arg1) noexcept {
+static int nsb_mfem_Vector_69_AddElementVector(void* self, const void* arg0, const void* arg1) noexcept {
     if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
         return 1;
     }
@@ -543,7 +687,7 @@ static int nsb_mfem_Vector_67_AddElementVector(void* self, const void* arg0, con
     return 0;
 }
 
-static int nsb_mfem_Vector_68_AddElementVector(void* self, const void* arg0, double* arg1) noexcept {
+static int nsb_mfem_Vector_70_AddElementVector(void* self, const void* arg0, double* arg1) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -555,7 +699,7 @@ static int nsb_mfem_Vector_68_AddElementVector(void* self, const void* arg0, dou
     return 0;
 }
 
-static int nsb_mfem_Vector_69_AddElementVector(void* self, const void* arg0, double arg1, const void* arg2) noexcept {
+static int nsb_mfem_Vector_71_AddElementVector(void* self, const void* arg0, double arg1, const void* arg2) noexcept {
     if (self == nullptr || arg0 == nullptr || arg2 == nullptr) {
         return 1;
     }
@@ -567,7 +711,7 @@ static int nsb_mfem_Vector_69_AddElementVector(void* self, const void* arg0, dou
     return 0;
 }
 
-static int nsb_mfem_Vector_70_SetSubVectorComplement(void* self, const void* arg0, double arg1) noexcept {
+static int nsb_mfem_Vector_72_SetSubVectorComplement(void* self, const void* arg0, double arg1) noexcept {
     if (self == nullptr || arg0 == nullptr) {
         return 1;
     }
@@ -579,7 +723,7 @@ static int nsb_mfem_Vector_70_SetSubVectorComplement(void* self, const void* arg
     return 0;
 }
 
-static int nsb_mfem_Vector_73_Print(const void* self) noexcept {
+static int nsb_mfem_Vector_75_Print(const void* self) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -591,7 +735,7 @@ static int nsb_mfem_Vector_73_Print(const void* self) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_76_PrintMathematica(const void* self) noexcept {
+static int nsb_mfem_Vector_78_PrintMathematica(const void* self) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -603,7 +747,7 @@ static int nsb_mfem_Vector_76_PrintMathematica(const void* self) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_78_Randomize(void* self, int arg0) noexcept {
+static int nsb_mfem_Vector_80_Randomize(void* self, int arg0) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -615,7 +759,7 @@ static int nsb_mfem_Vector_78_Randomize(void* self, int arg0) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_79_Randomize(void* self) noexcept {
+static int nsb_mfem_Vector_81_Randomize(void* self) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -627,7 +771,7 @@ static int nsb_mfem_Vector_79_Randomize(void* self) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_80_Norml2(const void* self, double* result) noexcept {
+static int nsb_mfem_Vector_82_Norml2(const void* self, double* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -639,7 +783,7 @@ static int nsb_mfem_Vector_80_Norml2(const void* self, double* result) noexcept 
     return 0;
 }
 
-static int nsb_mfem_Vector_81_Normlinf(const void* self, double* result) noexcept {
+static int nsb_mfem_Vector_83_Normlinf(const void* self, double* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -651,7 +795,7 @@ static int nsb_mfem_Vector_81_Normlinf(const void* self, double* result) noexcep
     return 0;
 }
 
-static int nsb_mfem_Vector_82_Norml1(const void* self, double* result) noexcept {
+static int nsb_mfem_Vector_84_Norml1(const void* self, double* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -663,7 +807,7 @@ static int nsb_mfem_Vector_82_Norml1(const void* self, double* result) noexcept 
     return 0;
 }
 
-static int nsb_mfem_Vector_83_Normlp(const void* self, double arg0, double* result) noexcept {
+static int nsb_mfem_Vector_85_Normlp(const void* self, double arg0, double* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -675,7 +819,7 @@ static int nsb_mfem_Vector_83_Normlp(const void* self, double arg0, double* resu
     return 0;
 }
 
-static int nsb_mfem_Vector_84_Max(const void* self, double* result) noexcept {
+static int nsb_mfem_Vector_86_Max(const void* self, double* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -687,7 +831,7 @@ static int nsb_mfem_Vector_84_Max(const void* self, double* result) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_85_Min(const void* self, double* result) noexcept {
+static int nsb_mfem_Vector_87_Min(const void* self, double* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -699,7 +843,7 @@ static int nsb_mfem_Vector_85_Min(const void* self, double* result) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_86_Sum(const void* self, double* result) noexcept {
+static int nsb_mfem_Vector_88_Sum(const void* self, double* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -711,7 +855,7 @@ static int nsb_mfem_Vector_86_Sum(const void* self, double* result) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_88_DistanceSquaredTo(const void* self, const void* arg0, double* result) noexcept {
+static int nsb_mfem_Vector_90_DistanceSquaredTo(const void* self, const void* arg0, double* result) noexcept {
     if (self == nullptr || arg0 == nullptr || result == nullptr) {
         return 1;
     }
@@ -723,7 +867,7 @@ static int nsb_mfem_Vector_88_DistanceSquaredTo(const void* self, const void* ar
     return 0;
 }
 
-static int nsb_mfem_Vector_90_DistanceTo(const void* self, const void* arg0, double* result) noexcept {
+static int nsb_mfem_Vector_92_DistanceTo(const void* self, const void* arg0, double* result) noexcept {
     if (self == nullptr || arg0 == nullptr || result == nullptr) {
         return 1;
     }
@@ -735,7 +879,7 @@ static int nsb_mfem_Vector_90_DistanceTo(const void* self, const void* arg0, dou
     return 0;
 }
 
-static int nsb_mfem_Vector_91_CheckFinite(const void* self, int* result) noexcept {
+static int nsb_mfem_Vector_93_CheckFinite(const void* self, int* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -747,7 +891,7 @@ static int nsb_mfem_Vector_91_CheckFinite(const void* self, int* result) noexcep
     return 0;
 }
 
-static int nsb_mfem_Vector_92_Read(const void* self, bool arg0, const double** result) noexcept {
+static int nsb_mfem_Vector_94_Read(const void* self, bool arg0, const double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -759,7 +903,7 @@ static int nsb_mfem_Vector_92_Read(const void* self, bool arg0, const double** r
     return 0;
 }
 
-static int nsb_mfem_Vector_93_Read(const void* self, const double** result) noexcept {
+static int nsb_mfem_Vector_95_Read(const void* self, const double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -771,7 +915,7 @@ static int nsb_mfem_Vector_93_Read(const void* self, const double** result) noex
     return 0;
 }
 
-static int nsb_mfem_Vector_94_HostRead(const void* self, const double** result) noexcept {
+static int nsb_mfem_Vector_96_HostRead(const void* self, const double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -783,7 +927,7 @@ static int nsb_mfem_Vector_94_HostRead(const void* self, const double** result) 
     return 0;
 }
 
-static int nsb_mfem_Vector_95_Write(void* self, bool arg0, double** result) noexcept {
+static int nsb_mfem_Vector_97_Write(void* self, bool arg0, double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -795,7 +939,7 @@ static int nsb_mfem_Vector_95_Write(void* self, bool arg0, double** result) noex
     return 0;
 }
 
-static int nsb_mfem_Vector_96_Write(void* self, double** result) noexcept {
+static int nsb_mfem_Vector_98_Write(void* self, double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -807,7 +951,7 @@ static int nsb_mfem_Vector_96_Write(void* self, double** result) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_97_HostWrite(void* self, double** result) noexcept {
+static int nsb_mfem_Vector_99_HostWrite(void* self, double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -819,7 +963,7 @@ static int nsb_mfem_Vector_97_HostWrite(void* self, double** result) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_98_ReadWrite(void* self, bool arg0, double** result) noexcept {
+static int nsb_mfem_Vector_100_ReadWrite(void* self, bool arg0, double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -831,7 +975,7 @@ static int nsb_mfem_Vector_98_ReadWrite(void* self, bool arg0, double** result) 
     return 0;
 }
 
-static int nsb_mfem_Vector_99_ReadWrite(void* self, double** result) noexcept {
+static int nsb_mfem_Vector_101_ReadWrite(void* self, double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -843,7 +987,7 @@ static int nsb_mfem_Vector_99_ReadWrite(void* self, double** result) noexcept {
     return 0;
 }
 
-static int nsb_mfem_Vector_100_HostReadWrite(void* self, double** result) noexcept {
+static int nsb_mfem_Vector_102_HostReadWrite(void* self, double** result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -855,7 +999,7 @@ static int nsb_mfem_Vector_100_HostReadWrite(void* self, double** result) noexce
     return 0;
 }
 
-static int nsb_mfem_Vector_101_array_view(const void* self, double** data, std::int64_t* size) noexcept {
+static int nsb_mfem_Vector_103_array_view(const void* self, double** data, std::int64_t* size) noexcept {
     if (self == nullptr || data == nullptr || size == nullptr) return 1;
     try {
         *data = static_cast<const mfem::Vector*>(self)->GetData();
@@ -907,7 +1051,8 @@ static int nsb_mfem_Vector_construct_5(void* arg0, int arg1, int arg2, void** re
 
 static void nsb_mfem_Vector_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::Vector**>(storage);
+    auto object = *reinterpret_cast<mfem::Vector**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_vector(const char* name) noexcept {
@@ -992,140 +1137,176 @@ static unsigned long long nsb_function_address_mfem__par_vector(const char* name
     if (std::strcmp(name, "nsb_mfem_Vector_35_StealData") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_35_StealData);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_50_Add") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_50_Add);
+    if (std::strcmp(name, "nsb_mfem_Vector_40_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_40_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_51_Set") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_51_Set);
+    if (std::strcmp(name, "nsb_mfem_Vector_40_operator_set") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_40_operator_set);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_52_SetVector") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_52_SetVector);
+    if (std::strcmp(name, "nsb_mfem_Vector_41_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_41_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_53_AddSubVector") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_53_AddSubVector);
+    if (std::strcmp(name, "nsb_mfem_Vector_43_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_43_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_54_Neg") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_54_Neg);
+    if (std::strcmp(name, "nsb_mfem_Vector_44_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_44_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_55_Reciprocal") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_55_Reciprocal);
+    if (std::strcmp(name, "nsb_mfem_Vector_45_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_45_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_56_Abs") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_56_Abs);
+    if (std::strcmp(name, "nsb_mfem_Vector_46_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_46_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_57_Pow") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_57_Pow);
+    if (std::strcmp(name, "nsb_mfem_Vector_47_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_47_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_58_Swap") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_58_Swap);
+    if (std::strcmp(name, "nsb_mfem_Vector_48_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_48_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_59_cross3D") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_59_cross3D);
+    if (std::strcmp(name, "nsb_mfem_Vector_49_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_49_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_60_median") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_60_median);
+    if (std::strcmp(name, "nsb_mfem_Vector_50_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_50_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_61_GetSubVector") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_61_GetSubVector);
+    if (std::strcmp(name, "nsb_mfem_Vector_51_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_51_operator);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_62_GetSubVector") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_62_GetSubVector);
+    if (std::strcmp(name, "nsb_mfem_Vector_52_Add") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_52_Add);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_63_SetSubVector") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_63_SetSubVector);
+    if (std::strcmp(name, "nsb_mfem_Vector_53_Set") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_53_Set);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_64_SetSubVectorHost") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_64_SetSubVectorHost);
+    if (std::strcmp(name, "nsb_mfem_Vector_54_SetVector") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_54_SetVector);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_55_AddSubVector") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_55_AddSubVector);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_56_Neg") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_56_Neg);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_57_Reciprocal") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_57_Reciprocal);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_58_Abs") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_58_Abs);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_59_Pow") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_59_Pow);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_60_Swap") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_60_Swap);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_61_cross3D") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_61_cross3D);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_62_median") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_62_median);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_63_GetSubVector") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_63_GetSubVector);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_64_GetSubVector") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_64_GetSubVector);
     }
     if (std::strcmp(name, "nsb_mfem_Vector_65_SetSubVector") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_65_SetSubVector);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_66_SetSubVector") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_66_SetSubVector);
+    if (std::strcmp(name, "nsb_mfem_Vector_66_SetSubVectorHost") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_66_SetSubVectorHost);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_67_AddElementVector") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_67_AddElementVector);
+    if (std::strcmp(name, "nsb_mfem_Vector_67_SetSubVector") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_67_SetSubVector);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_68_AddElementVector") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_68_AddElementVector);
+    if (std::strcmp(name, "nsb_mfem_Vector_68_SetSubVector") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_68_SetSubVector);
     }
     if (std::strcmp(name, "nsb_mfem_Vector_69_AddElementVector") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_69_AddElementVector);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_70_SetSubVectorComplement") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_70_SetSubVectorComplement);
+    if (std::strcmp(name, "nsb_mfem_Vector_70_AddElementVector") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_70_AddElementVector);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_73_Print") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_73_Print);
+    if (std::strcmp(name, "nsb_mfem_Vector_71_AddElementVector") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_71_AddElementVector);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_76_PrintMathematica") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_76_PrintMathematica);
+    if (std::strcmp(name, "nsb_mfem_Vector_72_SetSubVectorComplement") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_72_SetSubVectorComplement);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_78_Randomize") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_78_Randomize);
+    if (std::strcmp(name, "nsb_mfem_Vector_75_Print") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_75_Print);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_79_Randomize") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_79_Randomize);
+    if (std::strcmp(name, "nsb_mfem_Vector_78_PrintMathematica") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_78_PrintMathematica);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_80_Norml2") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_80_Norml2);
+    if (std::strcmp(name, "nsb_mfem_Vector_80_Randomize") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_80_Randomize);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_81_Normlinf") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_81_Normlinf);
+    if (std::strcmp(name, "nsb_mfem_Vector_81_Randomize") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_81_Randomize);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_82_Norml1") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_82_Norml1);
+    if (std::strcmp(name, "nsb_mfem_Vector_82_Norml2") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_82_Norml2);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_83_Normlp") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_83_Normlp);
+    if (std::strcmp(name, "nsb_mfem_Vector_83_Normlinf") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_83_Normlinf);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_84_Max") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_84_Max);
+    if (std::strcmp(name, "nsb_mfem_Vector_84_Norml1") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_84_Norml1);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_85_Min") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_85_Min);
+    if (std::strcmp(name, "nsb_mfem_Vector_85_Normlp") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_85_Normlp);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_86_Sum") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_86_Sum);
+    if (std::strcmp(name, "nsb_mfem_Vector_86_Max") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_86_Max);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_88_DistanceSquaredTo") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_88_DistanceSquaredTo);
+    if (std::strcmp(name, "nsb_mfem_Vector_87_Min") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_87_Min);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_90_DistanceTo") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_90_DistanceTo);
+    if (std::strcmp(name, "nsb_mfem_Vector_88_Sum") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_88_Sum);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_91_CheckFinite") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_91_CheckFinite);
+    if (std::strcmp(name, "nsb_mfem_Vector_90_DistanceSquaredTo") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_90_DistanceSquaredTo);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_92_Read") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_92_Read);
+    if (std::strcmp(name, "nsb_mfem_Vector_92_DistanceTo") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_92_DistanceTo);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_93_Read") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_93_Read);
+    if (std::strcmp(name, "nsb_mfem_Vector_93_CheckFinite") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_93_CheckFinite);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_94_HostRead") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_94_HostRead);
+    if (std::strcmp(name, "nsb_mfem_Vector_94_Read") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_94_Read);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_95_Write") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_95_Write);
+    if (std::strcmp(name, "nsb_mfem_Vector_95_Read") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_95_Read);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_96_Write") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_96_Write);
+    if (std::strcmp(name, "nsb_mfem_Vector_96_HostRead") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_96_HostRead);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_97_HostWrite") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_97_HostWrite);
+    if (std::strcmp(name, "nsb_mfem_Vector_97_Write") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_97_Write);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_98_ReadWrite") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_98_ReadWrite);
+    if (std::strcmp(name, "nsb_mfem_Vector_98_Write") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_98_Write);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_99_ReadWrite") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_99_ReadWrite);
+    if (std::strcmp(name, "nsb_mfem_Vector_99_HostWrite") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_99_HostWrite);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_100_HostReadWrite") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_100_HostReadWrite);
+    if (std::strcmp(name, "nsb_mfem_Vector_100_ReadWrite") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_100_ReadWrite);
     }
-    if (std::strcmp(name, "nsb_mfem_Vector_101_array_view") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_101_array_view);
+    if (std::strcmp(name, "nsb_mfem_Vector_101_ReadWrite") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_101_ReadWrite);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_102_HostReadWrite") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_102_HostReadWrite);
+    }
+    if (std::strcmp(name, "nsb_mfem_Vector_103_array_view") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_103_array_view);
     }
     if (std::strcmp(name, "nsb_mfem_Vector_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_construct_0);
     if (std::strcmp(name, "nsb_mfem_Vector_construct_1") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_Vector_construct_1);

@@ -276,7 +276,7 @@ class SurfaceLFIntegrator(mfem.PyLinearFormIntegrator):
             Tr.SetIntPoint(self.SIntRule.IntPoint(ip))
             val = Tr.Weight() * self.Q.Eval(Tr, self.SIntRule.IntPoint(ip))
             el.CalcShape(self.SIntRule.IntPoint(ip), self.shape)
-            mfem.add_vector(elvect, self.SIntRule.IntPoint(
+            mfem.Add(elvect, self.SIntRule.IntPoint(
                 ip).weight * val, self.shape, elvect)
 
 
@@ -300,7 +300,7 @@ class SubdomainLFIntegrator(mfem.PyLinearFormIntegrator):
             Tr.SetIntPoint(self.CIntRule.IntPoint(ip))
             val = Tr.Weight() * self.Q.Eval(Tr, self.CIntRule.IntPoint(ip))
             el.CalcPhysShape(Tr, self.shape)
-            mfem.add_vector(elvect, self.CIntRule.IntPoint(
+            mfem.Add(elvect, self.CIntRule.IntPoint(
                 ip).weight * val, self.shape, elvect)
 
 

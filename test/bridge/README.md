@@ -94,3 +94,15 @@ Checks native C++ dispatch to a compiled void-return director override.
 ### test_vector.py
 
 Checks Vector methods and zero-copy writes from compiled code.
+
+### Native operators and GridFunction
+
+`test_native_operators.py` checks native operators, merged vector/matrix Add,
+both vector Subtract overloads in Python and compiled code,
+allocating helpers and BlockMatrix Mult, and rejection of deferred/reflected
+forms. `test_gridfunction.py` checks GridFunction methods, Vector inheritance,
+compiled construction/ownership transfer, and direct state-field compound
+assignment. Run each script with `-p` for the
+parallel bindings; the GridFunction script also exercises ParGridFunction and
+must be run under MPI for parallel coverage. Keep serial and parallel runs in
+separate Python processes.

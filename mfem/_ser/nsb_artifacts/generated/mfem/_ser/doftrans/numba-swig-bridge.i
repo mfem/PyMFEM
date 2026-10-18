@@ -328,7 +328,8 @@ static int nsb_mfem_DofTransformation_construct_2(void** result) noexcept {
 
 static void nsb_mfem_DofTransformation_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::DofTransformation**>(storage);
+    auto object = *reinterpret_cast<mfem::DofTransformation**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__ser_doftrans(const char* name) noexcept {

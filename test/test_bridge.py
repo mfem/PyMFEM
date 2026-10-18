@@ -14,7 +14,8 @@ import sys
 
 TEST_DIR = Path(__file__).resolve().parent
 BRIDGE_DIR = TEST_DIR / "bridge"
-MPI_TESTS = {"test_parallel_foundation.py", "test_ex18p.py"}
+MPI_TESTS = {"test_parallel_foundation.py", "test_ex18p.py",
+             "test_gridfunctionp.py", "test_native_operatorsp.py"}
 PARALLEL_TESTS = MPI_TESTS | {"test_ex9p.py", "test_ex19p.py"}
 
 

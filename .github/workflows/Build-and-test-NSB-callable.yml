@@ -12,7 +12,7 @@ on:
         default: '3.13'
       runtime-version:
         type: string
-        default: '0.15.3'
+        default: '0.15.5'
 
 permissions:
   contents: read
@@ -38,6 +38,9 @@ jobs:
             serial|openmpi|mpich) ;;
             *) echo "Unsupported backend: $NSB_BACKEND" >&2; exit 2 ;;
           esac
+      - name: Use local UCX transports for MPICH
+        if: inputs.backend == 'mpich'
+        run: echo 'UCX_TLS=tcp,sm,self' >> "$GITHUB_ENV"
       - name: Set up MPI (including Ubuntu MPICH hotfix)
         if: inputs.backend != 'serial'
         uses: mpi4py/setup-mpi@v1

@@ -20,12 +20,12 @@ template<class D, class B> struct nsb_cast_traits_mfem__ser_operators {
         else return nullptr;
     }
 };
-static unsigned nsb_cast_mfem_Solver_54_flags() noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::Solver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_Solver_54_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::Solver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_Solver_54_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::Solver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_TimeDependentOperator_58_flags() noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::TimeDependentOperator, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_TimeDependentOperator_58_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::TimeDependentOperator, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_TimeDependentOperator_58_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::TimeDependentOperator, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_Solver_58_flags() noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::Solver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_Solver_58_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::Solver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_Solver_58_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::Solver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_TimeDependentOperator_62_flags() noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::TimeDependentOperator, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_TimeDependentOperator_62_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::TimeDependentOperator, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_TimeDependentOperator_62_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_operators<mfem::TimeDependentOperator, mfem::Operator>::down(p); }
 static mfem::Operator *nsb_borrowed_mfem_Operator(unsigned long long address) {
     return reinterpret_cast<mfem::Operator *>(address);
 }
@@ -293,7 +293,8 @@ static int nsb_mfem_Operator_33_RecoverFEMSolution(void* self, const void* arg0,
 
 static void nsb_mfem_Operator_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::Operator**>(storage);
+    auto object = *reinterpret_cast<mfem::Operator**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::Solver *nsb_borrowed_mfem_Solver(unsigned long long address) {
@@ -341,7 +342,8 @@ static int nsb_mfem_Solver_member_set_iterative_mode(void* self, bool arg0) noex
 
 static void nsb_mfem_Solver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::Solver**>(storage);
+    auto object = *reinterpret_cast<mfem::Solver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::TimeDependentOperator *nsb_borrowed_mfem_TimeDependentOperator(unsigned long long address) {
@@ -611,7 +613,8 @@ static int nsb_mfem_TimeDependentOperator_construct_6(int arg0, int arg1, void**
 
 static void nsb_mfem_TimeDependentOperator_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::TimeDependentOperator**>(storage);
+    auto object = *reinterpret_cast<mfem::TimeDependentOperator**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__ser_operators(const char* name) noexcept {
@@ -752,16 +755,16 @@ static unsigned long long nsb_function_address_mfem__ser_operators(const char* n
     if (std::strcmp(name, "nsb_mfem_TimeDependentOperator_construct_5") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_TimeDependentOperator_construct_5);
     if (std::strcmp(name, "nsb_mfem_TimeDependentOperator_construct_6") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_TimeDependentOperator_construct_6);
     if (std::strcmp(name, "nsb_mfem_TimeDependentOperator_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_TimeDependentOperator_destroy);
-    if (std::strcmp(name, "nsb_cast_mfem_Solver_54_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_Solver_54_up);
-    if (std::strcmp(name, "nsb_cast_mfem_Solver_54_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_Solver_54_down);
-    if (std::strcmp(name, "nsb_cast_mfem_TimeDependentOperator_58_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_TimeDependentOperator_58_up);
-    if (std::strcmp(name, "nsb_cast_mfem_TimeDependentOperator_58_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_TimeDependentOperator_58_down);
+    if (std::strcmp(name, "nsb_cast_mfem_Solver_58_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_Solver_58_up);
+    if (std::strcmp(name, "nsb_cast_mfem_Solver_58_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_Solver_58_down);
+    if (std::strcmp(name, "nsb_cast_mfem_TimeDependentOperator_62_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_TimeDependentOperator_62_up);
+    if (std::strcmp(name, "nsb_cast_mfem_TimeDependentOperator_62_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_TimeDependentOperator_62_down);
     return 0;
 }
 %}
 
-extern unsigned nsb_cast_mfem_Solver_54_flags() noexcept;
-extern unsigned nsb_cast_mfem_TimeDependentOperator_58_flags() noexcept;
+extern unsigned nsb_cast_mfem_Solver_58_flags() noexcept;
+extern unsigned nsb_cast_mfem_TimeDependentOperator_62_flags() noexcept;
 %extend mfem::Solver {
     unsigned long long _nsb_pointer() {
         return reinterpret_cast<unsigned long long>($self);

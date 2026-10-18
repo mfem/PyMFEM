@@ -1558,7 +1558,8 @@ static int nsb_mfem_FiniteElementSpace_construct_3(const void* arg0, void** resu
 
 static void nsb_mfem_FiniteElementSpace_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::FiniteElementSpace**>(storage);
+    auto object = *reinterpret_cast<mfem::FiniteElementSpace**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__ser_fespace(const char* name) noexcept {

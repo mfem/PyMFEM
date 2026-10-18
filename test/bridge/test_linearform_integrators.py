@@ -111,7 +111,7 @@ class PythonIntegrator(mfem.PyLinearFormIntegrator):
                 element.CalcShape(point, self.shape)
             scale = (self.weights[i, element_number] * transformation.Weight()
                      * self.coefficient.Eval(transformation, point))
-            mfem.add_vector(element_vector, scale, self.shape, element_vector)
+            mfem.Add(element_vector, scale, self.shape, element_vector)
 
 
 def _assemble(space, integrator):

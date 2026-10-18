@@ -10,6 +10,11 @@
         "interface": "mfem/_par/array.i"
       },
       {
+        "module": "mfem._par.blockmatrix",
+        "swig_module": "blockmatrix",
+        "interface": "mfem/_par/blockmatrix.i"
+      },
+      {
         "module": "mfem._par.blockoperator",
         "swig_module": "blockoperator",
         "interface": "mfem/_par/blockoperator.i"
@@ -18,6 +23,11 @@
         "module": "mfem._par.coefficient",
         "swig_module": "coefficient",
         "interface": "mfem/_par/coefficient.i"
+      },
+      {
+        "module": "mfem._par.common_functions",
+        "swig_module": "common_functions",
+        "interface": "mfem/_par/common_functions.i"
       },
       {
         "module": "mfem._par.densemat",
@@ -43,6 +53,11 @@
         "module": "mfem._par.fespace",
         "swig_module": "fespace",
         "interface": "mfem/_par/fespace.i"
+      },
+      {
+        "module": "mfem._par.gridfunc",
+        "swig_module": "gridfunc",
+        "interface": "mfem/_par/gridfunc.i"
       },
       {
         "module": "mfem._par.hyperbolic",
@@ -83,6 +98,11 @@
         "module": "mfem._par.pfespace",
         "swig_module": "pfespace",
         "interface": "mfem/_par/pfespace.i"
+      },
+      {
+        "module": "mfem._par.pgridfunc",
+        "swig_module": "pgridfunc",
+        "interface": "mfem/_par/pgridfunc.i"
       },
       {
         "module": "mfem._par.pnonlinearform",

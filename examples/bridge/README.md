@@ -43,7 +43,7 @@ coefficient directors. A native TimeDependentOperator callback computes
 Matrices, forms, the mass smoother and solver are configured and retained in
 Python; reusable callback scratch assumes non-reentrant execution.
 
-Requires an ABI-7 bridge-enabled PyMFEM build and `nsb_rt>=0.15.0`:
+Requires an ABI-7 bridge-enabled PyMFEM build and `nsb_rt>=0.15.5`:
 
 ```shell
 python examples/bridge/ex9.py -r 0 -o 1 -p 0 -s 4 -tf 0.02 -dt 0.01

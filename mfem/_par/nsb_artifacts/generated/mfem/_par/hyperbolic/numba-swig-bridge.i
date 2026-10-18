@@ -87,7 +87,8 @@ static int nsb_mfem_FluxFunction_member_get_dim(const void* self, int* result) n
 
 static void nsb_mfem_FluxFunction_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::FluxFunction**>(storage);
+    auto object = *reinterpret_cast<mfem::FluxFunction**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HyperbolicFormIntegrator *nsb_borrowed_mfem_HyperbolicFormIntegrator(unsigned long long address) {
@@ -172,7 +173,8 @@ static int nsb_mfem_HyperbolicFormIntegrator_member_get_num_equations(const void
 
 static void nsb_mfem_HyperbolicFormIntegrator_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HyperbolicFormIntegrator**>(storage);
+    auto object = *reinterpret_cast<mfem::HyperbolicFormIntegrator**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_hyperbolic(const char* name) noexcept {

@@ -20,12 +20,12 @@ template<class D, class B> struct nsb_cast_traits_mfem__ser_nonlinearform {
         else return nullptr;
     }
 };
-static unsigned nsb_cast_mfem_BlockNonlinearForm_7_flags() noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_BlockNonlinearForm_7_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_BlockNonlinearForm_7_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_NonlinearForm_35_flags() noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_NonlinearForm_35_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_NonlinearForm_35_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_BlockNonlinearForm_10_flags() noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_BlockNonlinearForm_10_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_BlockNonlinearForm_10_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::BlockNonlinearForm, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_NonlinearForm_39_flags() noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_NonlinearForm_39_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_NonlinearForm_39_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_nonlinearform<mfem::NonlinearForm, mfem::Operator>::down(p); }
 static mfem::BlockNonlinearForm *nsb_borrowed_mfem_BlockNonlinearForm(unsigned long long address) {
     return reinterpret_cast<mfem::BlockNonlinearForm *>(address);
 }
@@ -132,7 +132,8 @@ static int nsb_mfem_BlockNonlinearForm_construct_0(void** result) noexcept {
 
 static void nsb_mfem_BlockNonlinearForm_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::BlockNonlinearForm**>(storage);
+    auto object = *reinterpret_cast<mfem::BlockNonlinearForm**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::NonlinearForm *nsb_borrowed_mfem_NonlinearForm(unsigned long long address) {
@@ -363,7 +364,8 @@ static int nsb_mfem_NonlinearForm_construct_0(void* arg0, void** result) noexcep
 
 static void nsb_mfem_NonlinearForm_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::NonlinearForm**>(storage);
+    auto object = *reinterpret_cast<mfem::NonlinearForm**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__ser_nonlinearform(const char* name) noexcept {
@@ -446,16 +448,16 @@ static unsigned long long nsb_function_address_mfem__ser_nonlinearform(const cha
     }
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_construct_0);
     if (std::strcmp(name, "nsb_mfem_NonlinearForm_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_NonlinearForm_destroy);
-    if (std::strcmp(name, "nsb_cast_mfem_BlockNonlinearForm_7_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockNonlinearForm_7_up);
-    if (std::strcmp(name, "nsb_cast_mfem_BlockNonlinearForm_7_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockNonlinearForm_7_down);
-    if (std::strcmp(name, "nsb_cast_mfem_NonlinearForm_35_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NonlinearForm_35_up);
-    if (std::strcmp(name, "nsb_cast_mfem_NonlinearForm_35_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NonlinearForm_35_down);
+    if (std::strcmp(name, "nsb_cast_mfem_BlockNonlinearForm_10_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockNonlinearForm_10_up);
+    if (std::strcmp(name, "nsb_cast_mfem_BlockNonlinearForm_10_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockNonlinearForm_10_down);
+    if (std::strcmp(name, "nsb_cast_mfem_NonlinearForm_39_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NonlinearForm_39_up);
+    if (std::strcmp(name, "nsb_cast_mfem_NonlinearForm_39_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_NonlinearForm_39_down);
     return 0;
 }
 %}
 
-extern unsigned nsb_cast_mfem_BlockNonlinearForm_7_flags() noexcept;
-extern unsigned nsb_cast_mfem_NonlinearForm_35_flags() noexcept;
+extern unsigned nsb_cast_mfem_BlockNonlinearForm_10_flags() noexcept;
+extern unsigned nsb_cast_mfem_NonlinearForm_39_flags() noexcept;
 extern mfem::BlockNonlinearForm *nsb_borrowed_mfem_BlockNonlinearForm(unsigned long long address);
 %newobject nsb_owned_mfem_BlockNonlinearForm;
 extern mfem::BlockNonlinearForm *nsb_owned_mfem_BlockNonlinearForm(unsigned long long address);

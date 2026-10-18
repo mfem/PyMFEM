@@ -92,15 +92,12 @@ IGNORE_ARRAY_METHODS(mfem::ParFiniteElementSpace *)
 INSTANTIATE_ARRAY0(ParFiniteElementSpace *, ParFiniteElementSpace, 1)
 
 #ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
-%include "numba-swig-bridge-common.i"
+%include "../common/bridges/pfespace_nsb_1.i"
 #endif
 
 %include "fem/pfespace.hpp"
 #ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
-NUMBA_SWIG_BRIDGE_CLASS(mfem::ParFiniteElementSpace)
-#ifdef NUMBA_SWIG_BRIDGE_GENERATED
-%include "generated/mfem/_par/pfespace/numba-swig-bridge.i"
-#endif
+%include "../common/bridges/pfespace_nsb_2.i"
 #endif
 
 

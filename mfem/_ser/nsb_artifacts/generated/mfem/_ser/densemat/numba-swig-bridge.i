@@ -20,12 +20,12 @@ template<class D, class B> struct nsb_cast_traits_mfem__ser_densemat {
         else return nullptr;
     }
 };
-static unsigned nsb_cast_mfem_DenseMatrix_12_flags() noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::flags; }
-static void* nsb_cast_mfem_DenseMatrix_12_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::up(p); }
-static void* nsb_cast_mfem_DenseMatrix_12_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::down(p); }
-static unsigned nsb_cast_mfem_DenseMatrix_13_flags() noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_DenseMatrix_13_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_DenseMatrix_13_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_DenseMatrix_15_flags() noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::flags; }
+static void* nsb_cast_mfem_DenseMatrix_15_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::up(p); }
+static void* nsb_cast_mfem_DenseMatrix_15_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Matrix>::down(p); }
+static unsigned nsb_cast_mfem_DenseMatrix_16_flags() noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_DenseMatrix_16_up(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_DenseMatrix_16_down(void* p) noexcept { return nsb_cast_traits_mfem__ser_densemat<mfem::DenseMatrix, mfem::Operator>::down(p); }
 static mfem::DenseMatrix *nsb_borrowed_mfem_DenseMatrix(unsigned long long address) {
     return reinterpret_cast<mfem::DenseMatrix *>(address);
 }
@@ -159,6 +159,18 @@ static int nsb_mfem_DenseMatrix_13_OwnsData(const void* self, int* result) noexc
     }
     try {
         *result = static_cast<const mfem::DenseMatrix*>(self)->OwnsData() ? 1 : 0;
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_DenseMatrix_16_operator(const void* self, const void* arg0, double* result) noexcept {
+    if (self == nullptr || arg0 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        *result = static_cast<const mfem::DenseMatrix*>(self)->operator*(*static_cast<const mfem::DenseMatrix*>(arg0));
     } catch (...) {
         return 2;
     }
@@ -483,6 +495,42 @@ static int nsb_mfem_DenseMatrix_52_Add(void* self, double arg0, const void* arg1
     }
     try {
         static_cast<mfem::DenseMatrix*>(self)->Add(arg0, *static_cast<const mfem::DenseMatrix*>(arg1));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_DenseMatrix_55_operator(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::DenseMatrix*>(self)->operator+=(*static_cast<const mfem::DenseMatrix*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_DenseMatrix_56_operator(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::DenseMatrix*>(self)->operator-=(*static_cast<const mfem::DenseMatrix*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_DenseMatrix_57_operator(void* self, double arg0) noexcept {
+    if (self == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::DenseMatrix*>(self)->operator*=(arg0);
     } catch (...) {
         return 2;
     }
@@ -1526,7 +1574,8 @@ static int nsb_mfem_DenseMatrix_construct_5(const void* arg0, void** result) noe
 
 static void nsb_mfem_DenseMatrix_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::DenseMatrix**>(storage);
+    auto object = *reinterpret_cast<mfem::DenseMatrix**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::DenseTensor *nsb_borrowed_mfem_DenseTensor(unsigned long long address) {
@@ -1834,7 +1883,8 @@ static int nsb_mfem_DenseTensor_construct_4(double* arg0, int arg1, int arg2, in
 
 static void nsb_mfem_DenseTensor_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::DenseTensor**>(storage);
+    auto object = *reinterpret_cast<mfem::DenseTensor**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__ser_densemat(const char* name) noexcept {
@@ -1873,6 +1923,9 @@ static unsigned long long nsb_function_address_mfem__ser_densemat(const char* na
     }
     if (std::strcmp(name, "nsb_mfem_DenseMatrix_13_OwnsData") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseMatrix_13_OwnsData);
+    }
+    if (std::strcmp(name, "nsb_mfem_DenseMatrix_16_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseMatrix_16_operator);
     }
     if (std::strcmp(name, "nsb_mfem_DenseMatrix_17_Trace") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseMatrix_17_Trace);
@@ -1954,6 +2007,15 @@ static unsigned long long nsb_function_address_mfem__ser_densemat(const char* na
     }
     if (std::strcmp(name, "nsb_mfem_DenseMatrix_52_Add") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseMatrix_52_Add);
+    }
+    if (std::strcmp(name, "nsb_mfem_DenseMatrix_55_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseMatrix_55_operator);
+    }
+    if (std::strcmp(name, "nsb_mfem_DenseMatrix_56_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseMatrix_56_operator);
+    }
+    if (std::strcmp(name, "nsb_mfem_DenseMatrix_57_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseMatrix_57_operator);
     }
     if (std::strcmp(name, "nsb_mfem_DenseMatrix_58_Neg") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseMatrix_58_Neg);
@@ -2281,16 +2343,16 @@ static unsigned long long nsb_function_address_mfem__ser_densemat(const char* na
     if (std::strcmp(name, "nsb_mfem_DenseTensor_construct_3") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseTensor_construct_3);
     if (std::strcmp(name, "nsb_mfem_DenseTensor_construct_4") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseTensor_construct_4);
     if (std::strcmp(name, "nsb_mfem_DenseTensor_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_DenseTensor_destroy);
-    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_12_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_12_up);
-    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_12_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_12_down);
-    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_13_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_13_up);
-    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_13_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_13_down);
+    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_15_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_15_up);
+    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_15_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_15_down);
+    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_16_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_16_up);
+    if (std::strcmp(name, "nsb_cast_mfem_DenseMatrix_16_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_DenseMatrix_16_down);
     return 0;
 }
 %}
 
-extern unsigned nsb_cast_mfem_DenseMatrix_12_flags() noexcept;
-extern unsigned nsb_cast_mfem_DenseMatrix_13_flags() noexcept;
+extern unsigned nsb_cast_mfem_DenseMatrix_15_flags() noexcept;
+extern unsigned nsb_cast_mfem_DenseMatrix_16_flags() noexcept;
 extern mfem::DenseMatrix *nsb_borrowed_mfem_DenseMatrix(unsigned long long address);
 %newobject nsb_owned_mfem_DenseMatrix;
 extern mfem::DenseMatrix *nsb_owned_mfem_DenseMatrix(unsigned long long address);

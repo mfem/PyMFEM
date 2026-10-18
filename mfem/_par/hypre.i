@@ -217,32 +217,12 @@ if isinstance(args[-1], list):
 //%newobject mfem::RAP;
 
 #ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
-%include "numba-swig-bridge-common.i"
+%include "../common/bridges/hypre_nsb_1.i"
 #endif
 
 %include "linalg/hypre.hpp"
 #ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreParVector)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreParMatrix)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreSmoother)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreSolver)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreTriSolve)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HyprePCG)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreGMRES)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreFGMRES)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreIdentity)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreDiagScale)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreParaSails)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreEuclid)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreILU)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreBoomerAMG)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreAMS)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreADS)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreLOBPCG)
-NUMBA_SWIG_BRIDGE_CLASS(mfem::HypreAME)
-#ifdef NUMBA_SWIG_BRIDGE_GENERATED
-%include "generated/mfem/_par/hypre/numba-swig-bridge.i"
-#endif
+%include "../common/bridges/hypre_nsb_2.i"
 #endif
 
 

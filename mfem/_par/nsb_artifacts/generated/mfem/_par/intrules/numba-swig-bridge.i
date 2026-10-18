@@ -251,7 +251,8 @@ static int nsb_mfem_IntegrationPoint_construct_0(void** result) noexcept {
 
 static void nsb_mfem_IntegrationPoint_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::IntegrationPoint**>(storage);
+    auto object = *reinterpret_cast<mfem::IntegrationPoint**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::IntegrationRule *nsb_borrowed_mfem_IntegrationRule(unsigned long long address) {
@@ -369,7 +370,8 @@ static int nsb_mfem_IntegrationRule_construct_3(void* arg0, void* arg1, void* ar
 
 static void nsb_mfem_IntegrationRule_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::IntegrationRule**>(storage);
+    auto object = *reinterpret_cast<mfem::IntegrationRule**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_intrules(const char* name) noexcept {

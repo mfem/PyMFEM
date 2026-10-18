@@ -2,8 +2,8 @@
   "schema_version": 2,
   "artifact_schema_version": 1,
   "bridge_id": "pymfem-ser",
-  "generator_version": "0.15.2",
-  "required_runtime_version": "0.15.0",
+  "generator_version": "0.15.5",
+  "required_runtime_version": "0.15.4",
   "state_backend": "mfem",
   "state_module": "mfem._nsb_state_bindings",
   "state_abi": 7,
@@ -15,6 +15,24 @@
     "mfem._ser.array": {
       "interface": "mfem/_ser/array.i",
       "helper_fragment": "generated/mfem/_ser/array/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_ser",
+        "mfem/common",
+        "external/mfem/cmbuild_ser",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_SER"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._ser.blockmatrix": {
+      "interface": "mfem/_ser/blockmatrix.i",
+      "helper_fragment": "generated/mfem/_ser/blockmatrix/numba-swig-bridge.i",
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
@@ -51,6 +69,24 @@
     "mfem._ser.coefficient": {
       "interface": "mfem/_ser/coefficient.i",
       "helper_fragment": "generated/mfem/_ser/coefficient/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_ser",
+        "mfem/common",
+        "external/mfem/cmbuild_ser",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_SER"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._ser.common_functions": {
+      "interface": "mfem/_ser/common_functions.i",
+      "helper_fragment": "generated/mfem/_ser/common_functions/numba-swig-bridge.i",
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
@@ -141,6 +177,24 @@
     "mfem._ser.fespace": {
       "interface": "mfem/_ser/fespace.i",
       "helper_fragment": "generated/mfem/_ser/fespace/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_ser",
+        "mfem/common",
+        "external/mfem/cmbuild_ser",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_SER"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._ser.gridfunc": {
+      "interface": "mfem/_ser/gridfunc.i",
+      "helper_fragment": "generated/mfem/_ser/gridfunc/numba-swig-bridge.i",
       "include_dirs": [
         "mfem/_ser",
         "mfem/common",
@@ -343,13 +397,16 @@
     "director/metadata/generated_director.json",
     "director/swig/nsb-director-bridge.i",
     "generated/mfem/_ser/array/numba-swig-bridge.i",
+    "generated/mfem/_ser/blockmatrix/numba-swig-bridge.i",
     "generated/mfem/_ser/blockoperator/numba-swig-bridge.i",
     "generated/mfem/_ser/coefficient/numba-swig-bridge.i",
+    "generated/mfem/_ser/common_functions/numba-swig-bridge.i",
     "generated/mfem/_ser/densemat/numba-swig-bridge.i",
     "generated/mfem/_ser/doftrans/numba-swig-bridge.i",
     "generated/mfem/_ser/eltrans/numba-swig-bridge.i",
     "generated/mfem/_ser/fe_base/numba-swig-bridge.i",
     "generated/mfem/_ser/fespace/numba-swig-bridge.i",
+    "generated/mfem/_ser/gridfunc/numba-swig-bridge.i",
     "generated/mfem/_ser/hyperbolic/numba-swig-bridge.i",
     "generated/mfem/_ser/intrules/numba-swig-bridge.i",
     "generated/mfem/_ser/lininteg/numba-swig-bridge.i",

@@ -617,7 +617,8 @@ static int nsb_mfem_Array_int_construct_6(const void* arg0, void** result) noexc
 
 static void nsb_mfem_Array_int_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::Array<int>**>(storage);
+    auto object = *reinterpret_cast<mfem::Array<int>**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__ser_array(const char* name) noexcept {

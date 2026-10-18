@@ -51,7 +51,8 @@ static int nsb_mfem_LinearFormIntegrator_2_AssembleRHSElementVect(void* self, co
 
 static void nsb_mfem_LinearFormIntegrator_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::LinearFormIntegrator**>(storage);
+    auto object = *reinterpret_cast<mfem::LinearFormIntegrator**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_lininteg(const char* name) noexcept {

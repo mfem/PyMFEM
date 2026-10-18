@@ -21,9 +21,9 @@ template<class D, class B> struct nsb_cast_traits_mfem__par_pfespace {
         else return nullptr;
     }
 };
-static unsigned nsb_cast_mfem_ParFiniteElementSpace_91_flags() noexcept { return nsb_cast_traits_mfem__par_pfespace<mfem::ParFiniteElementSpace, mfem::FiniteElementSpace>::flags; }
-static void* nsb_cast_mfem_ParFiniteElementSpace_91_up(void* p) noexcept { return nsb_cast_traits_mfem__par_pfespace<mfem::ParFiniteElementSpace, mfem::FiniteElementSpace>::up(p); }
-static void* nsb_cast_mfem_ParFiniteElementSpace_91_down(void* p) noexcept { return nsb_cast_traits_mfem__par_pfespace<mfem::ParFiniteElementSpace, mfem::FiniteElementSpace>::down(p); }
+static unsigned nsb_cast_mfem_ParFiniteElementSpace_95_flags() noexcept { return nsb_cast_traits_mfem__par_pfespace<mfem::ParFiniteElementSpace, mfem::FiniteElementSpace>::flags; }
+static void* nsb_cast_mfem_ParFiniteElementSpace_95_up(void* p) noexcept { return nsb_cast_traits_mfem__par_pfespace<mfem::ParFiniteElementSpace, mfem::FiniteElementSpace>::up(p); }
+static void* nsb_cast_mfem_ParFiniteElementSpace_95_down(void* p) noexcept { return nsb_cast_traits_mfem__par_pfespace<mfem::ParFiniteElementSpace, mfem::FiniteElementSpace>::down(p); }
 static mfem::ParFiniteElementSpace *nsb_borrowed_mfem_ParFiniteElementSpace(unsigned long long address) {
     return reinterpret_cast<mfem::ParFiniteElementSpace *>(address);
 }
@@ -859,6 +859,32 @@ static int nsb_mfem_ParFiniteElementSpace_77_TrueVSize(const void* self, int* re
     return 0;
 }
 
+static int nsb_mfem_ParFiniteElementSpace_78_GetElementDofs(const void* self, int arg0, void* arg1, void** result) noexcept {
+    if (self == nullptr || arg1 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::ParFiniteElementSpace*>(self)->GetElementDofs(arg0, *static_cast<mfem::Array<int>*>(arg1));
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_ParFiniteElementSpace_79_GetBdrElementDofs(const void* self, int arg0, void* arg1, void** result) noexcept {
+    if (self == nullptr || arg1 == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        auto borrowed = static_cast<const mfem::ParFiniteElementSpace*>(self)->GetBdrElementDofs(arg0, *static_cast<mfem::Array<int>*>(arg1));
+        *result = const_cast<void*>(reinterpret_cast<const void*>(borrowed));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_ParFiniteElementSpace_member_get_num_face_nbr_dofs(const void* self, int* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
@@ -893,7 +919,8 @@ static int nsb_mfem_ParFiniteElementSpace_construct_2(const void* arg0, void** r
 
 static void nsb_mfem_ParFiniteElementSpace_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::ParFiniteElementSpace**>(storage);
+    auto object = *reinterpret_cast<mfem::ParFiniteElementSpace**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_pfespace(const char* name) noexcept {
@@ -1104,6 +1131,12 @@ static unsigned long long nsb_function_address_mfem__par_pfespace(const char* na
     if (std::strcmp(name, "nsb_mfem_ParFiniteElementSpace_77_TrueVSize") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_ParFiniteElementSpace_77_TrueVSize);
     }
+    if (std::strcmp(name, "nsb_mfem_ParFiniteElementSpace_78_GetElementDofs") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_ParFiniteElementSpace_78_GetElementDofs);
+    }
+    if (std::strcmp(name, "nsb_mfem_ParFiniteElementSpace_79_GetBdrElementDofs") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_ParFiniteElementSpace_79_GetBdrElementDofs);
+    }
     if (std::strcmp(name, "nsb_mfem_ParFiniteElementSpace_member_get_num_face_nbr_dofs") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_ParFiniteElementSpace_member_get_num_face_nbr_dofs);
     }
@@ -1112,13 +1145,13 @@ static unsigned long long nsb_function_address_mfem__par_pfespace(const char* na
     }
     if (std::strcmp(name, "nsb_mfem_ParFiniteElementSpace_construct_2") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_ParFiniteElementSpace_construct_2);
     if (std::strcmp(name, "nsb_mfem_ParFiniteElementSpace_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_ParFiniteElementSpace_destroy);
-    if (std::strcmp(name, "nsb_cast_mfem_ParFiniteElementSpace_91_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ParFiniteElementSpace_91_up);
-    if (std::strcmp(name, "nsb_cast_mfem_ParFiniteElementSpace_91_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ParFiniteElementSpace_91_down);
+    if (std::strcmp(name, "nsb_cast_mfem_ParFiniteElementSpace_95_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ParFiniteElementSpace_95_up);
+    if (std::strcmp(name, "nsb_cast_mfem_ParFiniteElementSpace_95_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_ParFiniteElementSpace_95_down);
     return 0;
 }
 %}
 
-extern unsigned nsb_cast_mfem_ParFiniteElementSpace_91_flags() noexcept;
+extern unsigned nsb_cast_mfem_ParFiniteElementSpace_95_flags() noexcept;
 extern mfem::ParFiniteElementSpace *nsb_borrowed_mfem_ParFiniteElementSpace(unsigned long long address);
 %newobject nsb_owned_mfem_ParFiniteElementSpace;
 extern mfem::ParFiniteElementSpace *nsb_owned_mfem_ParFiniteElementSpace(unsigned long long address);

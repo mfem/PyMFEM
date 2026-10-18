@@ -20,9 +20,9 @@ template<class D, class B> struct nsb_cast_traits_mfem__par_blockoperator {
         else return nullptr;
     }
 };
-static unsigned nsb_cast_mfem_BlockOperator_10_flags() noexcept { return nsb_cast_traits_mfem__par_blockoperator<mfem::BlockOperator, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_BlockOperator_10_up(void* p) noexcept { return nsb_cast_traits_mfem__par_blockoperator<mfem::BlockOperator, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_BlockOperator_10_down(void* p) noexcept { return nsb_cast_traits_mfem__par_blockoperator<mfem::BlockOperator, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_BlockOperator_13_flags() noexcept { return nsb_cast_traits_mfem__par_blockoperator<mfem::BlockOperator, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_BlockOperator_13_up(void* p) noexcept { return nsb_cast_traits_mfem__par_blockoperator<mfem::BlockOperator, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_BlockOperator_13_down(void* p) noexcept { return nsb_cast_traits_mfem__par_blockoperator<mfem::BlockOperator, mfem::Operator>::down(p); }
 static mfem::BlockOperator *nsb_borrowed_mfem_BlockOperator(unsigned long long address) {
     return reinterpret_cast<mfem::BlockOperator *>(address);
 }
@@ -295,7 +295,8 @@ static int nsb_mfem_BlockOperator_construct_1(const void* arg0, const void* arg1
 
 static void nsb_mfem_BlockOperator_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::BlockOperator**>(storage);
+    auto object = *reinterpret_cast<mfem::BlockOperator**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_blockoperator(const char* name) noexcept {
@@ -365,13 +366,13 @@ static unsigned long long nsb_function_address_mfem__par_blockoperator(const cha
     if (std::strcmp(name, "nsb_mfem_BlockOperator_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockOperator_construct_0);
     if (std::strcmp(name, "nsb_mfem_BlockOperator_construct_1") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockOperator_construct_1);
     if (std::strcmp(name, "nsb_mfem_BlockOperator_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_BlockOperator_destroy);
-    if (std::strcmp(name, "nsb_cast_mfem_BlockOperator_10_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockOperator_10_up);
-    if (std::strcmp(name, "nsb_cast_mfem_BlockOperator_10_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockOperator_10_down);
+    if (std::strcmp(name, "nsb_cast_mfem_BlockOperator_13_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockOperator_13_up);
+    if (std::strcmp(name, "nsb_cast_mfem_BlockOperator_13_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_BlockOperator_13_down);
     return 0;
 }
 %}
 
-extern unsigned nsb_cast_mfem_BlockOperator_10_flags() noexcept;
+extern unsigned nsb_cast_mfem_BlockOperator_13_flags() noexcept;
 extern mfem::BlockOperator *nsb_borrowed_mfem_BlockOperator(unsigned long long address);
 %newobject nsb_owned_mfem_BlockOperator;
 extern mfem::BlockOperator *nsb_owned_mfem_BlockOperator(unsigned long long address);

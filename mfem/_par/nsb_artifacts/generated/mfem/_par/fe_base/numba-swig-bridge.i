@@ -544,7 +544,8 @@ static int nsb_mfem_FiniteElement_46_GetFaceMap(const void* self, int arg0, void
 
 static void nsb_mfem_FiniteElement_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::FiniteElement**>(storage);
+    auto object = *reinterpret_cast<mfem::FiniteElement**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_fe_base(const char* name) noexcept {

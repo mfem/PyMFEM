@@ -20,15 +20,15 @@ template<class D, class B> struct nsb_cast_traits_mfem__par_sparsemat {
         else return nullptr;
     }
 };
-static unsigned nsb_cast_mfem_SparseMatrix_104_flags() noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::AbstractSparseMatrix>::flags; }
-static void* nsb_cast_mfem_SparseMatrix_104_up(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::AbstractSparseMatrix>::up(p); }
-static void* nsb_cast_mfem_SparseMatrix_104_down(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::AbstractSparseMatrix>::down(p); }
-static unsigned nsb_cast_mfem_SparseMatrix_105_flags() noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Matrix>::flags; }
-static void* nsb_cast_mfem_SparseMatrix_105_up(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Matrix>::up(p); }
-static void* nsb_cast_mfem_SparseMatrix_105_down(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Matrix>::down(p); }
-static unsigned nsb_cast_mfem_SparseMatrix_106_flags() noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_SparseMatrix_106_up(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_SparseMatrix_106_down(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_SparseMatrix_110_flags() noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::AbstractSparseMatrix>::flags; }
+static void* nsb_cast_mfem_SparseMatrix_110_up(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::AbstractSparseMatrix>::up(p); }
+static void* nsb_cast_mfem_SparseMatrix_110_down(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::AbstractSparseMatrix>::down(p); }
+static unsigned nsb_cast_mfem_SparseMatrix_111_flags() noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Matrix>::flags; }
+static void* nsb_cast_mfem_SparseMatrix_111_up(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Matrix>::up(p); }
+static void* nsb_cast_mfem_SparseMatrix_111_down(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Matrix>::down(p); }
+static unsigned nsb_cast_mfem_SparseMatrix_112_flags() noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_SparseMatrix_112_up(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_SparseMatrix_112_down(void* p) noexcept { return nsb_cast_traits_mfem__par_sparsemat<mfem::SparseMatrix, mfem::Operator>::down(p); }
 static mfem::SparseMatrix *nsb_borrowed_mfem_SparseMatrix(unsigned long long address) {
     return reinterpret_cast<mfem::SparseMatrix *>(address);
 }
@@ -1405,7 +1405,7 @@ static int nsb_mfem_SparseMatrix_133_ClearColPtr(const void* self) noexcept {
     return 0;
 }
 
-static int nsb_mfem_SparseMatrix_135__Add_(void* self, int arg0, double arg1) noexcept {
+static int nsb_mfem_SparseMatrix_135_Add(void* self, int arg0, double arg1) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -1417,7 +1417,7 @@ static int nsb_mfem_SparseMatrix_135__Add_(void* self, int arg0, double arg1) no
     return 0;
 }
 
-static int nsb_mfem_SparseMatrix_136__Set_(void* self, int arg0, double arg1) noexcept {
+static int nsb_mfem_SparseMatrix_136_Set(void* self, int arg0, double arg1) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -1429,7 +1429,7 @@ static int nsb_mfem_SparseMatrix_136__Set_(void* self, int arg0, double arg1) no
     return 0;
 }
 
-static int nsb_mfem_SparseMatrix_137__Get_(const void* self, int arg0, double* result) noexcept {
+static int nsb_mfem_SparseMatrix_137_Get(const void* self, int arg0, double* result) noexcept {
     if (self == nullptr || result == nullptr) {
         return 1;
     }
@@ -1441,7 +1441,7 @@ static int nsb_mfem_SparseMatrix_137__Get_(const void* self, int arg0, double* r
     return 0;
 }
 
-static int nsb_mfem_SparseMatrix_139__Add_(void* self, int arg0, int arg1, double arg2) noexcept {
+static int nsb_mfem_SparseMatrix_139_Add(void* self, int arg0, int arg1, double arg2) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -1453,7 +1453,7 @@ static int nsb_mfem_SparseMatrix_139__Add_(void* self, int arg0, int arg1, doubl
     return 0;
 }
 
-static int nsb_mfem_SparseMatrix_140__Set_(void* self, int arg0, int arg1, double arg2) noexcept {
+static int nsb_mfem_SparseMatrix_140_Set(void* self, int arg0, int arg1, double arg2) noexcept {
     if (self == nullptr) {
         return 1;
     }
@@ -1645,12 +1645,36 @@ static int nsb_mfem_SparseMatrix_155_ScaleColumns(void* self, const void* arg0) 
     return 0;
 }
 
+static int nsb_mfem_SparseMatrix_156_operator(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::SparseMatrix*>(self)->operator+=(*static_cast<const mfem::SparseMatrix*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_SparseMatrix_157_Add(void* self, double arg0, const void* arg1) noexcept {
     if (self == nullptr || arg1 == nullptr) {
         return 1;
     }
     try {
         static_cast<mfem::SparseMatrix*>(self)->Add(arg0, *static_cast<const mfem::SparseMatrix*>(arg1));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_SparseMatrix_158_operator(void* self, double arg0) noexcept {
+    if (self == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::SparseMatrix*>(self)->operator*=(arg0);
     } catch (...) {
         return 2;
     }
@@ -1923,7 +1947,8 @@ static int nsb_mfem_SparseMatrix_construct_9(const void* arg0, void** result) no
 
 static void nsb_mfem_SparseMatrix_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::SparseMatrix**>(storage);
+    auto object = *reinterpret_cast<mfem::SparseMatrix**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_sparsemat(const char* name) noexcept {
@@ -2272,20 +2297,20 @@ static unsigned long long nsb_function_address_mfem__par_sparsemat(const char* n
     if (std::strcmp(name, "nsb_mfem_SparseMatrix_133_ClearColPtr") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_133_ClearColPtr);
     }
-    if (std::strcmp(name, "nsb_mfem_SparseMatrix_135__Add_") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_135__Add_);
+    if (std::strcmp(name, "nsb_mfem_SparseMatrix_135_Add") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_135_Add);
     }
-    if (std::strcmp(name, "nsb_mfem_SparseMatrix_136__Set_") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_136__Set_);
+    if (std::strcmp(name, "nsb_mfem_SparseMatrix_136_Set") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_136_Set);
     }
-    if (std::strcmp(name, "nsb_mfem_SparseMatrix_137__Get_") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_137__Get_);
+    if (std::strcmp(name, "nsb_mfem_SparseMatrix_137_Get") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_137_Get);
     }
-    if (std::strcmp(name, "nsb_mfem_SparseMatrix_139__Add_") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_139__Add_);
+    if (std::strcmp(name, "nsb_mfem_SparseMatrix_139_Add") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_139_Add);
     }
-    if (std::strcmp(name, "nsb_mfem_SparseMatrix_140__Set_") == 0) {
-        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_140__Set_);
+    if (std::strcmp(name, "nsb_mfem_SparseMatrix_140_Set") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_140_Set);
     }
     if (std::strcmp(name, "nsb_mfem_SparseMatrix_141_Set") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_141_Set);
@@ -2332,8 +2357,14 @@ static unsigned long long nsb_function_address_mfem__par_sparsemat(const char* n
     if (std::strcmp(name, "nsb_mfem_SparseMatrix_155_ScaleColumns") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_155_ScaleColumns);
     }
+    if (std::strcmp(name, "nsb_mfem_SparseMatrix_156_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_156_operator);
+    }
     if (std::strcmp(name, "nsb_mfem_SparseMatrix_157_Add") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_157_Add);
+    }
+    if (std::strcmp(name, "nsb_mfem_SparseMatrix_158_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_158_operator);
     }
     if (std::strcmp(name, "nsb_mfem_SparseMatrix_161_Print") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_161_Print);
@@ -2393,19 +2424,19 @@ static unsigned long long nsb_function_address_mfem__par_sparsemat(const char* n
     if (std::strcmp(name, "nsb_mfem_SparseMatrix_construct_8") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_construct_8);
     if (std::strcmp(name, "nsb_mfem_SparseMatrix_construct_9") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_construct_9);
     if (std::strcmp(name, "nsb_mfem_SparseMatrix_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_SparseMatrix_destroy);
-    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_104_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_104_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_104_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_104_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_105_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_105_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_105_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_105_down);
-    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_106_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_106_up);
-    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_106_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_106_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_110_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_110_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_110_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_110_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_111_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_111_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_111_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_111_down);
+    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_112_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_112_up);
+    if (std::strcmp(name, "nsb_cast_mfem_SparseMatrix_112_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_SparseMatrix_112_down);
     return 0;
 }
 %}
 
-extern unsigned nsb_cast_mfem_SparseMatrix_104_flags() noexcept;
-extern unsigned nsb_cast_mfem_SparseMatrix_105_flags() noexcept;
-extern unsigned nsb_cast_mfem_SparseMatrix_106_flags() noexcept;
+extern unsigned nsb_cast_mfem_SparseMatrix_110_flags() noexcept;
+extern unsigned nsb_cast_mfem_SparseMatrix_111_flags() noexcept;
+extern unsigned nsb_cast_mfem_SparseMatrix_112_flags() noexcept;
 extern mfem::SparseMatrix *nsb_borrowed_mfem_SparseMatrix(unsigned long long address);
 %newobject nsb_owned_mfem_SparseMatrix;
 extern mfem::SparseMatrix *nsb_owned_mfem_SparseMatrix(unsigned long long address);

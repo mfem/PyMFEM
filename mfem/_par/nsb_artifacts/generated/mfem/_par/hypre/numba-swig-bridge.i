@@ -21,132 +21,132 @@ template<class D, class B> struct nsb_cast_traits_mfem__par_hypre {
         else return nullptr;
     }
 };
-static unsigned nsb_cast_mfem_HypreADS_24_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreADS_24_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreADS_24_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreADS_25_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreADS_25_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreADS_25_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreADS_26_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreADS_26_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreADS_26_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreAMS_27_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreAMS_27_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreAMS_27_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreAMS_28_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreAMS_28_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreAMS_28_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreAMS_29_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreAMS_29_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreAMS_29_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreBoomerAMG_30_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreBoomerAMG_30_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreBoomerAMG_30_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreBoomerAMG_31_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreBoomerAMG_31_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreBoomerAMG_31_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreBoomerAMG_32_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreBoomerAMG_32_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreBoomerAMG_32_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreDiagScale_33_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreDiagScale_33_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreDiagScale_33_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreDiagScale_34_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreDiagScale_34_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreDiagScale_34_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreDiagScale_35_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreDiagScale_35_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreDiagScale_35_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreEuclid_36_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreEuclid_36_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreEuclid_36_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreEuclid_37_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreEuclid_37_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreEuclid_37_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreEuclid_38_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreEuclid_38_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreEuclid_38_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreFGMRES_39_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreFGMRES_39_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreFGMRES_39_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreFGMRES_40_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreFGMRES_40_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreFGMRES_40_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreFGMRES_41_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreFGMRES_41_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreFGMRES_41_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreGMRES_42_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreGMRES_42_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreGMRES_42_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreGMRES_43_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreGMRES_43_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreGMRES_43_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreGMRES_44_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreGMRES_44_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreGMRES_44_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreILU_45_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreILU_45_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreILU_45_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreILU_46_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreILU_46_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreILU_46_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreILU_47_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreILU_47_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreILU_47_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreIdentity_48_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreIdentity_48_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreIdentity_48_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreIdentity_49_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreIdentity_49_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreIdentity_49_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreIdentity_50_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreIdentity_50_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreIdentity_50_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HyprePCG_51_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HyprePCG_51_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HyprePCG_51_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HyprePCG_52_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HyprePCG_52_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HyprePCG_52_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HyprePCG_53_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HyprePCG_53_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HyprePCG_53_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreParMatrix_54_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParMatrix, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreParMatrix_54_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParMatrix, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreParMatrix_54_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParMatrix, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreParVector_55_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParVector, mfem::Vector>::flags; }
-static void* nsb_cast_mfem_HypreParVector_55_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParVector, mfem::Vector>::up(p); }
-static void* nsb_cast_mfem_HypreParVector_55_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParVector, mfem::Vector>::down(p); }
-static unsigned nsb_cast_mfem_HypreParaSails_56_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreParaSails_56_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreParaSails_56_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreParaSails_57_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreParaSails_57_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreParaSails_57_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreParaSails_58_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreParaSails_58_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreParaSails_58_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreSmoother_59_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreSmoother_59_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreSmoother_59_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreSmoother_60_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreSmoother_60_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreSmoother_60_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreSolver_61_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreSolver_61_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreSolver_61_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreSolver_62_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreSolver_62_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreSolver_62_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Operator>::down(p); }
-static unsigned nsb_cast_mfem_HypreTriSolve_63_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::HypreSolver>::flags; }
-static void* nsb_cast_mfem_HypreTriSolve_63_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::HypreSolver>::up(p); }
-static void* nsb_cast_mfem_HypreTriSolve_63_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::HypreSolver>::down(p); }
-static unsigned nsb_cast_mfem_HypreTriSolve_64_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Solver>::flags; }
-static void* nsb_cast_mfem_HypreTriSolve_64_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Solver>::up(p); }
-static void* nsb_cast_mfem_HypreTriSolve_64_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Solver>::down(p); }
-static unsigned nsb_cast_mfem_HypreTriSolve_65_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Operator>::flags; }
-static void* nsb_cast_mfem_HypreTriSolve_65_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Operator>::up(p); }
-static void* nsb_cast_mfem_HypreTriSolve_65_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreADS_28_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreADS_28_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreADS_28_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreADS_29_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreADS_29_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreADS_29_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreADS_30_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreADS_30_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreADS_30_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreADS, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreAMS_31_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreAMS_31_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreAMS_31_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreAMS_32_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreAMS_32_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreAMS_32_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreAMS_33_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreAMS_33_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreAMS_33_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreAMS, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreBoomerAMG_34_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreBoomerAMG_34_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreBoomerAMG_34_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreBoomerAMG_35_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreBoomerAMG_35_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreBoomerAMG_35_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreBoomerAMG_36_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreBoomerAMG_36_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreBoomerAMG_36_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreBoomerAMG, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreDiagScale_37_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreDiagScale_37_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreDiagScale_37_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreDiagScale_38_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreDiagScale_38_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreDiagScale_38_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreDiagScale_39_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreDiagScale_39_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreDiagScale_39_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreDiagScale, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreEuclid_40_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreEuclid_40_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreEuclid_40_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreEuclid_41_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreEuclid_41_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreEuclid_41_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreEuclid_42_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreEuclid_42_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreEuclid_42_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreEuclid, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreFGMRES_43_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreFGMRES_43_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreFGMRES_43_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreFGMRES_44_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreFGMRES_44_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreFGMRES_44_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreFGMRES_45_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreFGMRES_45_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreFGMRES_45_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreFGMRES, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreGMRES_46_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreGMRES_46_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreGMRES_46_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreGMRES_47_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreGMRES_47_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreGMRES_47_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreGMRES_48_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreGMRES_48_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreGMRES_48_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreGMRES, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreILU_49_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreILU_49_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreILU_49_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreILU_50_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreILU_50_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreILU_50_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreILU_51_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreILU_51_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreILU_51_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreILU, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreIdentity_52_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreIdentity_52_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreIdentity_52_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreIdentity_53_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreIdentity_53_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreIdentity_53_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreIdentity_54_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreIdentity_54_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreIdentity_54_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreIdentity, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HyprePCG_55_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HyprePCG_55_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HyprePCG_55_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HyprePCG_56_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HyprePCG_56_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HyprePCG_56_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HyprePCG_57_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HyprePCG_57_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HyprePCG_57_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HyprePCG, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreParMatrix_58_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParMatrix, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreParMatrix_58_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParMatrix, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreParMatrix_58_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParMatrix, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreParVector_59_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParVector, mfem::Vector>::flags; }
+static void* nsb_cast_mfem_HypreParVector_59_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParVector, mfem::Vector>::up(p); }
+static void* nsb_cast_mfem_HypreParVector_59_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParVector, mfem::Vector>::down(p); }
+static unsigned nsb_cast_mfem_HypreParaSails_60_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreParaSails_60_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreParaSails_60_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreParaSails_61_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreParaSails_61_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreParaSails_61_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreParaSails_62_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreParaSails_62_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreParaSails_62_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreParaSails, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreSmoother_63_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreSmoother_63_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreSmoother_63_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreSmoother_64_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreSmoother_64_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreSmoother_64_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSmoother, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreSolver_65_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreSolver_65_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreSolver_65_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreSolver_66_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreSolver_66_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreSolver_66_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreSolver, mfem::Operator>::down(p); }
+static unsigned nsb_cast_mfem_HypreTriSolve_67_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::HypreSolver>::flags; }
+static void* nsb_cast_mfem_HypreTriSolve_67_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::HypreSolver>::up(p); }
+static void* nsb_cast_mfem_HypreTriSolve_67_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::HypreSolver>::down(p); }
+static unsigned nsb_cast_mfem_HypreTriSolve_68_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Solver>::flags; }
+static void* nsb_cast_mfem_HypreTriSolve_68_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Solver>::up(p); }
+static void* nsb_cast_mfem_HypreTriSolve_68_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Solver>::down(p); }
+static unsigned nsb_cast_mfem_HypreTriSolve_69_flags() noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Operator>::flags; }
+static void* nsb_cast_mfem_HypreTriSolve_69_up(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Operator>::up(p); }
+static void* nsb_cast_mfem_HypreTriSolve_69_down(void* p) noexcept { return nsb_cast_traits_mfem__par_hypre<mfem::HypreTriSolve, mfem::Operator>::down(p); }
 static mfem::HypreADS *nsb_borrowed_mfem_HypreADS(unsigned long long address) {
     return reinterpret_cast<mfem::HypreADS *>(address);
 }
@@ -204,7 +204,8 @@ static int nsb_mfem_HypreADS_construct_2(const void* arg0, void* arg1, void* arg
 
 static void nsb_mfem_HypreADS_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreADS**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreADS**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreAME *nsb_borrowed_mfem_HypreAME(unsigned long long address) {
@@ -332,7 +333,8 @@ static int nsb_mfem_HypreAME_construct_0(void* arg0, void** result) noexcept {
 
 static void nsb_mfem_HypreAME_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreAME**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreAME**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreAMS *nsb_borrowed_mfem_HypreAMS(unsigned long long address) {
@@ -412,7 +414,8 @@ static int nsb_mfem_HypreAMS_construct_3(const void* arg0, void* arg1, void* arg
 
 static void nsb_mfem_HypreAMS_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreAMS**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreAMS**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreBoomerAMG *nsb_borrowed_mfem_HypreBoomerAMG(unsigned long long address) {
@@ -722,6 +725,30 @@ static int nsb_mfem_HypreBoomerAMG_27_SetAggressiveCoarsening(void* self, int ar
     return 0;
 }
 
+static int nsb_mfem_HypreBoomerAMG_31_Mult(const void* self, const void* arg0, void* arg1) noexcept {
+    if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<const mfem::HypreBoomerAMG*>(self)->Mult(*static_cast<const mfem::HypreParVector*>(arg0), *static_cast<mfem::HypreParVector*>(arg1));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_HypreBoomerAMG_32_Mult(const void* self, const void* arg0, void* arg1) noexcept {
+    if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<const mfem::HypreBoomerAMG*>(self)->Mult(*static_cast<const mfem::Vector*>(arg0), *static_cast<mfem::Vector*>(arg1));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_HypreBoomerAMG_construct_0(void** result) noexcept {
     if (result == nullptr) return 1;
     try {
@@ -740,7 +767,8 @@ static int nsb_mfem_HypreBoomerAMG_construct_1(const void* arg0, void** result) 
 
 static void nsb_mfem_HypreBoomerAMG_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreBoomerAMG**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreBoomerAMG**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreDiagScale *nsb_borrowed_mfem_HypreDiagScale(unsigned long long address) {
@@ -806,7 +834,8 @@ static int nsb_mfem_HypreDiagScale_construct_1(const void* arg0, void** result) 
 
 static void nsb_mfem_HypreDiagScale_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreDiagScale**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreDiagScale**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreEuclid *nsb_borrowed_mfem_HypreEuclid(unsigned long long address) {
@@ -906,7 +935,8 @@ static int nsb_mfem_HypreEuclid_construct_1(const void* arg0, void** result) noe
 
 static void nsb_mfem_HypreEuclid_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreEuclid**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreEuclid**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreFGMRES *nsb_borrowed_mfem_HypreFGMRES(unsigned long long address) {
@@ -1072,6 +1102,18 @@ static int nsb_mfem_HypreFGMRES_20_Mult(const void* self, const void* arg0, void
     return 0;
 }
 
+static int nsb_mfem_HypreFGMRES_21_Mult(const void* self, const void* arg0, void* arg1) noexcept {
+    if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<const mfem::HypreFGMRES*>(self)->Mult(*static_cast<const mfem::Vector*>(arg0), *static_cast<mfem::Vector*>(arg1));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_HypreFGMRES_construct_0(void* arg0, void** result) noexcept {
     if (result == nullptr || arg0 == nullptr) return 1;
     try {
@@ -1090,7 +1132,8 @@ static int nsb_mfem_HypreFGMRES_construct_1(const void* arg0, void** result) noe
 
 static void nsb_mfem_HypreFGMRES_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreFGMRES**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreFGMRES**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreGMRES *nsb_borrowed_mfem_HypreGMRES(unsigned long long address) {
@@ -1280,6 +1323,18 @@ static int nsb_mfem_HypreGMRES_22_Mult(const void* self, const void* arg0, void*
     return 0;
 }
 
+static int nsb_mfem_HypreGMRES_23_Mult(const void* self, const void* arg0, void* arg1) noexcept {
+    if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<const mfem::HypreGMRES*>(self)->Mult(*static_cast<const mfem::Vector*>(arg0), *static_cast<mfem::Vector*>(arg1));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_HypreGMRES_construct_0(void* arg0, void** result) noexcept {
     if (result == nullptr || arg0 == nullptr) return 1;
     try {
@@ -1298,7 +1353,8 @@ static int nsb_mfem_HypreGMRES_construct_1(const void* arg0, void** result) noex
 
 static void nsb_mfem_HypreGMRES_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreGMRES**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreGMRES**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreILU *nsb_borrowed_mfem_HypreILU(unsigned long long address) {
@@ -1402,7 +1458,8 @@ static int nsb_mfem_HypreILU_construct_0(void** result) noexcept {
 
 static void nsb_mfem_HypreILU_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreILU**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreILU**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreIdentity *nsb_borrowed_mfem_HypreIdentity(unsigned long long address) {
@@ -1422,7 +1479,8 @@ static int nsb_mfem_HypreIdentity_construct_0(void** result) noexcept {
 
 static void nsb_mfem_HypreIdentity_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreIdentity**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreIdentity**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreLOBPCG *nsb_borrowed_mfem_HypreLOBPCG(unsigned long long address) {
@@ -1586,7 +1644,8 @@ static int nsb_mfem_HypreLOBPCG_construct_0(void* arg0, void** result) noexcept 
 
 static void nsb_mfem_HypreLOBPCG_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreLOBPCG**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreLOBPCG**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HyprePCG *nsb_borrowed_mfem_HyprePCG(unsigned long long address) {
@@ -1812,6 +1871,18 @@ static int nsb_mfem_HyprePCG_25_Mult(const void* self, const void* arg0, void* a
     return 0;
 }
 
+static int nsb_mfem_HyprePCG_26_Mult(const void* self, const void* arg0, void* arg1) noexcept {
+    if (self == nullptr || arg0 == nullptr || arg1 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<const mfem::HyprePCG*>(self)->Mult(*static_cast<const mfem::Vector*>(arg0), *static_cast<mfem::Vector*>(arg1));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_HyprePCG_construct_0(void* arg0, void** result) noexcept {
     if (result == nullptr || arg0 == nullptr) return 1;
     try {
@@ -1830,7 +1901,8 @@ static int nsb_mfem_HyprePCG_construct_1(const void* arg0, void** result) noexce
 
 static void nsb_mfem_HyprePCG_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HyprePCG**>(storage);
+    auto object = *reinterpret_cast<mfem::HyprePCG**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreParMatrix *nsb_borrowed_mfem_HypreParMatrix(unsigned long long address) {
@@ -2371,6 +2443,18 @@ static int nsb_mfem_HypreParMatrix_61_AbsMultTranspose(const void* self, const v
     return 0;
 }
 
+static int nsb_mfem_HypreParMatrix_64_operator(void* self, const void* arg0) noexcept {
+    if (self == nullptr || arg0 == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::HypreParMatrix*>(self)->operator+=(*static_cast<const mfem::HypreParMatrix*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_HypreParMatrix_65_Add(void* self, double arg0, const void* arg1, void** result) noexcept {
     if (self == nullptr || arg1 == nullptr || result == nullptr) {
         return 1;
@@ -2428,6 +2512,18 @@ static int nsb_mfem_HypreParMatrix_69_InvScaleRows(void* self, const void* arg0)
     }
     try {
         static_cast<mfem::HypreParMatrix*>(self)->InvScaleRows(*static_cast<const mfem::Vector*>(arg0));
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_HypreParMatrix_70_operator(void* self, double arg0) noexcept {
+    if (self == nullptr) {
+        return 1;
+    }
+    try {
+        static_cast<mfem::HypreParMatrix*>(self)->operator*=(arg0);
     } catch (...) {
         return 2;
     }
@@ -2722,7 +2818,8 @@ static int nsb_mfem_HypreParMatrix_construct_13(const void* arg0, void** result)
 
 static void nsb_mfem_HypreParMatrix_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreParMatrix**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreParMatrix**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreParVector *nsb_borrowed_mfem_HypreParVector(unsigned long long address) {
@@ -2877,6 +2974,30 @@ static int nsb_mfem_HypreParVector_20_Randomize(void* self, int arg0, int* resul
     return 0;
 }
 
+static int nsb_mfem_HypreParVector_23_Read(const void* self, bool arg0, const double** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        *result = static_cast<const mfem::HypreParVector*>(self)->Read(arg0);
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
+static int nsb_mfem_HypreParVector_24_Read(const void* self, const double** result) noexcept {
+    if (self == nullptr || result == nullptr) {
+        return 1;
+    }
+    try {
+        *result = static_cast<const mfem::HypreParVector*>(self)->Read();
+    } catch (...) {
+        return 2;
+    }
+    return 0;
+}
+
 static int nsb_mfem_HypreParVector_construct_0(void** result) noexcept {
     if (result == nullptr) return 1;
     try {
@@ -2951,7 +3072,8 @@ static int nsb_mfem_HypreParVector_construct_10(void* arg0, void** result) noexc
 
 static void nsb_mfem_HypreParVector_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreParVector**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreParVector**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreParaSails *nsb_borrowed_mfem_HypreParaSails(unsigned long long address) {
@@ -3063,7 +3185,8 @@ static int nsb_mfem_HypreParaSails_construct_1(const void* arg0, void** result) 
 
 static void nsb_mfem_HypreParaSails_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreParaSails**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreParaSails**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreSmoother *nsb_borrowed_mfem_HypreSmoother(unsigned long long address) {
@@ -3339,7 +3462,8 @@ static int nsb_mfem_HypreSmoother_construct_8(const void* arg0, void** result) n
 
 static void nsb_mfem_HypreSmoother_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreSmoother**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreSmoother**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreSolver *nsb_borrowed_mfem_HypreSolver(unsigned long long address) {
@@ -3411,7 +3535,8 @@ static int nsb_mfem_HypreSolver_8_Mult(const void* self, const void* arg0, void*
 
 static void nsb_mfem_HypreSolver_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreSolver**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreSolver**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static mfem::HypreTriSolve *nsb_borrowed_mfem_HypreTriSolve(unsigned long long address) {
@@ -3465,7 +3590,8 @@ static int nsb_mfem_HypreTriSolve_construct_1(const void* arg0, void** result) n
 
 static void nsb_mfem_HypreTriSolve_destroy(void* storage, std::size_t, void*) noexcept {
     if (storage == nullptr) return;
-    delete *reinterpret_cast<mfem::HypreTriSolve**>(storage);
+    auto object = *reinterpret_cast<mfem::HypreTriSolve**>(storage);
+    if (object != nullptr) delete object;
 }
 
 static unsigned long long nsb_function_address_mfem__par_hypre(const char* name) noexcept {
@@ -3600,6 +3726,12 @@ static unsigned long long nsb_function_address_mfem__par_hypre(const char* name)
     if (std::strcmp(name, "nsb_mfem_HypreBoomerAMG_27_SetAggressiveCoarsening") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreBoomerAMG_27_SetAggressiveCoarsening);
     }
+    if (std::strcmp(name, "nsb_mfem_HypreBoomerAMG_31_Mult") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreBoomerAMG_31_Mult);
+    }
+    if (std::strcmp(name, "nsb_mfem_HypreBoomerAMG_32_Mult") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreBoomerAMG_32_Mult);
+    }
     if (std::strcmp(name, "nsb_mfem_HypreBoomerAMG_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreBoomerAMG_construct_0);
     if (std::strcmp(name, "nsb_mfem_HypreBoomerAMG_construct_1") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreBoomerAMG_construct_1);
     if (std::strcmp(name, "nsb_mfem_HypreBoomerAMG_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreBoomerAMG_destroy);
@@ -3675,6 +3807,9 @@ static unsigned long long nsb_function_address_mfem__par_hypre(const char* name)
     if (std::strcmp(name, "nsb_mfem_HypreFGMRES_20_Mult") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreFGMRES_20_Mult);
     }
+    if (std::strcmp(name, "nsb_mfem_HypreFGMRES_21_Mult") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreFGMRES_21_Mult);
+    }
     if (std::strcmp(name, "nsb_mfem_HypreFGMRES_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreFGMRES_construct_0);
     if (std::strcmp(name, "nsb_mfem_HypreFGMRES_construct_1") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreFGMRES_construct_1);
     if (std::strcmp(name, "nsb_mfem_HypreFGMRES_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreFGMRES_destroy);
@@ -3722,6 +3857,9 @@ static unsigned long long nsb_function_address_mfem__par_hypre(const char* name)
     }
     if (std::strcmp(name, "nsb_mfem_HypreGMRES_22_Mult") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreGMRES_22_Mult);
+    }
+    if (std::strcmp(name, "nsb_mfem_HypreGMRES_23_Mult") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreGMRES_23_Mult);
     }
     if (std::strcmp(name, "nsb_mfem_HypreGMRES_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreGMRES_construct_0);
     if (std::strcmp(name, "nsb_mfem_HypreGMRES_construct_1") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreGMRES_construct_1);
@@ -3842,6 +3980,9 @@ static unsigned long long nsb_function_address_mfem__par_hypre(const char* name)
     }
     if (std::strcmp(name, "nsb_mfem_HyprePCG_25_Mult") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HyprePCG_25_Mult);
+    }
+    if (std::strcmp(name, "nsb_mfem_HyprePCG_26_Mult") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HyprePCG_26_Mult);
     }
     if (std::strcmp(name, "nsb_mfem_HyprePCG_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HyprePCG_construct_0);
     if (std::strcmp(name, "nsb_mfem_HyprePCG_construct_1") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HyprePCG_construct_1);
@@ -3978,6 +4119,9 @@ static unsigned long long nsb_function_address_mfem__par_hypre(const char* name)
     if (std::strcmp(name, "nsb_mfem_HypreParMatrix_61_AbsMultTranspose") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParMatrix_61_AbsMultTranspose);
     }
+    if (std::strcmp(name, "nsb_mfem_HypreParMatrix_64_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParMatrix_64_operator);
+    }
     if (std::strcmp(name, "nsb_mfem_HypreParMatrix_65_Add") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParMatrix_65_Add);
     }
@@ -3992,6 +4136,9 @@ static unsigned long long nsb_function_address_mfem__par_hypre(const char* name)
     }
     if (std::strcmp(name, "nsb_mfem_HypreParMatrix_69_InvScaleRows") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParMatrix_69_InvScaleRows);
+    }
+    if (std::strcmp(name, "nsb_mfem_HypreParMatrix_70_operator") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParMatrix_70_operator);
     }
     if (std::strcmp(name, "nsb_mfem_HypreParMatrix_71_Threshold") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParMatrix_71_Threshold);
@@ -4090,6 +4237,12 @@ static unsigned long long nsb_function_address_mfem__par_hypre(const char* name)
     }
     if (std::strcmp(name, "nsb_mfem_HypreParVector_20_Randomize") == 0) {
         return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParVector_20_Randomize);
+    }
+    if (std::strcmp(name, "nsb_mfem_HypreParVector_23_Read") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParVector_23_Read);
+    }
+    if (std::strcmp(name, "nsb_mfem_HypreParVector_24_Read") == 0) {
+        return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParVector_24_Read);
     }
     if (std::strcmp(name, "nsb_mfem_HypreParVector_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParVector_construct_0);
     if (std::strcmp(name, "nsb_mfem_HypreParVector_construct_1") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreParVector_construct_1);
@@ -4208,136 +4361,136 @@ static unsigned long long nsb_function_address_mfem__par_hypre(const char* name)
     if (std::strcmp(name, "nsb_mfem_HypreTriSolve_construct_0") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreTriSolve_construct_0);
     if (std::strcmp(name, "nsb_mfem_HypreTriSolve_construct_1") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreTriSolve_construct_1);
     if (std::strcmp(name, "nsb_mfem_HypreTriSolve_destroy") == 0) return reinterpret_cast<unsigned long long>(&nsb_mfem_HypreTriSolve_destroy);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_24_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_24_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_24_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_24_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_25_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_25_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_25_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_25_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_26_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_26_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_26_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_26_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_27_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_27_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_27_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_27_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_28_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_28_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_28_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_28_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_29_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_29_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_29_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_29_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_30_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_30_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_30_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_30_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_31_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_31_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_31_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_31_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_32_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_32_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_32_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_32_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_33_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_33_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_33_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_33_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_34_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_34_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_34_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_34_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_35_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_35_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_35_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_35_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_36_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_36_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_36_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_36_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_37_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_37_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_37_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_37_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_38_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_38_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_38_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_38_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_39_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_39_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_39_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_39_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_40_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_40_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_40_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_40_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_41_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_41_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_41_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_41_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_42_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_42_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_42_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_42_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_43_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_43_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_43_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_43_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_44_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_44_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_44_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_44_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_45_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_45_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_45_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_45_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_46_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_46_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_46_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_46_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_47_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_47_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_47_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_47_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_48_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_48_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_48_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_48_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_49_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_49_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_49_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_49_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_50_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_50_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_50_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_50_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_51_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_51_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_51_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_51_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_52_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_52_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_52_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_52_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_53_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_53_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_53_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_53_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParMatrix_54_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParMatrix_54_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParMatrix_54_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParMatrix_54_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParVector_55_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParVector_55_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParVector_55_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParVector_55_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_56_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_56_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_56_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_56_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_57_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_57_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_57_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_57_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_58_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_58_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_58_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_58_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreSmoother_59_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSmoother_59_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreSmoother_59_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSmoother_59_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreSmoother_60_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSmoother_60_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreSmoother_60_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSmoother_60_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreSolver_61_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSolver_61_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreSolver_61_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSolver_61_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreSolver_62_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSolver_62_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreSolver_62_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSolver_62_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_63_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_63_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_63_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_63_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_64_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_64_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_64_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_64_down);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_65_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_65_up);
-    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_65_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_65_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_28_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_28_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_28_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_28_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_29_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_29_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_29_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_29_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_30_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_30_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreADS_30_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreADS_30_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_31_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_31_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_31_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_31_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_32_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_32_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_32_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_32_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_33_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_33_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreAMS_33_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreAMS_33_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_34_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_34_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_34_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_34_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_35_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_35_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_35_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_35_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_36_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_36_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreBoomerAMG_36_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreBoomerAMG_36_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_37_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_37_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_37_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_37_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_38_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_38_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_38_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_38_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_39_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_39_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreDiagScale_39_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreDiagScale_39_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_40_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_40_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_40_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_40_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_41_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_41_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_41_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_41_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_42_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_42_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreEuclid_42_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreEuclid_42_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_43_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_43_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_43_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_43_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_44_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_44_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_44_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_44_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_45_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_45_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreFGMRES_45_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreFGMRES_45_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_46_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_46_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_46_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_46_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_47_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_47_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_47_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_47_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_48_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_48_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreGMRES_48_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreGMRES_48_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_49_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_49_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_49_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_49_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_50_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_50_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_50_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_50_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_51_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_51_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreILU_51_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreILU_51_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_52_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_52_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_52_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_52_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_53_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_53_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_53_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_53_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_54_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_54_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreIdentity_54_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreIdentity_54_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_55_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_55_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_55_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_55_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_56_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_56_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_56_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_56_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_57_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_57_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HyprePCG_57_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HyprePCG_57_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParMatrix_58_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParMatrix_58_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParMatrix_58_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParMatrix_58_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParVector_59_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParVector_59_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParVector_59_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParVector_59_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_60_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_60_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_60_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_60_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_61_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_61_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_61_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_61_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_62_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_62_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreParaSails_62_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreParaSails_62_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreSmoother_63_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSmoother_63_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreSmoother_63_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSmoother_63_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreSmoother_64_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSmoother_64_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreSmoother_64_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSmoother_64_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreSolver_65_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSolver_65_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreSolver_65_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSolver_65_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreSolver_66_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSolver_66_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreSolver_66_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreSolver_66_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_67_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_67_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_67_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_67_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_68_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_68_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_68_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_68_down);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_69_up") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_69_up);
+    if (std::strcmp(name, "nsb_cast_mfem_HypreTriSolve_69_down") == 0) return reinterpret_cast<unsigned long long>(&nsb_cast_mfem_HypreTriSolve_69_down);
     return 0;
 }
 %}
 
-extern unsigned nsb_cast_mfem_HypreADS_24_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreADS_25_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreADS_26_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreAMS_27_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreAMS_28_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreAMS_29_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreBoomerAMG_30_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreBoomerAMG_31_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreBoomerAMG_32_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreDiagScale_33_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreDiagScale_34_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreDiagScale_35_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreEuclid_36_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreEuclid_37_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreEuclid_38_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreFGMRES_39_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreFGMRES_40_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreFGMRES_41_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreGMRES_42_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreGMRES_43_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreGMRES_44_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreILU_45_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreILU_46_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreILU_47_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreIdentity_48_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreIdentity_49_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreIdentity_50_flags() noexcept;
-extern unsigned nsb_cast_mfem_HyprePCG_51_flags() noexcept;
-extern unsigned nsb_cast_mfem_HyprePCG_52_flags() noexcept;
-extern unsigned nsb_cast_mfem_HyprePCG_53_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreParMatrix_54_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreParVector_55_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreParaSails_56_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreParaSails_57_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreParaSails_58_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreSmoother_59_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreSmoother_60_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreSolver_61_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreSolver_62_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreTriSolve_63_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreTriSolve_64_flags() noexcept;
-extern unsigned nsb_cast_mfem_HypreTriSolve_65_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreADS_28_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreADS_29_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreADS_30_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreAMS_31_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreAMS_32_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreAMS_33_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreBoomerAMG_34_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreBoomerAMG_35_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreBoomerAMG_36_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreDiagScale_37_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreDiagScale_38_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreDiagScale_39_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreEuclid_40_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreEuclid_41_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreEuclid_42_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreFGMRES_43_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreFGMRES_44_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreFGMRES_45_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreGMRES_46_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreGMRES_47_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreGMRES_48_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreILU_49_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreILU_50_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreILU_51_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreIdentity_52_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreIdentity_53_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreIdentity_54_flags() noexcept;
+extern unsigned nsb_cast_mfem_HyprePCG_55_flags() noexcept;
+extern unsigned nsb_cast_mfem_HyprePCG_56_flags() noexcept;
+extern unsigned nsb_cast_mfem_HyprePCG_57_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreParMatrix_58_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreParVector_59_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreParaSails_60_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreParaSails_61_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreParaSails_62_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreSmoother_63_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreSmoother_64_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreSolver_65_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreSolver_66_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreTriSolve_67_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreTriSolve_68_flags() noexcept;
+extern unsigned nsb_cast_mfem_HypreTriSolve_69_flags() noexcept;
 extern mfem::HypreADS *nsb_borrowed_mfem_HypreADS(unsigned long long address);
 %newobject nsb_owned_mfem_HypreADS;
 extern mfem::HypreADS *nsb_owned_mfem_HypreADS(unsigned long long address);

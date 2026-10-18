@@ -2,8 +2,8 @@
   "schema_version": 2,
   "artifact_schema_version": 1,
   "bridge_id": "pymfem-par",
-  "generator_version": "0.15.2",
-  "required_runtime_version": "0.15.1",
+  "generator_version": "0.15.5",
+  "required_runtime_version": "0.15.4",
   "state_backend": "mfem_par",
   "state_module": "mfem._par.nsb_state_bindings",
   "state_abi": 7,
@@ -15,6 +15,24 @@
     "mfem._par.array": {
       "interface": "mfem/_par/array.i",
       "helper_fragment": "generated/mfem/_par/array/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.blockmatrix": {
+      "interface": "mfem/_par/blockmatrix.i",
+      "helper_fragment": "generated/mfem/_par/blockmatrix/numba-swig-bridge.i",
       "include_dirs": [
         "mfem/_par",
         "mfem/common",
@@ -51,6 +69,24 @@
     "mfem._par.coefficient": {
       "interface": "mfem/_par/coefficient.i",
       "helper_fragment": "generated/mfem/_par/coefficient/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.common_functions": {
+      "interface": "mfem/_par/common_functions.i",
+      "helper_fragment": "generated/mfem/_par/common_functions/numba-swig-bridge.i",
       "include_dirs": [
         "mfem/_par",
         "mfem/common",
@@ -141,6 +177,24 @@
     "mfem._par.fespace": {
       "interface": "mfem/_par/fespace.i",
       "helper_fragment": "generated/mfem/_par/fespace/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
+    "mfem._par.gridfunc": {
+      "interface": "mfem/_par/gridfunc.i",
+      "helper_fragment": "generated/mfem/_par/gridfunc/numba-swig-bridge.i",
       "include_dirs": [
         "mfem/_par",
         "mfem/common",
@@ -300,6 +354,24 @@
         "NUMBA_SWIG_BRIDGE_GENERATED"
       ]
     },
+    "mfem._par.pgridfunc": {
+      "interface": "mfem/_par/pgridfunc.i",
+      "helper_fragment": "generated/mfem/_par/pgridfunc/numba-swig-bridge.i",
+      "include_dirs": [
+        "mfem/_par",
+        "mfem/common",
+        "external/mfem/cmbuild_par",
+        "external/mfem"
+      ],
+      "framework_include": true,
+      "swig_options": [
+        "-python",
+        "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"
+      ],
+      "wrapper_definitions": [
+        "NUMBA_SWIG_BRIDGE_GENERATED"
+      ]
+    },
     "mfem._par.pnonlinearform": {
       "interface": "mfem/_par/pnonlinearform.i",
       "helper_fragment": "generated/mfem/_par/pnonlinearform/numba-swig-bridge.i",
@@ -412,13 +484,16 @@
     "director/metadata/generated_director.json",
     "director/swig/nsb-director-bridge.i",
     "generated/mfem/_par/array/numba-swig-bridge.i",
+    "generated/mfem/_par/blockmatrix/numba-swig-bridge.i",
     "generated/mfem/_par/blockoperator/numba-swig-bridge.i",
     "generated/mfem/_par/coefficient/numba-swig-bridge.i",
+    "generated/mfem/_par/common_functions/numba-swig-bridge.i",
     "generated/mfem/_par/densemat/numba-swig-bridge.i",
     "generated/mfem/_par/doftrans/numba-swig-bridge.i",
     "generated/mfem/_par/eltrans/numba-swig-bridge.i",
     "generated/mfem/_par/fe_base/numba-swig-bridge.i",
     "generated/mfem/_par/fespace/numba-swig-bridge.i",
+    "generated/mfem/_par/gridfunc/numba-swig-bridge.i",
     "generated/mfem/_par/hyperbolic/numba-swig-bridge.i",
     "generated/mfem/_par/hypre/numba-swig-bridge.i",
     "generated/mfem/_par/intrules/numba-swig-bridge.i",
@@ -427,6 +502,7 @@
     "generated/mfem/_par/nonlinearform/numba-swig-bridge.i",
     "generated/mfem/_par/operators/numba-swig-bridge.i",
     "generated/mfem/_par/pfespace/numba-swig-bridge.i",
+    "generated/mfem/_par/pgridfunc/numba-swig-bridge.i",
     "generated/mfem/_par/pnonlinearform/numba-swig-bridge.i",
     "generated/mfem/_par/solvers/numba-swig-bridge.i",
     "generated/mfem/_par/sparsemat/numba-swig-bridge.i",
