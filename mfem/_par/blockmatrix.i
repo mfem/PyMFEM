@@ -48,7 +48,13 @@ if len(args) == 2:
     return dynamic_cast<mfem::BlockMatrix*>(op);
   }
 %}
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/blockmatrix_nsb_1.i"
+#endif
 %include "linalg/blockmatrix.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/blockmatrix_nsb_2.i"
+#endif
 
  /*
 void PrintMatlab(std::ostream & os = mfem::out) const;

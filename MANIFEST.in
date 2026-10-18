@@ -13,3 +13,8 @@ include docs/*.txt
 include docs/*.png
 include external/README.txt
 exclude mfem/*/*.so
+
+include mfem/_ser/bridge.toml mfem/_par/bridge.toml
+recursive-include mfem/common/bridges *.i
+recursive-include mfem/_ser/nsb_artifacts *
+recursive-include mfem/_par/nsb_artifacts *

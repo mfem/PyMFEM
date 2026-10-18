@@ -28,7 +28,7 @@ import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
-from mfem.par import intArray, add_vector
+from mfem.par import intArray, Add
 from mpi4py import MPI
 
 num_procs = MPI.COMM_WORLD.size
@@ -243,8 +243,8 @@ class ReducedSystemOperator(mfem.PyOperator):
         self.x = x
 
     def Mult(self, k, y):
-        add_vector(self.v, self.dt, k, self.w)
-        add_vector(self.x, self.dt, self.w, self.z)
+        Add(self.v, self.dt, k, self.w)
+        Add(self.x, self.dt, self.w, self.z)
         self.H.Mult(self.z, y)
         self.M.TrueAddMult(k, y)
         self.S.TrueAddMult(self.w, y)
@@ -252,8 +252,8 @@ class ReducedSystemOperator(mfem.PyOperator):
 
     def GetGradient(self, k):
         localJ = mfem.Add(1.0, self.M.SpMat(), self.dt, self.S.SpMat())
-        add_vector(self.v, self.dt, k, self.w)
-        add_vector(self.x, self.dt, self.w, self.z)
+        Add(self.v, self.dt, k, self.w)
+        Add(self.x, self.dt, self.w, self.z)
         localJ.Add(self.dt * self.dt,  self.H.GetLocalGradient(self.z))
         Jacobian = self.M.ParallelAssemble(localJ)
         Jacobian.EliminateRowsCols(self.ess_tdof_list)
@@ -374,7 +374,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         zero = mfem.Vector()  # empty vector is interpreted as
         # zero r.h.s. by NewtonSolver
         self.newton_solver.Mult(zero, dv_dt)
-        add_vector(v, dt, dv_dt, dx_dt)
+        Add(v, dt, dv_dt, dx_dt)
 
     def ElasticEnergy(self, x):
         return self.H.GetEnergy(x)

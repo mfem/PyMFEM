@@ -141,7 +141,15 @@ def __getitem__(self, *args):
      $result = $1;
 }
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/densemat_nsb_1.i"
+#endif
+
 %include "linalg/densemat.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/densemat_nsb_2.i"
+#endif
 
 %extend mfem::DenseMatrix {
   DenseMatrix(PyObject* numpymat){

@@ -103,6 +103,7 @@ jobs:
     - name: Install MPI
       if: inputs.parallel
       run: |
+        sudo apt-get update
         sudo apt-get install openmpi-bin libopenmpi-dev
         export OMPI_MCA_rmaps_base_oversubscribe=1
         # (broken?) sudo apt-get install mpich libmpich-dev
@@ -123,7 +124,8 @@ jobs:
     - name: Download CUDA
       if: inputs.cuda && steps.cache-cuda.outputs.cache-hit == false
       run: |
-        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ inputs.cuda-toolkit-version }}/local_installers/cuda_${{ inputs.cuda-toolkit-version }}_${{ inputs.cuda-driver-version }}_linux.run"
+        ## CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ inputs.cuda-toolkit-version }}/local_installers/cuda_${{ inputs.cuda-toolkit-version }}_${{ inputs.cuda-driver-version }}_linux.run"
+        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ inputs.cuda-toolkit-version }}/local_installers/cuda_${{ inputs.cuda-toolkit-version }}_${{ inputs.cuda-driver-version }}_[...]
         curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
 
     - name: Install CUDA

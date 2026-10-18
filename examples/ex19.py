@@ -20,7 +20,7 @@
 import sys
 from mfem.common.arg_parser import ArgParser
 import mfem.ser as mfem
-from mfem.ser import intArray, add_vector, Add
+from mfem.ser import intArray, Add
 from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
@@ -137,7 +137,7 @@ def ex19_main(args):
     oper.Solve(xp)
 
     #  12. Compute the final deformation
-    mfem.subtract_vector(x_gf, x_ref, x_def)
+    mfem.Subtract(x_gf, x_ref, x_def)
 
     #  13. Visualize the results if requested
     if (visualization):
@@ -219,7 +219,7 @@ class JacobianPreconditioner(mfem.Solver):
         pres_out *= -self.gamma
 
         self.jacobian.GetBlock(0, 1).Mult(pres_out, temp)
-        mfem.subtract_vector(disp_in, temp, temp2)
+        mfem.Subtract(disp_in, temp, temp2)
         self.stiff_pcg.Mult(temp2, disp_out)
 
     def SetOperator(self, op):

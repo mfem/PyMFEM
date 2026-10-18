@@ -40,7 +40,15 @@ import_array1(-1);
 
 %include "../common/lininteg_ext.i"
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/lininteg_nsb_1.i"
+#endif
+
 %include "fem/lininteg.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/lininteg_nsb_2.i"
+#endif
 
 %feature("director") mfem::PyLinearFormIntegrator;
 %include "../common/pylininteg.hpp"

@@ -131,7 +131,15 @@ INSTANTIATE_ARRAY0(VectorCoefficient *, VectorCoefficient, 1)
 IGNORE_ARRAY_METHODS(mfem::MatrixCoefficient *)
 INSTANTIATE_ARRAY0(MatrixCoefficient *, MatrixCoefficient, 1)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/coefficient_nsb_1.i"
+#endif
+
 %include "fem/coefficient.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/coefficient_nsb_2.i"
+#endif
 %include "../common/numba_coefficient.i"
 
 %feature("director") mfem::VectorPyCoefficientBase;

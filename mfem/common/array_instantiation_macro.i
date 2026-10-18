@@ -115,7 +115,7 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
         }
     }
   }
-  PyObject* GetDataArray(void) const{
+  PyObject* GetDataArray(void) {
      const int * A = self->GetData();
      int L = self->Size();
      npy_intp dims[] = {L};
@@ -355,4 +355,3 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
 %ignore mfem::Array2D<XXX>::PrintGZ;
 %ignore mfem::Array2D<XXX>::SaveGZ;
 %enddef
-

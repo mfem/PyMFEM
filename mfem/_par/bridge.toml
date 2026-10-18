@@ -1,0 +1,154 @@
+# Parallel discovery requires MPI-configured MFEM headers.
+# generate_nsb_artifacts(serial=False) supplies mpi4py/Hypre discovery includes.
+bridge_id = "pymfem-par"
+source_root = "../.."
+output_dir = "nsb_artifacts"
+registration_module = "mfem._par._nsb_registration"
+director_helper_module = "mfem._par.nsb_director_bindings"
+mpi_module = "mfem._par._nsb_mpi"
+state_backend = "mfem_par"
+state_module = "mfem._par.nsb_state_bindings"
+
+[[interfaces]]
+interface = "mfem/_par/blockoperator.i"
+python_module = "mfem._par.blockoperator"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/matrix.i"
+python_module = "mfem._par.matrix"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/sparsemat.i"
+python_module = "mfem._par.sparsemat"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/solvers.i"
+python_module = "mfem._par.solvers"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/vector.i"
+python_module = "mfem._par.vector"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/densemat.i"
+python_module = "mfem._par.densemat"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/array.i"
+python_module = "mfem._par.array"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/doftrans.i"
+python_module = "mfem._par.doftrans"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/fespace.i"
+python_module = "mfem._par.fespace"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/fe_base.i"
+python_module = "mfem._par.fe_base"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/eltrans.i"
+python_module = "mfem._par.eltrans"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/intrules.i"
+python_module = "mfem._par.intrules"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/coefficient.i"
+python_module = "mfem._par.coefficient"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/lininteg.i"
+python_module = "mfem._par.lininteg"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/nonlinearform.i"
+python_module = "mfem._par.nonlinearform"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/hyperbolic.i"
+python_module = "mfem._par.hyperbolic"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/operators.i"
+python_module = "mfem._par.operators"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/hypre.i"
+python_module = "mfem._par.hypre"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/pfespace.i"
+python_module = "mfem._par.pfespace"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/pnonlinearform.i"
+python_module = "mfem._par.pnonlinearform"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/common_functions.i"
+python_module = "mfem._par.common_functions"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/blockmatrix.i"
+python_module = "mfem._par.blockmatrix"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/gridfunc.i"
+python_module = "mfem._par.gridfunc"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]
+
+[[interfaces]]
+interface = "mfem/_par/pgridfunc.i"
+python_module = "mfem._par.pgridfunc"
+include_dirs = ["mfem/_par", "mfem/common", "external/mfem/cmbuild_par", "external/mfem"]
+swig_options = ["-python", "-DMFEM_NUMBA_SWIG_BRIDGE_PAR"]

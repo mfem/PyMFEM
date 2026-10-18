@@ -51,6 +51,10 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 %ignore mfem::Array::operator T *;
 %ignore mfem::Array::operator const T *;
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/array_nsb_1.i"
+#endif
+
 %include "general/array.hpp"
 
 %extend mfem::Array{
@@ -166,6 +170,9 @@ namespace mfem{
 
 %import "../common/array_instantiation_macro.i"
 INSTANTIATE_ARRAY_INT
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/array_nsb_2.i"
+#endif
 INSTANTIATE_ARRAY_DOUBLE
 INSTANTIATE_ARRAY_NUMPYARRAY(int8, char, NPY_BYTE)            // for 8bit data
 INSTANTIATE_ARRAY_NUMPYARRAY(int64, long long, NPY_LONGLONG)  // 64bit

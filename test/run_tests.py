@@ -32,6 +32,9 @@ files = [x for x in files if not x.startswith('run_examples.py')]
 files = [x for x in files if not x.startswith('run_tests.py')]
 files = [x for x in files if not x.startswith('test_module.py')]
 files = [x for x in files if not x.startswith('test_memory.py')]
+# The bridge suite is an opt-in serial suite.  It requires a PyMFEM build made
+# with -C"with-numba-swig-bridge=Yes" and is run through test/test_bridge.py.
+files = [x for x in files if not x.startswith('test_bridge.py')]
 
 
 def run_test(in_case, np):

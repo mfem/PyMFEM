@@ -216,7 +216,15 @@ if isinstance(args[-1], list):
 //%newobject mfem::Add;
 //%newobject mfem::RAP;
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/hypre_nsb_1.i"
+#endif
+
 %include "linalg/hypre.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/hypre_nsb_2.i"
+#endif
+
 
 %pythoncode %{
 def parvec__repr__(self):

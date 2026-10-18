@@ -32,7 +32,15 @@ import_array1(-1);
 %import "eltrans.i"
 %import "nonlininteg.i"
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/hyperbolic_nsb_1.i"
+#endif
+
 %include "fem/hyperbolic.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/hyperbolic_nsb_2.i"
+#endif
 
 #endif
 

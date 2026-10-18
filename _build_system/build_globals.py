@@ -9,6 +9,8 @@ prefix = ''
 verbose = True
 git_sshclone = False
 swig_only = False
+nsb_only = False
+nsb_parallel = False
 run_swig = False
 clean_swig = False
 build_mfem = False
@@ -20,6 +22,7 @@ build_libceed = False
 build_gslib = False
 build_parallel = False
 build_serial = False
+enable_numba_swig_bridge = False
 
 ext_prefix = ''
 mfem_outside = False

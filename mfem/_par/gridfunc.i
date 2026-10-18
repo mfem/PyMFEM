@@ -98,7 +98,13 @@ def GetNodalValues(self, *args):
 %include "../common/typemap_macros.i"
 LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/gridfunc_nsb_1.i"
+#endif
 %include "fem/gridfunc.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/gridfunc_nsb_2.i"
+#endif
 
 namespace mfem{
 %extend GridFunction{

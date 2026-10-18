@@ -12,7 +12,7 @@
 import sys
 from mfem.common.arg_parser import ArgParser
 import mfem.ser as mfem
-from mfem.ser import intArray, add_vector, Add
+from mfem.ser import intArray, Add
 from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
@@ -198,8 +198,8 @@ class ReducedSystemOperator(mfem.PyOperator):
         self.x = x
 
     def Mult(self, k, y):
-        add_vector(self.v, self.dt, k, self.w)
-        add_vector(self.x, self.dt, self.w, self.z)
+        Add(self.v, self.dt, k, self.w)
+        Add(self.x, self.dt, self.w, self.z)
         self.H.Mult(self.z, y)
         self.M.AddMult(k, y)
         self.S.AddMult(self.w, y)
@@ -207,8 +207,8 @@ class ReducedSystemOperator(mfem.PyOperator):
     def GetGradient(self, k):
         Jacobian = Add(1.0, self.M.SpMat(), self.dt, self.S.SpMat())
         self.Jacobian = Jacobian
-        add_vector(self.v, self.dt, k, self.w)
-        add_vector(self.x, self.dt, self.w, self.z)
+        Add(self.v, self.dt, k, self.w)
+        Add(self.x, self.dt, self.w, self.z)
         grad_H = self.H.GetGradientMatrix(self.z)
 
         Jacobian.Add(self.dt**2, grad_H)
@@ -317,7 +317,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         zero = mfem.Vector()  # empty vector is interpreted as
         # zero r.h.s. by NewtonSolver
         self.newton_solver.Mult(zero, dv_dt)
-        add_vector(v, dt, dv_dt, dx_dt)
+        Add(v, dt, dv_dt, dx_dt)
 
     def ElasticEnergy(self, x):
         return self.H.GetEnergy(x)
