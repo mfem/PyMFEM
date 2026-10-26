@@ -136,11 +136,14 @@ to find more details of the MFEM library.
   4-2) mfem::Coefficient
      ## Using Python function for function coefficient
        PyCoefficient is derived from FunctionCoefficient
-       PyCoefficientT is time-dependent version
        VectorPyCoefficient  is derived from VectorFunctionCoefficient
-       VectorPyCoefficientT is time-dependent version
+       MatrixPyCoefficient is derived from MatrixFunctionCoefficient
 
-       When using these class, inherit one of them and define
+       User need to provide either EvalValue(self, x) or EvalValue(self, x, t).
+       The later case makes it time-dependent coefficient. Do not provide
+       both.
+
+       When using these classes, inherit one of them and define
        cls::EvalValue method as follows
 
        class Jt(mfem.VectorPyCoefficient):
