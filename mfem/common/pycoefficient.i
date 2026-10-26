@@ -1,11 +1,8 @@
-// Shared Python callback interfaces for coefficient class
-// User should provilde either EvalValue(x) or EvalValue(x, t)
-// Do not provide both. Number of arguments is used to check if
-// it is time-dependent coefficient or not.
+// Shared Python coefficient interfaces.
+// User has two options:
+//   1) Override Eval directly
+//   2) Supply EvalValue(x) or EvalValue(x, t).
 %pythoncode %{
-from abc import ABC as _ABC, abstractmethod as _abstractmethod
-
-
 def _pycoefficient_uses_time(callback):
     """
     Select and validate the callback signature once, without evaluating it.
@@ -24,10 +21,10 @@ def _pycoefficient_uses_time(callback):
     return int(uses_time)
 
 
-class PyCoefficient(PyCoefficientBase, _ABC):
+class PyCoefficient(PyCoefficientBase):
     """
     Scalar coefficient with an EvalValue(x) or EvalValue(x, t) callback.
-
+    Subclasses may instead override Eval directly.
     """
     def __init__(self):
         PyCoefficientBase.__init__(self, _pycoefficient_uses_time(self.EvalValue))
@@ -38,17 +35,17 @@ class PyCoefficient(PyCoefficientBase, _ABC):
     def _EvalPyT(self, x, t):
         return self.EvalValue(x.GetDataArray(), t)
 
-    @_abstractmethod
     def EvalValue(self, x):
         """
         Return the scalar value; subclasses may also accept time as (x, t).
         """
-        raise NotImplementedError
+        raise NotImplementedError("Override Eval or EvalValue in a coefficient subclass")
 
 
-class VectorPyCoefficient(VectorPyCoefficientBase, _ABC):
+class VectorPyCoefficient(VectorPyCoefficientBase):
     """
     Vector coefficient with an EvalValue(x) or EvalValue(x, t) callback.
+    Subclasses may instead override Eval directly.
     """
     def __init__(self, dim):
         self.vdim = dim
@@ -61,17 +58,17 @@ class VectorPyCoefficient(VectorPyCoefficientBase, _ABC):
     def _EvalPyT(self, x, t, V):
         V.Assign(self.EvalValue(x.GetDataArray(), t))
 
-    @_abstractmethod
     def EvalValue(self, x):
         """
         Return the vector value; subclasses may also accept time as (x, t).
         """
-        raise NotImplementedError
+        raise NotImplementedError("Override Eval or EvalValue in a coefficient subclass")
 
 
-class MatrixPyCoefficient(MatrixPyCoefficientBase, _ABC):
+class MatrixPyCoefficient(MatrixPyCoefficientBase):
     """
     Matrix coefficient with an EvalValue(x) or EvalValue(x, t) callback.
+    Subclasses may instead override Eval directly.
     """
     def __init__(self, dim):
         self.vdim = dim
@@ -84,10 +81,9 @@ class MatrixPyCoefficient(MatrixPyCoefficientBase, _ABC):
     def _EvalPyT(self, x, t, K):
         K.Assign(self.EvalValue(x.GetDataArray(), t))
 
-    @_abstractmethod
     def EvalValue(self, x):
         """
         Return the matrix value; subclasses may also accept time as (x, t).
         """
-        raise NotImplementedError
+        raise NotImplementedError("Override Eval or EvalValue in a coefficient subclass")
 %}

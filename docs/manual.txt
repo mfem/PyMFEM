@@ -139,9 +139,9 @@ to find more details of the MFEM library.
        VectorPyCoefficient  is derived from VectorFunctionCoefficient
        MatrixPyCoefficient is derived from MatrixFunctionCoefficient
 
-       User need to provide either EvalValue(self, x) or EvalValue(self, x, t).
-       The later case makes it time-dependent coefficient. Do not provide
-       both.
+       Subclasses can override Eval directly, or provide EvalValue(self, x)
+       or EvalValue(self, x, t).The last one recieves the MFEM time (value
+       set by SetTime).
 
        When using these classes, inherit one of them and define
        cls::EvalValue method as follows
