@@ -1,4 +1,14 @@
         <<<  Change Log. >>>
+2026 10
+     * Unify Python coefficient callbacks:
+           - PyCoefficient, VectorPyCoefficient, and MatrixPyCoefficient accept
+             EvalValue(x) or EvalValue(x, t), selected once during construction.
+             SetTime supplies the time passed to time-dependent callbacks.
+           - Subclasses may override Eval without implementing EvalValue.
+             The default EvalValue raises NotImplementedError when called.
+           - Remove PyCoefficientT, VectorPyCoefficientT, and MatrixPyCoefficientT.
+             Existing subclasses must use the corresponding ordinary base class.
+
 2026 09
      * PyMFEM 4.10.0
         Supported environment:

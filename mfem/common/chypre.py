@@ -1052,10 +1052,9 @@ class CHypreMat(list):
         #    print(tdof)
         #    print(diagA.shape)
         #    diagA = diagA[tdof]
+        #B.set_elements(gtdof, diagA)
 
-        B.set_elements(gtdof, diagA)
-
-        return Ae, target, B
+        return Ae, target
 
     @property
     def isHypre(self):
@@ -1273,7 +1272,7 @@ def IdentityPyMat(m, col_starts=None, diag=1.0):
             real = diag.real
             imag = diag.imag
         else:
-            real = float(np.real(diag))
+            real = np.asarray(diag).real.item() # get scalar 
             imag = 0.0
         # if real != 0.0:
         m1 = lil_matrix((rows, m))
