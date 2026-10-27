@@ -135,7 +135,13 @@ LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::Integ
 %rename("") mfem::ParGridFunction::ProjectDiscCoefficient(Coefficient &coeff, AvgType type);
 %rename("") mfem::ParGridFunction::ProjectDiscCoefficient(VectorCoefficient &vcoeff, AvgType type);
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/pgridfunc_nsb_1.i"
+#endif
 %include "fem/pgridfunc.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/pgridfunc_nsb_2.i"
+#endif
 
 namespace mfem{
 %extend ParGridFunction{

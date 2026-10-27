@@ -82,4 +82,10 @@ if len(args) == 2:
   }
 %}
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/blockoperator_nsb_1.i"
+#endif
 %include "linalg/blockoperator.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/blockoperator_nsb_2.i"
+#endif

@@ -40,7 +40,13 @@ import_array1(-1);
      class IterativeSolver;
   }
 %}  
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/solvers_nsb_1.i"
+#endif
 %include "linalg/solvers.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/solvers_nsb_2.i"
+#endif
 %include "../common/pysolvers.hpp"
 
 #ifdef MFEM_USE_SUITESPARSE

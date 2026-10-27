@@ -37,4 +37,11 @@ LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Array<int> *> &bdr_attr_is_ess,
  		        mfem::Array<int> *)
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::Vector *> &rhs, mfem::Vector *)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/pnonlinearform_nsb_1.i"
+#endif
+
 %include "fem/pnonlinearform.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_PAR
+%include "../common/bridges/pnonlinearform_nsb_2.i"
+#endif

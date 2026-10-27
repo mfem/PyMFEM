@@ -134,34 +134,6 @@ return self
 %ignore mfem::Vector::operator double *;
 %ignore mfem::Vector::operator const double *;
 
-// these inlines are to rename add/subtract...
-%inline %{
-void add_vector(const mfem::Vector &v1, const mfem::Vector &v2, mfem::Vector &v){
-   add(v1, v2, v);
-}
-   /// Do v = v1 + alpha * v2.
-void add_vector(const mfem::Vector &v1, double alpha, const mfem::Vector &v2, mfem::Vector &v){
-   add(v1, alpha, v2, v);
-}
-   /// z = a * (x + y)
-void add_vector(const double a, const mfem::Vector &x, const mfem::Vector &y, mfem::Vector &z){
-   add(a, x, y, z);
-}
-  /// z = a * x + b * y
-void add_vector (const double a, const mfem::Vector &x,
-		   const double b, const mfem::Vector &y, mfem::Vector &z){
-   add(a, x, b, y, z);
-}
-   /// Do v = v1 - v2.
-void subtract_vector(const mfem::Vector &v1, const mfem::Vector &v2, mfem::Vector &v){
-   subtract(v1, v2, v);
-}
-   /// z = a * (x - y)
-void subtract_vector(const double a, const mfem::Vector &x,
-		       const mfem::Vector &y, mfem::Vector &z){
-   subtract(a, x, y, z);
-}
-%}
 
 /* define VectorPtrArray */
 %import "../common/array_listtuple_typemap.i"
@@ -185,7 +157,16 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 
 %ignore mfem::Vector::GetArrayView;
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/vector_nsb_1.i"
+#endif
+
+%include "../common/vector_function_declarations.i"
 %include "linalg/vector.hpp"
+
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/vector_nsb_2.i"
+#endif
 
 %extend mfem::Vector {
   /* define Assign as a replacement of = operator */
@@ -337,5 +318,4 @@ linalg/vector.hpp:   void Print_HYPRE(std::ostream &out) const;
 OSTREAM_ADD_DEFAULT_FILE(Vector, Print)
 OSTREAM_ADD_DEFAULT_STDOUT_FILE(Vector, Print_HYPRE)
 #endif
-
 

@@ -13,6 +13,9 @@
 import_array1(-1);
 %}
 %include "exception.i"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/doftrans_nsb_1.i"
+#endif
 %import "vector.i"
 %import "densemat.i"
 %import "intrules.i"
@@ -21,3 +24,6 @@ import_array1(-1);
 
 
 %include "fem/doftrans.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/doftrans_nsb_2.i"
+#endif

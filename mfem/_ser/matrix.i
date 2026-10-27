@@ -31,7 +31,13 @@ import_array1(-1);
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/matrix_nsb_1.i"
+#endif
 %include "linalg/matrix.hpp"
+#ifdef MFEM_NUMBA_SWIG_BRIDGE_SER
+%include "../common/bridges/matrix_nsb_2.i"
+#endif
 
 /*
   virtual void Print (std::ostream & out = mfem::out, int width_ = 4) const;

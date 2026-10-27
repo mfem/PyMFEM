@@ -4,13 +4,13 @@
       refinement loop. 
       See c++ version in the MFEM library for more detail 
 '''
-import os
+import os, sys
 from mfem import path
 import mfem.ser as mfem
 from mfem.ser import intArray
 from os.path import expanduser, join, dirname, exists
 import numpy as np
-from numpy import sqrt, pi, cos, sin, hypot, arctan2
+from numpy import sqrt, pi, cos, sin, hypot, arctan2, exp
 from scipy.special import erfc
 
 
@@ -81,14 +81,14 @@ def run(ref_levels=2,
     elif ode_solver_type == 2:
         ode_solver = mfem.RK2Solver(1.0)
     elif ode_solver_type == 3:
-        ode_solver = mfem.RK3SSolver()
+        ode_solver = mfem.RK3SSPSolver()
     elif ode_solver_type == 4:
         ode_solver = mfem.RK4Solver()
     elif ode_solver_type == 6:
         ode_solver = mfem.RK6Solver()
     else:
         print("Unknown ODE solver type: " + str(ode_solver_type))
-        exit
+        sys.exit()
 
     # 4. Refine the mesh to increase the resolution. In this example we do
     #    'ref_levels' of uniform refinement, where 'ref_levels' is a
@@ -189,6 +189,7 @@ def run(ref_levels=2,
 
     m = mfem.BilinearForm(fes)
     m.AddDomainIntegrator(mfem.MassIntegrator())
+
     k = mfem.BilinearForm(fes)
     k.AddDomainIntegrator(mfem.ConvectionIntegrator(velocity, -1.0))
     k.AddInteriorFaceIntegrator(
