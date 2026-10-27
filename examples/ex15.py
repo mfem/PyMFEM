@@ -163,11 +163,11 @@ if HAS_NUMBA:
     def rhs(pt, t):
         return composite_func(pt, t, front_laplace, ball_laplace)
 else:
-    class BdrCoefficient(mfem.PyCoefficientT):
+    class BdrCoefficient(mfem.PyCoefficient):
         def EvalValue(self, pt, t):
             return composite_func(pt, t, front, ball)
 
-    class RhsCoefficient(mfem.PyCoefficientT):
+    class RhsCoefficient(mfem.PyCoefficient):
         def EvalValue(self, pt, t):
             # print 'rhs', composite_func(pt, t, front_laplace, ball_laplace)
             return composite_func(pt, t, front_laplace, ball_laplace)

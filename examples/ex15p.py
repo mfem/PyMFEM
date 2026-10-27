@@ -151,12 +151,12 @@ def composite_func(pt, t, f0, f1):
         return np.sum(f1(x - x0, y - y0, z, 0.25, dim))
 
 
-class BdrCoefficient(mfem.PyCoefficientT):
+class BdrCoefficient(mfem.PyCoefficient):
     def EvalValue(self, pt, t):
         return composite_func(pt, t, front, ball)
 
 
-class RhsCoefficient(mfem.PyCoefficientT):
+class RhsCoefficient(mfem.PyCoefficient):
     def EvalValue(self, pt, t):
         # print 'rhs', composite_func(pt, t, front_laplace, ball_laplace)
         return composite_func(pt, t, front_laplace, ball_laplace)
