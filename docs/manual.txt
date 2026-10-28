@@ -132,6 +132,10 @@ to find more details of the MFEM library.
          length = v.WriteToStream(o)
          print(o.getvalue())
 
+     Vector::GetDeviceArray(access="read"|"write"|"readwrite") returns a Numba DeviceNDArray.
+     The array is 1D, contiguous, and float64, sharing the Vector's device storage. (See
+     examples/numba/cuda_vector.py)
+
 
   4-2) mfem::Coefficient
      ## Using Python function for function coefficient

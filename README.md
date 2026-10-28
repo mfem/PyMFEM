@@ -120,7 +120,6 @@ plt.show()
 ```
 ![](https://raw.githubusercontent.com/mfem/PyMFEM/master/docs/example_image.png)
 
-
 ## License
 PyMFEM is licensed under BSD-3 license. All new contributions
 must be made under this license. See [License](LICENSE) for details.

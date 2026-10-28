@@ -10,6 +10,7 @@ include examples/*/*.py
 include examples/*/*/*.py
 include test/*.py
 include docs/*.txt
+include docs/*.md
 include docs/*.png
 include external/README.txt
 exclude mfem/*/*.so

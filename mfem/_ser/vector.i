@@ -48,31 +48,7 @@ ISTREAM_TYPEMAP(std::istream&)
 
 ARRAY_TO_DOUBLEARRAY_IN(double *data_)
 
-%pythonprepend mfem::Vector::Vector %{
-from numpy import ndarray, ascontiguousarray
-keep_link = False
-own_data = False
-if len(args) == 1:
-    if isinstance(args[0], list):
-        args = (args[0], len(args[0]))
-        own_data = True
-    elif isinstance(args[0], ndarray):
-        if args[0].dtype != 'float64':
-            raise ValueError('Must be float64 array ' + str(args[0].dtype) +
-			     ' is given')
-        else:
-            args = (ascontiguousarray(args[0]), args[0].shape[0])
-            # in this case, args[0] need to be maintained
-            # in this object.
-            keep_link = True
-%}
-
-%pythonappend mfem::Vector::Vector %{
-if keep_link:
-   self._link_to_data = args[0]
-if own_data:
-   self.MakeDataOwner()
-%}
+%include "../common/vector_host_memory.i"
 
 %feature("shadow") mfem::Vector::operator+= %{
 def __iadd__(self, v):
@@ -329,6 +305,7 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 %pythoncode %{
    Vector.__idiv__ = Vector.__itruediv__
 %}
+%include "../common/vector_device_array.i"
 /*
 linalg/vector.hpp:   void Print(std::ostream &out = mfem::out, int width = 8) const;
 linalg/vector.hpp:   void Print_HYPRE(std::ostream &out) const;
