@@ -1,4 +1,7 @@
         <<<  Change Log. >>>
+In development
+     * GetDeviceArray is added to obtain Numba CUDA DeviceNDArray from Vector.
+
 2026 10
      * Unify Python coefficient callbacks:
            - PyCoefficient, VectorPyCoefficient, and MatrixPyCoefficient accept
