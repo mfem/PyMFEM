@@ -76,15 +76,15 @@ Note: this option turns on building `metis` in serial
 
 CUDA needs to be installed separately and nvcc must be found in PATH ([Example](https://github.com/mfem/PyMFEM/blob/e1466a6a/.github/workflows/build-and-test-callable.yml#L111-L122)).
 
+
 (examples)
 ```shell
-python setup.py install --with-cuda
+pip install . -C"with-cuda=Yes"
 
-python setup.py install --with-cuda --with-cuda-hypre
+pip install . -C"with-cuda=Yes" -C"with-cuda-hypre=Yes"
 
-python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=80 (A100)
-
-python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
+pip install . -C"with-cuda=Yes" -C"with-cuda-hypre=Yes" -C"cuda-arch=80" (A100)
+pip install . -C"with-cuda=Yes" -C"with-cuda-hypre=Yes" -C"cuda-arch=75" (Truing)
 ```
 
 ### gslib

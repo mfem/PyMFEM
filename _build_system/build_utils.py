@@ -3,6 +3,7 @@ Helper functions for setup.py
 """
 
 import os
+import shutil
 import sys
 import configparser
 from urllib import request
@@ -21,13 +22,13 @@ __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make", "make_install", "download", "gitclone",
            "record_mfem_sha", "cmake",
            "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",
-           "clean_so", ]
+           "find_cuda_toolkit", "clean_so", ]
 
 # ----------------------------------------------------------------------------------------
 #   global constant and variabls for build-process
 # ----------------------------------------------------------------------------------------
 from build_consts import *
-import build_globals as bglb
+from build_globals import bglb
 
 # ----------------------------------------------------------------------------------------
 # Metadata
@@ -326,6 +327,13 @@ def find_libpath_from_prefix(lib, prefix0):
     print("Can not find library by find_libpath_from_prefix (continue)", lib, prefix0)
 
     return ''
+
+def find_cuda_toolkit():
+    # assume nvcc is discovered in PATH
+    nvcc = shutil.which("nvcc")
+    if nvcc is None:
+        assert False, "can not discover CUDA toolkit (nvcc not found in PATH)"
+    return os.path.dirname(os.path.dirname(nvcc))
 
 def clean_so(all=None):
     python = sys.executable

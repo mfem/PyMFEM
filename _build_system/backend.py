@@ -1,7 +1,7 @@
 from setuptools import build_meta as _orig
 from setuptools.build_meta import *
 
-import build_globals as bglb
+from build_globals import bglb
 
 
 def get_requires_for_build_wheel(config_settings=None):

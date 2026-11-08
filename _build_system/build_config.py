@@ -27,7 +27,7 @@ __all__ = ["print_config",
 
 from build_utils import *
 from build_consts import *
-import build_globals as bglb
+from build_globals import bglb
 
 
 def print_config():

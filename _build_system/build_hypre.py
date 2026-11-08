@@ -12,7 +12,7 @@ __all__ = ["cmake_make_hypre"]
 from build_utils import *
 from build_consts import *
 
-import build_globals as bglb
+from build_globals import bglb
 
 
 def cmake_make_hypre():

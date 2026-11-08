@@ -11,7 +11,7 @@ __all__ = ["write_setup_local", "generate_wrapper",
 
 from build_utils import *
 from build_consts import *
-import build_globals as bglb
+from build_globals import bglb
 
 
 def write_setup_local():
@@ -126,7 +126,7 @@ def generate_wrapper(do_parallel):
     '''
     # this should work as far as we are in the same directory ?
     from multiprocessing import Pool
-    import build_globals as bglb
+    from build_globals import bglb
 
     if bglb.dry_run or bglb.verbose:
         print("generating SWIG wrapper")
@@ -294,7 +294,7 @@ def make_mfem_wrapper(serial=True):
     '''
     compile PyMFEM wrapper code
     '''
-    import build_globals as bglb
+    from build_globals import bglb
 
     if bglb.dry_run or bglb.verbose:
         print("compiling wrapper code, serial=" + str(serial))
