@@ -34,7 +34,7 @@ on:
         default: false
       cuda-toolkit-version:
         type: string
-        default: '12.6.0'
+        default: '13.4.3'
       cuda-driver-version:
         type: string
         default: '560.28.03'
@@ -118,20 +118,18 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/cache
-        key: cuda-installer-${{ inputs.cuda-toolkit-version }}-${{ inputs.cuda-driver-version }}
+        key: cuda-installer-${{ runner.os }}-${{ runner.arch }}-${{ inputs.cuda-toolkit-version }}
 
     - name: Download CUDA
       if: inputs.cuda && steps.cache-cuda.outputs.cache-hit == false
       run: |
-        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ inputs.cuda-toolkit-version }}/local_installers/cuda_${{ inputs.cuda-toolkit-version }}_${{ inputs.cuda-driver-version }}_linux.run"
+        #CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ inputs.cuda-toolkit-version }}/local_installers/cuda_${{ inputs.cuda-toolkit-version }}_${{ inputs.cuda-driver-version }}_linux.run"
+	CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ inputs.cuda-toolkit-version }}/local_installers/cuda_${{ inputs.cuda-toolkit-version }}_linux.run"
         curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
 
     - name: Install CUDA
       if: inputs.cuda
       run: |
-        # install cuda dependency
-        sudo apt-get update && sudo apt-get install -y libxml2-16
-
         # The --silent flag is necessary to bypass user-input, e.g. accepting the EULA
         sudo sh ~/cache/cuda.run --silent --toolkit
         echo "/usr/local/cuda/bin" >> $GITHUB_PATH
