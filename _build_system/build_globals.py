@@ -41,7 +41,7 @@ class BuildGlobal:
     enable_cuda: bool = False
     enable_cuda_hypre: bool = False
     cuda_prefix: str = ''
-    cuda_arch: str = ''
+    cuda_arch: str = '75'
     enable_pumi: bool = False
     pumi_prefix: str = ''
     enable_strumpack: bool = False
