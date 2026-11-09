@@ -131,6 +131,8 @@ INSTANTIATE_ARRAY0(VectorCoefficient *, VectorCoefficient, 1)
 IGNORE_ARRAY_METHODS(mfem::MatrixCoefficient *)
 INSTANTIATE_ARRAY0(MatrixCoefficient *, MatrixCoefficient, 1)
 
+namespace mfem { class CoefficientVector; }
+
 %include "fem/coefficient.hpp"
 %include "../common/numba_coefficient.i"
 
