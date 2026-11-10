@@ -51,7 +51,10 @@ jobs:
           clang --version
 
       - name: Install wheel tools
-        run: python -m pip install --upgrade pip delocate twine
+        run: python -m pip install --upgrade pip wheel delocate twine
+
+      - name: Test release payload selection
+        run: python -m unittest discover -s _build_system/tests
 
       - name: Build serial wheel and bundled MFEM
         run: |
@@ -71,9 +74,13 @@ jobs:
           assert all(tag.platform == 'macosx_14_0_arm64' for tag in tags), tags
           PY
 
+      - name: Select serial release payload
+        run: python _build_system/select_wheel_payload.py raw-wheels/*.whl --profile serial --output-dir selected-wheels
+
       - name: Repair wheel dependencies
         run: |
-          delocate-wheel --verbose --require-archs arm64 --wheel-dir wheelhouse raw-wheels/*.whl
+          delocate-wheel --verbose --require-archs arm64 --wheel-dir wheelhouse selected-wheels/*.whl
+          python _build_system/select_wheel_payload.py wheelhouse/*.whl --profile serial --check
           python -m twine check wheelhouse/*.whl
           delocate-listdeps --all wheelhouse/*.whl
 
@@ -93,21 +100,13 @@ jobs:
         run: |
           smoke_dir=$(mktemp -d "$RUNNER_TEMP/pymfem-smoke.XXXXXX")
           python -m venv "$smoke_dir/venv"
-          "$smoke_dir/venv/bin/python" -m pip install "$GITHUB_WORKSPACE"/wheelhouse/*.whl
+          "$smoke_dir/venv/bin/python" -m pip install --only-binary=:all: "$GITHUB_WORKSPACE"/wheelhouse/*.whl
+          "$smoke_dir/venv/bin/python" -m pip check
           cp examples/ex1.py "$smoke_dir/ex1.py"
           cp data/star.mesh "$smoke_dir/star.mesh"
           cd "$smoke_dir"
-          unset PYTHONPATH DYLD_LIBRARY_PATH DYLD_FALLBACK_LIBRARY_PATH
-          "$smoke_dir/venv/bin/python" -I - <<'PY'
-          import sys
-          from pathlib import Path
-          import mfem
-          import mfem.ser
-
-          assert Path(mfem.__file__).resolve().is_relative_to(Path(sys.prefix).resolve())
-          print('Testing installed package:', mfem.__file__)
-          PY
-          "$smoke_dir/venv/bin/python" -I ex1.py -m "$smoke_dir/star.mesh"
+          unset PYTHONPATH LD_LIBRARY_PATH DYLD_LIBRARY_PATH DYLD_FALLBACK_LIBRARY_PATH
+          "$smoke_dir/venv/bin/python" -I "$GITHUB_WORKSPACE/_build_system/check_serial_install.py" ex1.py star.mesh
 
       - name: Save validated wheel
         uses: actions/upload-artifact@v4
