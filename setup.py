@@ -27,7 +27,7 @@ from distutils.command.clean import clean as _clean
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "_build_system"))
 
-import build_globals as bglb
+from build_globals import bglb
 from build_mfem import *
 from build_metis import *
 from build_hypre import *
@@ -129,7 +129,7 @@ class BdistWheel(_bdist_wheel):
         _bdist_wheel.finalize_options(self)
 
     def run(self):
-        import build_globals as bglb
+        from build_globals import bglb
 
         if not bglb.is_configured:
             if bglb.verbose:

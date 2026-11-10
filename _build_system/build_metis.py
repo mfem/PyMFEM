@@ -12,7 +12,7 @@ __all__ = ["make_metis_gklib", "make_metis"]
 from build_utils import *
 from build_consts import *
 
-import build_globals as bglb
+from build_globals import bglb
 
 
 def make_metis_gklib(use_int64=False, use_real64=False):

@@ -11,7 +11,7 @@ __all__ = ["cmake_make_mfem"]
 from build_consts import *
 from build_utils import *
 
-import build_globals as bglb
+from build_globals import bglb
 
 
 def cmake_make_mfem(serial=True):
@@ -134,6 +134,7 @@ def cmake_make_mfem(serial=True):
 
     if bglb.enable_cuda:
         cmake_opts['DMFEM_USE_CUDA'] = '1'
+        cmake_opts['DCUDAToolkit_ROOT'] = find_cuda_toolkit()
         if bglb.cuda_arch != '':
             cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = bglb.cuda_arch
 

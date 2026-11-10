@@ -6,7 +6,7 @@ import os
 import re
 import subprocess
 
-import build_globals as bglb
+from build_globals import bglb
 from build_consts import *
 from build_utils import *
 
