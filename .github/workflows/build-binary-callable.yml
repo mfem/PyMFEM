@@ -73,11 +73,18 @@ jobs:
           pip3 install wheel auditwheel twine
           pip3 install "urllib3==1.26.6"    # use older version to avoid OpenSSL vesion issue
 
+          # Test packaging tools
           python3 -m unittest discover -s _build_system/tests
+
+          # Build the wheel for the current Python version
           python3 -m pip wheel . --verbose --no-deps --wheel-dir raw-wheels
+
+          # Select the appropriate wheel payload, run auditwheel, and repackage wheel
           python3 _build_system/select_wheel_payload.py raw-wheels/*.whl --profile serial --output-dir selected-wheels
           auditwheel repair selected-wheels/*.whl --plat manylinux_2_28_x86_64 --wheel-dir dist
           python3 _build_system/select_wheel_payload.py dist/*.whl --profile serial --check
+
+          # Check the repaired wheel for compliance with the selected profile
           python3 -m twine check dist/*.whl
 
           # Test the final release artifact in a fresh environment outside the checkout.
