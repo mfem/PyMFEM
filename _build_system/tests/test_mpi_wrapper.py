@@ -103,8 +103,11 @@ class MPIWrapperTest(unittest.TestCase):
                 build_utils.get_mpi_wrapper_info('mpicxx')
 
     def test_wrapper_library_directories_reach_only_parallel_build(self):
-        for serial in (True, False):
-            with (self.subTest(serial=serial),
+        for serial, mpiinc in ((True, ''), (False, ''), (False, '/mpi/include')):
+            with (self.subTest(serial=serial, mpiinc=mpiinc),
+                  patch.object(build_pymfem.bglb, 'mpicc_command', '/mpi/bin/mpicc'),
+                  patch.object(build_pymfem.bglb, 'mpicxx_command', '/mpi/bin/mpicxx'),
+                  patch.object(build_pymfem.bglb, 'mpiinc', mpiinc),
                   patch.object(build_pymfem, 'get_mpi_wrapper_info', return_value={
                       'library_dirs': ['/mpi/lib64', '/mpi/lib']}) as query,
                   patch.object(build_pymfem, 'record_mfem_sha'),
@@ -119,7 +122,7 @@ class MPIWrapperTest(unittest.TestCase):
                     query.assert_not_called()
                     self.assertFalse(any(arg.startswith('--library-dirs=') for arg in command))
                 else:
-                    query.assert_called_once_with(build_pymfem.bglb.mpicxx_command)
+                    query.assert_called_once_with('/mpi/bin/mpicc')
                     self.assertIn('--library-dirs=/mpi/lib64:/mpi/lib', command)
 
 

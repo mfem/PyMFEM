@@ -1,5 +1,5 @@
 """
-Select the serial release payload before auditwheel/delocate repair.
+Select the serial or MPICH release payload before native library repair.
 
 Usage: python _build_system/select_wheel_payload.py RAW.whl --profile serial
        --output-dir selected-wheels
@@ -12,6 +12,7 @@ import base64
 import csv
 import hashlib
 import io
+import re
 import shutil
 import subprocess
 import sys
@@ -20,50 +21,123 @@ from email.parser import BytesParser
 from pathlib import Path, PurePosixPath
 from zipfile import ZipFile
 
-# Shared runtime utilities remain base-owned, including optional parallel paths.
-SERIAL_FILES = {
-    'mfem/__init__.py',
-    'mfem/__sha__.py',
-    'mfem/ser.py',
-    'mfem/common/__init__.py',
-    'mfem/common/arg_parser.py',
-    'mfem/common/bessel.py',
-    'mfem/common/chypre.py',
-    'mfem/common/findpoints.py',
-    'mfem/common/matrix_file.py',
-    'mfem/common/mpi_debug.py',
-    'mfem/common/mpi_dtype.py',
-    'mfem/common/numba_coefficient_utils.py',
-    'mfem/common/parcsr_extra.py',
-    'mfem/common/sparse_utils.py',
+# Build inputs are excluded separately from ownership. Installed external trees
+# intentionally retain their headers, archives, configuration files and data.
+BUILD_FILES = {
+    'mfem/_ser/setup.py', 'mfem/_par/setup.py',
+    'mfem/common/generate_bilininteg_ext.py',
+    'mfem/common/generate_lininteg_ext.py',
 }
+BUILD_SUFFIXES = {'.i', '.h', '.hpp', '.c', '.cpp', '.cxx', '.pyc'}
 
 
-def serial_file(name, dist_info, repaired=False):
+def native_library(name):
     """
-    Define base ownership; installed serial headers and data are intentional.
+    Recognize installed shared libraries, including versioned ELF libraries.
     """
     path = PurePosixPath(name)
+    return path.suffix == '.dylib' or '.so' in path.suffixes
+
+
+def runtime_owner(name):
+    """
+    Classify dynamically discovered runtime files and explicit build inputs.
+    """
+    if name.startswith('mfem/external/bin/'):
+        return 'excluded'
+    if name.startswith('mfem/external/ser/'):
+        return 'serial'
+    if name.startswith('mfem/external/'):
+        return 'mpich'
+    if name.startswith('mfem/'):
+        if name in BUILD_FILES or PurePosixPath(name).suffix in BUILD_SUFFIXES:
+            return 'excluded'
+        if name.endswith('.py') or native_library(name):
+            if name == 'mfem/par.py' or name.startswith('mfem/_par/'):
+                return 'mpich'
+            return 'serial'
+    raise ValueError(f'Unclassified wheel member: {name}')
+
+
+def installed_library(name, prefix, stem):
+    """
+    Match a shared library under an installed native library directory.
+    """
+    path = PurePosixPath(name)
+    return (name.startswith(prefix) and path.parent.name in ('lib', 'lib64')
+            and path.name.split('.')[0] == stem and native_library(name))
+
+
+def required_components(mode):
+    """
+    Define minimum installed native components for each build profile.
+    """
+    prefix = 'mfem/external/' + ('ser/' if mode == 'serial' else 'par/')
+    bindings = 'mfem/_ser/' if mode == 'serial' else 'mfem/_par/'
+    checks = [
+        (mode + ' extension modules', lambda n: n.startswith(bindings + '_')
+         and n.endswith('.so')),
+        (mode + ' MFEM library', lambda n: installed_library(n, prefix, 'libmfem')),
+        ('installed MFEM headers', lambda n: n.startswith(prefix + 'include/')
+         and n.endswith('mfem.hpp')),
+        ('MFEM runtime data', lambda n: n.startswith(prefix + 'data/')),
+    ]
+    if mode == 'mpich':
+        checks += [
+            ('HYPRE library', lambda n: installed_library(n, 'mfem/external/', 'libHYPRE')),
+            ('METIS library', lambda n: installed_library(n, 'mfem/external/', 'libmetis')),
+            ('parallel GSLIB extension', lambda n: n.startswith('mfem/_par/_gslib.')
+             and n.endswith('.so')),
+        ]
+    return checks
+
+
+PROFILES = {
+    'serial': {
+        'project': 'mfem',
+        'owns': lambda name: runtime_owner(name) == 'serial',
+        'repair_dirs': ('mfem.libs/', 'mfem/.dylibs/'),
+        'required': {'mfem/__init__.py', 'mfem/__sha__.py', 'mfem/ser.py',
+                     'mfem/_ser/__init__.py'},
+        'components': required_components('serial'),
+    },
+    'mpich': {
+        'project': 'mfem-mpich',
+        'owns': lambda name: runtime_owner(name) == 'mpich',
+        # Add a macOS repair directory only after delocate validation.
+        'repair_dirs': ('mfem_mpich.libs/',),
+        'required': {'mfem/par.py', 'mfem/_par/__init__.py', 'mfem/_par/gslib.py'},
+        'components': required_components('mpich'),
+    },
+}
+REPAIR_DIRS = tuple(directory for profile in PROFILES.values()
+                    for directory in profile['repair_dirs'])
+
+
+def selected_file(name, dist_info, profile, repaired=False):
+    """
+    Keep this distribution's metadata, runtime files and repaired libraries.
+    """
     if name.startswith(dist_info + '/'):
         return True
-    if name in SERIAL_FILES:
-        return True
-    if path.parent == PurePosixPath('mfem/_ser'):
-        return path.name != 'setup.py' and (
-            path.suffix == '.py' or path.name.endswith('.so'))
-    if name.startswith('mfem/external/ser/'):
-        return True
-    # Repair tools own their relocated native dependencies. Neither directory
-    # is accepted from a raw wheel, which must be selected before repair.
-    if repaired and name.startswith(('mfem.libs/', 'mfem/.dylibs/')):
-        return path.suffix == '.dylib' or '.so' in path.suffixes
-    return False
+    if name.startswith(REPAIR_DIRS):
+        return (repaired and name.startswith(profile['repair_dirs'])
+                and native_library(name))
+    return profile['owns'](name)
 
 
-def read_wheel(wheel):
+def normalized_project(name):
+    """
+    Normalize Python distribution names for identity checks.
+    """
+    return re.sub(r'[-_.]+', '-', name).lower()
+
+
+def read_wheel(wheel, profile='serial'):
     """
     Validate paths, project identity, and every RECORD entry before extraction.
     """
+    definition = PROFILES[profile]
     with ZipFile(wheel) as archive:
         names = [item.filename for item in archive.infolist()
                  if not item.is_dir()]
@@ -80,8 +154,12 @@ def read_wheel(wheel):
             raise ValueError('Expected exactly one .dist-info directory')
         dist_info = roots.pop()
         metadata = BytesParser().parsebytes(archive.read(dist_info + '/METADATA'))
-        if metadata['Name'] != 'mfem' or not dist_info.startswith('mfem-'):
-            raise ValueError('The serial profile requires project identity mfem')
+        directory_project, separator, version = dist_info[:-len('.dist-info')].rpartition('-')
+        expected = definition['project']
+        if (normalized_project(metadata.get('Name', '')) != expected or
+                not separator or normalized_project(directory_project) != expected or
+                metadata.get('Version') != version):
+            raise ValueError(f'The {profile} profile requires project identity {expected}')
         for required in ('METADATA', 'WHEEL', 'RECORD'):
             if dist_info + '/' + required not in names:
                 raise ValueError(f'Missing {required}')
@@ -107,35 +185,26 @@ def read_wheel(wheel):
         return dist_info, names
 
 
-def check_payload(wheel, repaired=False):
+def check_payload(wheel, repaired=False, profile='serial'):
     """
-    Reject missing serial components and files outside the ownership list.
+    Reject missing components and files outside the selected ownership rules.
     """
-    dist_info, names = read_wheel(wheel)
+    definition = PROFILES[profile]
+    dist_info, names = read_wheel(wheel, profile)
     unexpected = [name for name in names
-                  if not serial_file(name, dist_info, repaired)]
+                  if not selected_file(name, dist_info, definition, repaired)]
     if unexpected:
-        raise ValueError('Files outside serial ownership:\n' + '\n'.join(unexpected))
-    required = SERIAL_FILES | {'mfem/_ser/__init__.py'}
-    missing = required - set(names)
+        raise ValueError(f'Files outside {profile} ownership:\n' + '\n'.join(unexpected))
+    missing = definition['required'] - set(names)
     if missing:
-        raise ValueError('Missing serial files: ' + ', '.join(sorted(missing)))
-    for description, predicate in (
-        ('serial extension modules', lambda n: n.startswith('mfem/_ser/_') and
-         n.endswith('.so')),
-        ('serial MFEM library', lambda n: n.startswith('mfem/external/ser/lib') and
-         (PurePosixPath(n).name.startswith('libmfem') and
-          ('.so' in PurePosixPath(n).suffixes or n.endswith('.dylib')))),
-        ('installed MFEM headers', lambda n: n.startswith('mfem/external/ser/include/')
-         and n.endswith('mfem.hpp')),
-        ('MFEM runtime data', lambda n: n.startswith('mfem/external/ser/data/')),
-    ):
+        raise ValueError(f'Missing {profile} files: ' + ', '.join(sorted(missing)))
+    for description, predicate in definition['components']:
         if not any(predicate(name) for name in names):
             raise ValueError('Missing ' + description)
     return names
 
 
-def select_payload(wheel, output_dir):
+def select_payload(wheel, output_dir, profile='serial'):
     """
     Select into a temporary directory and repack with a regenerated RECORD.
     """
@@ -143,8 +212,9 @@ def select_payload(wheel, output_dir):
     output_dir = Path(output_dir).resolve()
     if output_dir == wheel.parent:
         raise ValueError('Input wheel and output directory must be separate')
-    dist_info, names = read_wheel(wheel)
-    if any(name.startswith(('mfem.libs/', 'mfem/.dylibs/')) for name in names):
+    definition = PROFILES[profile]
+    dist_info, names = read_wheel(wheel, profile)
+    if any(name.startswith(REPAIR_DIRS) for name in names):
         raise ValueError('Select payload before native library repair')
     with tempfile.TemporaryDirectory(prefix='pymfem-payload-') as temporary:
         root = Path(temporary)
@@ -152,14 +222,14 @@ def select_payload(wheel, output_dir):
                         '--dest', str(root / 'unpacked')], check=True)
         unpacked, = (root / 'unpacked').iterdir()
         for name in names:
-            if not serial_file(name, dist_info):
+            if not selected_file(name, dist_info, definition):
                 (unpacked / name).unlink()
         packed = root / 'packed'
         packed.mkdir()
         subprocess.run([sys.executable, '-m', 'wheel', 'pack', str(unpacked),
                         '--dest-dir', str(packed)], check=True)
         selected, = packed.glob('*.whl')
-        check_payload(selected)
+        check_payload(selected, profile=profile)
         output_dir.mkdir(parents=True, exist_ok=True)
         destination = output_dir / selected.name
         # Never overwrite the input or an earlier release artifact.
@@ -174,17 +244,17 @@ def main():
     """
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('wheel', type=Path)
-    parser.add_argument('--profile', required=True, choices=['serial'])
+    parser.add_argument('--profile', required=True, choices=PROFILES)
     action = parser.add_mutually_exclusive_group(required=True)
     action.add_argument('--output-dir', type=Path)
     action.add_argument('--check', action='store_true')
     args = parser.parse_args()
     try:
         if args.check:
-            names = check_payload(args.wheel, repaired=True)
-            print(f'Validated serial payload: {len(names)} files in {args.wheel}')
+            names = check_payload(args.wheel, repaired=True, profile=args.profile)
+            print(f'Validated {args.profile} payload: {len(names)} files in {args.wheel}')
         else:
-            print(select_payload(args.wheel, args.output_dir))
+            print(select_payload(args.wheel, args.output_dir, profile=args.profile))
     except (ValueError, OSError) as error:
         parser.exit(1, f'{error}\n')
 

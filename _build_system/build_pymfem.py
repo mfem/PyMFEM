@@ -305,7 +305,7 @@ def make_mfem_wrapper(serial=True):
     command = [python, 'setup.py', 'build_ext', '--inplace',
                '--parallel', str(cpu_count())]
     if not serial:
-        mpi = get_mpi_wrapper_info(bglb.mpicxx_command)
+        mpi = get_mpi_wrapper_info(bglb.mpicc_command)
         if mpi['library_dirs']:
             command.append('--library-dirs=' + os.pathsep.join(mpi['library_dirs']))
 
