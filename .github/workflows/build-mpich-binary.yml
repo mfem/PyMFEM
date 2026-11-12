@@ -8,7 +8,7 @@ on:
         type: string
         default: ''
       publish-testpypi:
-        description: Upload validated wheels to TestPyPI and validate downloaded copies.
+        description: Upload validated release to TestPyPI and validate downloaded wheels.
         type: boolean
         default: false
 
@@ -16,125 +16,32 @@ permissions:
   contents: read
 
 jobs:
-  linux-pair:
-    runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux_2_28_x86_64
-    timeout-minutes: 180
-    strategy:
-      fail-fast: false
-      matrix:
-        pythonpath: [cp311-cp311, cp312-cp312, cp313-cp313, cp314-cp314]
-    env:
-      CANDIDATE_VERSION: ${{ inputs.candidate-version }}
-      PUBLISH_TESTPYPI: ${{ inputs.publish-testpypi }}
-      PYMFEM_BUILD_NCPU: '2'
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install tools and the explicit MPICH toolchain
-        run: |
-          set -euo pipefail
-          echo "/opt/python/${{ matrix.pythonpath }}/bin" >> "$GITHUB_PATH"
-          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          dnf install -y zlib-devel
-          python -m pip install --only-binary=:all: --upgrade pip 'setuptools>=80.0.1' wheel 'numpy>=2.4.1' 'cmake>=4.0.0' 'swig>=4.5' auditwheel patchelf twine 'mpich==5.0.2' 'mpi4py==4.1.2'
-          echo "MPICC=$(command -v mpicc)" >> "$GITHUB_ENV"
-          echo "MPICXX=$(command -v mpicxx)" >> "$GITHUB_ENV"
-          python -m pip freeze > tools-freeze.txt
-          mpicc -show
-          mpicxx -show
-
-      - name: Prepare clean source trees and shared candidate version
-        run: |
-          set -euo pipefail
-          python3 -m unittest discover -s _build_system/tests
-          mkdir serial-source mpich-source
-          git archive HEAD | tar -x -C serial-source
-          git archive HEAD | tar -x -C mpich-source
-          python - <<'PY'
-          import os
-          import re
-          from pathlib import Path
-          from packaging.version import Version
-
-          candidate = os.environ['CANDIDATE_VERSION']
-          if os.environ['PUBLISH_TESTPYPI'] == 'true' and not candidate:
-              raise SystemExit('Set a fresh candidate-version for TestPyPI publication')
-          for tree in ('serial-source', 'mpich-source'):
-              if candidate:
-                  version = str(Version(candidate))
-                  init = Path(tree, 'mfem', '__init__.py')
-                  init.write_text(re.sub(r'^__version__ = .*$',
-                                        '__version__ = ' + repr(version),
-                                        init.read_text(), flags=re.MULTILINE))
-          Path('mpich-source/pyproject.toml').write_bytes(
-              Path('mpich-source/pyproject-mpich.toml').read_bytes())
-          PY
-
-      - name: Build and select the base wheel
-        run: |
-          set -euo pipefail
-          python -m pip wheel ./serial-source --no-deps --verbose --wheel-dir serial-raw 2>&1 | tee serial-build.log
-          python _build_system/select_wheel_payload.py serial-raw/*.whl --profile serial --output-dir serial-selected
-          auditwheel repair serial-selected/*.whl --plat manylinux_2_28_x86_64 --wheel-dir wheels
-          python _build_system/select_wheel_payload.py wheels/mfem-*.whl --profile serial --check
-
-      - name: Build and select the parallel plus GSLIB add-on
-        run: |
-          set -euo pipefail
-          python -m pip wheel ./mpich-source --no-deps --verbose -Cwith-parallel=Yes -Cwith-gslib=Yes --wheel-dir mpich-raw 2>&1 | tee mpich-build.log
-          python _build_system/select_wheel_payload.py mpich-raw/*.whl --profile mpich --output-dir mpich-selected
-          auditwheel repair mpich-selected/*.whl --exclude libmpi.so.12 --plat manylinux_2_28_x86_64 --wheel-dir wheels
-          python _build_system/select_wheel_payload.py wheels/mfem_mpich-*.whl --profile mpich --check
-          python -m twine check wheels/*.whl
-
-      - name: Validate the repaired pair and installation lifecycle
-        run: |
-          set -euo pipefail
-          python _build_system/validate_mpich_pair.py wheels/mfem-*.whl wheels/mfem_mpich-*.whl --work-dir "$RUNNER_TEMP/pair-validation" --examples-dir examples --mesh data/star.mesh 2>&1 | tee pair-validation.log
-
-      - name: Save validated wheels
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-mpich-pair-${{ matrix.pythonpath }}
-          path: wheels/*.whl
-          if-no-files-found: error
-      - name: Save validation and build logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-mpich-logs-${{ matrix.pythonpath }}
-          path: |
-            *-build.log
-            pair-validation.log
-            tools-freeze.txt
-          if-no-files-found: ignore
-
-  publish-testpypi:
-    if: ${{ inputs.publish-testpypi }}
-    needs: linux-pair
+  settings:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: linux-mpich-pair-*
-          merge-multiple: true
-          path: wheels
-      - name: Upload only the validated base and add-on wheels
+      - name: Check publication settings
         env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
-          TWINE_REPOSITORY_URL: https://test.pypi.org/legacy/
-          TWINE_NON_INTERACTIVE: '1'
+          PUBLISH: ${{ inputs.publish-testpypi }}
+          VERSION: ${{ inputs.candidate-version }}
         run: |
-          python -m pip install --upgrade twine
-          python -m twine check wheels/*.whl
-          python -m twine upload wheels/*.whl
+          if [[ "$PUBLISH" == true && -z "$VERSION" ]]; then
+            echo 'Set a fresh candidate-version for TestPyPI publication' >&2
+            exit 1
+          fi
+
+  linux-release:
+    needs: settings
+    uses: ./.github/workflows/build-binary-callable.yml
+    with:
+      publish: ${{ inputs.publish-testpypi }}
+      candidate-version: ${{ inputs.candidate-version }}
+      repository-url: https://test.pypi.org/legacy/
+    secrets:
+      upload-token: ${{ secrets.TEST_PYPI_TOKEN }}
 
   downloaded-pair:
-    needs: publish-testpypi
+    needs: linux-release
+    if: ${{ inputs.publish-testpypi }}
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux_2_28_x86_64
     strategy:
@@ -145,13 +52,13 @@ jobs:
       CANDIDATE_VERSION: ${{ inputs.candidate-version }}
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch exact TestPyPI wheels and validate composition
+      - name: Fetch exact TestPyPI wheels and validate the public extra
         run: |
           set -euo pipefail
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          python -m pip install --upgrade pip wheel
-          python -m pip download --index-url https://test.pypi.org/simple/ --no-deps --only-binary=:all: --dest downloaded "mfem==$CANDIDATE_VERSION" "mfem-mpich==$CANDIDATE_VERSION"
-          python _build_system/validate_mpich_pair.py downloaded/mfem-*.whl downloaded/mfem_mpich-*.whl --work-dir "$RUNNER_TEMP/downloaded-validation" --examples-dir examples --mesh data/star.mesh 2>&1 | tee downloaded-validation.log
+          pip install --upgrade pip wheel
+          pip download --index-url https://test.pypi.org/simple/ --no-deps --only-binary=:all: --dest downloaded "mfem==$CANDIDATE_VERSION" "mfem-mpich==$CANDIDATE_VERSION"
+          python _build_system/distribution/validate_mpich_pair.py downloaded/mfem-*.whl downloaded/mfem_mpich-*.whl --work-dir "$RUNNER_TEMP/downloaded-validation" --examples-dir examples --mesh data/star.mesh 2>&1 | tee downloaded-validation.log
       - name: Save downloaded-pair validation
         if: always()
         uses: actions/upload-artifact@v4

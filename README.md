@@ -6,15 +6,32 @@
 This repository provides Python binding for MFEM. MFEM is a high performance parallel finite element method (FEM) library (http://mfem.org/).
 
 Installer (setup.py) builds both MFEM and binding together.
+Binary package install is supported for Linux (x86) and MacOSX (Apple Silicon)
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
 Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
 ## Install
 ### Using pip (Serial MFEM)
 ```shell
-pip install mfem            # binary install is available only on linux platforms (Py38-312)
+pip install mfem
 
 ```
+
+### Using pip (MPICH parallel MFEM with GSLIB/HYPRE/METIS)
+
+For Linux x86_64 releases with matching parallel wheels (Python 3.11–3.14):
+
+```shell
+pip install "mfem[mpich]"
+pip install --upgrade "mfem[mpich]"
+```
+
+This installs the serial bindings and matching parallel bindings with MPICH.
+Use `import mfem.ser` or `import mfem.par` in separate Python processes.
+The commands apply to releases publishing the extra; candidate validation
+is described in [_build_system/distribution](./_build_system/distribution/README.md).
+The same local wheel-building scripts now include a macOS path. Native
+macOS validation is pending before advertising parallel binary releases there.
 
 ### Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 

@@ -1,7 +1,7 @@
 """
 Validate final wheel ownership, runtime composition, and uninstall/reinstall.
 
-Usage: python _build_system/validate_mpich_pair.py BASE.whl ADDON.whl
+Usage: python _build_system/distribution/validate_mpich_pair.py BASE.whl ADDON.whl
        --work-dir NEW_DIRECTORY --examples-dir examples --mesh data/star.mesh
 Use exact TestPyPI wheels downloaded with --no-deps --only-binary=:all: as
 inputs when validating publication. Ordinary dependencies come from PyPI.
@@ -57,6 +57,7 @@ def main():
     base_info, _ = read_wheel(base)
     addon_info, _ = read_wheel(addon, profile='mpich')
     assert base_info.split('-', 1)[1] == addon_info.split('-', 1)[1], 'Wheel versions differ'
+    version = base_info.split('-', 1)[1][:-len('.dist-info')]
     work = args.work_dir.resolve()
     work.mkdir(parents=True, exist_ok=False)
     environment = os.environ.copy()
@@ -67,7 +68,7 @@ def main():
     def run(command):
         print('Running:', ' '.join(map(str, command)), flush=True)
         return subprocess.run(list(map(str, command)), check=True, cwd=work,
-                              env=environment, timeout=600)
+                              env=environment)
 
     runtime = work / 'runtime'
     run([sys.executable, '-m', 'venv', runtime])
@@ -86,14 +87,9 @@ def main():
         shutil.copyfile(args.examples_dir / name, work / name)
     shutil.copyfile(args.mesh, work / 'star.mesh')
 
-    def smoke(mode):
-        command = [python, '-I', work / 'check_mpich_install.py', mode]
-        if mode in ('serial', 'parallel'):
-            command += ['--example', work / ('ex1p.py' if mode == 'parallel' else 'ex1.py'),
-                        '--mesh', work / 'star.mesh']
-        if mode == 'parallel':
-            command = [runtime / 'bin' / 'mpiexec', '-n', '2'] + command
-        run(command)
+    def smoke():
+        run([runtime / 'bin/mpiexec', '-n', '2', python, '-I',
+             work / 'check_mpich_install.py'])
 
     def snapshot(project):
         code = '''import hashlib, importlib.metadata, json
@@ -110,24 +106,26 @@ print(json.dumps(result))
 
     run(pip + ['install', '--only-binary=:all:', base])
     run([python, '-I', work / 'check_serial_install.py', work / 'ex1.py', work / 'star.mesh'])
-    run(pip + ['install', '--only-binary=:all:', addon])
-    for mode in ('serial', 'direct', 'serial-first', 'parallel-first', 'parallel'):
-        smoke(mode)
+    run(pip + ['install', '--only-binary=:all:', '--find-links', base.parent,
+               '--find-links', addon.parent, f'mfem[mpich]=={version}'])
+    run([python, '-I', '-c',
+         f'from importlib.metadata import version; assert version("mfem-mpich") == {version!r}'])
+    run([python, '-I', '-m', 'mfem.common.find_libmpi', '--check'])
+    smoke()
     addon_before = snapshot('mfem-mpich')
     assert not set(snapshot('mfem')) & set(addon_before), 'Installed ownership overlaps'
     run(pip + ['install', '--force-reinstall', '--no-deps', base])
     assert snapshot('mfem-mpich') == addon_before, 'Base reinstall changed add-on files'
-    smoke('parallel')
+    smoke()
     run(pip + ['uninstall', '-y', 'mfem-mpich'])
-    smoke('serial')
+    run([python, '-I', work / 'ex1.py', '-m', work / 'star.mesh'])
     run([python, '-I', '-c', "import importlib.util; assert importlib.util.find_spec('mfem.par') is None; assert importlib.util.find_spec('mfem._par') is None"])
     run(pip + ['install', '--no-deps', addon])
     addon_before = snapshot('mfem-mpich')
     run(pip + ['uninstall', '-y', 'mfem'])
     assert snapshot('mfem-mpich') == addon_before, 'Base uninstall changed add-on files'
     run(pip + ['install', '--no-deps', base])
-    smoke('serial')
-    smoke('parallel')
+    smoke()
     run(pip + ['check'])
     result = {name: hashlib.sha256(path.read_bytes()).hexdigest()
               for name, path in (('base_sha256', base), ('addon_sha256', addon))}

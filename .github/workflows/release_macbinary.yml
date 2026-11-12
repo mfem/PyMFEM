@@ -5,6 +5,11 @@ on:
     tags: ["v*"]
   # Manual runs build and test artifacts without publishing.
   workflow_dispatch:
+    inputs:
+      candidate-version:
+        description: Optional candidate version for a build-only run.
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -14,6 +19,7 @@ jobs:
     uses: ./.github/workflows/build-macbinary-callable.yml
     with:
       publish: ${{ github.event_name == 'push' }}
+      candidate-version: ${{ inputs.candidate-version || '' }}
       repository-url: https://upload.pypi.org/legacy/
     secrets:
       upload-token: ${{ secrets.PYPI_TOKEN }}

@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-with patch.object(sys, 'path', [str(Path(__file__).resolve().parents[1])] + sys.path):
+with patch.object(sys, 'path', [str(Path(__file__).resolve().parents[1] / 'distribution')] + sys.path):
     from validate_mpich_pair import installed_paths
 
 

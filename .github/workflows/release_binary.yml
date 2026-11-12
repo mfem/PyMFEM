@@ -3,6 +3,7 @@ name: release_binary
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -11,6 +12,7 @@ jobs:
   linux-release:
     uses: ./.github/workflows/build-binary-callable.yml
     with:
+      publish: ${{ github.event_name == 'push' }}
       repository-url: https://upload.pypi.org/legacy/
     secrets:
       upload-token: ${{ secrets.PYPI_TOKEN }}

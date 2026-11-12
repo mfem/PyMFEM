@@ -3,8 +3,17 @@ name: testrelease_macbinary
 on:
   push:
     tags: ["test_*"]
-  # Manual runs build and test artifacts without publishing.
+  # Manual runs default to building and testing artifacts without publishing.
   workflow_dispatch:
+    inputs:
+      candidate-version:
+        description: Fresh candidate version when publishing to TestPyPI.
+        type: string
+        default: ''
+      publish-testpypi:
+        description: Upload the validated pairs and test downloaded copies.
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -13,7 +22,8 @@ jobs:
   macos-wheels:
     uses: ./.github/workflows/build-macbinary-callable.yml
     with:
-      publish: ${{ github.event_name == 'push' }}
+      publish: ${{ github.event_name == 'push' || inputs.publish-testpypi }}
+      candidate-version: ${{ inputs.candidate-version || '' }}
       repository-url: https://test.pypi.org/legacy/
     secrets:
       upload-token: ${{ secrets.TEST_PYPI_TOKEN }}

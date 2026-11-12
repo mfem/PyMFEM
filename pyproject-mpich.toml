@@ -2,7 +2,7 @@
 name = "mfem-mpich"
 license = "BSD-3-Clause"
 description = "MPICH parallel binary add-on for PyMFEM"
-dynamic = ["version"]
+dynamic = ["version", "dependencies"]
 readme = "README.md"
 authors = [ { name = "MFEM development team" } ]
 maintainers = [ { name = "S. Shiraiwa", email = "shiraiwa@princeton.edu" } ]
@@ -17,10 +17,6 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
 ]
 requires-python = ">=3.11"
-dependencies = [
-    "mpi4py==4.1.2",
-    "mpich==5.0.2",
-]
 
 [project.urls]
 "Homepage" = "http://mfem.org"
@@ -34,9 +30,18 @@ requires = [
     "cmake>=4.0.0",
     "swig>=4.5",
     "mpi4py==4.1.2",
+    "mpich==5.0.2",
 ]
 build-backend = "backend"
 backend-path = ["_build_system"]
+
+[tool.pymfem]
+install-requires = [
+    # Nominal version; setup.py substitutes the release version from mfem/__init__.py.
+    "mfem==4.10.0.2",
+    "mpi4py>=4.1.2,<4.2",
+    "mpich>=5.0.2,<5.1",
+]
 
 [tool.setuptools.dynamic]
 version = { attr = "mfem.__version__" }

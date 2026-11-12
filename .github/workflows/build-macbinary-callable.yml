@@ -1,12 +1,16 @@
-name: Build macOS ARM wheels
+name: Build macOS ARM wheel pairs
 
 on:
   workflow_call:
     inputs:
       publish:
-        description: Publish only after every wheel has passed validation.
+        description: Publish only after every wheel pair has passed validation.
         type: boolean
         default: false
+      candidate-version:
+        description: Optional shared candidate version for this build.
+        type: string
+        default: ''
       repository-url:
         description: PyPI or TestPyPI upload endpoint.
         type: string
@@ -20,129 +24,142 @@ permissions:
 
 jobs:
   build:
-    # The standard macos-14 runner is Apple Silicon; verify below as well.
     runs-on: macos-14
-    timeout-minutes: 120
+    timeout-minutes: 180
     strategy:
       fail-fast: false
       matrix:
         python-version: ['3.11', '3.12', '3.13', '3.14']
     env:
       MACOSX_DEPLOYMENT_TARGET: '14.0'
-      CMAKE_OSX_DEPLOYMENT_TARGET: '14.0'
-      CMAKE_OSX_ARCHITECTURES: arm64
-      ARCHFLAGS: '-arch arm64'
-      # Match wheel metadata to the ARM-only build, including with universal2 Python.
-      _PYTHON_HOST_PLATFORM: macosx-14.0-arm64
       CC: clang
       CXX: clang++
+      CANDIDATE_VERSION: ${{ inputs.candidate-version }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           architecture: arm64
-
       - name: Check build architecture
-        run: |
-          test "$(uname -m)" = arm64
-          python -c "import platform; assert platform.machine() == 'arm64'"
-          python -c "import sysconfig; print('Wheel build platform:', sysconfig.get_platform())"
-          clang --version
-
-      - name: Install wheel tools
-        run: python -m pip install --upgrade pip wheel delocate twine
-
-      - name: Test release payload selection
-        run: python -m unittest discover -s _build_system/tests
-
-      - name: Build serial wheel and bundled MFEM
-        run: |
-          set -o pipefail
-          python -m pip wheel . --verbose --no-deps --wheel-dir raw-wheels 2>&1 | tee build-macos.log
-
-      - name: Check raw wheel platform tag
+        run: test "$(uname -m)" = arm64
+      - name: Install tools and pip MPICH
+        run: pip install --upgrade pip wheel packaging 'delocate==0.13.0' twine swig 'mpich==5.0.2' 'mpi4py==4.1.2'
+      - name: Set candidate version
         run: |
           python - <<'PY'
+          import os
+          import re
           from pathlib import Path
-          from packaging.utils import parse_wheel_filename
-
-          wheels = list(Path('raw-wheels').glob('*.whl'))
-          assert len(wheels) == 1, wheels
-          print('Raw wheel:', wheels[0].name)
-          _, _, _, tags = parse_wheel_filename(wheels[0].name)
-          assert all(tag.platform == 'macosx_14_0_arm64' for tag in tags), tags
+          from packaging.version import Version
+          if os.environ['CANDIDATE_VERSION']:
+              path = Path('mfem/__init__.py')
+              version = str(Version(os.environ['CANDIDATE_VERSION']))
+              text, count = re.subn(r'^__version__ = .*$', '__version__ = ' + repr(version),
+                                    path.read_text(), flags=re.MULTILINE)
+              assert count == 1
+              path.write_text(text)
           PY
-
-      - name: Select serial release payload
-        run: python _build_system/select_wheel_payload.py raw-wheels/*.whl --profile serial --output-dir selected-wheels
-
-      - name: Repair wheel dependencies
-        run: |
-          delocate-wheel --verbose --require-archs arm64 --wheel-dir wheelhouse selected-wheels/*.whl
-          python _build_system/select_wheel_payload.py wheelhouse/*.whl --profile serial --check
-          python -m twine check wheelhouse/*.whl
-          delocate-listdeps --all wheelhouse/*.whl
-
-      - name: Check wheel platform tag
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          from packaging.utils import parse_wheel_filename
-
-          wheels = list(Path('wheelhouse').glob('*.whl'))
-          assert len(wheels) == 1, wheels
-          _, _, _, tags = parse_wheel_filename(wheels[0].name)
-          assert all(tag.platform == 'macosx_14_0_arm64' for tag in tags), tags
-          PY
-
-      - name: Test installed repaired wheel outside checkout
-        run: |
-          smoke_dir=$(mktemp -d "$RUNNER_TEMP/pymfem-smoke.XXXXXX")
-          python -m venv "$smoke_dir/venv"
-          "$smoke_dir/venv/bin/python" -m pip install --only-binary=:all: "$GITHUB_WORKSPACE"/wheelhouse/*.whl
-          "$smoke_dir/venv/bin/python" -m pip check
-          cp examples/ex1.py "$smoke_dir/ex1.py"
-          cp data/star.mesh "$smoke_dir/star.mesh"
-          cd "$smoke_dir"
-          unset PYTHONPATH LD_LIBRARY_PATH DYLD_LIBRARY_PATH DYLD_FALLBACK_LIBRARY_PATH
-          "$smoke_dir/venv/bin/python" -I "$GITHUB_WORKSPACE/_build_system/check_serial_install.py" ex1.py star.mesh
-
-      - name: Save validated wheel
-        uses: actions/upload-artifact@v4
+      - name: Build and validate the serial wheel
+        run: bash _build_system/distribution/build_serial_wheel.sh --work-dir "$RUNNER_TEMP/serial-build"
+      - name: Build and validate the MPICH plus GSLIB wheel pair
+        run: bash _build_system/distribution/build_mpich_wheel.sh --base-wheel "$RUNNER_TEMP"/serial-build/mfem-*.whl --work-dir "$RUNNER_TEMP/mpich-build"
+      - uses: actions/upload-artifact@v4
         with:
-          name: macos-arm64-py${{ matrix.python-version }}
-          path: wheelhouse/*.whl
+          name: macos-arm64-pair-py${{ matrix.python-version }}
+          path: |
+            ${{ runner.temp }}/serial-build/*.whl
+            ${{ runner.temp }}/mpich-build/*.whl
           if-no-files-found: error
-
-      - name: Save build log
+      - name: Save build and validation logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: macos-build-log-py${{ matrix.python-version }}
-          path: build-macos.log
+          name: macos-arm64-logs-py${{ matrix.python-version }}
+          path: |
+            ${{ runner.temp }}/serial-build/build.log
+            ${{ runner.temp }}/mpich-build/build.log
+            ${{ runner.temp }}/mpich-build/mpi-libraries.txt
+            ${{ runner.temp }}/mpich-build/validation/*.json
           if-no-files-found: ignore
 
-  publish:
+  release-check:
     needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: macos-arm64-pair-py*
+          merge-multiple: true
+          path: dist
+      - name: Check matching macOS wheel coverage
+        run: |
+          pip install packaging twine
+          python _build_system/distribution/check_release.py dist --platform macosx_14_0_arm64
+          twine check dist/*.whl
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-arm64-release
+          path: dist/*.whl
+          if-no-files-found: error
+
+  publish:
+    needs: release-check
     if: ${{ inputs.publish }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.12'
       - uses: actions/download-artifact@v4
         with:
-          pattern: macos-arm64-py*
-          merge-multiple: true
+          name: macos-arm64-release
           path: dist
-      - name: Validate and upload wheels
+      - name: Upload validated wheel pairs
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.upload-token }}
           TWINE_REPOSITORY_URL: ${{ inputs.repository-url }}
           TWINE_NON_INTERACTIVE: '1'
         run: |
-          python -m pip install --upgrade twine
-          python -m twine check dist/*.whl
-          python -m twine upload dist/*.whl
+          pip install twine
+          twine upload dist/*.whl
+
+  downloaded-pair:
+    needs: publish
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13', '3.14']
+    env:
+      CANDIDATE_VERSION: ${{ inputs.candidate-version }}
+      REPOSITORY_URL: ${{ inputs.repository-url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: arm64
+      - name: Download exact candidates and validate the public extra
+        run: |
+          set -euo pipefail
+          pip install --upgrade pip wheel 'delocate==0.13.0'
+          version=${CANDIDATE_VERSION:-$(python -c 'import mfem; print(mfem.__version__)')}
+          index=https://pypi.org/simple/
+          if [[ "$REPOSITORY_URL" == *test.pypi.org* ]]; then
+            index=https://test.pypi.org/simple/
+          fi
+          pip download --index-url "$index" --no-deps --only-binary=:all: --dest downloaded "mfem==$version" "mfem-mpich==$version"
+          python _build_system/distribution/validate_mpich_pair.py downloaded/mfem-*.whl downloaded/mfem_mpich-*.whl --work-dir "$RUNNER_TEMP/downloaded-validation" --examples-dir examples --mesh data/star.mesh 2>&1 | tee downloaded-validation.log
+      - name: Save downloaded-pair validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-downloaded-logs-py${{ matrix.python-version }}
+          path: downloaded-validation.log
+          if-no-files-found: ignore

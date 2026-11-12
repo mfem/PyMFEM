@@ -2,7 +2,7 @@
 name = "mfem"
 license = "BSD-3-Clause"
 description = "MFEM + PyMFEM (finite element method library)"
-dynamic = ["version"]
+dynamic = ["version", "optional-dependencies"]
 readme = "README.md"
 authors = [ { name = "MFEM development team" } ]
 maintainers = [ { name = "S. Shiraiwa", email = "shiraiwa@princeton.edu" } ]
@@ -23,9 +23,6 @@ dependencies = [
     "scipy",
 ]
 
-[project.optional-dependencies]
-MPI = ["mpi4py"]
-
 [project.urls]
 "Homepage" = "http://mfem.org"
 "Download" = "https://github.com/pymfem"
@@ -40,6 +37,11 @@ requires = [
 ]
 build-backend = "backend"
 backend-path = ["_build_system"]
+
+[tool.pymfem.extras-require]
+MPI = ["mpi4py"]
+# Nominal version; setup.py substitutes the release version from mfem/__init__.py.
+mpich = ["mfem-mpich==4.10.0.2"]
 
 [tool.setuptools.dynamic]
 version = { attr = "mfem.__version__" }

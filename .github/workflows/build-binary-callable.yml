@@ -3,101 +3,167 @@ name: Build Linux binary release
 on:
   workflow_call:
     inputs:
+      publish:
+        description: Publish after all wheel pairs and the sdist pass validation.
+        type: boolean
+        default: false
+      candidate-version:
+        description: Optional shared candidate version for this build.
+        type: string
+        default: ''
       repository-url:
         description: PyPI or TestPyPI upload endpoint.
         type: string
         required: true
     secrets:
       upload-token:
-        required: true
+        required: false
 
 permissions:
   contents: read
 
 jobs:
-  make_sdist:
+  sdist:
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux_2_28_x86_64
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
-      - name: build_sdist
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set candidate version
+        id: version
         env:
-          TWINE_REPOSITORY_URL: ${{ inputs.repository-url }}
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.upload-token }}
-          TWINE_NON_INTERACTIVE: '1'
+          CANDIDATE_VERSION: ${{ inputs.candidate-version }}
         run: |
-          git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!: "$REF
-          git checkout $REF
-          export PATH=/opt/python/cp311-cp311/bin:$PATH
+          pip install build packaging
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+          from packaging.version import Version
+          path = Path('mfem/__init__.py')
+          if os.environ['CANDIDATE_VERSION']:
+              version = str(Version(os.environ['CANDIDATE_VERSION']))
+              text, count = re.subn(r'^__version__ = .*$', '__version__ = ' + repr(version),
+                                    path.read_text(), flags=re.MULTILINE)
+              assert count == 1
+              path.write_text(text)
+          import mfem
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('version=' + mfem.__version__ + '\n')
+          PY
+      - name: Build base source distribution
+        run: python -m build --sdist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-sdist
+          path: dist/*.tar.gz
+          if-no-files-found: error
 
-          pip install setuptools
-          pip install -U packaging
-          pip3 install wheel six auditwheel twine
-          pip3 install "urllib3==1.26.6"    # use older version to avoid OpenSSL vesion issue
-
-          rm -rf dist/*
-          python3 setup.py sdist
-          ls -l dist/
-          python3 -m twine upload --verbose dist/*
-  make_binary_3_11_12_13_14:
-    needs: make_sdist
-    strategy:
-      matrix:
-        pythonpath: ["cp311-cp311", "cp312-cp312", "cp313-cp313", "cp314-cp314"]
-
+  wheels:
+    needs: sdist
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux_2_28_x86_64
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        pythonpath: [cp311-cp311, cp312-cp312, cp313-cp313, cp314-cp314]
+    env:
+      RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
+      PYMFEM_BUILD_NCPU: '2'
     steps:
-      - name: build package
-        env:
-          TWINE_REPOSITORY_URL: ${{ inputs.repository-url }}
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.upload-token }}
-          TWINE_NON_INTERACTIVE: '1'
+      - uses: actions/checkout@v4
+      - name: Install build tools and MPICH
         run: |
           set -euo pipefail
-          echo It runs in the container instead of the VM.
-          git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!!: "$REF
-          git checkout $REF
-          ls -l /opt/python/
+          echo "/opt/python/${{ matrix.pythonpath }}/bin" >> "$GITHUB_PATH"
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-
           dnf install -y zlib-devel
-          pip3 install --upgrade pip setuptools packaging
-          pip3 install wheel auditwheel twine
-          pip3 install "urllib3==1.26.6"    # use older version to avoid OpenSSL vesion issue
+          pip install --only-binary=:all: --upgrade pip wheel packaging auditwheel patchelf twine swig 'mpich==5.0.2' 'mpi4py==4.1.2'
+      - name: Use the source distribution version
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+          path = Path('mfem/__init__.py')
+          text, count = re.subn(r'^__version__ = .*$', '__version__ = ' + repr(os.environ['RELEASE_VERSION']),
+                                path.read_text(), flags=re.MULTILINE)
+          assert count == 1
+          path.write_text(text)
+          PY
+      - name: Build and validate the serial wheel
+        run: bash _build_system/distribution/build_serial_wheel.sh --work-dir "$RUNNER_TEMP/serial-build"
+      - name: Build and validate the MPICH wheel pair
+        run: bash _build_system/distribution/build_mpich_wheel.sh --base-wheel "$RUNNER_TEMP"/serial-build/mfem-*.whl --work-dir "$RUNNER_TEMP/mpich-build"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-pair-${{ matrix.pythonpath }}
+          path: |
+            ${{ runner.temp }}/serial-build/*.whl
+            ${{ runner.temp }}/mpich-build/*.whl
+          if-no-files-found: error
+      - name: Save build and validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-logs-${{ matrix.pythonpath }}
+          path: |
+            ${{ runner.temp }}/serial-build/build.log
+            ${{ runner.temp }}/mpich-build/build.log
+            ${{ runner.temp }}/mpich-build/mpi-libraries.txt
+            ${{ runner.temp }}/mpich-build/validation/*.json
+          if-no-files-found: ignore
 
-          # Test packaging tools
-          python3 -m unittest discover -s _build_system/tests
+  release-check:
+    needs: [sdist, wheels]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: linux-pair-*
+          merge-multiple: true
+          path: dist
+      - uses: actions/download-artifact@v4
+        with:
+          name: linux-sdist
+          path: dist
+      - name: Check complete matching release coverage
+        run: |
+          pip install packaging twine
+          python _build_system/distribution/check_release.py dist
+          twine check dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-release
+          path: dist/*
+          if-no-files-found: error
 
-          # Build the wheel for the current Python version
-          python3 -m pip wheel . --verbose --no-deps --wheel-dir raw-wheels
-
-          # Select the appropriate wheel payload, run auditwheel, and repackage wheel
-          python3 _build_system/select_wheel_payload.py raw-wheels/*.whl --profile serial --output-dir selected-wheels
-          auditwheel repair selected-wheels/*.whl --plat manylinux_2_28_x86_64 --wheel-dir dist
-          python3 _build_system/select_wheel_payload.py dist/*.whl --profile serial --check
-
-          # Check the repaired wheel for compliance with the selected profile
-          python3 -m twine check dist/*.whl
-
-          # Test the final release artifact in a fresh environment outside the checkout.
-          source_dir=$PWD
-          smoke_dir=$(mktemp -d)
-          python3 -m venv "$smoke_dir/venv"
-          "$smoke_dir/venv/bin/python" -m pip install --only-binary=:all: "$source_dir"/dist/*.whl
-          "$smoke_dir/venv/bin/python" -m pip check
-          cp examples/ex1.py data/star.mesh "$smoke_dir/"
-          cd "$smoke_dir"
-          unset PYTHONPATH LD_LIBRARY_PATH
-          "$smoke_dir/venv/bin/python" -I "$source_dir/_build_system/check_serial_install.py" ex1.py star.mesh
-          cd "$source_dir"
-
-          ls -l dist/
-          python3 -m twine upload --verbose dist/*
+  publish:
+    needs: release-check
+    if: ${{ inputs.publish }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: linux-release
+          path: dist
+      - name: Upload the validated release
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.upload-token }}
+          TWINE_REPOSITORY_URL: ${{ inputs.repository-url }}
+          TWINE_NON_INTERACTIVE: '1'
+        run: |
+          pip install twine
+          twine upload dist/*

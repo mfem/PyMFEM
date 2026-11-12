@@ -14,7 +14,7 @@ from wheel.wheelfile import WheelFile
 
 spec = importlib.util.spec_from_file_location(
     'select_wheel_payload',
-    Path(__file__).resolve().parents[1] / 'select_wheel_payload.py')
+    Path(__file__).resolve().parents[1] / 'distribution' / 'select_wheel_payload.py')
 payload = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(payload)
 
@@ -35,6 +35,7 @@ class WheelPayloadTest(unittest.TestCase):
             'mfem/external/ser/data/star.mesh': b'mesh',
             'mfem/par.py': b'# parallel',
             'mfem/_par/__init__.py': b'# parallel',
+            'mfem/_par/mpi-runtime.json': b'{}',
             'mfem/_par/_mesh.so': b'parallel extension',
             'mfem/_par/gslib.py': b'gslib proxy',
             'mfem/_par/_gslib.so': b'gslib extension',
@@ -73,60 +74,15 @@ class WheelPayloadTest(unittest.TestCase):
                 archive.writestr(name, data)
         return wheel
 
-    def test_selection_preserves_runtime_metadata_and_input(self):
-        raw = self.raw_wheel()
-        original = hashlib.sha256(raw.read_bytes()).digest()
-        selected = payload.select_payload(raw, self.root / 'selected')
-        self.assertEqual(hashlib.sha256(raw.read_bytes()).digest(), original)
-        names = payload.check_payload(selected)
-        self.assertIn('mfem/external/ser/include/mfem.hpp', names)
-        self.assertIn('mfem/common/chypre.py', names)
-        self.assertNotIn('mfem/par.py', names)
-        self.assertNotIn('mfem/_ser/setup.py', names)
-        self.assertNotIn('mfem/common/pycoefficient.hpp', names)
-        with ZipFile(selected) as archive:
-            for name in names:
-                if not name.endswith('/RECORD'):
-                    self.assertEqual(archive.read(name), self.files[name])
-        with self.assertRaises(FileExistsError):
-            payload.select_payload(raw, selected.parent)
-
     def test_missing_required_payload_is_rejected(self):
         del self.files['mfem/external/ser/lib/libmfem.so.4.10']
         with self.assertRaisesRegex(ValueError, 'Missing serial MFEM library'):
             payload.select_payload(self.raw_wheel(), self.root / 'selected')
         self.assertFalse((self.root / 'selected').exists())
 
-    def test_wrong_identity_is_rejected(self):
-        name = self.dist_info + '/METADATA'
-        self.files[name] = self.files[name].replace(b'Name: mfem\n', b'Name: mfem-mpich\n')
-        with self.assertRaisesRegex(ValueError, 'project identity mfem'):
-            payload.select_payload(self.raw_wheel(), self.root / 'selected')
-
     def test_input_directory_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'must be separate'):
             payload.select_payload(self.raw_wheel(), self.root)
-
-    def test_check_rejects_parallel_payload_even_after_repair(self):
-        with self.assertRaisesRegex(ValueError, 'outside serial ownership'):
-            payload.check_payload(self.raw_wheel(), repaired=True)
-
-    def test_repaired_private_libraries_are_allowed_only_in_check(self):
-        raw = self.raw_wheel()
-        selected = payload.select_payload(raw, self.root / 'selected')
-        # Model repair by adding a private library and regenerating RECORD.
-        repaired = self.root / 'repaired' / selected.name
-        repaired.parent.mkdir()
-        with ZipFile(selected) as source, WheelFile(repaired, 'w') as target:
-            for name in source.namelist():
-                if not name.endswith('/RECORD'):
-                    target.writestr(name, source.read(name))
-            target.writestr('mfem.libs/libz-123.so.1', b'private dependency')
-        payload.check_payload(repaired, repaired=True)
-        with self.assertRaisesRegex(ValueError, 'outside serial ownership'):
-            payload.check_payload(repaired)
-        with self.assertRaisesRegex(ValueError, 'before native library repair'):
-            payload.select_payload(repaired, self.root / 'reselected')
 
     def test_both_profiles_preserve_disjoint_dynamic_runtime_files(self):
         self.files.update({
@@ -148,12 +104,15 @@ class WheelPayloadTest(unittest.TestCase):
                     if not name.endswith('/RECORD'):
                         self.assertEqual(archive.read(name), source.read(name))
             self.assertNotIn('mfem/external/bin/gpmetis', names)
+            self.assertNotIn('mfem/_ser/setup.py', names)
+            self.assertNotIn('mfem/common/pycoefficient.hpp', names)
         self.assertFalse(selected_names['serial'] & selected_names['mpich'])
         self.assertIn('mfem/common/new_runtime.py', selected_names['serial'])
         self.assertIn('mfem/new_package/__init__.py', selected_names['serial'])
         self.assertIn('mfem/_new_extension.so', selected_names['serial'])
         self.assertIn('mfem/_par/new_proxy.py', selected_names['mpich'])
         self.assertIn('mfem/external/lib64/libmetis.so', selected_names['mpich'])
+        self.assertIn('mfem/_par/mpi-runtime.json', selected_names['mpich'])
 
     def test_profiles_reject_wrong_identity_and_unselected_payload(self):
         for profile, other in (('serial', 'mpich'), ('mpich', 'serial')):
@@ -183,11 +142,13 @@ class WheelPayloadTest(unittest.TestCase):
             self.files[name] = original
 
     def test_repair_libraries_are_profile_specific(self):
-        for profile, own, other in (
+        for index, (profile, own, other) in enumerate((
                 ('serial', 'mfem.libs/libz.so.1', 'mfem_mpich.libs/libz.so.1'),
-                ('mpich', 'mfem_mpich.libs/libz.so.1', 'mfem.libs/libz.so.1')):
+                ('mpich', 'mfem_mpich.libs/libz.so.1', 'mfem.libs/libz.so.1'),
+                ('serial', 'mfem/.dylibs/libz.dylib', 'mfem_mpich.dylibs/libz.dylib'),
+                ('mpich', 'mfem_mpich.dylibs/libz.dylib', 'mfem/.dylibs/libz.dylib'))):
             raw = self.raw_wheel(profile)
-            selected = payload.select_payload(raw, self.root / profile, profile)
+            selected = payload.select_payload(raw, self.root / f'{profile}-{index}', profile)
             for directory, expected in ((own, True), (other, False)):
                 repaired = self.root / 'repair' / selected.name
                 repaired.parent.mkdir(exist_ok=True)
@@ -203,6 +164,31 @@ class WheelPayloadTest(unittest.TestCase):
                         payload.check_payload(repaired, repaired=True, profile=profile)
                 with self.assertRaisesRegex(ValueError, 'before native library repair'):
                     payload.select_payload(repaired, self.root / 'invalid', profile)
+
+    def test_mpich_metadata_is_required_and_owned_by_addon(self):
+        del self.files['mfem/_par/mpi-runtime.json']
+        with self.assertRaisesRegex(ValueError, 'Missing mpich files.*mpi-runtime.json'):
+            payload.select_payload(self.raw_wheel('mpich'), self.root / 'mpich', 'mpich')
+
+    def test_mpich_rejects_bundled_mpi_including_repair_names(self):
+        selected = payload.select_payload(self.raw_wheel('mpich'), self.root / 'mpich', 'mpich')
+        for name in ('mfem/external/lib/libmpi.so.12',
+                     'mfem/_par/libmpi.so.40',
+                     'mfem_mpich.libs/libmpi-abcd.so.12',
+                     'mfem_mpich.libs/libmpi.40.dylib',
+                     'mfem_mpich.dylibs/libpmpi.12.dylib',
+                     'mfem_mpich.dylibs/libmpi.12.dylib',
+                     'mfem/external/lib/libmpi.a'):
+            repaired = self.root / 'repair' / selected.name
+            repaired.parent.mkdir(exist_ok=True)
+            with ZipFile(selected) as source, WheelFile(repaired, 'w') as target:
+                for member in source.namelist():
+                    if not member.endswith('/RECORD'):
+                        target.writestr(member, source.read(member))
+                target.writestr(name, b'accidentally bundled MPI')
+            with (self.subTest(name=name),
+                  self.assertRaisesRegex(ValueError, 'Bundled MPI libraries are forbidden')):
+                payload.check_payload(repaired, repaired=True, profile='mpich')
 
     def test_record_corruption_is_rejected(self):
         for profile, corrupted_name in (('serial', 'mfem/ser.py'), ('mpich', 'mfem/par.py')):

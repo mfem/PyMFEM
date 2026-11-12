@@ -1,10 +1,12 @@
 """
 Select the serial or MPICH release payload before native library repair.
 
-Usage: python _build_system/select_wheel_payload.py RAW.whl --profile serial
+Usage: python _build_system/distribution/select_wheel_payload.py RAW.whl --profile serial
        --output-dir selected-wheels
 Check a selected or repaired artifact with --check instead of --output-dir.
-Requires wheel; does not import PyMFEM or the native build machinery.
+After native repair, use --normalize-rpaths --output-dir FINAL_DIR.
+Requires wheel; Linux uses readelf/patchelf, macOS uses delocate/Xcode tools;
+does not import PyMFEM or the native build machinery.
 """
 
 import argparse
@@ -29,6 +31,9 @@ BUILD_FILES = {
     'mfem/common/generate_lininteg_ext.py',
 }
 BUILD_SUFFIXES = {'.i', '.h', '.hpp', '.c', '.cpp', '.cxx', '.pyc'}
+MACHO_MAGIC = {b'\xcf\xfa\xed\xfe', b'\xfe\xed\xfa\xcf',
+               b'\xca\xfe\xba\xbe', b'\xbe\xba\xfe\xca',
+               b'\xca\xfe\xba\xbf', b'\xbf\xba\xfe\xca'}
 
 
 def native_library(name):
@@ -43,6 +48,8 @@ def runtime_owner(name):
     """
     Classify dynamically discovered runtime files and explicit build inputs.
     """
+    if name == 'mfem/_par/mpi-runtime.json':
+        return 'mpich'
     if name.startswith('mfem/external/bin/'):
         return 'excluded'
     if name.startswith('mfem/external/ser/'):
@@ -98,15 +105,16 @@ PROFILES = {
         'owns': lambda name: runtime_owner(name) == 'serial',
         'repair_dirs': ('mfem.libs/', 'mfem/.dylibs/'),
         'required': {'mfem/__init__.py', 'mfem/__sha__.py', 'mfem/ser.py',
-                     'mfem/_ser/__init__.py'},
+                     'mfem/_ser/__init__.py', 'mfem/common/find_libmpi.py',
+                     'mfem/common/check_parallel.py'},
         'components': required_components('serial'),
     },
     'mpich': {
         'project': 'mfem-mpich',
         'owns': lambda name: runtime_owner(name) == 'mpich',
-        # Add a macOS repair directory only after delocate validation.
-        'repair_dirs': ('mfem_mpich.libs/',),
-        'required': {'mfem/par.py', 'mfem/_par/__init__.py', 'mfem/_par/gslib.py'},
+        'repair_dirs': ('mfem_mpich.libs/', 'mfem_mpich.dylibs/'),
+        'required': {'mfem/par.py', 'mfem/_par/__init__.py', 'mfem/_par/gslib.py',
+                     'mfem/_par/mpi-runtime.json'},
         'components': required_components('mpich'),
     },
 }
@@ -185,12 +193,91 @@ def read_wheel(wheel, profile='serial'):
         return dist_info, names
 
 
-def check_payload(wheel, repaired=False, profile='serial'):
+def elf_rpaths(path):
+    """
+    Read both ELF runtime-path tags, including empty search-path entries.
+    """
+    result = subprocess.run(['readelf', '--dynamic', '--wide', str(path)],
+                            check=True, capture_output=True, text=True)
+    return re.findall(r'\((RPATH|RUNPATH)\).*?\[([^\]]*)\]', result.stdout)
+
+
+def origin_path(entry):
+    """
+    Accept origin-anchored loader paths, without accepting bare relative paths.
+    """
+    return any(entry == token or entry.startswith(token + '/')
+               for token in ('$ORIGIN', '${ORIGIN}'))
+
+
+def check_wheel_rpaths(wheel, names):
+    """
+    Reject non-origin runtime paths in every ELF member, regardless of suffix.
+    """
+    with ZipFile(wheel) as archive, tempfile.TemporaryDirectory(prefix='pymfem-elf-') as root:
+        path = Path(root) / 'member'
+        for name in names:
+            with archive.open(name) as stream:
+                magic = stream.read(4)
+                if magic != b'\x7fELF':
+                    continue
+                with path.open('wb') as target:
+                    target.write(magic)
+                    shutil.copyfileobj(stream, target)
+            for tag, value in elf_rpaths(path):
+                invalid = [entry for entry in value.split(':') if not origin_path(entry)]
+                if invalid:
+                    raise ValueError(f'Non-origin {tag} in {name}: {invalid!r}')
+
+
+def macos_paths(path):
+    """
+    Read Mach-O dependency names and runtime paths with native delocate tools.
+    """
+    from delocate.tools import get_install_names, get_rpaths
+
+    return get_install_names(str(path)), get_rpaths(str(path))
+
+
+def macos_relative_path(path):
+    """
+    Accept loader-relative and executable-relative runtime search directories.
+    """
+    return path.startswith(('@loader_path/', '@executable_path/'))
+
+
+def check_wheel_macos_paths(wheel, names):
+    """
+    Reject build paths in Mach-O runtime paths and dependency names.
+    """
+    with ZipFile(wheel) as archive, tempfile.TemporaryDirectory(prefix='pymfem-macho-') as root:
+        path = Path(root) / 'member'
+        for name in names:
+            with archive.open(name) as stream:
+                magic = stream.read(4)
+                if magic not in MACHO_MAGIC:
+                    continue
+                path.write_bytes(magic + stream.read())
+            dependencies, rpaths = macos_paths(path)
+            invalid = [entry for entry in rpaths if not macos_relative_path(entry)]
+            invalid += [entry for entry in dependencies if not (
+                macos_relative_path(entry) or entry.startswith(
+                    ('@rpath/', '/usr/lib/', '/System/Library/')))]
+            if invalid:
+                raise ValueError(f'Non-relative macOS loader paths in {name}: {invalid!r}')
+
+
+def check_payload(wheel, repaired=False, profile='serial', check_rpaths=True):
     """
     Reject missing components and files outside the selected ownership rules.
     """
     definition = PROFILES[profile]
     dist_info, names = read_wheel(wheel, profile)
+    if profile == 'mpich':
+        forbidden = [name for name in names
+                     if PurePosixPath(name).name.startswith(('libmpi', 'libpmpi'))]
+        if forbidden:
+            raise ValueError('Bundled MPI libraries are forbidden:\n' + '\n'.join(forbidden))
     unexpected = [name for name in names
                   if not selected_file(name, dist_info, definition, repaired)]
     if unexpected:
@@ -201,6 +288,10 @@ def check_payload(wheel, repaired=False, profile='serial'):
     for description, predicate in definition['components']:
         if not any(predicate(name) for name in names):
             raise ValueError('Missing ' + description)
+    if repaired and check_rpaths:
+        check_wheel_rpaths(wheel, names)
+        if sys.platform == 'darwin':
+            check_wheel_macos_paths(wheel, names)
     return names
 
 
@@ -238,6 +329,63 @@ def select_payload(wheel, output_dir, profile='serial'):
         return destination
 
 
+def normalize_rpaths(wheel, output_dir, profile='serial'):
+    """
+    Strip build-time runtime paths after repair and repack with a fresh RECORD.
+    """
+    if sys.platform not in ('linux', 'darwin'):
+        raise ValueError('Runtime-path normalization requires Linux or macOS')
+    wheel, output_dir = Path(wheel).resolve(), Path(output_dir).resolve()
+    if output_dir == wheel.parent:
+        raise ValueError('Input wheel and output directory must be separate')
+    names = check_payload(wheel, repaired=True, profile=profile, check_rpaths=False)
+    with tempfile.TemporaryDirectory(prefix='pymfem-rpaths-') as temporary:
+        root = Path(temporary)
+        subprocess.run([sys.executable, '-m', 'wheel', 'unpack', str(wheel),
+                        '--dest', str(root / 'unpacked')], check=True)
+        unpacked, = (root / 'unpacked').iterdir()
+        changed = 0
+        for name in names:
+            path = unpacked / name
+            with path.open('rb') as stream:
+                magic = stream.read(4)
+            if magic in MACHO_MAGIC and sys.platform == 'darwin':
+                _, rpaths = macos_paths(path)
+                invalid = set(entry for entry in rpaths if not macos_relative_path(entry))
+                for entry in invalid:
+                    subprocess.run(['install_name_tool', '-delete_rpath', entry, str(path)], check=True)
+                if invalid:
+                    subprocess.run(['codesign', '--force', '--sign', '-', str(path)], check=True)
+                    changed += 1
+                continue
+            if magic != b'\x7fELF':
+                continue
+            tags = elf_rpaths(path)
+            if all(origin_path(entry) for _, value in tags for entry in value.split(':')):
+                continue
+            # RUNPATH supersedes RPATH when both tags are present. Retain the
+            # effective search order rather than activating an ignored RPATH.
+            values = dict(tags)
+            current = values.get('RUNPATH', values.get('RPATH', ''))
+            kept = ':'.join(entry for entry in current.split(':') if origin_path(entry))
+            subprocess.run(['patchelf', '--remove-rpath', str(path)], check=True)
+            if kept:
+                subprocess.run(['patchelf', '--set-rpath', kept, str(path)], check=True)
+            changed += 1
+        packed = root / 'packed'
+        packed.mkdir()
+        subprocess.run([sys.executable, '-m', 'wheel', 'pack', str(unpacked),
+                        '--dest-dir', str(packed)], check=True)
+        normalized, = packed.glob('*.whl')
+        check_payload(normalized, repaired=True, profile=profile)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        destination = output_dir / normalized.name
+        with destination.open('xb') as target, normalized.open('rb') as source:
+            shutil.copyfileobj(source, target)
+        print(f'Normalized runtime paths in {changed} native members')
+        return destination
+
+
 def main():
     """
     Select a raw wheel or check the final repaired wheel's ownership and RECORD.
@@ -248,14 +396,19 @@ def main():
     action = parser.add_mutually_exclusive_group(required=True)
     action.add_argument('--output-dir', type=Path)
     action.add_argument('--check', action='store_true')
+    parser.add_argument('--normalize-rpaths', action='store_true',
+                        help='With --output-dir, normalize an already repaired native wheel')
     args = parser.parse_args()
+    if args.normalize_rpaths and args.check:
+        parser.error('--normalize-rpaths requires --output-dir')
     try:
         if args.check:
             names = check_payload(args.wheel, repaired=True, profile=args.profile)
             print(f'Validated {args.profile} payload: {len(names)} files in {args.wheel}')
         else:
-            print(select_payload(args.wheel, args.output_dir, profile=args.profile))
-    except (ValueError, OSError) as error:
+            operation = normalize_rpaths if args.normalize_rpaths else select_payload
+            print(operation(args.wheel, args.output_dir, profile=args.profile))
+    except (ValueError, OSError, subprocess.CalledProcessError) as error:
         parser.exit(1, f'{error}\n')
 
 
