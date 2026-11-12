@@ -76,7 +76,8 @@ def library_abi(path):
 
 def mpi_configuration():
     """
-    Describe loaded pip MPI, or return None when no pip MPI package is installed.
+    Describe loaded MPI and pip provider metadata.
+    Return None when no pip MPI package is installed.
     """
     packages = []
     for name in ('mpich', 'openmpi'):
@@ -92,11 +93,6 @@ def mpi_configuration():
     paths = loaded_mpi_libraries()
     if len(paths) != 1:
         raise RuntimeError(f'Expected one loaded core MPI library, found {paths}')
-    owned = {Path(package.locate_file(file)).resolve() for file in package.files or ()
-             if Path(file).name.startswith('libmpi')}
-    if any(Path(path).resolve() not in owned for path in paths):
-        raise RuntimeError(f'Loaded MPI {paths} does not belong to the installed '
-                           f'{package.metadata["Name"]} Python package')
     from mpi4py import MPI
 
     return {'schema': 1, 'platform': platform.system(),
