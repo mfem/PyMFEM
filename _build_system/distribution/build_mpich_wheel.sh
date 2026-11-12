@@ -5,13 +5,16 @@ script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 source "$script_dir/wheel_build_common.sh"
 
 usage() {
-    echo "Usage: bash $0 --work-dir NEW_DIR --base-wheel FILE [--plat LINUX_PLATFORM]"
+    echo "Usage: bash $0 NEW_DIR BASE_WHEEL [--plat LINUX_PLATFORM]"
 }
-work= base= plat=
+[[ ${1:-} != -h && ${1:-} != --help ]] || { usage; exit 0; }
+[[ $# -ge 2 ]] || { usage >&2; exit 1; }
+work=$1
+base=$2
+plat=
+shift 2
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --work-dir) work=${2:?Missing work directory}; shift 2 ;;
-        --base-wheel) base=${2:?Missing base wheel}; shift 2 ;;
         --plat) plat=${2:?Missing platform}; shift 2 ;;
         -h|--help) usage; exit 0 ;;
         *) echo "Unknown argument: $1" >&2; usage >&2; exit 1 ;;

@@ -41,10 +41,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: arm64
+
       - name: Check build architecture
         run: test "$(uname -m)" = arm64
+
       - name: Install tools and pip MPICH
         run: pip install --upgrade pip wheel packaging 'delocate==0.13.0' twine swig 'mpich==5.0.2' 'mpi4py==4.1.2'
+
       - name: Set candidate version
         run: |
           python - <<'PY'
@@ -60,10 +63,12 @@ jobs:
               assert count == 1
               path.write_text(text)
           PY
+
       - name: Build and validate the serial wheel
-        run: bash _build_system/distribution/build_serial_wheel.sh --work-dir "$RUNNER_TEMP/serial-build"
+        run: bash _build_system/distribution/build_serial_wheel.sh "$RUNNER_TEMP/serial-build"
+
       - name: Build and validate the MPICH plus GSLIB wheel pair
-        run: bash _build_system/distribution/build_mpich_wheel.sh --base-wheel "$RUNNER_TEMP"/serial-build/mfem-*.whl --work-dir "$RUNNER_TEMP/mpich-build"
+        run: bash _build_system/distribution/build_mpich_wheel.sh "$RUNNER_TEMP/mpich-build" "$RUNNER_TEMP"/serial-build/mfem-*.whl
       - uses: actions/upload-artifact@v4
         with:
           name: macos-arm64-pair-py${{ matrix.python-version }}
@@ -71,6 +76,7 @@ jobs:
             ${{ runner.temp }}/serial-build/*.whl
             ${{ runner.temp }}/mpich-build/*.whl
           if-no-files-found: error
+
       - name: Save build and validation logs
         if: always()
         uses: actions/upload-artifact@v4
@@ -96,11 +102,13 @@ jobs:
           pattern: macos-arm64-pair-py*
           merge-multiple: true
           path: dist
+
       - name: Check matching macOS wheel coverage
         run: |
           pip install packaging twine
           python _build_system/distribution/check_release.py dist --platform macosx_14_0_arm64
           twine check dist/*.whl
+
       - uses: actions/upload-artifact@v4
         with:
           name: macos-arm64-release
@@ -119,6 +127,7 @@ jobs:
         with:
           name: macos-arm64-release
           path: dist
+
       - name: Upload validated wheel pairs
         env:
           TWINE_USERNAME: __token__
@@ -145,6 +154,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: arm64
+
       - name: Download exact candidates and validate the public extra
         run: |
           set -euo pipefail
@@ -156,6 +166,7 @@ jobs:
           fi
           pip download --index-url "$index" --no-deps --only-binary=:all: --dest downloaded "mfem==$version" "mfem-mpich==$version"
           python _build_system/distribution/validate_mpich_pair.py downloaded/mfem-*.whl downloaded/mfem_mpich-*.whl --work-dir "$RUNNER_TEMP/downloaded-validation" --examples-dir examples --mesh data/star.mesh 2>&1 | tee downloaded-validation.log
+
       - name: Save downloaded-pair validation
         if: always()
         uses: actions/upload-artifact@v4

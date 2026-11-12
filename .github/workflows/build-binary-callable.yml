@@ -76,6 +76,7 @@ jobs:
       PYMFEM_BUILD_NCPU: '2'
     steps:
       - uses: actions/checkout@v4
+
       - name: Install build tools and MPICH
         run: |
           set -euo pipefail
@@ -83,6 +84,7 @@ jobs:
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           dnf install -y zlib-devel
           pip install --only-binary=:all: --upgrade pip wheel packaging auditwheel patchelf twine swig 'mpich==5.0.2' 'mpi4py==4.1.2'
+
       - name: Use the source distribution version
         run: |
           python - <<'PY'
@@ -95,10 +97,13 @@ jobs:
           assert count == 1
           path.write_text(text)
           PY
+
       - name: Build and validate the serial wheel
-        run: bash _build_system/distribution/build_serial_wheel.sh --work-dir "$RUNNER_TEMP/serial-build"
+        run: bash _build_system/distribution/build_serial_wheel.sh "$RUNNER_TEMP/serial-build"
+
       - name: Build and validate the MPICH wheel pair
-        run: bash _build_system/distribution/build_mpich_wheel.sh --base-wheel "$RUNNER_TEMP"/serial-build/mfem-*.whl --work-dir "$RUNNER_TEMP/mpich-build"
+        run: bash _build_system/distribution/build_mpich_wheel.sh "$RUNNER_TEMP/mpich-build" "$RUNNER_TEMP"/serial-build/mfem-*.whl
+
       - uses: actions/upload-artifact@v4
         with:
           name: linux-pair-${{ matrix.pythonpath }}
@@ -106,6 +111,7 @@ jobs:
             ${{ runner.temp }}/serial-build/*.whl
             ${{ runner.temp }}/mpich-build/*.whl
           if-no-files-found: error
+
       - name: Save build and validation logs
         if: always()
         uses: actions/upload-artifact@v4
@@ -135,6 +141,7 @@ jobs:
         with:
           name: linux-sdist
           path: dist
+
       - name: Check complete matching release coverage
         run: |
           pip install packaging twine
@@ -158,6 +165,7 @@ jobs:
         with:
           name: linux-release
           path: dist
+
       - name: Upload the validated release
         env:
           TWINE_USERNAME: __token__

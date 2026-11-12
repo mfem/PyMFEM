@@ -29,12 +29,14 @@ Set the desired version in `mfem/__init__.py`, then build both wheels:
 
 ```bash
 version=$(python -c 'import mfem; print(mfem.__version__)')
+# create serial wheel. pass workdirectory where serial wheel will be created.
 bash _build_system/distribution/build_serial_wheel.sh \
-    --work-dir /tmp/pymfem-serial-candidate
+    /tmp/pymfem-serial-candidate
 
+# create parallel wheel. pass workdirectory and serial wheel created abovel.
 bash _build_system/distribution/build_mpich_wheel.sh \
-    --work-dir /tmp/pymfem-mpich-candidate \
-    --base-wheel /tmp/pymfem-serial-candidate/mfem-*.whl
+    /tmp/pymfem-mpich-candidate \
+    /tmp/pymfem-serial-candidate/mfem-*.whl
 ```
 
 Use new work directories outside the checkout. Each script copies the checkout,
