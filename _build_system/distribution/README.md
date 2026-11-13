@@ -94,7 +94,8 @@ target; native macOS build and runtime validation remain pending.
 
 ### Validation
 The validator creates the runtime venv, installs dependencies from PyPI, and
-checks serial/parallel solves, GSLIB, MPI, and uninstall/reinstall behavior.
+checks serial/parallel Python solves, a packaged C++ parallel example, GSLIB,
+MPI, and uninstall/reinstall behavior.
 Constraints keep `mfem` and `mfem-mpich` on the supplied wheel files during
 extra installation and upgrade validation, even if PyPI has the same versions.
 Results are saved in `/tmp/pymfem-downloaded-validation/validation.json`.

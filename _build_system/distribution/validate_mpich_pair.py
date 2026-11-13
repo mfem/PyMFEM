@@ -91,6 +91,9 @@ def main():
     shutil.copyfile(args.mesh, work / 'star.mesh')
 
     def smoke():
+        run([runtime / 'bin/mpiexec', '-n', '2',
+             Path(scheme['platlib']) / 'mfem/external/par/examples/ex1p',
+             '-m', work / 'star.mesh', '-no-vis'])
         run([runtime / 'bin/mpiexec', '-n', '2', python, '-I',
              work / 'check_mpich_install.py'])
 

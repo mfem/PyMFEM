@@ -38,7 +38,8 @@ class WheelPayloadTest(unittest.TestCase):
             'mfem/_par/__init__.py': b'# parallel',
             'mfem/_par/mpi-runtime.json': json.dumps({
                 'schema': 2, 'libraries': ['libmpi.so.12', 'libpmpi.12.dylib',
-                                         'libmpi.12.dylib', 'libfabric.so.1']}).encode(),
+                                         'libmpi.12.dylib', 'libfabric.so.1'],
+                'library_dirs': ['../../../lib']}).encode(),
             'mfem/_par/_mesh.so': b'parallel extension',
             'mfem/_par/gslib.py': b'gslib proxy',
             'mfem/_par/_gslib.so': b'gslib extension',

@@ -15,6 +15,7 @@ import csv
 import hashlib
 import io
 import json
+import posixpath
 import re
 import shutil
 import subprocess
@@ -211,7 +212,16 @@ def origin_path(entry):
                for token in ('$ORIGIN', '${ORIGIN}'))
 
 
-def check_wheel_rpaths(wheel, names):
+def mpi_rpaths(name, directories, token):
+    """
+    Anchor package-recorded MPI directories at a native wheel member's location.
+    Both paths are relative to the installed site-packages directory.
+    """
+    prefix = '../' * len(PurePosixPath(name).parent.parts)
+    return [token + '/' + posixpath.normpath(prefix + directory) for directory in directories]
+
+
+def check_wheel_rpaths(wheel, names, mpi_dirs=()):
     """
     Reject non-origin runtime paths in every ELF member, regardless of suffix.
     """
@@ -225,10 +235,16 @@ def check_wheel_rpaths(wheel, names):
                 with path.open('wb') as target:
                     target.write(magic)
                     shutil.copyfileobj(stream, target)
-            for tag, value in elf_rpaths(path):
+            tags = elf_rpaths(path)
+            for tag, value in tags:
                 invalid = [entry for entry in value.split(':') if not origin_path(entry)]
                 if invalid:
                     raise ValueError(f'Non-origin {tag} in {name}: {invalid!r}')
+            values = dict(tags)
+            current = values.get('RUNPATH', values.get('RPATH', '')).split(':')
+            missing = set(mpi_rpaths(name, mpi_dirs, '$ORIGIN')) - set(current)
+            if missing:
+                raise ValueError(f'Missing MPI runtime paths in {name}: {sorted(missing)}')
 
 
 def macos_paths(path):
@@ -247,7 +263,7 @@ def macos_relative_path(path):
     return path.startswith(('@loader_path/', '@executable_path/'))
 
 
-def check_wheel_macos_paths(wheel, names):
+def check_wheel_macos_paths(wheel, names, mpi_dirs=()):
     """
     Reject build paths in Mach-O runtime paths and dependency names.
     """
@@ -266,6 +282,9 @@ def check_wheel_macos_paths(wheel, names):
                     ('@rpath/', '/usr/lib/', '/System/Library/')))]
             if invalid:
                 raise ValueError(f'Non-relative macOS loader paths in {name}: {invalid!r}')
+            missing = set(mpi_rpaths(name, mpi_dirs, '@loader_path')) - set(rpaths)
+            if missing:
+                raise ValueError(f'Missing MPI runtime paths in {name}: {sorted(missing)}')
 
 
 def check_payload(wheel, repaired=False, profile='serial', check_rpaths=True):
@@ -274,6 +293,7 @@ def check_payload(wheel, repaired=False, profile='serial', check_rpaths=True):
     """
     definition = PROFILES[profile]
     dist_info, names = read_wheel(wheel, profile)
+    mpi_dirs = []
     if profile == 'mpich' and 'mfem/_par/mpi-runtime.json' in names:
         with ZipFile(wheel) as archive:
             config = json.loads(archive.read('mfem/_par/mpi-runtime.json'))
@@ -282,6 +302,11 @@ def check_payload(wheel, repaired=False, profile='serial', check_rpaths=True):
                 not all(isinstance(name, str) and PurePosixPath(name).name == name
                         for name in config['libraries'])):
             raise ValueError('Invalid supplied MPI library inventory')
+        mpi_dirs = config.get('library_dirs')
+        if (not isinstance(mpi_dirs, list) or not mpi_dirs or
+                not all(isinstance(directory, str) and directory and
+                        not PurePosixPath(directory).is_absolute() for directory in mpi_dirs)):
+            raise ValueError('Invalid supplied MPI library directories')
         # Strip version/type suffixes, then allow repair's optional hash suffix.
         stems = {re.split(r'\.so(?:\.|$)|(?:\.\d+)*\.dylib$', library)[0]
                  for library in config['libraries']}
@@ -302,9 +327,9 @@ def check_payload(wheel, repaired=False, profile='serial', check_rpaths=True):
         if not any(predicate(name) for name in names):
             raise ValueError('Missing ' + description)
     if repaired and check_rpaths:
-        check_wheel_rpaths(wheel, names)
+        check_wheel_rpaths(wheel, names, mpi_dirs)
         if sys.platform == 'darwin':
-            check_wheel_macos_paths(wheel, names)
+            check_wheel_macos_paths(wheel, names, mpi_dirs)
     return names
 
 
@@ -344,7 +369,7 @@ def select_payload(wheel, output_dir, profile='serial'):
 
 def normalize_rpaths(wheel, output_dir, profile='serial'):
     """
-    Strip build-time runtime paths after repair and repack with a fresh RECORD.
+    Replace build paths with relative internal and pip MPI paths after repair.
     """
     if sys.platform not in ('linux', 'darwin'):
         raise ValueError('Runtime-path normalization requires Linux or macOS')
@@ -352,6 +377,10 @@ def normalize_rpaths(wheel, output_dir, profile='serial'):
     if output_dir == wheel.parent:
         raise ValueError('Input wheel and output directory must be separate')
     names = check_payload(wheel, repaired=True, profile=profile, check_rpaths=False)
+    mpi_dirs = []
+    if profile == 'mpich':
+        with ZipFile(wheel) as archive:
+            mpi_dirs = json.loads(archive.read('mfem/_par/mpi-runtime.json'))['library_dirs']
     with tempfile.TemporaryDirectory(prefix='pymfem-rpaths-') as temporary:
         root = Path(temporary)
         subprocess.run([sys.executable, '-m', 'wheel', 'unpack', str(wheel),
@@ -365,22 +394,29 @@ def normalize_rpaths(wheel, output_dir, profile='serial'):
             if magic in MACHO_MAGIC and sys.platform == 'darwin':
                 _, rpaths = macos_paths(path)
                 invalid = set(entry for entry in rpaths if not macos_relative_path(entry))
+                added = [entry for entry in mpi_rpaths(name, mpi_dirs, '@loader_path')
+                         if entry not in rpaths]
                 for entry in invalid:
                     subprocess.run(['install_name_tool', '-delete_rpath', entry, str(path)], check=True)
-                if invalid:
+                for entry in added:
+                    subprocess.run(['install_name_tool', '-add_rpath', entry, str(path)], check=True)
+                if invalid or added:
                     subprocess.run(['codesign', '--force', '--sign', '-', str(path)], check=True)
                     changed += 1
                 continue
             if magic != b'\x7fELF':
                 continue
             tags = elf_rpaths(path)
-            if all(origin_path(entry) for _, value in tags for entry in value.split(':')):
-                continue
             # RUNPATH supersedes RPATH when both tags are present. Retain the
             # effective search order rather than activating an ignored RPATH.
             values = dict(tags)
             current = values.get('RUNPATH', values.get('RPATH', ''))
-            kept = ':'.join(entry for entry in current.split(':') if origin_path(entry))
+            kept = [entry for entry in current.split(':') if origin_path(entry)]
+            kept += [entry for entry in mpi_rpaths(name, mpi_dirs, '$ORIGIN') if entry not in kept]
+            kept = ':'.join(kept)
+            if kept == current and all(origin_path(entry) for _, value in tags
+                                       for entry in value.split(':')):
+                continue
             subprocess.run(['patchelf', '--remove-rpath', str(path)], check=True)
             if kept:
                 subprocess.run(['patchelf', '--set-rpath', kept, str(path)], check=True)

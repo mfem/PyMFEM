@@ -43,7 +43,7 @@ from build_globals import bglb
 
 def record_supplied_mpi(path):
     """
-    Record shared libraries supplied by the installed pip MPI package.
+    Record supplied shared libraries and their directories relative to site-packages.
     Remove stale configuration when no pip MPI package is installed.
     """
     path = Path(path)
@@ -62,15 +62,17 @@ def record_supplied_mpi(path):
     
     package = packages[0]
     name = package.metadata['Name'].lower()
-    libraries = sorted({entry.name for entry in package.files or ()
-                        if entry.name.endswith(('.so', '.dylib')) or '.so.' in entry.name})
+    files = [entry for entry in package.files or ()
+             if entry.name.endswith(('.so', '.dylib')) or '.so.' in entry.name]
+    libraries = sorted({entry.name for entry in files})
 
     if not libraries:
         raise RuntimeError(f'No shared libraries found in the {name} Python package')
     config = {'schema': 2, 'platform': platform.system(),
               'package': name, 'version': package.version,
               'provider': {'mpich': 'MPICH', 'openmpi': 'Open MPI'}[name],
-              'libraries': libraries}
+              'libraries': libraries,
+              'library_dirs': sorted({entry.parent.as_posix() for entry in files})}
     
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(config, indent=2) + '\n', encoding='utf-8')
