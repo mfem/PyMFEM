@@ -99,10 +99,10 @@ jobs:
           PY
 
       - name: Build and validate the serial wheel
-        run: bash _build_system/distribution/build_serial_wheel.sh "$RUNNER_TEMP/serial-build"
+        run: bash _build_system/distribution/build_serial_wheel.sh "$RUNNER_TEMP/serial-build" --plat manylinux_2_28_x86_64
 
       - name: Build and validate the MPICH wheel pair
-        run: bash _build_system/distribution/build_mpich_wheel.sh "$RUNNER_TEMP/mpich-build" "$RUNNER_TEMP"/serial-build/mfem-*.whl
+        run: bash _build_system/distribution/build_mpich_wheel.sh "$RUNNER_TEMP/mpich-build" "$RUNNER_TEMP"/serial-build/mfem-*.whl --plat manylinux_2_28_x86_64
 
       - uses: actions/upload-artifact@v4
         with:

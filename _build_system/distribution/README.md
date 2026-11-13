@@ -1,10 +1,5 @@
 Build and validate the serial and MPICH wheels locally using the same scripts
 as CI. Run from the repository root with Python 3.11–3.14.
-
-On Linux, install a C/C++ compiler, `readelf`, and zlib development headers.
-For the CI platform, use `quay.io/pypa/manylinux_2_28_x86_64`.
-On macOS, install Xcode command-line tools with `xcode-select --install`.
-
 Create and activate a clean build environment, then install the tools and MPI:
 
 ```bash
@@ -31,16 +26,24 @@ Set the desired version in `mfem/__init__.py`, then build both wheels:
 version=$(python -c 'import mfem; print(mfem.__version__)')
 # create serial wheel. pass workdirectory where serial wheel will be created.
 bash _build_system/distribution/build_serial_wheel.sh \
-    /tmp/pymfem-serial-candidate
+    /tmp/pymfem-serial-candidate --plat PLATFORM
 
 # create parallel wheel. pass workdirectory and serial wheel created abovel.
 bash _build_system/distribution/build_mpich_wheel.sh \
     /tmp/pymfem-mpich-candidate \
-    /tmp/pymfem-serial-candidate/mfem-*.whl
+    /tmp/pymfem-serial-candidate/mfem-*.whl --plat PLATFORM
 ```
+On Linux, PLATFORM default is `manylinux_2_28` on hosts with glibc 2.28 or older.
+On newer hosts, they use auditwheel's `auto` mode to select a compatible tag
+from the built wheel.
+In the current release CI, `manylinux_2_28_x86_64` and `quay.io/pypa/manylinux_2_28_x86_64`
+is used.
+On macOS, install Xcode command-line tools with `xcode-select --install`.
 
-Use new work directories outside the checkout. Each script copies the checkout,
-builds and validates there, and places the final wheel and `build.log` directly
+Use new work directories outside the checkout. Each script copies the current
+sources, including local edits, without build caches, compiled libraries,
+generated SWIG wrappers, or downloaded external dependencies. It builds and
+validates there, and places the final wheel and `build.log` directly
 in its work directory. Builds default to two workers; set `PYMFEM_BUILD_NCPU`
 to change this.
 macOS builds use the native architecture and target macOS 14 by default

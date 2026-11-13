@@ -20,8 +20,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 prepare_build
-mkdir "$work/source"
-cp -a "$repo/." "$work/source/"
+copy_build_source
 cd "$work/source"
 set -x
 

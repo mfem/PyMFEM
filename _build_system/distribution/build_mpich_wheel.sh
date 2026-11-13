@@ -26,8 +26,7 @@ mpi_bin=$(python -c 'import sys; from pathlib import Path; print(Path(sys.execut
 export MPICC=${MPICC:-$mpi_bin/mpicc}
 export MPICXX=${MPICXX:-$mpi_bin/mpicxx}
 prepare_build
-mkdir "$work/source"
-cp -a "$repo/." "$work/source/"
+copy_build_source
 cd "$work/source"
 set -x
 
