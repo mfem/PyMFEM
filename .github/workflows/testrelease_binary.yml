@@ -4,15 +4,25 @@ on:
   push:
     tags: ["test_*"]
   workflow_dispatch:
+    inputs:
+      candidate-version:
+        description: Fresh candidate version when publishing to TestPyPI.
+        type: string
+        default: ''
+      publish-testpypi:
+        description: Upload the validated release and test downloaded wheels.
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
 jobs:
-  linux-release:
-    uses: ./.github/workflows/build-binary-callable.yml
+  binary-release:
+    uses: ./.github/workflows/binary-wheel-publish-callable.yaml
     with:
-      publish: ${{ github.event_name == 'push' }}
+      publish: ${{ github.event_name == 'push' || inputs.publish-testpypi }}
+      candidate-version: ${{ inputs.candidate-version || '' }}
       repository-url: https://test.pypi.org/legacy/
     secrets:
       upload-token: ${{ secrets.TEST_PYPI_TOKEN }}

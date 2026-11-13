@@ -1,0 +1,325 @@
+name: Binary wheel publish (callable)
+
+on:
+  workflow_call:
+    inputs:
+      publish:
+        description: Publish after Linux, macOS, and the sdist pass validation.
+        type: boolean
+        default: false
+      candidate-version:
+        description: Optional shared candidate version for this build.
+        type: string
+        default: ''
+      repository-url:
+        description: PyPI or TestPyPI upload endpoint.
+        type: string
+        required: true
+    secrets:
+      upload-token:
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  sdist:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set candidate version
+        id: version
+        env:
+          CANDIDATE_VERSION: ${{ inputs.candidate-version }}
+        run: |
+          pip install build packaging
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+          from packaging.version import Version
+          path = Path('mfem/__init__.py')
+          if os.environ['CANDIDATE_VERSION']:
+              version = str(Version(os.environ['CANDIDATE_VERSION']))
+              text, count = re.subn(r'^__version__ = .*$', '__version__ = ' + repr(version),
+                                    path.read_text(), flags=re.MULTILINE)
+              assert count == 1
+              path.write_text(text)
+          import mfem
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('version=' + mfem.__version__ + '\n')
+          PY
+      - name: Build base source distribution
+        run: python -m build --sdist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-sdist
+          path: dist/*.tar.gz
+          if-no-files-found: error
+
+  linux-wheels:
+    needs: sdist
+    runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux_2_28_x86_64
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        pythonpath: [cp311-cp311, cp312-cp312, cp313-cp313, cp314-cp314]
+    env:
+      RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
+      PYMFEM_BUILD_NCPU: '2'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build tools and MPICH
+        run: |
+          set -euo pipefail
+          echo "/opt/python/${{ matrix.pythonpath }}/bin" >> "$GITHUB_PATH"
+          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+          dnf install -y zlib-devel
+          pip install --only-binary=:all: --upgrade pip wheel packaging auditwheel patchelf twine swig 'mpich==5.0.2' 'mpi4py==4.1.2'
+
+      - name: Use the source distribution version
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+          path = Path('mfem/__init__.py')
+          text, count = re.subn(r'^__version__ = .*$', '__version__ = ' + repr(os.environ['RELEASE_VERSION']),
+                                path.read_text(), flags=re.MULTILINE)
+          assert count == 1
+          path.write_text(text)
+          PY
+
+      - name: Build and validate the serial wheel
+        run: bash _build_system/distribution/build_serial_wheel.sh "$RUNNER_TEMP/serial-build" --plat manylinux_2_28_x86_64
+
+      - name: Build and validate the MPICH wheel pair
+        run: bash _build_system/distribution/build_mpich_wheel.sh "$RUNNER_TEMP/mpich-build" "$RUNNER_TEMP"/serial-build/mfem-*.whl --plat manylinux_2_28_x86_64
+
+      - name: Collect validated wheel pair
+        run: |
+          mkdir "$RUNNER_TEMP/wheel-pair"
+          cp "$RUNNER_TEMP"/serial-build/*.whl "$RUNNER_TEMP"/mpich-build/*.whl "$RUNNER_TEMP/wheel-pair/"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-pair-${{ matrix.pythonpath }}
+          path: ${{ runner.temp }}/wheel-pair/*.whl
+          if-no-files-found: error
+
+      - name: Save build and validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-logs-${{ matrix.pythonpath }}
+          path: |
+            ${{ runner.temp }}/serial-build/build.log
+            ${{ runner.temp }}/mpich-build/build.log
+            ${{ runner.temp }}/mpich-build/mpi-libraries.txt
+            ${{ runner.temp }}/mpich-build/validation/*.json
+          if-no-files-found: ignore
+
+  macos-wheels:
+    needs: sdist
+    runs-on: macos-14
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13', '3.14']
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '14.0'
+      CC: clang
+      CXX: clang++
+      RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: arm64
+
+      - name: Check build architecture
+        run: test "$(uname -m)" = arm64
+
+      - name: Install tools and pip MPICH
+        run: pip install --upgrade pip wheel packaging 'delocate==0.13.0' twine swig 'mpich==5.0.2' 'mpi4py==4.1.2'
+
+      - name: Use the source distribution version
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+          path = Path('mfem/__init__.py')
+          text, count = re.subn(r'^__version__ = .*$', '__version__ = ' + repr(os.environ['RELEASE_VERSION']),
+                                path.read_text(), flags=re.MULTILINE)
+          assert count == 1
+          path.write_text(text)
+          PY
+
+      - name: Build and validate the serial wheel
+        run: bash _build_system/distribution/build_serial_wheel.sh "$RUNNER_TEMP/serial-build"
+
+      - name: Build and validate the MPICH plus GSLIB wheel pair
+        run: bash _build_system/distribution/build_mpich_wheel.sh "$RUNNER_TEMP/mpich-build" "$RUNNER_TEMP"/serial-build/mfem-*.whl
+
+      - name: Collect validated wheel pair
+        run: |
+          mkdir "$RUNNER_TEMP/wheel-pair"
+          cp "$RUNNER_TEMP"/serial-build/*.whl "$RUNNER_TEMP"/mpich-build/*.whl "$RUNNER_TEMP/wheel-pair/"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-arm64-pair-py${{ matrix.python-version }}
+          path: ${{ runner.temp }}/wheel-pair/*.whl
+          if-no-files-found: error
+
+      - name: Save build and validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-arm64-logs-py${{ matrix.python-version }}
+          path: |
+            ${{ runner.temp }}/serial-build/build.log
+            ${{ runner.temp }}/mpich-build/build.log
+            ${{ runner.temp }}/mpich-build/mpi-libraries.txt
+            ${{ runner.temp }}/mpich-build/validation/*.json
+          if-no-files-found: ignore
+
+  release-check:
+    needs: [sdist, linux-wheels, macos-wheels]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: linux-pair-*
+          merge-multiple: true
+          path: dist/linux
+      - uses: actions/download-artifact@v4
+        with:
+          name: linux-sdist
+          path: dist/linux
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: macos-arm64-pair-py*
+          merge-multiple: true
+          path: dist/macos
+
+      - name: Check complete matching release coverage
+        run: |
+          pip install packaging twine
+          python _build_system/distribution/check_release.py dist/linux --platform manylinux_2_28_x86_64
+          python _build_system/distribution/check_release.py dist/macos --platform macosx_14_0_arm64
+          twine check dist/linux/* dist/macos/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: binary-release
+          path: |
+            dist/linux/*
+            dist/macos/*
+          if-no-files-found: error
+
+  publish:
+    needs: release-check
+    if: ${{ inputs.publish }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: binary-release
+          path: dist
+
+      - name: Upload the validated release
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.upload-token }}
+          TWINE_REPOSITORY_URL: ${{ inputs.repository-url }}
+          TWINE_NON_INTERACTIVE: '1'
+        run: |
+          pip install twine
+          twine upload dist/linux/* dist/macos/*
+
+  downloaded-linux-pair:
+    needs: [sdist, publish]
+    runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux_2_28_x86_64
+    strategy:
+      fail-fast: false
+      matrix:
+        pythonpath: [cp311-cp311, cp312-cp312, cp313-cp313, cp314-cp314]
+    env:
+      RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
+      REPOSITORY_URL: ${{ inputs.repository-url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download exact candidates and validate the public extra
+        run: |
+          set -euo pipefail
+          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+          pip install --upgrade pip wheel
+          index=https://pypi.org/simple/
+          if [[ "$REPOSITORY_URL" == *test.pypi.org* ]]; then
+            index=https://test.pypi.org/simple/
+          fi
+          pip download --index-url "$index" --no-deps --only-binary=:all: --dest downloaded "mfem==$RELEASE_VERSION" "mfem-mpich==$RELEASE_VERSION"
+          python _build_system/distribution/validate_mpich_pair.py downloaded/mfem-*.whl downloaded/mfem_mpich-*.whl --work-dir "$RUNNER_TEMP/downloaded-validation" --examples-dir examples --mesh data/star.mesh 2>&1 | tee downloaded-validation.log
+
+      - name: Save downloaded-pair validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-downloaded-logs-${{ matrix.pythonpath }}
+          path: downloaded-validation.log
+          if-no-files-found: ignore
+
+  downloaded-macos-pair:
+    needs: [sdist, publish]
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13', '3.14']
+    env:
+      RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
+      REPOSITORY_URL: ${{ inputs.repository-url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: arm64
+
+      - name: Download exact candidates and validate the public extra
+        run: |
+          set -euo pipefail
+          pip install --upgrade pip wheel 'delocate==0.13.0'
+          index=https://pypi.org/simple/
+          if [[ "$REPOSITORY_URL" == *test.pypi.org* ]]; then
+            index=https://test.pypi.org/simple/
+          fi
+          pip download --index-url "$index" --no-deps --only-binary=:all: --dest downloaded "mfem==$RELEASE_VERSION" "mfem-mpich==$RELEASE_VERSION"
+          python _build_system/distribution/validate_mpich_pair.py downloaded/mfem-*.whl downloaded/mfem_mpich-*.whl --work-dir "$RUNNER_TEMP/downloaded-validation" --examples-dir examples --mesh data/star.mesh 2>&1 | tee downloaded-validation.log
+
+      - name: Save downloaded-pair validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-downloaded-logs-py${{ matrix.python-version }}
+          path: downloaded-validation.log
+          if-no-files-found: ignore

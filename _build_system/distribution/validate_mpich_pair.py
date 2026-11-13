@@ -60,6 +60,9 @@ def main():
     version = base_info.split('-', 1)[1][:-len('.dist-info')]
     work = args.work_dir.resolve()
     work.mkdir(parents=True, exist_ok=False)
+    constraints = work / 'candidate-wheels.txt'
+    constraints.write_text(
+        f'mfem @ {base.as_uri()}\nmfem-mpich @ {addon.as_uri()}\n', encoding='utf-8')
     environment = os.environ.copy()
     for key in ('PYTHONPATH', 'LD_LIBRARY_PATH', 'DYLD_LIBRARY_PATH',
                 'DYLD_FALLBACK_LIBRARY_PATH'):
@@ -106,8 +109,8 @@ print(json.dumps(result))
 
     run(pip + ['install', '--only-binary=:all:', base])
     run([python, '-I', work / 'check_serial_install.py', work / 'ex1.py', work / 'star.mesh'])
-    run(pip + ['install', '--only-binary=:all:', '--find-links', base.parent,
-               '--find-links', addon.parent, f'mfem[mpich]=={version}'])
+    run(pip + ['install', '--only-binary=:all:', '--constraint', constraints,
+               f'mfem[mpich] @ {base.as_uri()}'])
     run([python, '-I', '-c',
          f'from importlib.metadata import version; assert version("mfem-mpich") == {version!r}'])
     run([python, '-I', '-m', 'mfem.common.find_libmpi', '--check'])

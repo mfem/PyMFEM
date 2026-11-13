@@ -26,6 +26,14 @@ def main():
     new_version = str(parse_wheel_filename(new_base.name)[1])
     assert parse_wheel_filename(old_base.name)[1] < parse_wheel_filename(new_base.name)[1]
     work.mkdir(parents=True, exist_ok=False)
+    constraints = {}
+    for label, directory, base in (('previous', previous, old_base),
+                                   ('current', current, new_base)):
+        addon, = directory.glob('mfem_mpich-*.whl')
+        path = work / f'{label}-wheels.txt'
+        path.write_text(
+            f'mfem @ {base.as_uri()}\nmfem-mpich @ {addon.as_uri()}\n', encoding='utf-8')
+        constraints[label] = path
     environment = os.environ.copy()
     for key in ('PYTHONPATH', 'LD_LIBRARY_PATH', 'DYLD_LIBRARY_PATH',
                 'DYLD_FALLBACK_LIBRARY_PATH'):
@@ -51,11 +59,11 @@ def main():
         run([work / 'runtime/bin/mpiexec', '-n', '2', python, '-I', work / 'check_mpich_install.py'])
         run([pip, 'check'])
 
-    run([pip, 'install', '--only-binary=:all:', '--find-links', previous,
-         f'mfem[mpich]=={old_version}'])
+    run([pip, 'install', '--only-binary=:all:', '--constraint', constraints['previous'],
+         f'mfem[mpich] @ {old_base.as_uri()}'])
     check(old_version)
-    run([pip, 'install', '--upgrade', '--only-binary=:all:', '--find-links', current,
-         f'mfem[mpich]=={new_version}'])
+    run([pip, 'install', '--upgrade', '--only-binary=:all:', '--constraint', constraints['current'],
+         f'mfem[mpich] @ {new_base.as_uri()}'])
     check(new_version)
     run([pip, 'install', '--force-reinstall', '--no-deps', old_base])
     run([python, '-I', '-c', '''try:
@@ -68,8 +76,8 @@ else:
 '''])
     broken = subprocess.run([str(pip), 'check'], cwd=work, env=environment)
     assert broken.returncode != 0, 'pip check accepted mismatched wheel versions'
-    run([pip, 'install', '--upgrade', '--only-binary=:all:', '--find-links', current,
-         f'mfem[mpich]=={new_version}'])
+    run([pip, 'install', '--upgrade', '--only-binary=:all:', '--constraint', constraints['current'],
+         f'mfem[mpich] @ {new_base.as_uri()}'])
     check(new_version)
     (work / 'validation.json').write_text(json.dumps({
         'previous': old_version, 'current': new_version, 'status': 'passed'}, indent=2) + '\n')
