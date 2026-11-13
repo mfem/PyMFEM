@@ -26,13 +26,6 @@ pip install "mfem[mpich]"
 pip install --upgrade "mfem[mpich]"
 ```
 
-This installs the serial bindings and matching parallel bindings with MPICH.
-Use `import mfem.ser` or `import mfem.par` in separate Python processes.
-The commands apply to releases publishing the extra; candidate validation
-is described in [_build_system/distribution](./_build_system/distribution/README.md).
-The same local wheel-building scripts now include a macOS path. Native
-macOS validation is pending before advertising parallel binary releases there.
-
 ### Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 
 The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See [INSTALL](INSTALL.md) for various other options
@@ -139,12 +132,19 @@ plt.show()
 
 
 ## License
-PyMFEM is licensed under BSD-3 license. All new contributions
-must be made under this license. See [License](LICENSE) for details.
 
-Please refer the developers' web sites for the external libraries
+PyMFEM is licensed under the BSD 3-Clause license. All new contributions
+must be made under this license. See [LICENSE](LICENSE) for details.
+
+Binary distributions include the licenses and notices for bundled libraries:
+[MFEM](Licenses/MFEM.txt) and, for parallel distributions,
+[HYPRE](Licenses/HYPRE.txt), [METIS](Licenses/METIS.txt), and
+[GSLIB](Licenses/GSLIB.txt). These libraries retain their respective licenses.
+
+For more information about external libraries, see:
+
 * MFEM: https://mfem.org/
-* Hypre: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
+* HYPRE: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
 * METIS: http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
-* libceed: https://github.com/CEED/libCEED
-* gslib: https://github.com/Nek5000/gslib
+* libCEED: https://github.com/CEED/libCEED
+* GSLIB: https://github.com/Nek5000/gslib

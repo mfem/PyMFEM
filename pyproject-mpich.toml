@@ -1,6 +1,7 @@
 [project]
 name = "mfem-mpich"
 license = "BSD-3-Clause"
+license-files = ["LICENSE", "Licenses/*.txt"]
 description = "MPICH parallel binary add-on for PyMFEM"
 dynamic = ["version", "dependencies"]
 readme = "README.md"

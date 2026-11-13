@@ -1,6 +1,7 @@
 [project]
 name = "mfem"
 license = "BSD-3-Clause"
+license-files = ["LICENSE", "Licenses/MFEM.txt"]
 description = "MFEM + PyMFEM (finite element method library)"
 dynamic = ["version", "optional-dependencies"]
 readme = "README.md"
