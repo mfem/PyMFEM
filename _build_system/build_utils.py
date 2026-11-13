@@ -15,13 +15,17 @@ import subprocess
 import multiprocessing
 import ssl
 import tarfile
+import json
+import platform
+from importlib import metadata
+from pathlib import Path
 from collections import namedtuple
 from shutil import which as find_command
 
 __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make_call", "chdir", "remove_files", "cpu_count",
            "make", "make_install", "download", "gitclone",
-           "record_mfem_sha", "cmake",
+           "record_mfem_sha", "record_supplied_mpi", "cmake",
            "get_numpy_inc", "get_mpi4py_inc", "get_mpi_wrapper_info",
            "find_libpath_from_prefix",
            "find_cuda_toolkit", "clean_so", ]
@@ -35,6 +39,43 @@ from build_globals import bglb
 # ----------------------------------------------------------------------------------------
 # Metadata
 # ----------------------------------------------------------------------------------------
+
+
+def record_supplied_mpi(path):
+    """
+    Record shared libraries supplied by the installed pip MPI package.
+    Remove stale configuration when no pip MPI package is installed.
+    """
+    path = Path(path)
+    path.unlink(missing_ok=True)
+    
+    packages = []
+    for name in ('mpich', 'openmpi'):
+        try:
+            packages.append(metadata.distribution(name))
+        except metadata.PackageNotFoundError:
+            pass
+    if not packages:
+        return None
+    if len(packages) != 1:
+        raise RuntimeError('Both mpich and openmpi Python packages are installed; keep one provider')
+    
+    package = packages[0]
+    name = package.metadata['Name'].lower()
+    libraries = sorted({entry.name for entry in package.files or ()
+                        if entry.name.endswith(('.so', '.dylib')) or '.so.' in entry.name})
+
+    if not libraries:
+        raise RuntimeError(f'No shared libraries found in the {name} Python package')
+    config = {'schema': 2, 'platform': platform.system(),
+              'package': name, 'version': package.version,
+              'provider': {'mpich': 'MPICH', 'openmpi': 'Open MPI'}[name],
+              'libraries': libraries}
+    
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(config, indent=2) + '\n', encoding='utf-8')
+
+    return config
 
 
 def read_mfem_tplflags(prefix):

@@ -28,12 +28,12 @@ Set the desired version in `mfem/__init__.py`, then build both wheels:
 version=$(python -c 'import mfem; print(mfem.__version__)')
 # create serial wheel. pass workdirectory where serial wheel will be created.
 bash _build_system/distribution/build_serial_wheel.sh \
-    /tmp/pymfem-serial-candidate --plat PLATFORM
+    /tmp/pymfem-serial-candidate
 
 # create parallel wheel. pass workdirectory and serial wheel created abovel.
 bash _build_system/distribution/build_mpich_wheel.sh \
     /tmp/pymfem-mpich-candidate \
-    /tmp/pymfem-serial-candidate/mfem-*.whl --plat PLATFORM
+    /tmp/pymfem-serial-candidate/mfem-*.whl
 ```
 
 After both scripts succeed, upload manually to TestPyPI using a fresh version:
@@ -74,7 +74,7 @@ the diagnostic for mismatched versions before restoring the matching pair.
 ## Extra Note
 
 ### Platform selection
-On Linux, PLATFORM default is `manylinux_2_28` on hosts with glibc 2.28 or older.
+On Linux,  --plat PLATFORM can be pased. PLATFORM default is `manylinux_2_28` on hosts with glibc 2.28 or older.
 On newer hosts, they use auditwheel's `auto` mode to select a compatible tag
 from the built wheel.
 In the current release CI, `manylinux_2_28_x86_64` and `quay.io/pypa/manylinux_2_28_x86_64`

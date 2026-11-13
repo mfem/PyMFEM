@@ -217,12 +217,9 @@ class BuildPy(_build_py):
 
         _build_py.run(self)
         # Keep generated MPI provenance in build output, never in the checkout.
-        # PEP 517 builds need not put the source package on sys.path.
-        mpi_helpers = runpy.run_path(os.path.join(
-            os.path.dirname(__file__), 'mfem', 'common', 'find_libmpi.py'))
-        mpi_helpers['write_mpi_configuration'](
-            os.path.join(self.build_lib, 'mfem', '_par', 'mpi-runtime.json'),
-            parallel=bglb.build_parallel)
+        if bglb.build_parallel:
+            record_supplied_mpi(
+                os.path.join(self.build_lib, 'mfem', '_par', 'mpi-runtime.json'))
 
 class InstallLib(_install_lib):
     def finalize_options(self):

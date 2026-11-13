@@ -37,18 +37,21 @@ pip wheel . --no-deps --verbose --wheel-dir "$work/raw" \
 cd "$work"
 python "$script_dir/select_wheel_payload.py" "$(one_wheel "$work/raw")" \
     --profile mpich --output-dir "$work/selected"
-python "$work/source/mfem/common/find_libmpi.py" > "$work/mpi-libraries.txt"
+# Use the inventory recorded by this wheel's isolated build environment.
+python - "$(one_wheel "$work/selected")" > "$work/mpi-libraries.txt" <<'PY'
+import json
+import sys
+from zipfile import ZipFile
+
+with ZipFile(sys.argv[1]) as wheel:
+    config = json.loads(wheel.read('mfem/_par/mpi-runtime.json'))
+print('\n'.join(config['libraries']))
+PY
 excludes=()
 while IFS= read -r library; do
-    if [[ "$system" == Linux ]]; then
-        soname=$(patchelf --print-soname "$library")
-        [[ -n "$soname" ]] || { echo "No MPI SONAME found in $library" >&2; exit 1; }
-        excludes+=(--exclude "$soname")
-    else
-        excludes+=(--exclude "${library##*/}")
-    fi
+    excludes+=(--exclude "$library")
 done < "$work/mpi-libraries.txt"
-[[ ${#excludes[@]} -gt 0 ]] || { echo 'No loaded MPI libraries found.' >&2; exit 1; }
+[[ ${#excludes[@]} -gt 0 ]] || { echo 'No supplied MPI libraries found.' >&2; exit 1; }
 if [[ "$system" == Linux ]]; then
     auditwheel repair "$(one_wheel "$work/selected")" "${excludes[@]}" \
         --plat "$plat" --wheel-dir "$work/repaired"

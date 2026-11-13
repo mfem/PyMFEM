@@ -113,7 +113,8 @@ print(json.dumps(result))
                f'mfem[mpich] @ {base.as_uri()}'])
     run([python, '-I', '-c',
          f'from importlib.metadata import version; assert version("mfem-mpich") == {version!r}'])
-    run([python, '-I', '-m', 'mfem.common.find_libmpi', '--check'])
+    run([python, '-I', '-c',
+         'from mfem.common.find_libmpi import check_mpi_runtime; print(check_mpi_runtime())'])
     smoke()
     addon_before = snapshot('mfem-mpich')
     assert not set(snapshot('mfem')) & set(addon_before), 'Installed ownership overlaps'

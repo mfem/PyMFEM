@@ -5,6 +5,7 @@ Run with: python -m unittest discover -s _build_system/tests
 
 import hashlib
 import importlib.util
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -35,7 +36,9 @@ class WheelPayloadTest(unittest.TestCase):
             'mfem/external/ser/data/star.mesh': b'mesh',
             'mfem/par.py': b'# parallel',
             'mfem/_par/__init__.py': b'# parallel',
-            'mfem/_par/mpi-runtime.json': b'{}',
+            'mfem/_par/mpi-runtime.json': json.dumps({
+                'schema': 2, 'libraries': ['libmpi.so.12', 'libpmpi.12.dylib',
+                                         'libmpi.12.dylib', 'libfabric.so.1']}).encode(),
             'mfem/_par/_mesh.so': b'parallel extension',
             'mfem/_par/gslib.py': b'gslib proxy',
             'mfem/_par/_gslib.so': b'gslib extension',
@@ -178,7 +181,8 @@ class WheelPayloadTest(unittest.TestCase):
                      'mfem_mpich.libs/libmpi.40.dylib',
                      'mfem_mpich.dylibs/libpmpi.12.dylib',
                      'mfem_mpich.dylibs/libmpi.12.dylib',
-                     'mfem/external/lib/libmpi.a'):
+                     'mfem/external/lib/libmpi.a',
+                     'mfem_mpich.libs/libfabric-abcd.so.1'):
             repaired = self.root / 'repair' / selected.name
             repaired.parent.mkdir(exist_ok=True)
             with ZipFile(selected) as source, WheelFile(repaired, 'w') as target:

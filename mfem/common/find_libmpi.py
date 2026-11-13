@@ -1,14 +1,7 @@
 """
-Report the MPI libraries loaded by mpi4py in this Python environment.
-
-    Run: python -m mfem.common.find_libmpi [--check]
-
-    Import mpi4py.MPI and return sorted, unique core MPI library paths.
-    Report the runtime actually loaded, whether pip-installed or system MPI.
-    (This does not inspect compiler-wrapper)
+Inspect loaded MPI libraries and check compatibility with the wheel configuration.
 """
 
-import argparse
 import ctypes
 import json
 import os
@@ -95,23 +88,10 @@ def mpi_configuration():
         raise RuntimeError(f'Expected one loaded core MPI library, found {paths}')
     from mpi4py import MPI
 
-    return {'schema': 1, 'platform': platform.system(),
+    return {'platform': platform.system(),
             'package': package.metadata['Name'].lower(), 'version': package.version,
             'provider': MPI.get_vendor()[0],
             'libraries': sorted({library_abi(path) for path in paths})}
-
-
-def write_mpi_configuration(path, parallel=True):
-    """
-    Write parallel-build metadata, removing stale output for unchecked builds.
-    """
-    path = Path(path)
-    path.unlink(missing_ok=True)
-    config = mpi_configuration() if parallel else None
-    if config is not None:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(config, indent=2) + '\n', encoding='utf-8')
-    return config
 
 
 def check_mpi_runtime(config_path=None):
@@ -125,49 +105,39 @@ def check_mpi_runtime(config_path=None):
             text = path.read_text(encoding='utf-8')
         except FileNotFoundError:
             return 'No pip MPI build configuration installed; compatibility check skipped.'
+        
         expected = json.loads(text)
-        if (not isinstance(expected, dict) or expected.get('schema') != 1 or
+        if (not isinstance(expected, dict) or expected.get('schema') != 2 or
                 expected.get('package') not in ('mpich', 'openmpi') or
                 not all(isinstance(expected.get(key), str) and expected[key]
                         for key in ('platform', 'provider', 'version')) or
                 not isinstance(expected.get('libraries'), list) or
-                len(expected['libraries']) != 1 or
-                not all(isinstance(name, str) and library_abi(name) == name
+                not expected['libraries'] or
+                not all(isinstance(name, str) and Path(name).name == name and
+                        (name.endswith(('.so', '.dylib')) or '.so.' in name)
                         for name in expected['libraries'])):
             raise ValueError('Invalid MPI build configuration')
+        
         if expected['platform'] != platform.system():
             raise RuntimeError(f'Expected platform {expected["platform"]}, '
                                f'detected {platform.system()}')
         actual = mpi_configuration()
         if actual is None:
             raise RuntimeError(f'Expected the {expected["package"]} Python package; none installed')
-        for key in ('package', 'provider', 'libraries'):
+        for key in ('package', 'provider'):
             if actual[key] != expected[key]:
                 raise RuntimeError(f'Expected MPI {key} {expected[key]!r}, detected {actual[key]!r}')
+        if not set(actual['libraries']).issubset(expected['libraries']):
+            raise RuntimeError(f'Expected MPI libraries supplied by {expected["package"]}: '
+                               f'{expected["libraries"]!r}, detected {actual["libraries"]!r}')
         return (f'MPI compatibility check passed: {actual["provider"]}, '
                 f'{", ".join(actual["libraries"])}; '
                 f'{actual["package"]} build version {expected["version"]}, '
                 f'installed version {actual["version"]}.')
+    
     except (ImportError, OSError, RuntimeError, ValueError) as error:
         raise ImportError(
             f'PyMFEM MPI compatibility check failed: {error}. '
             'Use an environment with the MPI Python package required by this wheel, '
             'or rebuild PyMFEM for your MPI. '
-            'Diagnose with: python -m mfem.common.find_libmpi --check') from error
-
-
-def main():
-    """
-    Print loaded paths or run the installed parallel wheel compatibility check.
-    """
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--check', action='store_true', help='Check the installed parallel build')
-    args = parser.parse_args()
-    try:
-        print(check_mpi_runtime() if args.check else '\n'.join(loaded_mpi_libraries()))
-    except (ImportError, OSError, RuntimeError) as error:
-        parser.exit(1, f'MPI inspection failed: {error}\n')
-
-
-if __name__ == '__main__':
-    main()
+            'Diagnose by calling mfem.common.find_libmpi.check_mpi_runtime().') from error

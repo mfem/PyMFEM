@@ -14,6 +14,7 @@ import base64
 import csv
 import hashlib
 import io
+import json
 import re
 import shutil
 import subprocess
@@ -273,9 +274,21 @@ def check_payload(wheel, repaired=False, profile='serial', check_rpaths=True):
     """
     definition = PROFILES[profile]
     dist_info, names = read_wheel(wheel, profile)
-    if profile == 'mpich':
+    if profile == 'mpich' and 'mfem/_par/mpi-runtime.json' in names:
+        with ZipFile(wheel) as archive:
+            config = json.loads(archive.read('mfem/_par/mpi-runtime.json'))
+        if (config.get('schema') != 2 or not config.get('libraries') or
+                not isinstance(config['libraries'], list) or
+                not all(isinstance(name, str) and PurePosixPath(name).name == name
+                        for name in config['libraries'])):
+            raise ValueError('Invalid supplied MPI library inventory')
+        # Strip version/type suffixes, then allow repair's optional hash suffix.
+        stems = {re.split(r'\.so(?:\.|$)|(?:\.\d+)*\.dylib$', library)[0]
+                 for library in config['libraries']}
+        pattern = re.compile(r'(?:' + '|'.join(re.escape(stem) for stem in stems) +
+                             r')(?:-[0-9a-f]+)?(?:\.|$)')
         forbidden = [name for name in names
-                     if PurePosixPath(name).name.startswith(('libmpi', 'libpmpi'))]
+                     if pattern.match(PurePosixPath(name).name)]
         if forbidden:
             raise ValueError('Bundled MPI libraries are forbidden:\n' + '\n'.join(forbidden))
     unexpected = [name for name in names
