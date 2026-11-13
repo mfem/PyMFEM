@@ -129,7 +129,7 @@ jobs:
 
   macos-wheels:
     needs: sdist
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 180
     strategy:
       fail-fast: false
@@ -290,7 +290,7 @@ jobs:
 
   downloaded-macos-pair:
     needs: [sdist, publish]
-    runs-on: macos-14
+    runs-on: macos-15
     strategy:
       fail-fast: false
       matrix:
