@@ -256,6 +256,27 @@ def macos_paths(path):
     return get_install_names(str(path)), get_rpaths(str(path))
 
 
+def rm_duplicate_mfem(root):
+    """
+    Replace duplicate ELF linker aliases with scripts targeting their SONAME.
+    Keep the versioned library for runtime loading and CMake imported targets,
+    and keep the unversioned linker input for downstream builds using -lmfem.
+    """
+    for alias in (root / 'mfem' / 'external').rglob('libmfem.so'):
+        data = alias.read_bytes()
+        if not data.startswith(b'\x7fELF'):
+            continue
+        result = subprocess.run(['patchelf', '--print-soname', str(alias)],
+                                check=True, capture_output=True, text=True)
+        soname = result.stdout.strip()
+        if not soname.startswith('libmfem.so.') or PurePosixPath(soname).name != soname:
+            continue
+        library = alias.with_name(soname)
+        if library.is_file() and library.read_bytes() == data:
+            alias.write_text(f'INPUT ( {soname} )\n', encoding='utf-8')
+            print(f'Replaced duplicate {alias.relative_to(root)} with a linker script')
+
+
 def macos_relative_path(path):
     """
     Accept loader-relative and executable-relative runtime search directories.
@@ -316,16 +337,19 @@ def check_payload(wheel, repaired=False, profile='serial', check_rpaths=True):
                      if pattern.match(PurePosixPath(name).name)]
         if forbidden:
             raise ValueError('Bundled MPI libraries are forbidden:\n' + '\n'.join(forbidden))
+        
     unexpected = [name for name in names
                   if not selected_file(name, dist_info, definition, repaired)]
     if unexpected:
         raise ValueError(f'Files outside {profile} ownership:\n' + '\n'.join(unexpected))
+    
     missing = definition['required'] - set(names)
     if missing:
         raise ValueError(f'Missing {profile} files: ' + ', '.join(sorted(missing)))
     for description, predicate in definition['components']:
         if not any(predicate(name) for name in names):
             raise ValueError('Missing ' + description)
+        
     if repaired and check_rpaths:
         check_wheel_rpaths(wheel, names, mpi_dirs)
         if sys.platform == 'darwin':
@@ -341,10 +365,12 @@ def select_payload(wheel, output_dir, profile='serial'):
     output_dir = Path(output_dir).resolve()
     if output_dir == wheel.parent:
         raise ValueError('Input wheel and output directory must be separate')
+    
     definition = PROFILES[profile]
     dist_info, names = read_wheel(wheel, profile)
     if any(name.startswith(REPAIR_DIRS) for name in names):
         raise ValueError('Select payload before native library repair')
+    
     with tempfile.TemporaryDirectory(prefix='pymfem-payload-') as temporary:
         root = Path(temporary)
         subprocess.run([sys.executable, '-m', 'wheel', 'unpack', str(wheel),
@@ -373,14 +399,17 @@ def normalize_rpaths(wheel, output_dir, profile='serial'):
     """
     if sys.platform not in ('linux', 'darwin'):
         raise ValueError('Runtime-path normalization requires Linux or macOS')
+    
     wheel, output_dir = Path(wheel).resolve(), Path(output_dir).resolve()
     if output_dir == wheel.parent:
         raise ValueError('Input wheel and output directory must be separate')
+    
     names = check_payload(wheel, repaired=True, profile=profile, check_rpaths=False)
     mpi_dirs = []
     if profile == 'mpich':
         with ZipFile(wheel) as archive:
             mpi_dirs = json.loads(archive.read('mfem/_par/mpi-runtime.json'))['library_dirs']
+
     with tempfile.TemporaryDirectory(prefix='pymfem-rpaths-') as temporary:
         root = Path(temporary)
         subprocess.run([sys.executable, '-m', 'wheel', 'unpack', str(wheel),
@@ -421,6 +450,12 @@ def normalize_rpaths(wheel, output_dir, profile='serial'):
             if kept:
                 subprocess.run(['patchelf', '--set-rpath', kept, str(path)], check=True)
             changed += 1
+
+        # linux wheel contains libmfem and libmfem.so.(with version number)
+        # in order to keep the wheel size below 100MB, we remove one.
+        if sys.platform == 'linux':
+            rm_duplicate_mfem(unpacked)
+
         packed = root / 'packed'
         packed.mkdir()
         subprocess.run([sys.executable, '-m', 'wheel', 'pack', str(unpacked),

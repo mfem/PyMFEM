@@ -253,7 +253,7 @@ jobs:
           TWINE_NON_INTERACTIVE: '1'
         run: |
           pip install twine
-          twine upload dist/linux/* dist/macos/*
+          twine upload --verbose dist/linux/* dist/macos/*
 
   downloaded-linux-pair:
     needs: [sdist, publish]
