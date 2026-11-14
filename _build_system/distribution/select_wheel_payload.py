@@ -259,18 +259,18 @@ def macos_paths(path):
 def rm_duplicate_mfem(root):
     """
     Replace duplicate ELF linker aliases with scripts targeting their SONAME.
-    Keep the versioned library for runtime loading and CMake imported targets,
-    and keep the unversioned linker input for downstream builds using -lmfem.
     """
     for alias in (root / 'mfem' / 'external').rglob('libmfem.so'):
         data = alias.read_bytes()
         if not data.startswith(b'\x7fELF'):
             continue
+        
         result = subprocess.run(['patchelf', '--print-soname', str(alias)],
                                 check=True, capture_output=True, text=True)
         soname = result.stdout.strip()
         if not soname.startswith('libmfem.so.') or PurePosixPath(soname).name != soname:
             continue
+
         library = alias.with_name(soname)
         if library.is_file() and library.read_bytes() == data:
             alias.write_text(f'INPUT ( {soname} )\n', encoding='utf-8')
