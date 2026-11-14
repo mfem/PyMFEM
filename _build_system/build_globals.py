@@ -3,6 +3,8 @@ Global build parameters with fixed member names and mutable values.
 """
 import os
 from dataclasses import dataclass, field
+import shlex
+import shutil
 
 
 @dataclass(slots=True)
@@ -85,7 +87,7 @@ class BuildGlobal:
     #   enviromental variables.
     # ----------------------------------------------------------------------------------------
     cc_command: str | None = 'cc' if os.getenv("CC") is None else os.getenv("CC")
-    cxx_command: str | None = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
+    cxx_command: str | None = 'c++' if os.getenv("CXX") is None else os.getenv("CXX")
     mpicc_command: str | None = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
     mpicxx_command: str | None = 'mpic++' if os.getenv(
         "MPICXX") is None else os.getenv("MPICXX")
@@ -104,6 +106,5 @@ class BuildGlobal:
     run_swig_parallel: bool = False
     mfem_prefix: str = ''
     mfem_miniapps: bool = True
-
 
 bglb = BuildGlobal()

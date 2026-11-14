@@ -28,8 +28,8 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Set candidate version
@@ -56,7 +56,7 @@ jobs:
           PY
       - name: Build base source distribution
         run: python -m build --sdist
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: linux-sdist
           path: dist/*.tar.gz
@@ -75,7 +75,7 @@ jobs:
       RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
       PYMFEM_BUILD_NCPU: '2'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install build tools and MPICH
         run: |
@@ -109,7 +109,7 @@ jobs:
           mkdir "$RUNNER_TEMP/wheel-pair"
           cp "$RUNNER_TEMP"/serial-build/*.whl "$RUNNER_TEMP"/mpich-build/*.whl "$RUNNER_TEMP/wheel-pair/"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: linux-pair-${{ matrix.pythonpath }}
           path: ${{ runner.temp }}/wheel-pair/*.whl
@@ -117,7 +117,7 @@ jobs:
 
       - name: Save build and validation logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: linux-logs-${{ matrix.pythonpath }}
           path: |
@@ -141,8 +141,8 @@ jobs:
       CXX: clang++
       RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
           architecture: arm64
@@ -177,7 +177,7 @@ jobs:
           mkdir "$RUNNER_TEMP/wheel-pair"
           cp "$RUNNER_TEMP"/serial-build/*.whl "$RUNNER_TEMP"/mpich-build/*.whl "$RUNNER_TEMP/wheel-pair/"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: macos-arm64-pair-py${{ matrix.python-version }}
           path: ${{ runner.temp }}/wheel-pair/*.whl
@@ -185,7 +185,7 @@ jobs:
 
       - name: Save build and validation logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: macos-arm64-logs-py${{ matrix.python-version }}
           path: |
@@ -199,20 +199,20 @@ jobs:
     needs: [sdist, linux-wheels, macos-wheels]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           pattern: linux-pair-*
           merge-multiple: true
           path: dist/linux
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: linux-sdist
           path: dist/linux
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           pattern: macos-arm64-pair-py*
           merge-multiple: true
@@ -224,7 +224,7 @@ jobs:
           python _build_system/distribution/check_release.py dist/linux --platform manylinux_2_28_x86_64
           python _build_system/distribution/check_release.py dist/macos --platform macosx_14_0_arm64
           twine check dist/linux/* dist/macos/*
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: binary-release
           path: |
@@ -237,10 +237,10 @@ jobs:
     if: ${{ inputs.publish }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: binary-release
           path: dist
@@ -267,7 +267,7 @@ jobs:
       RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
       REPOSITORY_URL: ${{ inputs.repository-url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Download exact candidates and validate the public extra
         run: |
           set -euo pipefail
@@ -282,7 +282,7 @@ jobs:
 
       - name: Save downloaded-pair validation
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: linux-downloaded-logs-${{ matrix.pythonpath }}
           path: downloaded-validation.log
@@ -299,8 +299,8 @@ jobs:
       RELEASE_VERSION: ${{ needs.sdist.outputs.version }}
       REPOSITORY_URL: ${{ inputs.repository-url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
           architecture: arm64
@@ -318,7 +318,7 @@ jobs:
 
       - name: Save downloaded-pair validation
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: macos-downloaded-logs-py${{ matrix.python-version }}
           path: downloaded-validation.log

@@ -3,6 +3,7 @@ Helper functions for setup.py
 """
 
 import os
+import shlex
 import sys
 import configparser
 from urllib import request
@@ -417,6 +418,22 @@ def configure_install(self):
         bglb.mpicc_command = self.MPICC
     if self.MPICXX != '':
         bglb.mpicxx_command = self.MPICXX
+
+    def command2abspath(command0):
+        # split argment and make command (compiler) to abs path
+
+        command = shlex.split(command0)
+        compiler = shutil.which(command[0])
+        if compiler is None:
+            return command0
+
+        command[0] = os.path.abspath(compiler)
+        return  shlex.join(command)
+
+    bglb.cc_command = command2abspath(bglb.cc_command)
+    bglb.cxx_command = command2abspath(bglb.cxx_command)
+    bglb.mpicc_command = command2abspath(bglb.mpicc_command)
+    bglb.mpicxx_command = command2abspath(bglb.mpicxx_command)
 
     if self.blas_libraries != "":
         bglb.blas_libraries = self.blas_libraries
