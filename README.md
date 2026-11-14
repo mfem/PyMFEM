@@ -1,5 +1,5 @@
-[![badge](examples/jupyter/.assets/ex1.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex1.ipynb)
-[![badge](examples/jupyter/.assets/ex9.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex9.ipynb)
+[![badge](https://raw.githubusercontent.com/mfem/PyMFEM/PYMx_07/examples/jupyter/.assets/ex1.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/PYMx_07/examples/jupyter/ex1.ipynb)
+[![badge](https://raw.githubusercontent.com/mfem/PyMFEM/PYMx_07/examples/jupyter/.assets/ex9.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/PYMx_07/examples/jupyter/ex9.ipynb)
 
 #  MFEM + PyMFEM (FEM library)
 
@@ -28,7 +28,7 @@ pip install --upgrade "mfem[mpich]"
 
 ### Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 
-The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See [INSTALL](INSTALL.md) for various other options
+The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See [INSTALL](https://github.com/mfem/PyMFEM/blob/PYMx_07/INSTALL.md) for various other options
 
 #### Download source and build
 ```shell
@@ -128,18 +128,18 @@ tpc = ax.tripcolor(triang, sol, shading='gouraud')
 fig.colorbar(tpc)
 plt.show()
 ```
-![](https://raw.githubusercontent.com/mfem/PyMFEM/master/docs/example_image.png)
+![](https://raw.githubusercontent.com/mfem/PyMFEM/PYMx_07/docs/example_image.png)
 
 
 ## License
 
 PyMFEM is licensed under the BSD 3-Clause license. All new contributions
-must be made under this license. See [LICENSE](LICENSE) for details.
+must be made under this license. See [LICENSE](https://github.com/mfem/PyMFEM/blob/PYMx_07/LICENSE) for details.
 
 Binary distributions include the licenses and notices for bundled libraries:
-[MFEM](Licenses/MFEM.txt) and, for parallel distributions,
-[HYPRE](Licenses/HYPRE.txt), [METIS](Licenses/METIS.txt), and
-[GSLIB](Licenses/GSLIB.txt). These libraries retain their respective licenses.
+[MFEM](https://github.com/mfem/PyMFEM/blob/PYMx_07/Licenses/MFEM.txt) and, for parallel distributions,
+[HYPRE](https://github.com/mfem/PyMFEM/blob/PYMx_07/Licenses/HYPRE.txt), [METIS](https://github.com/mfem/PyMFEM/blob/PYMx_07/Licenses/METIS.txt), and
+[GSLIB](https://github.com/mfem/PyMFEM/blob/PYMx_07/Licenses/GSLIB.txt). These libraries retain their respective licenses.
 
 For more information about external libraries, see:
 
