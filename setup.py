@@ -5,6 +5,8 @@ import sys
 import os
 import site
 import re
+import runpy
+import tomllib
 import shutil
 import subprocess
 from shutil import which as find_command
@@ -214,6 +216,10 @@ class BuildPy(_build_py):
             make_mfem_wrapper(serial=False)
 
         _build_py.run(self)
+        # Keep generated MPI provenance in build output, never in the checkout.
+        if bglb.build_parallel:
+            record_supplied_mpi(
+                os.path.join(self.build_lib, 'mfem', '_par', 'mpi-runtime.json'))
 
 class InstallLib(_install_lib):
     def finalize_options(self):
@@ -306,8 +312,38 @@ class Clean(_clean):
         os.chdir(rootdir)
         _clean.run(self)
 
+def update_toml():
+    """
+    Read dependency policy and add matching base/add-on release requirements.
+    """
+    source_root = os.path.dirname(os.path.abspath(__file__))
+    release_version = runpy.run_path(os.path.join(source_root, 'mfem', '__init__.py'))['__version__']
+
+    with open(os.path.join(source_root, 'pyproject.toml'), 'rb') as stream:
+        config = tomllib.load(stream)
+
+    def release_requirements(requirements):
+        result = []
+        for requirement in requirements:
+            name = requirement.partition('==')[0]
+            if name in ('mfem', 'mfem-mpich'):
+                requirement = f'{name}=={release_version}'
+            result.append(requirement)
+        return result
+
+    policy = config['tool']['pymfem']
+    if config['project']['name'] == 'mfem-mpich':
+        dependencies = {'install_requires': release_requirements(policy['install-requires'])}
+    else:
+        dependencies = {'extras_require': {
+            extra: release_requirements(requirements)
+            for extra, requirements in policy['extras-require'].items()}}
+    return dependencies
 
 if __name__ == '__main__':
+
+    dependencies = update_toml()
+
     cmdclass = {'build_py': BuildPy,
                 'install': Install,
                 'install_lib': InstallLib,
@@ -318,4 +354,5 @@ if __name__ == '__main__':
 
     setup(
         cmdclass=cmdclass,
+        **dependencies,
     )

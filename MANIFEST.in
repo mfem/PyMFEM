@@ -1,4 +1,7 @@
 include _build_system/*.py
+include _build_system/distribution/*.py
+include _build_system/distribution/*.sh
+include _build_system/distribution/README.md
 include mfem/*/*.i
 include mfem/*/*.cxx
 include mfem/*/*.h
@@ -13,3 +16,5 @@ include docs/*.txt
 include docs/*.png
 include external/README.txt
 exclude mfem/*/*.so
+
+recursive-include Licenses *.txt

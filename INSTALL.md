@@ -2,13 +2,12 @@
 
 ## Basic serial install
 
-For serial version, most users (on Linux and Mac) will be fine using the binary bundled in the default `pip` install:
+Most users (on Linux and Mac) will be fine using the binary bundled in the default `pip` install:
 
 ```shell
 pip install mfem
+pip install "mfem[mpich]"  # PyPI's mpich library is installed
 ```
-The above installation will download and install a *serial* version of `MFEM`.
-
 
 ##  Building from source
 To build it from source, clone the repository and use pip command

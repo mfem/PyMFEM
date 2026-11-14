@@ -1,0 +1,40 @@
+name: Binary wheel publish (dispatch)
+
+on:
+  workflow_dispatch:
+    inputs:
+      candidate-version:
+        description: Optional shared candidate version; required for TestPyPI upload.
+        type: string
+        default: ''
+      publish-testpypi:
+        description: Upload validated release to TestPyPI and validate downloaded wheels.
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  settings:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check publication settings
+        env:
+          PUBLISH: ${{ inputs.publish-testpypi }}
+          VERSION: ${{ inputs.candidate-version }}
+        run: |
+          if [[ "$PUBLISH" == true && -z "$VERSION" ]]; then
+            echo 'Set a fresh candidate-version for TestPyPI publication' >&2
+            exit 1
+          fi
+
+  binary-release:
+    needs: settings
+    uses: ./.github/workflows/binary-wheel-publish-callable.yaml
+    with:
+      publish: ${{ inputs.publish-testpypi }}
+      candidate-version: ${{ inputs.candidate-version }}
+      repository-url: https://test.pypi.org/legacy/
+    secrets:
+      upload-token: ${{ secrets.TEST_PYPI_TOKEN }}

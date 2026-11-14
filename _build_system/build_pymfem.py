@@ -301,6 +301,7 @@ def make_mfem_wrapper(serial=True):
     if not os.path.exists(os.path.abspath(bglb.mfem_source)):
         assert False, "MFEM source directory. Use --mfem-source=<path>"
 
+
     record_mfem_sha(bglb.mfem_source)
 
     write_setup_local()
@@ -311,10 +312,12 @@ def make_mfem_wrapper(serial=True):
         pwd = chdir(os.path.join(rootdir, 'mfem', '_par'))
 
     python = sys.executable
-
-
     command = [python, 'setup.py', 'build_ext', '--inplace',
-               '--parallel',  str(cpu_count())]
+               '--parallel', str(cpu_count())]
+    if not serial:
+        mpi = get_mpi_wrapper_info(bglb.mpicc_command)
+        if mpi['library_dirs']:
+            command.append('--library-dirs=' + os.pathsep.join(mpi['library_dirs']))
 
     make_call(command, force_verbose=True)
 

@@ -3,14 +3,22 @@ name: release_binary
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      candidate-version:
+        description: Optional candidate version for a build-only run.
+        type: string
+        default: ''
 
 permissions:
   contents: read
 
 jobs:
-  linux-release:
-    uses: ./.github/workflows/build-binary-callable.yml
+  binary-release:
+    uses: ./.github/workflows/binary-wheel-publish-callable.yaml
     with:
+      publish: ${{ github.event_name == 'push' }}
+      candidate-version: ${{ inputs.candidate-version || '' }}
       repository-url: https://upload.pypi.org/legacy/
     secrets:
       upload-token: ${{ secrets.PYPI_TOKEN }}

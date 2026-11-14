@@ -10,18 +10,24 @@ from urllib import request
 import itertools
 import site
 import re
+import shlex
 import subprocess
 import multiprocessing
 import ssl
 import tarfile
+import json
+import platform
+from importlib import metadata
+from pathlib import Path
 from collections import namedtuple
 from shutil import which as find_command
 
 __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make_call", "chdir", "remove_files", "cpu_count",
            "make", "make_install", "download", "gitclone",
-           "record_mfem_sha", "cmake",
-           "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",
+           "record_mfem_sha", "record_supplied_mpi", "cmake",
+           "get_numpy_inc", "get_mpi4py_inc", "get_mpi_wrapper_info",
+           "find_libpath_from_prefix",
            "find_cuda_toolkit", "clean_so", ]
 
 # ----------------------------------------------------------------------------------------
@@ -33,6 +39,45 @@ from build_globals import bglb
 # ----------------------------------------------------------------------------------------
 # Metadata
 # ----------------------------------------------------------------------------------------
+
+
+def record_supplied_mpi(path):
+    """
+    Record supplied shared libraries and their directories relative to site-packages.
+    Remove stale configuration when no pip MPI package is installed.
+    """
+    path = Path(path)
+    path.unlink(missing_ok=True)
+    
+    packages = []
+    for name in ('mpich', 'openmpi'):
+        try:
+            packages.append(metadata.distribution(name))
+        except metadata.PackageNotFoundError:
+            pass
+    if not packages:
+        return None
+    if len(packages) != 1:
+        raise RuntimeError('Both mpich and openmpi Python packages are installed; keep one provider')
+    
+    package = packages[0]
+    name = package.metadata['Name'].lower()
+    files = [entry for entry in package.files or ()
+             if entry.name.endswith(('.so', '.dylib')) or '.so.' in entry.name]
+    libraries = sorted({entry.name for entry in files})
+
+    if not libraries:
+        raise RuntimeError(f'No shared libraries found in the {name} Python package')
+    config = {'schema': 2, 'platform': platform.system(),
+              'package': name, 'version': package.version,
+              'provider': {'mpich': 'MPICH', 'openmpi': 'Open MPI'}[name],
+              'libraries': libraries,
+              'library_dirs': sorted({entry.parent.as_posix() for entry in files})}
+    
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(config, indent=2) + '\n', encoding='utf-8')
+
+    return config
 
 
 def read_mfem_tplflags(prefix):
@@ -299,6 +344,80 @@ def get_mpi4py_inc():
         assert False, "can not check numpy include directory"
 
     return mpi4pyinc
+
+
+def get_mpi_wrapper_info(compiler):
+    """
+    Query an MPI compiler command and check inlcude and library path/lists.
+
+    It supposes OpenMPI, MPICH, Cray and Intel MPI wrappers. It also handles
+    the compiler wrapper which accepts query with -show. (kind=show-compatible)
+    The selected wrapper's active environment must be loaded by the caller.
+    """
+    command = shlex.split(compiler) if isinstance(compiler, str) else list(compiler)
+
+    def query(option):
+        try:
+            result = subprocess.run(command + [option], capture_output=True,
+                                    text=True, timeout=10)
+        except (OSError, subprocess.TimeoutExpired) as error:
+            raise RuntimeError(f'Cannot query MPI wrapper {command!r}: {error}') from error
+        return result
+
+    compile_result = query('--showme:compile')
+
+    if compile_result.returncode == 0:
+        # openmpi
+        link_result = query('--showme:link')
+        if link_result.returncode != 0:
+            raise RuntimeError('Open MPI link query failed: ' + link_result.stderr.strip())
+        kind = 'openmpi'
+        output = compile_result.stdout + '\n' + link_result.stdout
+
+    else:
+        result = query('--cray-print-opts=all')
+        if result.returncode == 0:
+            kind = 'cray'
+            output = result.stdout
+        else:
+            result = query('-show')
+            if result.returncode != 0:
+                raise RuntimeError(f'Unsupported MPI wrapper {command!r}: ' +
+                                   result.stderr.strip())
+            output = result.stdout
+            version = query('-v')
+            banner = (version.stdout + '\n' + version.stderr).lower()
+            executable = os.path.basename(command[0])
+
+            if ('intel(r) mpi' in banner or 'intel mpi' in banner or
+                    executable in ('mpiicc', 'mpiicpc', 'mpiicx', 'mpiicpx')):
+                kind = 'intel'
+            elif 'mpich' in banner:
+                kind = 'mpich'
+            else:
+                kind = 'show-compatible'
+
+    flags = shlex.split(output)
+    info = dict(type=kind, include_dirs=[], library_dirs=[], libraries=[], flags=flags)
+    options = (('-isystem', 'include_dirs'), ('-I', 'include_dirs'),
+               ('-L', 'library_dirs'), ('-l', 'libraries'))
+    tokens = iter(flags)
+    for token in tokens:
+        for option, key in options:
+            if token == option:
+                value = next(tokens, '')
+                if not value or value.startswith('-'):
+                    raise ValueError(f'Missing value for {option} in MPI wrapper output')
+            elif token.startswith(option):
+                value = token[len(option):]
+            else:
+                continue
+            if value not in info[key]:
+                info[key].append(value)
+            break
+    if not any(info[key] for key in ('include_dirs', 'library_dirs', 'libraries')):
+        raise ValueError(f'No include or library flags reported by MPI wrapper {command!r}')
+    return info
 
 
 def find_libpath_from_prefix(lib, prefix0):

@@ -1,24 +1,34 @@
-[![badge](examples/jupyter/.assets/ex1.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex1.ipynb)
-[![badge](examples/jupyter/.assets/ex9.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex9.ipynb)
+[![badge](https://raw.githubusercontent.com/mfem/PyMFEM/PYMx_07/examples/jupyter/.assets/ex1.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/PYMx_07/examples/jupyter/ex1.ipynb)
+[![badge](https://raw.githubusercontent.com/mfem/PyMFEM/PYMx_07/examples/jupyter/.assets/ex9.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/PYMx_07/examples/jupyter/ex9.ipynb)
 
 #  MFEM + PyMFEM (FEM library)
 
 This repository provides Python binding for MFEM. MFEM is a high performance parallel finite element method (FEM) library (http://mfem.org/).
 
 Installer (setup.py) builds both MFEM and binding together.
+Binary package install is supported for Linux (x86) and MacOSX (Apple Silicon)
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
 Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
 ## Install
 ### Using pip (Serial MFEM)
 ```shell
-pip install mfem            # binary install is available only on linux platforms (Py38-312)
+pip install mfem
 
+```
+
+### Using pip (MPICH parallel MFEM with GSLIB/HYPRE/METIS)
+
+For Linux x86_64 releases with matching parallel wheels (Python 3.11–3.14):
+
+```shell
+pip install "mfem[mpich]"
+pip install --upgrade "mfem[mpich]"
 ```
 
 ### Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 
-The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See [INSTALL](INSTALL.md) for various other options
+The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See [INSTALL](https://github.com/mfem/PyMFEM/blob/PYMx_07/INSTALL.md) for various other options
 
 #### Download source and build
 ```shell
@@ -118,16 +128,23 @@ tpc = ax.tripcolor(triang, sol, shading='gouraud')
 fig.colorbar(tpc)
 plt.show()
 ```
-![](https://raw.githubusercontent.com/mfem/PyMFEM/master/docs/example_image.png)
+![](https://raw.githubusercontent.com/mfem/PyMFEM/PYMx_07/docs/example_image.png)
 
 
 ## License
-PyMFEM is licensed under BSD-3 license. All new contributions
-must be made under this license. See [License](LICENSE) for details.
 
-Please refer the developers' web sites for the external libraries
+PyMFEM is licensed under the BSD 3-Clause license. All new contributions
+must be made under this license. See [LICENSE](https://github.com/mfem/PyMFEM/blob/PYMx_07/LICENSE) for details.
+
+Binary distributions include the licenses and notices for bundled libraries:
+[MFEM](https://github.com/mfem/PyMFEM/blob/PYMx_07/Licenses/MFEM.txt) and, for parallel distributions,
+[HYPRE](https://github.com/mfem/PyMFEM/blob/PYMx_07/Licenses/HYPRE.txt), [METIS](https://github.com/mfem/PyMFEM/blob/PYMx_07/Licenses/METIS.txt), and
+[GSLIB](https://github.com/mfem/PyMFEM/blob/PYMx_07/Licenses/GSLIB.txt). These libraries retain their respective licenses.
+
+For more information about external libraries, see:
+
 * MFEM: https://mfem.org/
-* Hypre: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
+* HYPRE: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
 * METIS: http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
-* libceed: https://github.com/CEED/libCEED
-* gslib: https://github.com/Nek5000/gslib
+* libCEED: https://github.com/CEED/libCEED
+* GSLIB: https://github.com/Nek5000/gslib

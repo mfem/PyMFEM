@@ -18,3 +18,6 @@ test/*
 !test/issues/data_3960/VisIt_volume
 *.egg-info
 *.py#
+
+# Generated MPI build configuration
+/mfem/_par/mpi-runtime.json

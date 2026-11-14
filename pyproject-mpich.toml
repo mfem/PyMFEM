@@ -1,0 +1,55 @@
+[project]
+name = "mfem-mpich"
+license = "BSD-3-Clause"
+license-files = ["LICENSE", "Licenses/*.txt"]
+description = "MPICH parallel binary add-on for PyMFEM"
+dynamic = ["version", "dependencies"]
+readme = "README.md"
+authors = [ { name = "MFEM development team" } ]
+maintainers = [ { name = "S. Shiraiwa", email = "shiraiwa@princeton.edu" } ]
+keywords = ["scientific computing", "finite element method"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+requires-python = ">=3.11"
+
+[project.urls]
+"Homepage" = "http://mfem.org"
+"Download" = "https://github.com/pymfem"
+
+[build-system]
+requires = [
+    "setuptools>=80.0.1",
+    "pip>=25.1.0",
+    "numpy>=2.4.1",
+    "cmake>=4.0.0",
+    "swig>=4.5",
+    "mpi4py==4.1.2",
+    "mpich==5.0.2",
+]
+build-backend = "backend"
+backend-path = ["_build_system"]
+
+[tool.pymfem]
+install-requires = [
+    # Nominal version; setup.py substitutes the release version from mfem/__init__.py.
+    "mfem==4.10.0.2",
+    "mpi4py>=4.1.2,<4.2",
+    "mpich>=5.0.2,<5.1",
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "mfem.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["mfem", "mfem.*"]
+
+[tool.setuptools.package-data]
+"mfem._par" = ["*.so"]
+"mfem._ser" = ["*.so"]
